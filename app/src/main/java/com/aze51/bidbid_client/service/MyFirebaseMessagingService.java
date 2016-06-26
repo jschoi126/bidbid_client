@@ -48,6 +48,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // message, here is where that should be initiated. See sendNotification method below.
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
+
     }
     // [END receive_message]
 

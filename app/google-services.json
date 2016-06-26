@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "209914945323",
+    "firebase_url": "https://bidbid-c9126.firebaseio.com",
+    "project_id": "bidbid-c9126",
+    "storage_bucket": "bidbid-c9126.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209914945323:android:9c5f40933643da32",
+        "android_client_info": {
+          "package_name": "com.aze51.bidbid_client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209914945323-rv84cg603lmnqv11ttnb3kbc8qteqpdl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": ""
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
