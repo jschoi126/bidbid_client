@@ -17,9 +17,6 @@ import com.aze51.bidbid_client.R;
 public class BottomMenuFragment extends Fragment {
     View rootViewBasic;
     ImageView image1;
-
-
-    
     ImageView image2;
     ImageView image3;
     ImageView image4;
