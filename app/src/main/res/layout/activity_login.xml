@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aze51.bidbid_client.MainActivity">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/circle"
+        android:layout_gravity="center"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="ID"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="PW"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/LoginButton"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Facebook으로 로그인"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:background="#ffffff"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:text="가입하기"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
