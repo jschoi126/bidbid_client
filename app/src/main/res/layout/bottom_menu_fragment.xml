@@ -8,6 +8,7 @@
         android:layout_weight="1"
         android:src="@drawable/home"
         android:background="#FFFFFF"
+        android:id="@+id/home_image"
         />
     <ImageView
         android:layout_width="0dp"
@@ -15,6 +16,7 @@
         android:layout_weight="1"
         android:src="@drawable/star"
         android:background="#FFFFFF"
+        android:id="@+id/star_image"
         />
     <ImageView
         android:layout_width="0dp"
@@ -22,6 +24,7 @@
         android:layout_weight="1"
         android:src="@drawable/personal"
         android:background="#FFFFFF"
+        android:id="@+id/personal_image"
         />
     <ImageView
         android:layout_width="0dp"
@@ -29,6 +32,7 @@
         android:layout_weight="1"
         android:src="@drawable/search"
         android:background="#FFFFFF"
+        android:id="@+id/search_image"
         />
     <ImageView
         android:layout_width="0dp"
@@ -36,5 +40,6 @@
         android:layout_weight="1"
         android:src="@drawable/bell"
         android:background="#FFFFFF"
+        android:id="@+id/bell_image"
         />
 </LinearLayout>

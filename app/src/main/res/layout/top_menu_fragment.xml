@@ -9,6 +9,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="30sp"
+        android:id="@+id/current_text"
         />
     <TextView
         android:layout_width="0dp"
@@ -17,6 +18,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="30sp"
+        android:id="@+id/scheduled_text"
         />
     <TextView
         android:layout_width="0dp"
@@ -25,5 +27,6 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="30sp"
+        android:id="@+id/approaching_text"
         />
 </LinearLayout>

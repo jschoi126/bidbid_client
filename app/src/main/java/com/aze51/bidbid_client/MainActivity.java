@@ -12,9 +12,9 @@ import com.aze51.bidbid_client.Fragment.TopMenuFragment;
 public class MainActivity extends AppCompatActivity {
 
     //Fragment Variable
-    BottomMenuFragment bottomMenuFrame ;
-    ListFragment listFrame ;
-    TopMenuFragment topMenuFrame ;
+    BottomMenuFragment bottomMenuFragment;
+    ListFragment listFragment;
+    TopMenuFragment topMenuFragment;
     FragmentManager fragmentManager;
     TitleFragment titleFragment;
     @Override
@@ -22,12 +22,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);//splash Activity
         initiate();
+        show_now_list();
+    }
+
+    private void show_now_list() {
+        fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.TopMenuLayout, topMenuFragment).commit();
+        //fragmentManager.beginTransaction().add(R.id.listView,listFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.BottomLayout, bottomMenuFragment).commit();
     }
 
     private void initiate() {
-        bottomMenuFrame = new BottomMenuFragment();
-        listFrame = new ListFragment();
-        topMenuFrame = new TopMenuFragment();
+        bottomMenuFragment = new BottomMenuFragment();
+        listFragment = new ListFragment();
+        topMenuFragment = new TopMenuFragment();
         fragmentManager = getSupportFragmentManager();
         titleFragment = new TitleFragment();
 

@@ -10,6 +10,7 @@
         android:layout_weight="1"
         android:src="@drawable/circle"
         android:background="#3498db"
+        android:id="@+id/logo_image"
         />
     <TextView
         android:layout_width="0dp"
@@ -20,6 +21,7 @@
         android:textSize="30sp"
         android:textColor="#FFFFFF"
         android:background="#3498db"
+        android:id="@+id/bidbid_text"
         />
     <ImageView
         android:layout_width="0dp"
@@ -27,5 +29,6 @@
         android:layout_weight="1"
         android:src="@drawable/setting"
         android:background="#3498db"
+        android:id="@+id/setting_image"
         />
 </LinearLayout>
