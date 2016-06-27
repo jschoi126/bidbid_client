@@ -50,6 +50,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:text="가입하기"
+        android:id="@+id/join_button"
         android:textSize="15dp"
         android:gravity="center"
         android:layout_gravity="center"/>

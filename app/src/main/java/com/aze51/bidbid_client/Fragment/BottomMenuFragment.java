@@ -28,8 +28,8 @@ public class BottomMenuFragment extends Fragment {
         image1 = (ImageView)rootViewBasic.findViewById(R.id.home_image);
         image2 = (ImageView)rootViewBasic.findViewById(R.id.star_image);
         image3 = (ImageView)rootViewBasic.findViewById(R.id.personal_image);
-        image1 = (ImageView)rootViewBasic.findViewById(R.id.search_image);
-        image1 = (ImageView)rootViewBasic.findViewById(R.id.bell_image);
+        image4 = (ImageView)rootViewBasic.findViewById(R.id.search_image);
+        image5 = (ImageView)rootViewBasic.findViewById(R.id.bell_image);
         return rootViewBasic;
     }
 }
