@@ -30,6 +30,5 @@ public class TitleFragment extends Fragment {
         text = (TextView)rootViewBasic.findViewById(R.id.bidbid_text);
         image2 = (ImageView)rootViewBasic.findViewById(R.id.setting_image);
         return rootViewBasic;
-        //return super.onCreateView(inflater, container, savedInstanceState);
     }
 }
