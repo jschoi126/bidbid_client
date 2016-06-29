@@ -4,9 +4,11 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 /**
  * Created by jeon3029 on 16. 6. 28..
  */
+
 public class ViewPagerCustomAdapter extends PagerAdapter {
     private Context mContext;
     public ViewPagerCustomAdapter(Context context) {
