@@ -34,11 +34,8 @@ public class MainActivity extends AppCompatActivity {
     TitleFragment titleFragment;
     View rootViewBasic;
 
-
     //ViewPager
     ViewPager viewpager;
-
-
 
     //Recycler View
     ArrayList<ListItemData> itemDatas;
@@ -51,31 +48,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);//splash Activity
         reference = this;
         initiate();
-        show_now_list();
+        show_current_list();
     }
     //Made By Tae Joon 2016 06 27 : 현재 판매중인 목록 프래그먼트로 보여주기.
-    private void show_now_list() {
+    public void show_current_list() {
+
+
+        fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.TopMenuLayout, topMenuFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.ListLayout,listFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.BottomLayout, bottomMenuFragment).commit();
+    }
+    public void show_scheduled_list(){
         fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
         fragmentManager.beginTransaction().add(R.id.TopMenuLayout, topMenuFragment).commit();
         fragmentManager.beginTransaction().add(R.id.ListLayout,listFragment).commit();
         fragmentManager.beginTransaction().add(R.id.BottomLayout, bottomMenuFragment).commit();
 
-        /*recyclerView = (RecyclerView) findViewById(R.id.recyclerView_current);
-
-        //아이템이 일정할 경우 고정
-        recyclerView.setHasFixedSize(true);
-        //LayoutManager 초기화
-        mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(mLayoutManager);
-
-        //adapter 설정
-        itemDatas = new ArrayList<ListItemData>();
-        mAdapter = new RecyclerViewCustomAdapter(itemDatas);
-        recyclerView.setAdapter(mAdapter);
-
-        itemDatas.add(new ListItemData(R.mipmap.b,"이름","가격","3:57 남음"));*/
     }
+    public void show_approaching_list(){
+        fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.TopMenuLayout, topMenuFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.ListLayout,listFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.BottomLayout, bottomMenuFragment).commit();
+
+
+    }
+
     //Made By Tae Joon 2016 06 27 : 초기화
     private void initiate() {
         bottomMenuFragment = new BottomMenuFragment();

@@ -14,7 +14,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="344dp"
-                android:layout_height="250dp"
+                android:layout_height="200dp"
                 android:id="@+id/ImageView"
                 android:src="@drawable/test_image"
                 android:layout_centerHorizontal="true"
