@@ -2,31 +2,59 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="진행"
-        android:layout_weight="1"
         android:gravity="center"
-        android:textSize="30sp"
-        android:id="@+id/current_text"
-        />
-    <TextView
-        android:layout_width="0dp"
+        android:id="@+id/linear_current"
+        android:layout_weight="10">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="진행"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:clickable="true"
+            android:id="@+id/current_btn"
+            android:background="#ecdbdb"
+            android:textColor="#ff7a32" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="예정"
-        android:layout_weight="1"
         android:gravity="center"
-        android:textSize="30sp"
-        android:id="@+id/scheduled_text"
-        />
-    <TextView
-        android:layout_width="0dp"
+        android:id="@+id/linear_scheduled"
+        android:layout_weight="10">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="예정"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:clickable="true"
+            android:id="@+id/scheduled_btn"
+            android:background="#ecdbdb"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="마감임박"
-        android:layout_weight="1"
         android:gravity="center"
-        android:textSize="30sp"
-        android:id="@+id/approaching_text"
-        />
+        android:id="@+id/linear_approaching"
+        android:layout_weight="10">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="마감임박"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:clickable="true"
+            android:id="@+id/approaching_btn"
+            android:background="#ecdbdb"
+
+            />
+    </LinearLayout>
+
+
+
 </LinearLayout>
