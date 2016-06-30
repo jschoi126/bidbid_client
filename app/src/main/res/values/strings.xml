@@ -3,4 +3,6 @@
     <string name="current">CURRENT</string>
     <string name="scheduled">SCHEDULED</string>
     <string name="approaching">APPROACHING</string>
+    <string name="facebook_app_id">528905803977741</string>
+
 </resources>

@@ -23,7 +23,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
 
-    
+
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.google.firebase:firebase-messaging:9.0.2'
 
@@ -32,4 +32,5 @@ dependencies {
 
     compile 'com.xdu.xhin:library:0.1.0' //tab color
 
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)' //faccebook
 }
