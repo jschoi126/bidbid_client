@@ -30,4 +30,6 @@ dependencies {
 
     compile 'com.xdu.xhin:library:0.1.0' //tab color
 
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)' //facebook
+
 }
