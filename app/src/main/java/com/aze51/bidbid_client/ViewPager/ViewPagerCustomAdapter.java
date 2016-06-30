@@ -1,6 +1,7 @@
 package com.aze51.bidbid_client.ViewPager;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aze51.bidbid_client.R;
+import com.xdu.xhin.library.view.ChangeColorTab;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     RecyclerView.Adapter mAdapter;
     LinearLayoutManager mLayoutManager;
 
+
     public ViewPagerCustomAdapter(Context context) {
         mContext = context;
     }
@@ -36,6 +39,8 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
         collection.addView(layout);
+
+
 
         if(position == 0) {//첫 번째 페이지 일 경우
             recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_current);
@@ -79,6 +84,9 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             recyclerView.setAdapter(mAdapter);
             itemDatas.add(new ListItemData(R.mipmap.b,"이름333","가격3333","3:57 남음"));
         }
+
+
+
         return layout;
     }
     @Override

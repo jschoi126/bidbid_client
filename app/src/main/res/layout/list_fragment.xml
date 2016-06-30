@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tab="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
+    <com.aze51.bidbid_client.ViewPager.CustomChangeColorTab
+        android:id="@+id/change_color_tab"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <com.xdu.xhin.library.view.ChangeColorItem
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            tab:item_color="#ff45c01a"
+            tab:item_icon="@drawable/ic_menu_start_conversation"
+            tab:item_text="진행"
+            tab:item_text_size="12sp" />
+
+        <com.xdu.xhin.library.view.ChangeColorItem
+            android:id="@+id/id_indicator_two"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            tab:item_color="@color/colorAccent"
+            tab:item_icon="@drawable/ic_menu_friendslist"
+            tab:item_text="예정"
+            tab:item_text_size="12sp" />
+
+        <com.xdu.xhin.library.view.ChangeColorItem
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            tab:item_color="#ff45c01a"
+            tab:item_icon="@drawable/ic_menu_allfriends"
+            tab:item_text="마감임박"
+            tab:item_text_size="12sp" />
+
+    </com.aze51.bidbid_client.ViewPager.CustomChangeColorTab>
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"

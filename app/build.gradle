@@ -27,4 +27,7 @@ dependencies {
 
     compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.android.support:cardview-v7:23.2.1'
+
+    compile 'com.xdu.xhin:library:0.1.0' //tab color
+
 }
