@@ -13,13 +13,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Leekh on 2016-06-18.
  */
 public class ApplicationController extends Application {
-
+    // Applcation 인스턴스 선언
+    private static ApplicationController instance;
     public static ApplicationController getInstance(){
         return instance;
     }
-
-    // Applcation 인스턴스 선언
-    private static ApplicationController instance;
 
     @Override
     public void onCreate(){

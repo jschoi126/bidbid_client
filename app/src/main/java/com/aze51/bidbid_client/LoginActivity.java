@@ -77,24 +77,20 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this,
                         Arrays.asList("public_profile", "email"));
-
                 LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(final LoginResult result) {
-
                         GraphRequest request;
                         request = GraphRequest.newMeRequest(result.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
 
                             @Override
                             public void onCompleted(JSONObject user, GraphResponse response) {
                                 if (response.getError() != null) {
-
                                 } else {
                                     Log.i("TAG", "user: " + user.toString());
                                     Log.i("TAG", "AccessToken: " + result.getAccessToken().getToken());
                                     setResult(RESULT_OK);
                                     //finish();
-
                                     //MainActivity 실행
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
@@ -187,6 +183,7 @@ public class LoginActivity extends Activity {
             return;
         }
 
+        //ApplicationController application = new ApplicationController();
         ApplicationController application = ApplicationController.getInstance();
         application.buildNetworkService(ip, port);
     }

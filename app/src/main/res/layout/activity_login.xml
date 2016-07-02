@@ -42,6 +42,9 @@
             android:layout_width="272dp"
             android:id="@+id/login_id"
             android:layout_height="35dp"
+
+            android:inputType="textEmailAddress"
+
             android:hint="아이디"
             android:textSize="14dp"/>
     </LinearLayout>
@@ -69,6 +72,9 @@
             android:layout_height="35dp"
             android:id="@+id/login_pw"
             android:hint="비밀번호"
+
+            android:inputType="textEmailAddress"
+
             android:textSize="14dp"/>
     </LinearLayout>
 
@@ -110,7 +116,6 @@
             <com.facebook.login.widget.LoginButton
                 android:layout_width="260dp"
                 android:layout_height="match_parent"
-
                 android:text="Facebook으로 로그인"
                 android:textSize="15dp"
                 android:gravity="center"

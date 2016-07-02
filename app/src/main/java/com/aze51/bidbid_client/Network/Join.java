@@ -12,6 +12,4 @@ public class Join {
     public boolean user_gender;
    // public String user_email;
    // public String user_mail_status;
-
-
 }

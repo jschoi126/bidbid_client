@@ -31,5 +31,4 @@ public class TitleFragment extends Fragment {
         image2 = (ImageView)rootViewBasic.findViewById(R.id.setting_image);
         return rootViewBasic;
     }
-
 }
