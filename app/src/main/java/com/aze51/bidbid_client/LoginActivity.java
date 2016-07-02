@@ -129,7 +129,8 @@ public class LoginActivity extends Activity {
                 Login login = new Login();
                 login.user_id = getLogin_id.getText().toString();
                 login.user_passwd = getLogin_pw.getText().toString();
-                login.device_token = deviceToken;
+                login.user_device_token = deviceToken;
+                Log.d("MyTag", "login.device_token : " + login.user_device_token);
                 Call<Login> loginCall = networkService.getMember(login);
                 loginCall.enqueue(new Callback<Login>() {
                     @Override

@@ -6,5 +6,5 @@ package com.aze51.bidbid_client.Network;
 public class Login {
     public String user_id;
     public String user_passwd;
-    public String device_token;
+    public String user_device_token;
 }
