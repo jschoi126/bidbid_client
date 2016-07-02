@@ -92,8 +92,8 @@ public class LoginActivity extends Activity {
                                     setResult(RESULT_OK);
                                     //finish();
                                     //MainActivity 실행
+                                    //이 아니라 로딩할 액티비티 실행
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-
                                     startActivity(intent);
                                     finish();
                                 }

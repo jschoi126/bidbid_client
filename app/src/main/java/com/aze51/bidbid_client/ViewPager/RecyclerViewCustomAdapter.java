@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 import com.bumptech.glide.Glide;
 
@@ -20,6 +22,7 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<ViewHolder>{
     public RecyclerViewCustomAdapter(Context mContext, ArrayList<ListItemData> itemDatas){
         this.itemDatas = itemDatas;
         this.mContext = mContext;
+
     }
     //ViewHolder 생성
     @Override
