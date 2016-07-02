@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         if (!FirebaseApp.getApps(this).isEmpty()) {
 
             //.getInstance().setPersistenceEnabled(true);
+        } else {
+
         }
 
 //        Log.d("MyTag", "fcm token : "  + FirebaseInstanceId.getInstance().getToken());

@@ -1,10 +1,9 @@
 package com.aze51.bidbid_client.Network;
 
 /**
- * Created by Leekh on 2016-06-29.
+ * Created by ChoiJunsung on 2016. 7. 3..
  */
-public class Login {
+public class User {
     public String user_id;
-    public String user_passwd;
     public String device_token;
 }

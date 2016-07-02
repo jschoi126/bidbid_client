@@ -66,11 +66,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        long[] vibratePattern = {250, 1000, 250, 1000};
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("BidBid")
+                .setContentTitle("Bid Bid")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
+                .setVibrate(vibratePattern)
+                .setLights(0xff00ff00, 300, 100)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
@@ -78,5 +81,23 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+
     }
+
+    public void turnScreenOn() {
+        //WindowManager.LayoutParams params = this.getWindow().getAttributes();
+
+        /** Turn off: */
+        //params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+        //TODO Store original brightness value
+        //params.screenBrightness = 0.1f;
+        //this.getWindow().setAttributes(params);
+
+        /** Turn on: */
+        //params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+        //TODO restoring from original value
+        //params.screenBrightness = 0.9f;
+        //this.getWindow().setAttributes(params);
+    }
+
 }

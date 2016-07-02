@@ -46,6 +46,7 @@ public class LoginActivity extends Activity {
     Button joinButton;
     PasswordTransformationMethod passWtm;
     EditText getLogin_id, getLogin_pw;
+    String deviceToken;
     private static final String IP_PATTERN =
             "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}" +
                     "(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
@@ -54,8 +55,11 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(FirebaseInstanceId.getInstance() != null)
-            Log.d("MyTag", "Token : " + FirebaseInstanceId.getInstance().getToken());
+        if(FirebaseInstanceId.getInstance() != null) {
+            deviceToken = FirebaseInstanceId.getInstance().getToken();
+            Log.d("MyTag", "Token : " + deviceToken);
+        }
+
 
         FacebookSdk.sdkInitialize(getApplicationContext());
 
@@ -125,6 +129,7 @@ public class LoginActivity extends Activity {
                 Login login = new Login();
                 login.user_id = getLogin_id.getText().toString();
                 login.user_passwd = getLogin_pw.getText().toString();
+                login.device_token = deviceToken;
                 Call<Login> loginCall = networkService.getMember(login);
                 loginCall.enqueue(new Callback<Login>() {
                     @Override
