@@ -40,6 +40,7 @@
             android:layout_marginRight="44dp"
             android:layout_marginLeft="44dp"
             android:layout_width="272dp"
+            android:id="@+id/login_id"
             android:layout_height="35dp"
             android:hint="아이디"
             android:textSize="14dp"/>
@@ -66,6 +67,7 @@
             android:layout_marginLeft="44dp"
             android:layout_width="272dp"
             android:layout_height="35dp"
+            android:id="@+id/login_pw"
             android:hint="비밀번호"
             android:textSize="14dp"/>
     </LinearLayout>

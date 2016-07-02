@@ -49,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="이름"
+                android:id="@+id/user_name"
                 android:textSize="15dp"
                 android:inputType="text"/>
         </LinearLayout>
@@ -70,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:hint="성별"
                 android:textSize="15dp"
+                android:id="@+id/user_gender"
                 />
         </LinearLayout>
 
@@ -89,10 +91,19 @@
             android:src="@drawable/circle" />
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="아이디"
+            android:layout_weight="4"
+            android:id="@+id/user_id"
             android:textSize="15dp"/>
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="중복체크"
+            android:background="#FFFFAA"
+            android:id="@+id/check_id"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -109,6 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="비밀번호"
+            android:id="@+id/user_password"
             android:textSize="15dp"/>
     </LinearLayout>
 
@@ -126,6 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="비밀번호 확인"
+            android:id="@+id/check_password"
             android:textSize="15dp"/>
     </LinearLayout>
 

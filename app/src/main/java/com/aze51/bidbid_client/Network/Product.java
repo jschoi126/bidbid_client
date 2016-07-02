@@ -1,0 +1,17 @@
+package com.aze51.bidbid_client.Network;
+
+/**
+ * Created by Leekh on 2016-06-30.
+ */
+public class Product {
+    public long product_id;
+    public String product_name;
+    public long product_store_id;
+    public String product_description;
+    public String product_img;
+    public int register_minprice;
+    public long product_time_start;
+    public long product_time_finish;
+    //경매 상황(예정, 진행중, 마감)(product_bid_status)
+    //참여인원(product_num_people)
+}

@@ -1,13 +1,12 @@
 package com.aze51.bidbid_client;
 
-import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,23 +14,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.aze51.bidbid_client.Fragment.BottomMenuFragment;
 import com.aze51.bidbid_client.Fragment.DetailItemFragment;
 import com.aze51.bidbid_client.Fragment.DetailTitleFragment;
 import com.aze51.bidbid_client.Fragment.TitleFragment;
-
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
+import com.aze51.bidbid_client.ViewPager.ListItemData;
 import com.aze51.bidbid_client.ViewPager.ViewPagerCustomAdapter;
-import com.xdu.xhin.library.view.ChangeColorTab;
 
 import java.util.ArrayList;
-import java.util.List;
 
-
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     public MainActivity reference;
+    public static MainActivity getReference;
     //Fragment Variable
     BottomMenuFragment bottomMenuFragment;
     ListFragment listFragment;
@@ -41,6 +36,8 @@ public class MainActivity extends AppCompatActivity  {
     TitleFragment titleFragment;
     DetailTitleFragment detailTitleFragment;
     View rootViewBasic;
+
+
     //ViewPager
     ViewPager viewpager;
     LinearLayout currentLinear;
@@ -54,6 +51,12 @@ public class MainActivity extends AppCompatActivity  {
     TextView detail_price;
     TextView detail_time;
     private CustomChangeColorTab changeColorTab;
+
+    //Recycler View
+    ArrayList<ListItemData> itemDatas;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter mAdapter;
+    LinearLayoutManager mLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,8 +108,10 @@ public class MainActivity extends AppCompatActivity  {
 
         detail_price = (TextView)findViewById(R.id.detail_price);
         detail_time = (TextView)findViewById(R.id.detail_time);
+
     }
     public class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
+       // public Context ctx;
         public ListFragment(){
             //생성자
         }
@@ -114,21 +119,12 @@ public class MainActivity extends AppCompatActivity  {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             rootViewBasic = inflater.inflate(R.layout.list_fragment,container,false);
-
             viewpager = (ViewPager) rootViewBasic.findViewById(R.id.viewPager);
             //ctx = getActivity().getApplicationContext();
             viewpager.setAdapter(new ViewPagerCustomAdapter(reference));//Main Activity 의 this 를 보내야함.
-
-            changeColorTab = (CustomChangeColorTab)rootViewBasic.findViewById(R.id.change_color_tab);
-            changeColorTab.setViewpager((ViewPager)rootViewBasic.findViewById(R.id.viewPager));
-
-            btn1 = (Button) rootViewBasic.findViewById(R.id.current_btn);
-            btn2 = (Button) rootViewBasic.findViewById(R.id.scheduled_btn);
-            btn3 = (Button) rootViewBasic.findViewById(R.id.approaching_btn);
             return rootViewBasic;
         }
     }
-
 
     /*public class TopMenuFragment extends Fragment {
         Button btn1;
@@ -161,4 +157,11 @@ public class MainActivity extends AppCompatActivity  {
             return rootViewBasic;
         }
     }*/
+    // 처음으로 서버로 부터 값을 가져오는
+    @Override
+    protected void onResume(){
+        super.onResume();
+        initiate();
+        show_current_list();
+    }
 }
