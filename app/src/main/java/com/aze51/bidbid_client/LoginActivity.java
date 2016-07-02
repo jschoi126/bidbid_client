@@ -16,6 +16,7 @@ import com.aze51.bidbid_client.Network.NetworkService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.HEAD;
 
 public class LoginActivity extends AppCompatActivity {
     NetworkService networkService;
@@ -64,6 +65,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         joinButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        joinButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), JoinActivity.class);

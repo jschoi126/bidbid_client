@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.HEAD;
 
 public class JoinActivity extends AppCompatActivity {
     private NetworkService networkService;
@@ -99,7 +100,6 @@ public class JoinActivity extends AppCompatActivity {
 
                     }
                 });
-
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
@@ -138,4 +138,3 @@ public class JoinActivity extends AppCompatActivity {
         }
     };
 }
-

@@ -13,18 +13,11 @@
         android:orientation="horizontal"
         >
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/TitleLayout"
-        android:id="@+id/TopMenuLayout"
-        android:orientation="horizontal"
-        >
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TopMenuLayout"
+        android:layout_below="@id/TitleLayout"
         android:layout_above="@+id/BottomLayout"
         android:id="@+id/ListLayout"
         android:orientation="vertical"
