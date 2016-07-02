@@ -15,3 +15,8 @@ public class Product {
     //경매 상황(예정, 진행중, 마감)(product_bid_status)
     //참여인원(product_num_people)
 }
+/*
+public class Products {
+    public List<Product> products;
+}
+*/

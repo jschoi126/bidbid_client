@@ -23,11 +23,13 @@ public class ConnectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
-        String ip = "52.78.69.183";
+        //String ip = "52.78.69.183";
+        String ip = "52.78.66.175";
         if(TextUtils.isEmpty(ip) || ip.matches(IP_PATTERN) != true){
             Toast.makeText(getApplicationContext(),"Invaild IP Pattern",Toast.LENGTH_LONG).show();
             return;
         }
+
         String portString = "3000";
         if(TextUtils.isEmpty(portString) || TextUtils.isDigitsOnly(portString) != true){
             Toast.makeText(getApplicationContext(), "Invaild port value",

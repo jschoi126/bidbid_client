@@ -121,14 +121,14 @@ public class MainActivity extends AppCompatActivity {
             rootViewBasic = inflater.inflate(R.layout.list_fragment,container,false);
             viewpager = (ViewPager) rootViewBasic.findViewById(R.id.viewPager);
             viewpager.setAdapter(new ViewPagerCustomAdapter(reference));//Main Activity 의 this 를 보내야함.
-
+            viewpager.setOffscreenPageLimit(2);
             //ctx = getActivity().getApplicationContext();
             changeColorTab = (CustomChangeColorTab)rootViewBasic.findViewById(R.id.change_color_tab);
             changeColorTab.setViewpager((ViewPager)rootViewBasic.findViewById(R.id.viewPager));
 
-            btn1 = (Button) rootViewBasic.findViewById(R.id.current_btn);
-            btn2 = (Button) rootViewBasic.findViewById(R.id.scheduled_btn);
-            btn3 = (Button) rootViewBasic.findViewById(R.id.approaching_btn);
+           // btn1 = (Button) rootViewBasic.findViewById(R.id.current_btn);
+            //btn2 = (Button) rootViewBasic.findViewById(R.id.scheduled_btn);
+            //btn3 = (Button) rootViewBasic.findViewById(R.id.approaching_btn);
             return rootViewBasic;
         }
     }

@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
 
     NetworkService networkService;
     public ViewPagerCustomAdapter(Context context) {
+
         mContext = context;
     }
 
@@ -72,20 +74,24 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             listCall.enqueue(new Callback<List<Product>>() {
                 @Override
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                    Log.i("TAG", "0");
                     if (response.isSuccessful()) {
+                        Log.i("TAG", "0 succeed");
                         List<Product> products = response.body();
+
+                        //List<Products> listproducts = respose.body()
+
                         for (Product p : products) {
                             itemDatas.add(new ListItemData(p));
-
                         }
                         //itemDatas.add(new ListItemData(R.mipmap.b, "이름", "가격", "3:57 남음"));
                     } else {
                         Toast.makeText(mContext.getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
                     }
-
                 }
                 @Override
                 public void onFailure(Call<List<Product>> call, Throwable t) {
+                    Log.i("TAG","0 fail");
                 }
             });
             //itemDatas.add(new ListItemData(R.mipmap.b,"이름111","가격1111","3:57 남음"));
@@ -102,16 +108,18 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             itemDatas = new ArrayList<ListItemData>();
             mAdapter = new RecyclerViewCustomAdapter(mContext,itemDatas);
             recyclerView.setAdapter(mAdapter);
+
             //itemDatas.add(new ListItemData(R.mipmap.b,"이름222","가격2222","3:57 남음"));
             Call<List<Product>> listCall = networkService.getContents();
             listCall.enqueue(new Callback<List<Product>>() {
                 @Override
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                    Log.i("TAG", "1");
                     if (response.isSuccessful()) {
+                        Log.i("TAG", "1 succeed");
                         List<Product> products = response.body();
                         for (Product p : products) {
                             itemDatas.add(new ListItemData(p));
-
                         }
                         //itemDatas.add(new ListItemData(R.mipmap.b, "이름", "가격", "3:57 남음"));
                     } else {
@@ -123,8 +131,10 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
                 public void onFailure(Call<List<Product>> call, Throwable t) {
                 }
             });
+
         }
         else if(position == 2){
+            Log.i("TAG", "2");
             recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_approaching);
             //아이템이 일정할 경우 고정
             recyclerView.setHasFixedSize(true);
@@ -141,7 +151,9 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             listCall.enqueue(new Callback<List<Product>>() {
                 @Override
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                    Log.i("TAG", "2");
                     if (response.isSuccessful()) {
+                        Log.i("TAG", "2 succeed");
                         List<Product> products = response.body();
                         for (Product p : products) {
                             itemDatas.add(new ListItemData(p));
@@ -157,6 +169,8 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
                 public void onFailure(Call<List<Product>> call, Throwable t) {
                 }
             });
+
+
         }
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
