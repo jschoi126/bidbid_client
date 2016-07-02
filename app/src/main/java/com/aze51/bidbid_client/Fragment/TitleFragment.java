@@ -16,7 +16,7 @@ import com.aze51.bidbid_client.R;
  */
 public class TitleFragment extends Fragment {
     View rootViewBasic;
-    ImageView image1;
+    //ImageView image1;
     TextView text;
     ImageView image2;
     public TitleFragment(){
@@ -26,9 +26,10 @@ public class TitleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.title_fragment,container,false);
-        image1 = (ImageView)rootViewBasic.findViewById(R.id.logo_image);
+        //image1 = (ImageView)rootViewBasic.findViewById(R.id.logo_image);
         text = (TextView)rootViewBasic.findViewById(R.id.bidbid_text);
         image2 = (ImageView)rootViewBasic.findViewById(R.id.setting_image);
         return rootViewBasic;
     }
+
 }

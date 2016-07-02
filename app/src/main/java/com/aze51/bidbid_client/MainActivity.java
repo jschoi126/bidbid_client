@@ -14,9 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.Fragment.BottomMenuFragment;
+import com.aze51.bidbid_client.Fragment.DetailItemFragment;
+import com.aze51.bidbid_client.Fragment.DetailTitleFragment;
 import com.aze51.bidbid_client.Fragment.TitleFragment;
 
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
@@ -32,9 +35,11 @@ public class MainActivity extends AppCompatActivity  {
     //Fragment Variable
     BottomMenuFragment bottomMenuFragment;
     ListFragment listFragment;
+    DetailItemFragment detailItemFragment;
     //TopMenuFragment topMenuFragment;
     FragmentManager fragmentManager;
     TitleFragment titleFragment;
+    DetailTitleFragment detailTitleFragment;
     View rootViewBasic;
     //ViewPager
     ViewPager viewpager;
@@ -45,6 +50,9 @@ public class MainActivity extends AppCompatActivity  {
     Button btn1;
     Button btn2;
     Button btn3;
+
+    TextView detail_price;
+    TextView detail_time;
     private CustomChangeColorTab changeColorTab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +61,15 @@ public class MainActivity extends AppCompatActivity  {
         reference = this;
         initiate();
         show_current_list();
+        //show_detail_list();
     }
+
+    public void show_detail_list() {
+        fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.BottomLayout,bottomMenuFragment).commit();
+    }
+
     //Made By Tae Joon 2016 06 27 : 현재 판매중인 목록 프래그먼트로 보여주기.
     public void show_current_list() {
         fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
@@ -77,13 +93,18 @@ public class MainActivity extends AppCompatActivity  {
     private void initiate() {
         bottomMenuFragment = new BottomMenuFragment();
         listFragment = new ListFragment();
+        detailItemFragment = new DetailItemFragment();
         //topMenuFragment = new TopMenuFragment();
         fragmentManager = getSupportFragmentManager();
         titleFragment = new TitleFragment();
+        detailTitleFragment = new DetailTitleFragment();
 
         currentLinear = (LinearLayout)findViewById(R.id.linear_current);
         scheduledLinear = (LinearLayout)findViewById(R.id.linear_scheduled);
         approachingLinear = (LinearLayout)findViewById(R.id.linear_approaching);
+
+        detail_price = (TextView)findViewById(R.id.detail_price);
+        detail_time = (TextView)findViewById(R.id.detail_time);
     }
     public class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
         public ListFragment(){
@@ -107,6 +128,7 @@ public class MainActivity extends AppCompatActivity  {
             return rootViewBasic;
         }
     }
+
 
     /*public class TopMenuFragment extends Fragment {
         Button btn1;

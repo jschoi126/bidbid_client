@@ -1,15 +1,22 @@
 package com.aze51.bidbid_client.ViewPager;
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 import com.xdu.xhin.library.view.ChangeColorTab;
 
@@ -40,8 +47,6 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
         ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
         collection.addView(layout);
 
-
-
         if(position == 0) {//첫 번째 페이지 일 경우
             recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_current);
             //아이템이 일정할 경우 고정
@@ -54,6 +59,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             itemDatas = new ArrayList<ListItemData>();
             mAdapter = new RecyclerViewCustomAdapter(itemDatas);
             recyclerView.setAdapter(mAdapter);
+
             itemDatas.add(new ListItemData(R.mipmap.b,"이름111","가격1111","3:57 남음"));
         }
         else if(position == 1){
@@ -85,8 +91,18 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             itemDatas.add(new ListItemData(R.mipmap.b,"이름333","가격3333","3:57 남음"));
         }
 
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
+                new RecyclerItemClickListener.OnItemClickListener() {
+            @Override public void onItemClick(View view, int position) {
+                ((MainActivity)mContext).show_detail_list();
 
-
+                String pos = String.valueOf(position);
+                Toast toast = Toast.makeText(mContext,
+                        "포지션 : " + pos, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+        }));
         return layout;
     }
     @Override
@@ -106,5 +122,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
         ModelObject customPagerEnum = ModelObject.values()[position];
         return mContext.getString(customPagerEnum.getTitleResId());
     }
+
+
 }
 
