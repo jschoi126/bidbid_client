@@ -62,6 +62,7 @@ public class LoginActivity extends Activity {
 
         AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_login);
+
         initView();
         Connecting();
         initNetworkService();
