@@ -34,12 +34,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends Activity {
-
     Button shareButton = null;
     //facebook
     LoginButton facebook_loginButton;
     CallbackManager callbackManager;
-
     //
     NetworkService networkService;
     Button loginButton;
@@ -50,7 +48,6 @@ public class LoginActivity extends Activity {
     private static final String IP_PATTERN =
             "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}" +
                     "(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +57,7 @@ public class LoginActivity extends Activity {
             Log.d("MyTag", "Token : " + deviceToken);
         }
 
-
         FacebookSdk.sdkInitialize(getApplicationContext());
-
         AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_login);
 
@@ -70,6 +65,8 @@ public class LoginActivity extends Activity {
         Connecting();
         initNetworkService();
         protected_passwd();
+        ApplicationController.getInstance().getDataFromServer();
+
 
         facebook_loginButton = (LoginButton) findViewById(R.id.facebook_LoginButton);
         shareButton = (Button) findViewById(R.id.facebook_LoginButton);
@@ -192,19 +189,17 @@ public class LoginActivity extends Activity {
         ApplicationController application = ApplicationController.getInstance();
         application.buildNetworkService(ip, port);
     }
-
     protected void initView() {
         loginButton = (Button) findViewById(R.id.LoginButton);
         joinButton = (Button) findViewById(R.id.join_button);
         getLogin_id = (EditText) findViewById(R.id.login_id);
         getLogin_pw = (EditText) findViewById(R.id.login_pw);
     }
-
     private void initNetworkService() {
         // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
         networkService = ApplicationController.getInstance().getNetworkService();
-    }
 
+    }
     private void protected_passwd() {
         passWtm = new PasswordTransformationMethod();
         getLogin_pw.setTransformationMethod(passWtm);

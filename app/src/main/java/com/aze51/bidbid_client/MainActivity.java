@@ -59,20 +59,12 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout currentLinear;
     LinearLayout scheduledLinear;
     LinearLayout approachingLinear;
-    //List<RecyclerView> mTabFragments = new ArrayList<>();
-    Button btn1;
-    Button btn2;
-    Button btn3;
+
 
     TextView detail_price;
     TextView detail_time;
     private CustomChangeColorTab changeColorTab;
 
-    //Recycler View
-    ArrayList<ListItemData> itemDatas;
-    RecyclerView recyclerView;
-    RecyclerView.Adapter mAdapter;
-    LinearLayoutManager mLayoutManager;
 
     //test
 
@@ -90,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
         if (!FirebaseApp.getApps(this).isEmpty()) {
 
             //.getInstance().setPersistenceEnabled(true);
-        } else {
+        }
+        else {
         }
 //        Log.d("MyTag", "fcm token : "  + FirebaseInstanceId.getInstance().getToken());
         reference = this;
@@ -142,42 +135,8 @@ public class MainActivity extends AppCompatActivity {
         detail_price = (TextView)findViewById(R.id.detail_price);
         detail_time = (TextView)findViewById(R.id.detail_time);
         Log.i("TAG","init service in main");
-        initNetworkService();
-        getDataFromServer();
-    }
-
-    public void getDataFromServer(){
-
-        listCall = networkService.getContents();
-        listCall.enqueue(new Callback<List<Product>>() {
-            @Override
-            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                Log.i("TAG", "response");
-                if(flag==0) {
-                    viewPagerCustomAdapter.pbVisible();
-                   flag=1;
-                }
-                if (response.isSuccessful()) {
-                    Log.i("TAG", "response succeed");
-                    viewPagerCustomAdapter.pbInvisible();
-                    products = response.body();
-                    viewPagerCustomAdapter.notifyDataSetChanged();
-                    //List<Products> listproducts = respose.body()
-                    //for (Product p : products) {
-                    //    itemDatas.add(new ListItemData(p));
-                    //}
-                    //itemDatas.add(new ListItemData(R.mipmap.b, "이름", "가격", "3:57 남음"));
-                } else {
-                    viewPagerCustomAdapter.pbInvisible();
-                    Toast.makeText(reference.getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onFailure(Call<List<Product>> call, Throwable t) {
-                viewPagerCustomAdapter.pbInvisible();
-                Log.i("TAG","0 fail");
-            }
-        });
+       // initNetworkService();
+       // getDataFromServer();
     }
     public class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
        // public Context ctx;
@@ -196,9 +155,6 @@ public class MainActivity extends AppCompatActivity {
             changeColorTab = (CustomChangeColorTab)rootViewBasic.findViewById(R.id.change_color_tab);
             changeColorTab.setViewpager((ViewPager)rootViewBasic.findViewById(R.id.viewPager));
 
-           // btn1 = (Button) rootViewBasic.findViewById(R.id.current_btn);
-            //btn2 = (Button) rootViewBasic.findViewById(R.id.scheduled_btn);
-            //btn3 = (Button) rootViewBasic.findViewById(R.id.approaching_btn);
             return rootViewBasic;
         }
     }
@@ -240,10 +196,5 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         initiate();
         show_current_list();
-    }
-
-    private void initNetworkService(){
-        // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
-        networkService = ApplicationController.getInstance().getNetworkService();
     }
 }
