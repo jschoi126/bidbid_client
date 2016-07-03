@@ -23,5 +23,7 @@ public interface NetworkService {
     Call<String> getID(@Path("user_id") String user_id);
     @GET("content/detail/{product_id}")
     Call<Product> getContent(@Path("product_id") long id);
+    @GET("certify/{phonenum}")
+    Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);
 
 }

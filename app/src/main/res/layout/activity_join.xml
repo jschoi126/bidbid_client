@@ -69,18 +69,25 @@
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:src="@drawable/circle" />
-
-                <EditText
-                    android:layout_width="match_parent"
+                <RadioGroup
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="성별"
-                    android:textSize="15dp"
-                    android:id="@+id/user_gender"
-                    />
+                    android:orientation="horizontal"
+                    android:id="@+id/radiogrp_gender">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radiobtn_male"
+                        android:text="남"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radiobtn_female"
+                        android:text="여"/>
+                </RadioGroup>
             </LinearLayout>
 
         </LinearLayout>
-
 
 
         <LinearLayout

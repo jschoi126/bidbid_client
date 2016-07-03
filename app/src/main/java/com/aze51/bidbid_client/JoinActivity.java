@@ -9,6 +9,8 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.Network.Join;
@@ -19,13 +21,15 @@ import java.util.regex.Pattern;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.HEAD;
 
 public class JoinActivity extends AppCompatActivity {
     private NetworkService networkService;
     private Button memjoin_button, checkid;
     PasswordTransformationMethod passWtm;
-    private EditText username, usergender, userid, userpw, checkpw;
+    private EditText username, userid, userpw, checkpw;
+    private RadioGroup radioGroupGender;
+    private RadioButton radioButtonMale, radioButtonFemale;
+    private boolean checkedPhoneCertficate = false;
     public String getId;
     public String tmp;
     public String check;
@@ -72,7 +76,10 @@ public class JoinActivity extends AppCompatActivity {
                 Join join = new Join();
                 join.user_name = username.getText().toString();
                 join.user_passwd = userpw.getText().toString();
-                join.user_gender = true;
+                if(radioGroupGender.getCheckedRadioButtonId() == 0)
+                    join.user_gender = true;
+                else
+                    join.user_gender = false;
                 join.user_id = userid.getText().toString();
               /*  if(userpw != checkpw){
                     Toast.makeText(getApplicationContext(),"")
@@ -110,11 +117,13 @@ public class JoinActivity extends AppCompatActivity {
     {
         memjoin_button = (Button)findViewById(R.id.memjoin_button);
         username = (EditText)findViewById(R.id.user_name);
-        usergender = (EditText)findViewById(R.id.user_gender);
         userid = (EditText)findViewById(R.id.user_id);
         userpw = (EditText)findViewById(R.id.user_password);
         checkpw = (EditText)findViewById(R.id.check_password);
         checkid = (Button)findViewById(R.id.check_id);
+        radioGroupGender = (RadioGroup)findViewById(R.id.radiogrp_gender);
+        radioButtonMale = (RadioButton) findViewById(R.id.radiobtn_male);
+        radioButtonFemale = (RadioButton) findViewById(R.id.radiobtn_female);
     }
     private void initNetworkService(){
         // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
