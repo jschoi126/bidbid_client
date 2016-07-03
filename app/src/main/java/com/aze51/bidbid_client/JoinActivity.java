@@ -26,7 +26,7 @@ public class JoinActivity extends AppCompatActivity {
     private NetworkService networkService;
     private Button memjoin_button, checkid;
     PasswordTransformationMethod passWtm;
-    private EditText username, userid, userpw, checkpw;
+    private EditText username, userid, userpw, checkpw, editPhoneNumber, editPhoneAuth;
     private RadioGroup radioGroupGender;
     private RadioButton radioButtonMale, radioButtonFemale;
     private boolean checkedPhoneCertficate = false;
@@ -120,6 +120,8 @@ public class JoinActivity extends AppCompatActivity {
         userid = (EditText)findViewById(R.id.user_id);
         userpw = (EditText)findViewById(R.id.user_password);
         checkpw = (EditText)findViewById(R.id.check_password);
+        editPhoneNumber = (EditText)findViewById(R.id.phone_number);
+        editPhoneAuth = (EditText)findViewById(R.id.phone_auth);
         checkid = (Button)findViewById(R.id.check_id);
         radioGroupGender = (RadioGroup)findViewById(R.id.radiogrp_gender);
         radioButtonMale = (RadioButton) findViewById(R.id.radiobtn_male);

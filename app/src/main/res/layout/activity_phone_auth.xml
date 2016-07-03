@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginRight= "@dimen/activity_horizontal_margin"
+              android:layout_marginLeft="@dimen/activity_horizontal_margin"
+              android:layout_marginTop="@dimen/activity_vertical_margin"
+              android:layout_marginBottom="@dimen/activity_vertical_margin"
+              tools:context="com.aze51.bidbid_client.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:paddingTop="96dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="44dp"
+            android:paddingRight="44dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:layout_width="158dp"
+                    android:layout_height="35dp"
+                    android:paddingLeft="12dp"
+                    android:background="@drawable/whitecircleshape"
+                    android:drawableLeft="@drawable/phone_mdpi"
+                    android:hint="핸드폰 번호"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="8dp">
+
+                <Button
+                    android:layout_width="102dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/redcircleshape"
+                    android:text="인증번호 전송"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingLeft="44dp"
+            android:paddingRight="44dp">
+
+
+            <EditText
+                android:layout_width="272dp"
+                android:layout_height="35dp"
+                android:paddingLeft="12dp"
+                android:background="@drawable/whitecircleshape"
+                android:drawableLeft="@drawable/phone_mdpi"
+                android:hint="인증번호 입력"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="44dp"
+            android:paddingRight="44dp"
+            android:gravity="right"
+            >
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:text="남은 시간"
+                android:paddingTop="5dp"
+                android:background="#ffffff"
+                android:textColor="#000000"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="44dp"
+            android:paddingRight="44dp">
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
