@@ -28,6 +28,11 @@ import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
 import com.aze51.bidbid_client.ViewPager.ViewPagerCustomAdapter;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);//splash Activity
 
+        if (!FirebaseApp.getApps(this).isEmpty()) {
+
+            //.getInstance().setPersistenceEnabled(true);
+        } else {
+        }
+//        Log.d("MyTag", "fcm token : "  + FirebaseInstanceId.getInstance().getToken());
         reference = this;
         initiate();
         show_current_list();

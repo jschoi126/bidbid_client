@@ -24,6 +24,4 @@ public interface NetworkService {
     @GET("content/detail/{product_id}")
     Call<Product> getContent(@Path("product_id") long id);
 
-
-
 }

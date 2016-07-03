@@ -47,8 +47,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
         Log.d(TAG, "From: " + remoteMessage.getFrom());
-        Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
-
+        //Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
+        Log.d(TAG, "Notification Message Data : " + remoteMessage.getData());
+        sendNotification(remoteMessage.getData().get("content"));
     }
     // [END receive_message]
 
@@ -57,6 +58,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      *
      * @param messageBody FCM message body received.
      */
+
     private void sendNotification(String messageBody) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -64,11 +66,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        long[] vibratePattern = {250, 1000, 250, 1000};
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("FCM Message")
+                .setContentTitle("Bid Bid")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
+                .setVibrate(vibratePattern)
+                .setLights(0xff00ff00, 300, 100)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
@@ -76,5 +81,23 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+
     }
+
+    public void turnScreenOn() {
+        //WindowManager.LayoutParams params = this.getWindow().getAttributes();
+
+        /** Turn off: */
+        //params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+        //TODO Store original brightness value
+        //params.screenBrightness = 0.1f;
+        //this.getWindow().setAttributes(params);
+
+        /** Turn on: */
+        //params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+        //TODO restoring from original value
+        //params.screenBrightness = 0.9f;
+        //this.getWindow().setAttributes(params);
+    }
+
 }

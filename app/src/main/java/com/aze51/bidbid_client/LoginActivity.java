@@ -2,25 +2,17 @@ package com.aze51.bidbid_client;
 
 import android.app.Activity;
 import android.content.Intent;
-
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.Network.Login;
 import com.aze51.bidbid_client.Network.NetworkService;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -31,11 +23,15 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONObject;
 
-
 import java.util.Arrays;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends Activity {
 
@@ -50,6 +46,7 @@ public class LoginActivity extends Activity {
     Button joinButton;
     PasswordTransformationMethod passWtm;
     EditText getLogin_id, getLogin_pw;
+    String deviceToken;
     private static final String IP_PATTERN =
             "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}" +
                     "(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
@@ -57,6 +54,12 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(FirebaseInstanceId.getInstance() != null) {
+            deviceToken = FirebaseInstanceId.getInstance().getToken();
+            Log.d("MyTag", "Token : " + deviceToken);
+        }
+
 
         FacebookSdk.sdkInitialize(getApplicationContext());
 
@@ -126,6 +129,8 @@ public class LoginActivity extends Activity {
                 Login login = new Login();
                 login.user_id = getLogin_id.getText().toString();
                 login.user_passwd = getLogin_pw.getText().toString();
+                login.user_device_token = deviceToken;
+                Log.d("MyTag", "login.device_token : " + login.user_device_token);
                 Call<Login> loginCall = networkService.getMember(login);
                 loginCall.enqueue(new Callback<Login>() {
                     @Override
