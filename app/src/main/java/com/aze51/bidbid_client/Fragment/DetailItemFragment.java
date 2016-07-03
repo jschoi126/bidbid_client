@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 
 import org.w3c.dom.Text;
@@ -17,6 +19,7 @@ import org.w3c.dom.Text;
  */
 public class DetailItemFragment extends Fragment {
     View rootViewBasic;
+    //ImageView backimage;
     TextView detail_price;
     TextView detail_time;
     public DetailItemFragment(){
@@ -24,7 +27,7 @@ public class DetailItemFragment extends Fragment {
     }
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.detail_item_cardview,container,false);
 
         detail_price = (TextView)rootViewBasic.findViewById(R.id.detail_price);

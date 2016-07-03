@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:src="@drawable/ic_menu_emoticons"
-        android:id="@+id/detail_back"
+        android:id="@+id/detail_back_image"
         android:background="#e42828"
         />
     <TextView

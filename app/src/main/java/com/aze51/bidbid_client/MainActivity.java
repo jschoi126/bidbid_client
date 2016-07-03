@@ -42,17 +42,17 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     public MainActivity reference;
-    public static MainActivity getReference;
+
     //Fragment Variable
     BottomMenuFragment bottomMenuFragment;
     ListFragment listFragment;
     DetailItemFragment detailItemFragment;
+    int pageState = 0; // 0 = main, 1 = detail
     //TopMenuFragment topMenuFragment;
     FragmentManager fragmentManager;
     TitleFragment titleFragment;
     DetailTitleFragment detailTitleFragment;
     View rootViewBasic;
-
 
     //ViewPager
     ViewPager viewpager;
@@ -60,13 +60,9 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout scheduledLinear;
     LinearLayout approachingLinear;
 
-
     TextView detail_price;
     TextView detail_time;
     private CustomChangeColorTab changeColorTab;
-
-
-    //test
 
     public NetworkService networkService;
     public Call<List<Product>> listCall;
@@ -78,10 +74,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);//splash Activity
-
         if (!FirebaseApp.getApps(this).isEmpty()) {
-
-            //.getInstance().setPersistenceEnabled(true);
         }
         else {
         }
@@ -93,17 +86,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void show_detail_list() {
+        pageState = 1;
         fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
         fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();
         fragmentManager.beginTransaction().replace(R.id.BottomLayout,bottomMenuFragment).commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        if(pageState ==1){//on detail page
+            show_current_list();
+        }
+        else if (pageState ==0){//on main page
+            super.onBackPressed();
+        }
+    }
     //Made By Tae Joon 2016 06 27 : 현재 판매중인 목록 프래그먼트로 보여주기.
     public void show_current_list() {
-        fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.ListLayout,listFragment).commit();
-        //fragmentManager.beginTransaction().add(R.id.TopMenuLayout, topMenuFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.BottomLayout, bottomMenuFragment).commit();
+        pageState = 0;
+        if (flag==0) {
+            fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().add(R.id.ListLayout, listFragment).commit();
+            //fragmentManager.beginTransaction().add(R.id.TopMenuLayout, topMenuFragment).commit();
+            fragmentManager.beginTransaction().add(R.id.BottomLayout, bottomMenuFragment).commit();
+            flag = 1;
+        }
+        else{
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout,titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout,listFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout,bottomMenuFragment).commit();
+            flag = 1;
+        }
     }
     public void show_scheduled_list(){
         fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
@@ -119,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
     }
     //Made By Tae Joon 2016 06 27 : 초기화
     private void initiate() {
+        ApplicationController.getInstance().setMainActivityContext(this);
+
         bottomMenuFragment = new BottomMenuFragment();
         listFragment = new ListFragment();
         detailItemFragment = new DetailItemFragment();
@@ -195,6 +210,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         initiate();
-        show_current_list();
+        //show_current_list();
     }
 }

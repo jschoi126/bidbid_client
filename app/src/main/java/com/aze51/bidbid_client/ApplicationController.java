@@ -1,6 +1,7 @@
 package com.aze51.bidbid_client;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -24,7 +25,13 @@ public class ApplicationController extends Application {
     //created by tae joon jeon. singleton 2016 07 02
     //어플리케이션 전체에서 접근할 상품 객체 생성
     private static List<Product> products;
-
+    private Context mainActivityContext;
+    public void setMainActivityContext(Context ctx){
+        mainActivityContext = ctx;
+    }
+    public Context getMainActivityContext(){
+        return mainActivityContext;
+    }
     private Call<List<Product>> listCall;
     public void getDataFromServer(){
 

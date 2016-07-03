@@ -142,7 +142,6 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
                 new RecyclerItemClickListener.OnItemClickListener() {
             @Override public void onItemClick(View view, int position) {
                 ((MainActivity)mContext).show_detail_list();
-
                 String pos = String.valueOf(position);
                 Toast toast = Toast.makeText(mContext,
                         "포지션 : " + pos, Toast.LENGTH_LONG);
