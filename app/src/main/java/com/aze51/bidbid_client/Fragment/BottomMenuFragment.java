@@ -24,7 +24,9 @@ public class BottomMenuFragment extends Fragment {
     ImageView image3;
     ImageView image4;
     ImageView image5;
-    int pagestate = 0;
+    Context ctx;
+    public BottomMenuFragment() {
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,83 +36,60 @@ public class BottomMenuFragment extends Fragment {
         image3 = (ImageView)rootViewBasic.findViewById(R.id.personal_image);
         image4 = (ImageView)rootViewBasic.findViewById(R.id.search_image);
         image5 = (ImageView)rootViewBasic.findViewById(R.id.bell_image);
-        Context ctx = ApplicationController.getInstance().getMainActivityContext();
-        pagestate = ((MainActivity)ctx).getPageState();
-        if(pagestate == 0){//main page
-            image1.setImageResource(R.mipmap.home_click);
-            image2.setImageResource(R.mipmap.favorite_bottom);
-            image3.setImageResource(R.mipmap.mypage);
-            image4.setImageResource(R.mipmap.search);
-            image5.setImageResource(R.mipmap.push);
-        }
-        else if(pagestate == 2){ //favorite
-            image1.setImageResource(R.mipmap.home);
-            image2.setImageResource(R.mipmap.favorite_bottom_click);
-            image3.setImageResource(R.mipmap.mypage);
-            image4.setImageResource(R.mipmap.search);
-            image5.setImageResource(R.mipmap.push);
-        }
-        else if(pagestate == 3){ //mypage
-            image1.setImageResource(R.mipmap.home);
-            image2.setImageResource(R.mipmap.favorite_bottom);
-            image3.setImageResource(R.mipmap.mypage_click);
-            image4.setImageResource(R.mipmap.search);
-            image5.setImageResource(R.mipmap.push);
-        }
-        else if(pagestate == 4){ //search
-            image1.setImageResource(R.mipmap.home);
-            image2.setImageResource(R.mipmap.favorite_bottom);
-            image3.setImageResource(R.mipmap.mypage);
-            image4.setImageResource(R.mipmap.search_click);
-            image5.setImageResource(R.mipmap.push);
-        }
-        else if(pagestate == 5){ //push
-            image1.setImageResource(R.mipmap.home);
-            image2.setImageResource(R.mipmap.favorite_bottom);
-            image3.setImageResource(R.mipmap.mypage);
-            image4.setImageResource(R.mipmap.search);
-            image5.setImageResource(R.mipmap.push_click);
-        }
-        else{
-            Log.i("TAG","else bottom frame");
-            image1.setImageResource(R.mipmap.home);
-            image2.setImageResource(R.mipmap.favorite_bottom);
-            image3.setImageResource(R.mipmap.mypage);
-            image4.setImageResource(R.mipmap.search);
-            image5.setImageResource(R.mipmap.push);
-        }
+        ctx = ApplicationController.getInstance().getMainActivityContext();
+        image1.setImageResource(R.mipmap.home_click);
         image1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                image1.setImageResource(R.mipmap.home_click);
+                image2.setImageResource(R.mipmap.favorite_bottom);
+                image3.setImageResource(R.mipmap.mypage);
+                image4.setImageResource(R.mipmap.search);
+                image5.setImageResource(R.mipmap.push);
                 ((MainActivity)ctx).show_current_list();
             }
         });
         image2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                image1.setImageResource(R.mipmap.home);
+                image2.setImageResource(R.mipmap.favorite_bottom_click);
+                image3.setImageResource(R.mipmap.mypage);
+                image4.setImageResource(R.mipmap.search);
+                image5.setImageResource(R.mipmap.push);
                 ((MainActivity)ctx).show_favorite_list();
             }
         });
         image3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                image1.setImageResource(R.mipmap.home);
+                image2.setImageResource(R.mipmap.favorite_bottom);
+                image3.setImageResource(R.mipmap.mypage_click);
+                image4.setImageResource(R.mipmap.search);
+                image5.setImageResource(R.mipmap.push);
                 ((MainActivity)ctx).show_mypage_list();
             }
         });
         image4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                image1.setImageResource(R.mipmap.home);
+                image2.setImageResource(R.mipmap.favorite_bottom);
+                image3.setImageResource(R.mipmap.mypage);
+                image4.setImageResource(R.mipmap.search_click);
+                image5.setImageResource(R.mipmap.push);
                 ((MainActivity)ctx).show_search_list();
             }
         });
         image5.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                image1.setImageResource(R.mipmap.home);
+                image2.setImageResource(R.mipmap.favorite_bottom);
+                image3.setImageResource(R.mipmap.mypage);
+                image4.setImageResource(R.mipmap.search);
+                image5.setImageResource(R.mipmap.push_click);
                 ((MainActivity)ctx).show_push_list();
             }
         });

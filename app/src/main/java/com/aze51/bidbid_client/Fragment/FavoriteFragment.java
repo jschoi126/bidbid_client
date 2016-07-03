@@ -22,7 +22,7 @@ public class FavoriteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootViewBasic = inflater.inflate(R.layout.title_fragment,container,false);
+        rootViewBasic = inflater.inflate(R.layout.favorite_list_fragment,container,false);
         //image1 = (ImageView)rootViewBasic.findViewById(R.id.logo_image);
         //text = (TextView)rootViewBasic.findViewById(R.id.bidbid_text);
         //image2 = (ImageView)rootViewBasic.findViewById(R.id.setting_image);

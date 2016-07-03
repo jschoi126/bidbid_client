@@ -40,14 +40,12 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     }
     @Override
     public Object instantiateItem(ViewGroup collection, final int position) {
-
-        pbHeaderProgress = (ProgressBar)collection.findViewById(R.id.pbHeaderProgress);
         ModelObject modelObject = ModelObject.values()[position];
         LayoutInflater inflater = LayoutInflater.from(mContext);
         ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
         collection.addView(layout);
-        //((MainActivity)mContext).getDataFromServer();
-
+        //notifyDataSetChanged();
+        pbHeaderProgress = (ProgressBar)collection.findViewById(R.id.pbHeaderProgress);
         if(position == 0) {//첫 번째 페이지 일 경우
             //notifyDataSetChanged();
             recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_current);
@@ -186,7 +184,9 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     }
 
     public void pbInvisible(){
-        pbHeaderProgress.setVisibility(View.GONE);
+        if(pbHeaderProgress!=null && pbHeaderProgress.getVisibility() == ProgressBar.VISIBLE) {
+            pbHeaderProgress.setVisibility(View.GONE);
+        }
     }
 }
 
