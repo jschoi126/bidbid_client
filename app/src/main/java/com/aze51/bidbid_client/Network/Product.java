@@ -4,7 +4,7 @@ package com.aze51.bidbid_client.Network;
  * Created by Leekh on 2016-06-30.
  */
 public class Product {
-    public long register_id;
+    public int register_id;
     public String product_name;
     public String store_name;
     public String product_description;

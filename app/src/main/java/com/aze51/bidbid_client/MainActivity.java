@@ -6,17 +6,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aze51.bidbid_client.Fragment.BottomMenuFragment;
 import com.aze51.bidbid_client.Fragment.DetailItemFragment;
@@ -25,20 +20,12 @@ import com.aze51.bidbid_client.Fragment.TitleFragment;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
-import com.aze51.bidbid_client.ViewPager.ListItemData;
 import com.aze51.bidbid_client.ViewPager.ViewPagerCustomAdapter;
-
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     public MainActivity reference;
@@ -206,10 +193,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }*/
     // 처음으로 서버로 부터 값을 가져오는
-    @Override
+    /*@Override
     protected void onResume(){
         super.onResume();
         initiate();
         //show_current_list();
-    }
+    }*/
 }

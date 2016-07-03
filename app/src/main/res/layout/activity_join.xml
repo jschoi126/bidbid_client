@@ -182,6 +182,7 @@
                 android:paddingLeft="8dp">
 
                 <Button
+                    android:id="@+id/auth_Phone"
                     android:layout_width="102dp"
                     android:layout_height="35dp"
                     android:background="@drawable/redcircleshape"

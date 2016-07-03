@@ -25,5 +25,9 @@ public interface NetworkService {
     Call<Product> getContent(@Path("product_id") long id);
     @GET("certify/{phonenum}")
     Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);
+    @POST("content/bid")
+    Call<Auction> finishbid(@Body Auction auction);
+    @POST("content/search/{inputContents}")
+    Call<String> searchContents(@Path("inputContents") String intputContents);
 
 }
