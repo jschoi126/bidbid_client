@@ -191,13 +191,16 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             }
         }, 2000);*/
     }
-
-
     @Override
     public void notifyDataSetChanged() {
         //pbInvisible();
         super.notifyDataSetChanged();
     }
+    /*
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }*/
 
     public void pbInvisible(){
         pbHeaderProgress.setVisibility(View.GONE);
