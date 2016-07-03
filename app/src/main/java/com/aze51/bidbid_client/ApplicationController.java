@@ -24,9 +24,7 @@ public class ApplicationController extends Application {
     //created by tae joon jeon. singleton 2016 07 02
     //어플리케이션 전체에서 접근할 상품 객체 생성
     private static List<Product> products;
-<<<<<<< HEAD
     private static int productPostion;
-=======
     private Context mainActivityContext;
     public void setMainActivityContext(Context ctx){
         mainActivityContext = ctx;
@@ -34,7 +32,7 @@ public class ApplicationController extends Application {
     public Context getMainActivityContext(){
         return mainActivityContext;
     }
->>>>>>> 4a2adcd814a5c5e6f1511a894e90f6930c55902f
+
     private Call<List<Product>> listCall;
     public void getDataFromServer(){
 
