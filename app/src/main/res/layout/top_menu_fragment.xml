@@ -51,10 +51,6 @@
             android:clickable="true"
             android:id="@+id/approaching_btn"
             android:background="#ecdbdb"
-
             />
     </LinearLayout>
-
-
-
 </LinearLayout>

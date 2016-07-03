@@ -64,13 +64,12 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
 
             //products = ((MainActivity)mContext).products;
             products = ApplicationController.getInstance().getProduct();
-
             if(products == null || products.isEmpty()){
-
                 Log.i("TAG","0viewpager 비어있습니다");
             }
             else {
                 Log.i("TAG","0is not empty");
+                pbInvisible();
                 for (Product p : products) {
                     itemDatas.add(new ListItemData(p));
                 }
@@ -100,6 +99,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             }
             else {
                 Log.i("TAG","1is not empty");
+                pbInvisible();
                 for (Product p : products) {
                     itemDatas.add(new ListItemData(p));
                 }
@@ -130,12 +130,12 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             }
             else {
                 Log.i("TAG","2is not empty");
+                pbInvisible();
                 for (Product p : products) {
                     itemDatas.add(new ListItemData(p));
                 }
             }
         }
-
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
             @Override public void onItemClick(View view, int position) {

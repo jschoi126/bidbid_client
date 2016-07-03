@@ -232,10 +232,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }*/
     // 처음으로 서버로 부터 값을 가져오는
-    @Override
-    protected void onResume(){
-        super.onResume();
-        initiate();
-        //show_current_list();
-    }
+
 }

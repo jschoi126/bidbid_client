@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#eeeeee"
+              android:background="#ffffff"
               tools:context="com.aze51.bidbid_client.MainActivity">
 
     <LinearLayout
@@ -16,9 +15,9 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/circle"/>
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@mipmap/logo"/>
 
     </LinearLayout>
 
@@ -33,7 +32,7 @@
 
         <EditText
             android:paddingLeft="15dp"
-            android:drawableLeft="@drawable/person_mdpi"
+            android:drawableLeft="@mipmap/person"
             android:drawablePadding="30dp"
             android:gravity="left|center_vertical"
             android:background="@drawable/whitecircleshape"
@@ -61,7 +60,7 @@
         <EditText
 
             android:paddingLeft="15dp"
-            android:drawableLeft="@drawable/password_mdpi"
+            android:drawableLeft="@mipmap/password"
             android:drawablePadding="30dp"
             android:gravity="left|center_vertical"
             android:background="@drawable/whitecircleshape"

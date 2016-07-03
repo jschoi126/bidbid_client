@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     >
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@mipmap/back"
         android:id="@+id/detail_back_image"
         android:background="#e42828"
         />
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:text="BID - BID"
-        android:layout_weight="3"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="#FFFFFF"
-        android:background="#e42828"
-        android:id="@+id/detail_bidbid_text"
-        />
     <ImageView
-        android:layout_width="0dp"
+        android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_weight="1"
+        android:layout_alignParentRight="true"
         android:src="@mipmap/setting"
         android:background="#e42828"
         android:id="@+id/detail_setting_image"
         />
-</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="BID - BID"
+        android:gravity="center"
+        android:layout_toLeftOf="@id/detail_setting_image"
+        android:layout_toRightOf="@id/detail_back_image"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:background="#e42828"
+        android:id="@+id/detail_bidbid_text"
+        />
+</RelativeLayout>

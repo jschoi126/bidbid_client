@@ -4,16 +4,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3498db"
+    android:background="#e42828"
     tools:context="com.aze51.bidbid_client.MainActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:background="#3498db"
-
-        android:src="@drawable/circle"/>
+        android:background="#ff0000"
+        android:src="@mipmap/logo"/>
 
 </LinearLayout>
