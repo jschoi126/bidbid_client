@@ -19,12 +19,9 @@ import com.aze51.bidbid_client.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 /**
  * Created by jeon3029 on 16. 6. 28..
  */
-
 public class ViewPagerCustomAdapter extends PagerAdapter {
     private Context mContext;
 
@@ -32,7 +29,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     RecyclerView recyclerView;
     RecyclerView.Adapter mAdapter;
     LinearLayoutManager mLayoutManager;
-
+    //int productPostion;
     //Call<List<Product>> listCall;
     List<Product> products;
     public ProgressBar pbHeaderProgress;
@@ -141,8 +138,8 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
             @Override public void onItemClick(View view, int position) {
-                ((MainActivity)mContext).show_detail_list();
-
+                ApplicationController.setPosition(position);
+                        ((MainActivity) mContext).show_detail_list();
                 String pos = String.valueOf(position);
                 Toast toast = Toast.makeText(mContext,
                         "포지션 : " + pos, Toast.LENGTH_LONG);

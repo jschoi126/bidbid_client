@@ -2,7 +2,6 @@ package com.aze51.bidbid_client;
 
 import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
@@ -24,7 +23,7 @@ public class ApplicationController extends Application {
     //created by tae joon jeon. singleton 2016 07 02
     //어플리케이션 전체에서 접근할 상품 객체 생성
     private static List<Product> products;
-
+    private static int productPostion;
     private Call<List<Product>> listCall;
     public void getDataFromServer(){
 
@@ -52,6 +51,8 @@ public class ApplicationController extends Application {
         });
     }
     public static List<Product> getProduct(){return products;}
+    public static int getPosition(){return productPostion;}
+    public static void setPosition(int pos){productPostion = pos;}
 
     // Applcation 인스턴스 선언
     private static ApplicationController instance;
