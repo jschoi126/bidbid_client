@@ -119,6 +119,21 @@ public class MainActivity extends AppCompatActivity {
         else if (pageState ==0){//on main page
             super.onBackPressed();
         }
+        else if (pageState ==2){//on favorite page
+            super.onBackPressed();
+        }
+        else if (pageState ==3){//on my page
+            super.onBackPressed();
+        }
+        else if (pageState ==4){//on search page
+            super.onBackPressed();
+        }
+        else if (pageState ==5){//on push page
+            super.onBackPressed();
+        }
+        else{
+            super.onBackPressed();
+        }
     }
     //Made By Tae Joon 2016 06 27 : 현재 판매중인 목록 프래그먼트로 보여주기.
     public void show_current_list() {
