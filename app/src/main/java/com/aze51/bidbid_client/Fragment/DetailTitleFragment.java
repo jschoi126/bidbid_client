@@ -1,5 +1,7 @@
 package com.aze51.bidbid_client.Fragment;
 
+import android.app.ApplicationErrorReport;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aze51.bidbid_client.ApplicationController;
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 
 /**
@@ -16,7 +20,7 @@ import com.aze51.bidbid_client.R;
  */
 public class DetailTitleFragment extends Fragment {
     View rootViewBasic;
-    ImageView image1;
+    ImageView backimage;
     TextView text;
     ImageView image2;
     public DetailTitleFragment(){
@@ -27,14 +31,15 @@ public class DetailTitleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.detail_title_fragment,container,false);
 
-        image1 = (ImageView)rootViewBasic.findViewById(R.id.detail_back);
+        backimage = (ImageView)rootViewBasic.findViewById(R.id.detail_back_image);
         text = (TextView)rootViewBasic.findViewById(R.id.detail_bidbid_text);
         image2 = (ImageView)rootViewBasic.findViewById(R.id.detail_setting_image);
 
-        image1.setOnClickListener(new View.OnClickListener(){
+        backimage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Main의 show current list
+                Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                ((MainActivity)ctx).show_current_list();
             }
         });
         return rootViewBasic;

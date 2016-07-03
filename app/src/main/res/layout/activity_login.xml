@@ -115,7 +115,7 @@
             <com.facebook.login.widget.LoginButton
                 android:layout_width="260dp"
                 android:layout_height="match_parent"
-                android:text="Facebook으로 로그인"
+
                 android:textSize="15dp"
                 android:gravity="center"
                 android:id="@+id/facebook_LoginButton"

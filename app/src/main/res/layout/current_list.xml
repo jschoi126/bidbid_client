@@ -5,6 +5,15 @@
     xmlns:tab="http://schemas.android.com/apk/res-auto"
 
     >
+    <ProgressBar
+        android:id="@+id/pbHeaderProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        >
+
+    </ProgressBar>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView_current"
         android:layout_width="match_parent"
