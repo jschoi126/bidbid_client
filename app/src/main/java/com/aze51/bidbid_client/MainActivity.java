@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
     ListFragment listFragment;
     DetailItemFragment detailItemFragment;
     int pageState = 0; // 0 = main, 1 = detail
+                       // 2 = favorite, 3 = mypage 4 = search 5 = push
+                       // 6 = setting
+    public int getPageState(){return pageState;}
     //TopMenuFragment topMenuFragment;
     FragmentManager fragmentManager;
     TitleFragment titleFragment;
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout currentLinear;
     LinearLayout scheduledLinear;
     LinearLayout approachingLinear;
+
 
     TextView detail_price;
     TextView detail_time;
@@ -84,14 +88,12 @@ public class MainActivity extends AppCompatActivity {
         show_current_list();
         //show_detail_list();
     }
-
     public void show_detail_list() {
         pageState = 1;
         fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
         fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();
         fragmentManager.beginTransaction().replace(R.id.BottomLayout,bottomMenuFragment).commit();
     }
-
     @Override
     public void onBackPressed() {
         if(pageState ==1){//on detail page
@@ -152,6 +154,30 @@ public class MainActivity extends AppCompatActivity {
         Log.i("TAG","init service in main");
        // initNetworkService();
        // getDataFromServer();
+    }
+    public void show_favorite_list() {
+        pageState = 2;
+        fragmentManager.beginTransaction().replace(R.id.TitleLayout, detailTitleFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.ListLayout, listFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+    }
+    public void show_mypage_list() {
+        pageState = 3;
+        fragmentManager.beginTransaction().replace(R.id.TitleLayout, detailTitleFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.ListLayout, listFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+    }
+    public void show_search_list() {
+        pageState = 4;
+        fragmentManager.beginTransaction().replace(R.id.TitleLayout, detailTitleFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.ListLayout, listFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+    }
+    public void show_push_list() {
+        pageState = 5;
+        fragmentManager.beginTransaction().replace(R.id.TitleLayout, detailTitleFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.ListLayout, listFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
     }
     public class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
        // public Context ctx;

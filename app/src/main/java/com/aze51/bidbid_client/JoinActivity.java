@@ -148,4 +148,9 @@ public class JoinActivity extends AppCompatActivity {
         return null;
         }
     };
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
