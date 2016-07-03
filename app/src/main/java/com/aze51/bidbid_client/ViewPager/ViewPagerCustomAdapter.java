@@ -1,4 +1,5 @@
 package com.aze51.bidbid_client.ViewPager;
+
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,9 +17,9 @@ import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 
-
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by jeon3029 on 16. 6. 28..
  */

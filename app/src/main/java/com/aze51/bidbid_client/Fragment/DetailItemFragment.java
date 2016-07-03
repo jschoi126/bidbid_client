@@ -13,7 +13,6 @@ import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.bumptech.glide.Glide;
-
 import java.util.List;
 
 /**
@@ -21,6 +20,7 @@ import java.util.List;
  */
 public class DetailItemFragment extends Fragment {
     View rootViewBasic;
+    //ImageView backimage;
     TextView detail_price;
     TextView detail_time;
     TextView detail_title;
@@ -33,7 +33,7 @@ public class DetailItemFragment extends Fragment {
     }
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.detail_item_cardview,container,false);
         products = ApplicationController.getInstance().getProduct();
         position = ApplicationController.getPosition();
