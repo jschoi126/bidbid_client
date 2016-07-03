@@ -8,16 +8,22 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.aze51.bidbid_client.Fragment.BottomMenuFragment;
 import com.aze51.bidbid_client.Fragment.DetailItemFragment;
 import com.aze51.bidbid_client.Fragment.DetailTitleFragment;
 import com.aze51.bidbid_client.Fragment.TitleFragment;
+import com.aze51.bidbid_client.Network.NetworkService;
+import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
 import com.aze51.bidbid_client.ViewPager.ViewPagerCustomAdapter;
@@ -28,6 +34,11 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     public MainActivity reference;
@@ -62,10 +73,20 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.Adapter mAdapter;
     LinearLayoutManager mLayoutManager;
+
+    //test
+
+    public NetworkService networkService;
+    public Call<List<Product>> listCall;
+    public List<Product> products;
+    int flag=0;
+
+    ViewPagerCustomAdapter viewPagerCustomAdapter = new ViewPagerCustomAdapter(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);//splash Activity
+<<<<<<< HEAD
         if (!FirebaseApp.getApps(this).isEmpty()) {
 
             //.getInstance().setPersistenceEnabled(true);
@@ -74,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
 //        Log.d("MyTag", "fcm token : "  + FirebaseInstanceId.getInstance().getToken());
+=======
+
+>>>>>>> ed0d2ad0b7d0c0fae8f4eea3e0aa995551d709f7
         reference = this;
         initiate();
         show_current_list();
@@ -111,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         listFragment = new ListFragment();
         detailItemFragment = new DetailItemFragment();
         //topMenuFragment = new TopMenuFragment();
+
         fragmentManager = getSupportFragmentManager();
         titleFragment = new TitleFragment();
         detailTitleFragment = new DetailTitleFragment();
@@ -121,7 +146,43 @@ public class MainActivity extends AppCompatActivity {
 
         detail_price = (TextView)findViewById(R.id.detail_price);
         detail_time = (TextView)findViewById(R.id.detail_time);
+        Log.i("TAG","init service in main");
+        initNetworkService();
+        getDataFromServer();
+    }
 
+    public void getDataFromServer(){
+
+        listCall = networkService.getContents();
+        listCall.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                Log.i("TAG", "response");
+                if(flag==0) {
+                    viewPagerCustomAdapter.pbVisible();
+                   flag=1;
+                }
+                if (response.isSuccessful()) {
+                    Log.i("TAG", "response succeed");
+                    viewPagerCustomAdapter.pbInvisible();
+                    products = response.body();
+                    viewPagerCustomAdapter.notifyDataSetChanged();
+                    //List<Products> listproducts = respose.body()
+                    //for (Product p : products) {
+                    //    itemDatas.add(new ListItemData(p));
+                    //}
+                    //itemDatas.add(new ListItemData(R.mipmap.b, "이름", "가격", "3:57 남음"));
+                } else {
+                    viewPagerCustomAdapter.pbInvisible();
+                    Toast.makeText(reference.getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                viewPagerCustomAdapter.pbInvisible();
+                Log.i("TAG","0 fail");
+            }
+        });
     }
     public class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
        // public Context ctx;
@@ -133,15 +194,16 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             rootViewBasic = inflater.inflate(R.layout.list_fragment,container,false);
             viewpager = (ViewPager) rootViewBasic.findViewById(R.id.viewPager);
-            viewpager.setAdapter(new ViewPagerCustomAdapter(reference));//Main Activity 의 this 를 보내야함.
-
+            //viewpager.setAdapter(new ViewPagerCustomAdapter(reference));//Main Activity 의 this 를 보내야함.
+            viewpager.setAdapter(viewPagerCustomAdapter);
+            viewpager.setOffscreenPageLimit(0);
             //ctx = getActivity().getApplicationContext();
             changeColorTab = (CustomChangeColorTab)rootViewBasic.findViewById(R.id.change_color_tab);
             changeColorTab.setViewpager((ViewPager)rootViewBasic.findViewById(R.id.viewPager));
 
-            btn1 = (Button) rootViewBasic.findViewById(R.id.current_btn);
-            btn2 = (Button) rootViewBasic.findViewById(R.id.scheduled_btn);
-            btn3 = (Button) rootViewBasic.findViewById(R.id.approaching_btn);
+           // btn1 = (Button) rootViewBasic.findViewById(R.id.current_btn);
+            //btn2 = (Button) rootViewBasic.findViewById(R.id.scheduled_btn);
+            //btn3 = (Button) rootViewBasic.findViewById(R.id.approaching_btn);
             return rootViewBasic;
         }
     }
@@ -183,5 +245,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         initiate();
         show_current_list();
+    }
+
+    private void initNetworkService(){
+        // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
+        networkService = ApplicationController.getInstance().getNetworkService();
     }
 }
