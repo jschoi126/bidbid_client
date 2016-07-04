@@ -15,15 +15,28 @@ public interface NetworkService {
 
     @POST("content/join")
     Call<Join> newMember(@Body Join join);
+
     @POST("content/login")
     Call<Login> getMember(@Body Login login);
+
     @GET("content/product")
     Call<List<Product>> getContents();
+
     @GET("content/check_id/{user_id}")
     Call<String> getID(@Path("user_id") String user_id);
+
     @GET("content/detail/{product_id}")
     Call<Product> getContent(@Path("product_id") long id);
+
+    // SMS 인증
     @GET("certify/{phonenum}")
     Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);
+
+    // check session
+    @GET("/sign")
+    Call<User> getSession();
+    // 로그아웃
+    @GET("/sign/out")
+    Call<User> logout();
 
 }
