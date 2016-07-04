@@ -25,15 +25,17 @@ import retrofit.Retrofit;
 
 public class JoinActivity extends AppCompatActivity {
     private NetworkService networkService;
-    private Button memjoin_button, checkid;
+    private Button memjoin_button, checkid, phoneAuth;
     PasswordTransformationMethod passWtm;
     private EditText username, userid, userpw, checkpw, editPhoneNumber, editPhoneAuth;
     private RadioGroup radioGroupGender;
     private RadioButton radioButtonMale, radioButtonFemale;
     private boolean checkedPhoneCertficate = false;
+    private boolean checkPermintId = false;
     public String getId;
     public String tmp;
     public String check;
+    public String tmpCertifiacation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +56,10 @@ public class JoinActivity extends AppCompatActivity {
                         {
                             tmp = response.body().toString();
                             check = "valid";
-                            if(tmp.equals(check)) {
+                            if (tmp.equals(check)) {
+                                checkPermintId = true;
                                 Toast.makeText(getApplicationContext(), "사용 가능한 ID입니다.", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
+                            } else {
                                 Toast.makeText(getApplicationContext(), "중복된 ID입니다.", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -70,39 +72,51 @@ public class JoinActivity extends AppCompatActivity {
                 });
             }
         });
+
+        phoneAuth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetPhoneAuthNum();
+            }
+        });
         memjoin_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Join join = new Join();
-                join.user_name = username.getText().toString();
-                join.user_passwd = userpw.getText().toString();
-                if(radioGroupGender.getCheckedRadioButtonId() == 0)
-                    join.user_gender = true;
-                else
-                    join.user_gender = false;
-                join.user_id = userid.getText().toString();
+                String tmpString = editPhoneAuth.getText().toString();
+                if((tmpString.equals(tmpCertifiacation)) && (checkPermintId == true)) {
+                    Join join = new Join();
+                    join.user_name = username.getText().toString();
+                    join.user_passwd = userpw.getText().toString();
+                    if (radioGroupGender.getCheckedRadioButtonId() == 0)
+                        join.user_gender = true;
+                    else
+                        join.user_gender = false;
+                    join.user_id = userid.getText().toString();
               /*  if(userpw != checkpw){
                     Toast.makeText(getApplicationContext(),"")
                 }*/
-                Call<Join> joinCall = networkService.newMember(join);
-                joinCall.enqueue(new Callback<Join>() {
-                    @Override
-                    public void onResponse(Response<Join> response, Retrofit retrofit) {
-                        Toast.makeText(getApplicationContext(),
-                                "회원가입이 완료되었습니다.",Toast.LENGTH_LONG).show();
-                        finish();
-                    }
+                    Call<Join> joinCall = networkService.newMember(join);
+                    joinCall.enqueue(new Callback<Join>() {
+                        @Override
+                        public void onResponse(Response<Join> response, Retrofit retrofit) {
+                            Toast.makeText(getApplicationContext(),
+                                    "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
 
-                    @Override
-                    public void onFailure(Throwable t) {
-                        Toast.makeText(getApplicationContext(),
-                                "회원가입이 실패하였습니다.",Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-                });
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();
+                        @Override
+                        public void onFailure(Throwable t) {
+                            Toast.makeText(getApplicationContext(),
+                                    "회원가입이 실패하였습니다.", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                    });
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                /*} else{   ???
+                    Toast.makeText(getApplicationContext(),"인증번호 및 ID의 중복체크 확인하세요",Toast.LENGTH_SHORT).show();
+                */}
             }
         });
     }
@@ -119,6 +133,9 @@ public class JoinActivity extends AppCompatActivity {
         radioGroupGender = (RadioGroup)findViewById(R.id.radiogrp_gender);
         radioButtonMale = (RadioButton) findViewById(R.id.radiobtn_male);
         radioButtonFemale = (RadioButton) findViewById(R.id.radiobtn_female);
+        phoneAuth = (Button)findViewById(R.id.auth_Phone);
+
+
     }
     private void initNetworkService(){
         // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
@@ -141,4 +158,27 @@ public class JoinActivity extends AppCompatActivity {
         return null;
         }
     };
+    public void GetPhoneAuthNum(){
+        long phoneNum = Long.parseLong(editPhoneNumber.getText().toString());
+        Call<String> callPhoneAuth = networkService.getPhoneCertification(phoneNum);
+        callPhoneAuth.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Response<String> response, Retrofit retrofit) {
+                if (response.isSuccess()){
+                    tmpCertifiacation = response.body().toString();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
+    }
+
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.aze51.bidbid_client.ApplicationController;
 import com.xdu.xhin.library.view.ChangeColorItem;
 
 import java.util.ArrayList;
@@ -67,7 +68,15 @@ public class CustomChangeColorTab extends LinearLayout {
 
             @Override
             public void onPageSelected(int position) {
-
+                if(position == 0){
+                    ApplicationController.getInstance().setPosition(position);
+                }
+                else if(position == 1){
+                    ApplicationController.getInstance().setPosition(position);
+                }
+                else if(position == 2){
+                    ApplicationController.getInstance().setPosition(position);
+                }
             }
 
             @Override

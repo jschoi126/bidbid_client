@@ -1,4 +1,5 @@
 package com.aze51.bidbid_client.ViewPager;
+
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,15 +17,12 @@ import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * Created by jeon3029 on 16. 6. 28..
  */
-
 public class ViewPagerCustomAdapter extends PagerAdapter {
     private Context mContext;
 
@@ -32,7 +30,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     RecyclerView recyclerView;
     RecyclerView.Adapter mAdapter;
     LinearLayoutManager mLayoutManager;
-
+    //int productPostion;
     //Call<List<Product>> listCall;
     List<Product> products;
     public ProgressBar pbHeaderProgress;
@@ -42,14 +40,12 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     }
     @Override
     public Object instantiateItem(ViewGroup collection, final int position) {
-
-        pbHeaderProgress = (ProgressBar)collection.findViewById(R.id.pbHeaderProgress);
         ModelObject modelObject = ModelObject.values()[position];
         LayoutInflater inflater = LayoutInflater.from(mContext);
         ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
         collection.addView(layout);
-        //((MainActivity)mContext).getDataFromServer();
-
+        //notifyDataSetChanged();
+        pbHeaderProgress = (ProgressBar)collection.findViewById(R.id.pbHeaderProgress);
         if(position == 0) {//첫 번째 페이지 일 경우
             //notifyDataSetChanged();
             recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_current);
@@ -65,14 +61,13 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             recyclerView.setAdapter(mAdapter);
 
             //products = ((MainActivity)mContext).products;
-            products = ApplicationController.getInstance().getProduct();
-
+            products = ApplicationController.getInstance().getProducts(position);
             if(products == null || products.isEmpty()){
-
                 Log.i("TAG","0viewpager 비어있습니다");
             }
             else {
                 Log.i("TAG","0is not empty");
+                pbInvisible();
                 for (Product p : products) {
                     itemDatas.add(new ListItemData(p));
                 }
@@ -95,13 +90,14 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
 
             //itemDatas.add(new ListItemData(R.mipmap.b,"이름222","가격2222","3:57 남음"));
             //products = ((MainActivity)mContext).products;
-            products = ApplicationController.getInstance().getProduct();
+            products = ApplicationController.getInstance().getProducts(position);
 
             if(products == null || products.isEmpty()){
                 Log.i("TAG","1viewpager 비어있습니다");
             }
             else {
                 Log.i("TAG","1is not empty");
+                pbInvisible();
                 for (Product p : products) {
                     itemDatas.add(new ListItemData(p));
                 }
@@ -124,7 +120,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             //itemDatas.add(new ListItemData(R.mipmap.b,"이름333","가격3333","3:57 남음"));
 
             //products = ((MainActivity)mContext).products;
-            products = ApplicationController.getInstance().getProduct();
+            products = ApplicationController.getInstance().getProducts(position);
 
             if(products == null || products.isEmpty()){
 
@@ -132,16 +128,17 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             }
             else {
                 Log.i("TAG","2is not empty");
+                pbInvisible();
                 for (Product p : products) {
                     itemDatas.add(new ListItemData(p));
                 }
             }
         }
-
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
             @Override public void onItemClick(View view, int position) {
-                ((MainActivity)mContext).show_detail_list();
+                ApplicationController.getInstance().setPos(position);
+                        ((MainActivity) mContext).show_detail_list();
                 String pos = String.valueOf(position);
                 Toast toast = Toast.makeText(mContext,
                         "포지션 : " + pos, Toast.LENGTH_LONG);
@@ -187,7 +184,9 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     }
 
     public void pbInvisible(){
-        pbHeaderProgress.setVisibility(View.GONE);
+        if(pbHeaderProgress!=null && pbHeaderProgress.getVisibility() == ProgressBar.VISIBLE) {
+            pbHeaderProgress.setVisibility(View.GONE);
+        }
     }
 }
 

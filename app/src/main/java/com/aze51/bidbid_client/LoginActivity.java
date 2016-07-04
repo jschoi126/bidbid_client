@@ -42,6 +42,7 @@ public class LoginActivity extends Activity {
     NetworkService networkService;
     Button loginButton;
     Button joinButton;
+    String userID;
     PasswordTransformationMethod passWtm;
     EditText getLogin_id, getLogin_pw;
     String deviceToken;
@@ -123,6 +124,7 @@ public class LoginActivity extends Activity {
                 Login login = new Login();
                 login.user_id = getLogin_id.getText().toString();
                 login.user_passwd = getLogin_pw.getText().toString();
+                ApplicationController.setUserId(login.user_id);
                 login.user_device_token = deviceToken;
                 Log.d("MyTag", "login.device_token : " + login.user_device_token);
                 Call<Login> loginCall = networkService.getMember(login);

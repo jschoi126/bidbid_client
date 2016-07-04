@@ -35,6 +35,12 @@ public interface NetworkService {
     // SMS 인증
     @GET("certify/{phonenum}")
     Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);
+    @POST("content/bid")
+    Call<Auction> finishbid(@Body Auction auction);
+    @POST("content/search/{inputContents}")
+    Call<String> searchContents(@Path("inputContents") String intputContents);
+    @GET("product")
+    Call<List<List<Product>>> getProducts();
 
     // check session
     @GET("/sign")

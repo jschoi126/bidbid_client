@@ -30,20 +30,46 @@ public class ApplicationController extends Application {
 
     //created by tae joon jeon. singleton 2016 07 02
     //어플리케이션 전체에서 접근할 상품 객체 생성
-    private static List<Product> products;
+    private static List<Product> products, products1, products2, products3;
+    private static List<List<Product>> getProducts;
+    private static int postion;
+    //private static Auction auction;
+    private static String user;
+    private static int productPos;
     private Context mainActivityContext;
+
     public void setMainActivityContext(Context ctx){
         mainActivityContext = ctx;
     }
     public Context getMainActivityContext(){
         return mainActivityContext;
     }
+
     private Call<List<Product>> listCall;
 
     private static String baseUrl = "http://52.78.66.175:3000";
-
+    private Call<List<List<Product>>> getlistCall;
     public void getDataFromServer(){
 
+        getlistCall = networkService.getProducts();
+        getlistCall.enqueue(new Callback<List<List<Product>>>() {
+            @Override
+            public void onResponse(retrofit.Response<List<List<Product>>> response, Retrofit retrofit) {
+                if(response.isSuccess()){
+                    getProducts = response.body();
+                    products1 = getProducts.get(0);
+                    products2 = getProducts.get(1);
+                    products3 = getProducts.get(2);
+                    // tmp = products2.get(1).product_name;
+                    // tmp2 = products2.get(1).product_name;
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
         listCall = networkService.getContents();
         listCall.enqueue(new Callback<List<Product>>() {
             @Override
@@ -68,7 +94,26 @@ public class ApplicationController extends Application {
             }
         });
     }
-    public static List<Product> getProduct(){return products;}
+    public static List<Product> getProducts(int id){
+        if(id == 0){
+            return products1;
+        }
+        else if(id == 1){
+            return products2;
+        }
+        else {
+            return products3;
+        }
+    }
+    public static int getPosition(){return postion;}
+    public static void setPosition(int pos){postion = pos;}
+    public static int getPos(){return productPos;}
+    public static void setPos(int pos){productPos = pos;}
+    public static String getUserId(){return user;}
+    public static void setUserId(String id){user = id;}
+    //public static Auction getAuction(){return auction;}
+    //public static void setAuction(Auction a){auction = a;}
+
 
     // Applcation 인스턴스 선언
     private static ApplicationController instance;

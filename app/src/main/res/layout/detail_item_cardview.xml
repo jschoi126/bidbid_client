@@ -7,9 +7,8 @@
     <android.support.v7.widget.CardView
         android:id = "@+id/detail_cardView"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:layout_margin = "4dp"
-        >
+        android:layout_height="340dp"
+        android:layout_margin = "4dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -23,9 +22,10 @@
                 />
 
             <RelativeLayout
+                android:id="@+id/secend_view"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:background="#88e7d1d1"
+                android:background="#ffffff"
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/detail_ImageView"
                 >
@@ -79,7 +79,7 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/clock"/>
+                        android:src="@mipmap/clock"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                     <ImageView
                         android:layout_width="22dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/man"/>
+                        android:src="@mipmap/person"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -143,29 +143,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="280dp"
+                    android:gravity="right"
                     android:layout_below="@+id/detail_view"
-
                     >
-
                     <ImageView
-                        android:layout_width="41dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star"
-                        android:id="@+id/detail_star_image"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@mipmap/favorite"
+                        android:id="@+id/detail_favorite_image"
                         />
                     <ImageView
-                        android:layout_width="41dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star"
-                        android:layout_below="@+id/detail_star_image"/>
-
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@mipmap/share"
+                        />
 
                 </LinearLayout>
+
             </RelativeLayout>
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
+
 
 
 </LinearLayout>
