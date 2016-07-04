@@ -42,7 +42,7 @@ public class DetailItemFragment extends Fragment {
     String tmpMessage;
     NetworkService networkService;
     Auction auction;
-    static String user_id = "lkh034";
+    //static String user_id = "lkh034";
     Product tmpProduct;
     public DetailItemFragment(){
         //생성자
@@ -79,7 +79,7 @@ public class DetailItemFragment extends Fragment {
                 auction = new Auction();
                 auction.deal_price = Integer.parseInt(detail_bidPrice.getText().toString());
                 auction.register_id = tmpRegisterId;
-                auction.user_id = user_id;
+                auction.user_id = ApplicationController.getUserId();
                 postBidResult(auction);
             }
         });

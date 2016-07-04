@@ -25,7 +25,9 @@ public class ApplicationController extends Application {
     //어플리케이션 전체에서 접근할 상품 객체 생성
     private static List<Product> products;
     private static int productPostion;
+    private static String user;
     private Context mainActivityContext;
+
     public void setMainActivityContext(Context ctx){
         mainActivityContext = ctx;
     }
@@ -62,6 +64,8 @@ public class ApplicationController extends Application {
     public static List<Product> getProduct(){return products;}
     public static int getPosition(){return productPostion;}
     public static void setPosition(int pos){productPostion = pos;}
+    public static String getUserId(){return user;}
+    public static void setUserId(String id){user = id;}
 
     // Applcation 인스턴스 선언
     private static ApplicationController instance;

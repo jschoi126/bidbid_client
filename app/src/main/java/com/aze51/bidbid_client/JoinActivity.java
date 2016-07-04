@@ -160,7 +160,6 @@ public class JoinActivity extends AppCompatActivity {
         return null;
         }
     };
-
     public void GetPhoneAuthNum(){
         long phoneNum = Long.parseLong(editPhoneNumber.getText().toString());
         Call<String> callPhoneAuth = networkService.getPhoneCertification(phoneNum);
@@ -179,4 +178,9 @@ public class JoinActivity extends AppCompatActivity {
         });
     }
 
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

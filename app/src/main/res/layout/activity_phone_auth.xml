@@ -32,7 +32,7 @@
                     android:layout_height="35dp"
                     android:paddingLeft="12dp"
                     android:background="@drawable/whitecircleshape"
-                    android:drawableLeft="@drawable/phone_mdpi"
+                    android:drawableLeft="@mipmap/phone"
                     android:hint="핸드폰 번호"
                     android:textSize="14sp"/>
             </LinearLayout>
@@ -65,7 +65,7 @@
                 android:layout_height="35dp"
                 android:paddingLeft="12dp"
                 android:background="@drawable/whitecircleshape"
-                android:drawableLeft="@drawable/phone_mdpi"
+                android:drawableLeft="@mipmap/phone"
                 android:hint="인증번호 입력"
                 android:textSize="14sp"/>
 

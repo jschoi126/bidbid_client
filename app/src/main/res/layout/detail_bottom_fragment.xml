@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="50dp"
+    android:id="@+id/detail_bottom_relative"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/detail_up_layout"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/detail_up"
+            android:id="@+id/detail_up_image"
+            android:background="#88e7d1d1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/detail_linear_bid"
+        android:layout_below="@id/detail_up_layout"
+        android:background="#EAEAEA">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFF"
+            android:textAlignment="center"
+            android:hint="입찰가를 입력하세요"
+            android:textColorHint="#BDBDBD"
+
+            android:inputType="number"
+            android:id="@+id/detail_edit_text"
+            android:textColor="#000000"
+            >
+        </EditText>
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#e42828"
+        android:layout_below="@id/detail_linear_bid"
+        android:id="@+id/detail_bid_btn"
+        android:text="입찰하기 >" />
+</RelativeLayout>

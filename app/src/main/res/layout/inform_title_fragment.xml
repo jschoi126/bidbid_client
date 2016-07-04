@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mangmang.MainActivity">
+    tools:context="com.aze51.bidbid_client.MainActivity"
+    >
 
     <RelativeLayout
         android:id="@+id/informLayout"
@@ -15,29 +16,34 @@
             android:id="@+id/backButton"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/back_hdpi"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/back"
+            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"/>
+        <ImageView
+            android:id="@+id/push_setting_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/setting"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/informTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="알림"
             android:textSize="35dp"
-            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/backButton"
             android:textColor="#ffffff"
-            android:layout_toRightOf="@+id/backButton"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/push_setting_img"
             />
 
-        <ImageView
-            android:id="@+id/settingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/setting_hdpi"
-            android:layout_marginLeft="18dp"
-            android:layout_alignParentRight="true" />
+
     </RelativeLayout>
 
 </RelativeLayout>

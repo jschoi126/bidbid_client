@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,32 +13,45 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aze51.bidbid_client.Fragment.BottomMenuFragment;
+import com.aze51.bidbid_client.Fragment.DetailBottomFragment;
 import com.aze51.bidbid_client.Fragment.DetailItemFragment;
 import com.aze51.bidbid_client.Fragment.DetailTitleFragment;
+import com.aze51.bidbid_client.Fragment.EmptyFragment;
+import com.aze51.bidbid_client.Fragment.FavoriteFragment;
+import com.aze51.bidbid_client.Fragment.MypageFragment;
+import com.aze51.bidbid_client.Fragment.PushListFragment;
+import com.aze51.bidbid_client.Fragment.SearchFragment;
 import com.aze51.bidbid_client.Fragment.TitleFragment;
-import com.aze51.bidbid_client.Network.NetworkService;
-import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
 import com.aze51.bidbid_client.ViewPager.ViewPagerCustomAdapter;
 import com.google.firebase.FirebaseApp;
-
-import java.util.List;
-
-import retrofit2.Call;
 
 public class MainActivity extends AppCompatActivity {
     public MainActivity reference;
 
     //Fragment Variable
     BottomMenuFragment bottomMenuFragment;
-    ListFragment listFragment;
+    ListFragment listFragment; //Main list (ViewPager)
     DetailItemFragment detailItemFragment;
-    int pageState = 0; // 0 = main, 1 = detail
-    //TopMenuFragment topMenuFragment;
+    DetailBottomFragment detailBottomFragment;
     FragmentManager fragmentManager;
     TitleFragment titleFragment;
     DetailTitleFragment detailTitleFragment;
-    View rootViewBasic;
+    EmptyFragment emptyFragment;
+    EmptyFragment emptyFragmentDetail;
+    View rootViewBasic;//for listfragment
+
+    //태준 작업중
+    PushListFragment pushListFragment;
+    FavoriteFragment favoriteFragment;
+    MypageFragment mypageFragment;
+    SearchFragment searchFragment;
+
+    ///
+    int pageState = 0; // 0 = main, 1 = detail
+                       // 2 = favorite, 3 = mypage 4 = search 5 = push
+                       // 6 = setting
+    public int getPageState(){return pageState;}
 
     //ViewPager
     ViewPager viewpager;
@@ -47,14 +59,17 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout scheduledLinear;
     LinearLayout approachingLinear;
 
+
     TextView detail_price;
     TextView detail_time;
     private CustomChangeColorTab changeColorTab;
 
-    public NetworkService networkService;
-    public Call<List<Product>> listCall;
-    public List<Product> products;
-    int flag=0;
+    int currentFlag = 0;
+    int detailFlag = 0;
+    int favoriteFlag = 0;
+    int myPageFlag = 0;
+    int searchFlag = 0;
+    int pushListFlag = 0;
 
     ViewPagerCustomAdapter viewPagerCustomAdapter = new ViewPagerCustomAdapter(this);
     @Override
@@ -69,16 +84,25 @@ public class MainActivity extends AppCompatActivity {
         reference = this;
         initiate();
         show_current_list();
-        //show_detail_list();
     }
-
     public void show_detail_list() {
         pageState = 1;
-        fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
-        fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();
-        fragmentManager.beginTransaction().replace(R.id.BottomLayout,bottomMenuFragment).commit();
-    }
+        if(detailFlag == 0){
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout,emptyFragment).commit();
 
+            fragmentManager.beginTransaction().add(R.id.detail_bottom_layout,detailBottomFragment).commit();
+            detailFlag = 1;
+        }
+        else{
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout,emptyFragment).commit();
+
+            fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout,detailBottomFragment).commit();
+        }
+    }
     @Override
     public void onBackPressed() {
         if(pageState ==1){//on detail page
@@ -87,35 +111,41 @@ public class MainActivity extends AppCompatActivity {
         else if (pageState ==0){//on main page
             super.onBackPressed();
         }
+        else if (pageState ==2){//on favorite page
+            super.onBackPressed();
+        }
+        else if (pageState ==3){//on my page
+            super.onBackPressed();
+        }
+        else if (pageState ==4){//on search page
+            super.onBackPressed();
+        }
+        else if (pageState ==5){//on push page
+            super.onBackPressed();
+        }
+        else{
+            super.onBackPressed();
+        }
     }
     //Made By Tae Joon 2016 06 27 : 현재 판매중인 목록 프래그먼트로 보여주기.
     public void show_current_list() {
+        if(pageState == 1){//from detail page
+            fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
+        }
         pageState = 0;
-        if (flag==0) {
+        if (currentFlag == 0) {
             fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
             fragmentManager.beginTransaction().add(R.id.ListLayout, listFragment).commit();
             //fragmentManager.beginTransaction().add(R.id.TopMenuLayout, topMenuFragment).commit();
             fragmentManager.beginTransaction().add(R.id.BottomLayout, bottomMenuFragment).commit();
-            flag = 1;
+            currentFlag = 1;
         }
         else{
             fragmentManager.beginTransaction().replace(R.id.TitleLayout,titleFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.ListLayout,listFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.BottomLayout,bottomMenuFragment).commit();
-            flag = 1;
+            currentFlag = 1;
         }
-    }
-    public void show_scheduled_list(){
-        fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.ListLayout,listFragment).commit();
-        //fragmentManager.beginTransaction().add(R.id.TopMenuLayout, topMenuFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.BottomLayout, bottomMenuFragment).commit();
-    }
-    public void show_approaching_list(){
-        fragmentManager.beginTransaction().add(R.id.TitleLayout, titleFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.ListLayout,listFragment).commit();
-        //fragmentManager.beginTransaction().add(R.id.TopMenuLayout, topMenuFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.BottomLayout, bottomMenuFragment).commit();
     }
     //Made By Tae Joon 2016 06 27 : 초기화
     private void initiate() {
@@ -124,7 +154,13 @@ public class MainActivity extends AppCompatActivity {
         bottomMenuFragment = new BottomMenuFragment();
         listFragment = new ListFragment();
         detailItemFragment = new DetailItemFragment();
-        //topMenuFragment = new TopMenuFragment();
+        detailBottomFragment = new DetailBottomFragment();
+        emptyFragment = new EmptyFragment();
+        emptyFragmentDetail = new EmptyFragment();
+        pushListFragment = new PushListFragment();
+        favoriteFragment = new FavoriteFragment();
+        mypageFragment = new MypageFragment();
+        searchFragment = new SearchFragment();
 
         fragmentManager = getSupportFragmentManager();
         titleFragment = new TitleFragment();
@@ -136,9 +172,63 @@ public class MainActivity extends AppCompatActivity {
 
         detail_price = (TextView)findViewById(R.id.detail_price);
         detail_time = (TextView)findViewById(R.id.detail_time);
-        Log.i("TAG","init service in main");
-       // initNetworkService();
-       // getDataFromServer();
+
+    }
+    public void show_favorite_list() {
+        pageState = 2;
+        if(favoriteFlag ==0) {
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, favoriteFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+            favoriteFlag = 1;
+        }
+        else{
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, favoriteFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+        }
+    }
+    public void show_mypage_list() {
+        pageState = 3;
+        if(myPageFlag ==0) {
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, mypageFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+            myPageFlag = 1;
+        }
+        else{
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, mypageFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+        }
+    }
+    public void show_search_list() {
+        pageState = 4;
+        if(searchFlag ==0) {
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, searchFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+            searchFlag = 1;
+        }
+        else{
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, searchFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+        }
+    }
+    public void show_push_list() {
+        pageState = 5;
+        if(pushListFlag ==0) {
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, pushListFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+            pushListFlag = 1;
+        }
+        else{
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, pushListFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+        }
     }
     public class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
        // public Context ctx;
@@ -199,4 +289,5 @@ public class MainActivity extends AppCompatActivity {
         initiate();
         //show_current_list();
     }*/
+
 }

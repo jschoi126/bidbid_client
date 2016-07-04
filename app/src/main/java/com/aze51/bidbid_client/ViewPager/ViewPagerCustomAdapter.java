@@ -40,14 +40,12 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     }
     @Override
     public Object instantiateItem(ViewGroup collection, final int position) {
-
-        pbHeaderProgress = (ProgressBar)collection.findViewById(R.id.pbHeaderProgress);
         ModelObject modelObject = ModelObject.values()[position];
         LayoutInflater inflater = LayoutInflater.from(mContext);
         ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
         collection.addView(layout);
-        //((MainActivity)mContext).getDataFromServer();
-
+        //notifyDataSetChanged();
+        pbHeaderProgress = (ProgressBar)collection.findViewById(R.id.pbHeaderProgress);
         if(position == 0) {//첫 번째 페이지 일 경우
             //notifyDataSetChanged();
             recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_current);
@@ -64,13 +62,12 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
 
             //products = ((MainActivity)mContext).products;
             products = ApplicationController.getInstance().getProduct();
-
             if(products == null || products.isEmpty()){
-
                 Log.i("TAG","0viewpager 비어있습니다");
             }
             else {
                 Log.i("TAG","0is not empty");
+                pbInvisible();
                 for (Product p : products) {
                     itemDatas.add(new ListItemData(p));
                 }
@@ -100,6 +97,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             }
             else {
                 Log.i("TAG","1is not empty");
+                pbInvisible();
                 for (Product p : products) {
                     itemDatas.add(new ListItemData(p));
                 }
@@ -130,12 +128,12 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             }
             else {
                 Log.i("TAG","2is not empty");
+                pbInvisible();
                 for (Product p : products) {
                     itemDatas.add(new ListItemData(p));
                 }
             }
         }
-
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
             @Override public void onItemClick(View view, int position) {
@@ -186,7 +184,9 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     }
 
     public void pbInvisible(){
-        pbHeaderProgress.setVisibility(View.GONE);
+        if(pbHeaderProgress!=null && pbHeaderProgress.getVisibility() == ProgressBar.VISIBLE) {
+            pbHeaderProgress.setVisibility(View.GONE);
+        }
     }
 }
 
