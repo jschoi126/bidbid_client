@@ -18,9 +18,10 @@ import com.aze51.bidbid_client.Network.NetworkService;
 
 import java.util.regex.Pattern;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class JoinActivity extends AppCompatActivity {
     private NetworkService networkService;
@@ -48,8 +49,8 @@ public class JoinActivity extends AppCompatActivity {
                 Call<String> CallgetId = networkService.getID(getId);
                 CallgetId.enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        if(response.isSuccessful())
+                    public void onResponse(Response<String> response, Retrofit retrofit) {
+                        if(response.isSuccess())
                         {
                             tmp = response.body().toString();
                             check = "valid";
@@ -63,9 +64,8 @@ public class JoinActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(Throwable t) {
                         Toast.makeText(getApplicationContext(), "다시 한번 시도해주세요.", Toast.LENGTH_SHORT).show();
-
                     }
                 });
             }
@@ -87,24 +87,17 @@ public class JoinActivity extends AppCompatActivity {
                 Call<Join> joinCall = networkService.newMember(join);
                 joinCall.enqueue(new Callback<Join>() {
                     @Override
-                    public void onResponse(Call<Join> call, Response<Join> response) {
-                        if(response.isSuccessful())
-                        {
-                            Toast.makeText(getApplicationContext(),
-                                    "회원가입이 완료되었습니다.",Toast.LENGTH_LONG).show();
-                            finish();
-                        }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(),
-                                    "회원가입이 실패하였습니다.",Toast.LENGTH_LONG).show();
-                            finish();
-                        }
+                    public void onResponse(Response<Join> response, Retrofit retrofit) {
+                        Toast.makeText(getApplicationContext(),
+                                "회원가입이 완료되었습니다.",Toast.LENGTH_LONG).show();
+                        finish();
                     }
 
                     @Override
-                    public void onFailure(Call<Join> call, Throwable t) {
-
+                    public void onFailure(Throwable t) {
+                        Toast.makeText(getApplicationContext(),
+                                "회원가입이 실패하였습니다.",Toast.LENGTH_LONG).show();
+                        finish();
                     }
                 });
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);

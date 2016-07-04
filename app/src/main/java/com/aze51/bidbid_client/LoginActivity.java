@@ -28,9 +28,10 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class LoginActivity extends Activity {
     Button shareButton = null;
@@ -61,7 +62,6 @@ public class LoginActivity extends Activity {
         initView();
 
         protected_passwd();
-        ApplicationController.getInstance().getDataFromServer();
 
 
         facebook_loginButton = (LoginButton) findViewById(R.id.facebook_LoginButton);
@@ -128,8 +128,8 @@ public class LoginActivity extends Activity {
                 Call<Login> loginCall = networkService.getMember(login);
                 loginCall.enqueue(new Callback<Login>() {
                     @Override
-                    public void onResponse(Call<Login> call, Response<Login> response) {
-                        if(response.isSuccessful()){
+                    public void onResponse(Response<Login> response, Retrofit retrofit) {
+                        if(response.isSuccess()){
                             Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(intent);
@@ -140,7 +140,7 @@ public class LoginActivity extends Activity {
                     }
 
                     @Override
-                    public void onFailure(Call<Login> call, Throwable t) {
+                    public void onFailure(Throwable t) {
                         Toast.makeText(getApplicationContext(),"망했어요",Toast.LENGTH_LONG).show();
                     }
                 });

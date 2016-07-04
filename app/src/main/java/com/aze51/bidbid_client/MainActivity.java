@@ -1,22 +1,18 @@
 package com.aze51.bidbid_client;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aze51.bidbid_client.Fragment.BottomMenuFragment;
 import com.aze51.bidbid_client.Fragment.DetailItemFragment;
@@ -24,21 +20,18 @@ import com.aze51.bidbid_client.Fragment.DetailTitleFragment;
 import com.aze51.bidbid_client.Fragment.TitleFragment;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
+import com.aze51.bidbid_client.Network.User;
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
-import com.aze51.bidbid_client.ViewPager.ListItemData;
 import com.aze51.bidbid_client.ViewPager.ViewPagerCustomAdapter;
-
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
-import java.util.ArrayList;
+
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
 
 public class MainActivity extends AppCompatActivity {
     public MainActivity reference;
@@ -78,12 +71,53 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
         }
+        connectServer();
 //        Log.d("MyTag", "fcm token : "  + FirebaseInstanceId.getInstance().getToken());
         reference = this;
         initiate();
         show_current_list();
         //show_detail_list();
     }
+
+    /**
+     *
+     */
+    public void connectServer() {
+        NetworkService networkService = ApplicationController.getInstance().getNetworkService();
+        Call<User> loginTest = networkService.getSession();
+        loginTest.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Response<User> response, Retrofit retrofit) {
+                if(response.body() != null)
+                    Log.d("MyTag",response.body().user_id);
+                connectSuccess(response.code());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+            }
+        });
+    }
+
+    public void connectSuccess(int statusCode) {
+        Intent intent;
+        if (statusCode == 200) {
+            Log.d("MyTag", "Has session");
+
+            intent = new Intent(getApplicationContext(), MainActivity.class);
+        } else if (statusCode == 401) {
+            Log.d("MyTag", "Has no session ");
+            intent = new Intent(getApplicationContext(), LoginActivity.class);
+        } else {
+            return;
+        }
+    }
+
+    /**
+     *
+     *
+     */
+
 
     public void show_detail_list() {
         pageState = 1;

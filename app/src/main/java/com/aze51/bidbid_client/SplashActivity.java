@@ -1,6 +1,7 @@
 package com.aze51.bidbid_client;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +12,16 @@ import android.widget.Toast;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.User;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class SplashActivity extends AppCompatActivity {
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    boolean hasSession;
 
     NetworkService networkService;
     private static final String IP_PATTERN =
@@ -24,23 +30,23 @@ public class SplashActivity extends AppCompatActivity {
     Handler handler;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        Connecting();
-        initNetworkService();
-        connectServer();
+        sharedPreferences = getSharedPreferences("Cookie-Session", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
-//        handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(intent);
-//                finish();
-//            }
-//        }, 700);
+        //CookieManager cookiemanager = CookieManager.getInstance();
+
+        connecting();
+        initNetworkService();
+        ApplicationController.getInstance().getDataFromServer();
+        connectServer();
     }
 
     public void connectServer() {
@@ -48,12 +54,14 @@ public class SplashActivity extends AppCompatActivity {
         Call<User> loginTest = networkService.getSession();
         loginTest.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Response<User> response, Retrofit retrofit) {
+                if(response.body() != null)
+                    Log.d("MyTag",response.body().user_id);
                 connectSuccess(response.code());
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Throwable t) {
                 networkError();
             }
         });
@@ -63,6 +71,7 @@ public class SplashActivity extends AppCompatActivity {
         Intent intent;
         if(statusCode == 200){
             Log.d("MyTag", "Has session");
+
             intent = new Intent(getApplicationContext(), MainActivity.class);
         }
         else if(statusCode == 401){
@@ -83,7 +92,7 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-    protected void Connecting() {
+    protected void connecting() {
         String ip = "52.78.66.175";
         if (TextUtils.isEmpty(ip) || ip.matches(IP_PATTERN) != true) {
             Toast.makeText(getApplicationContext(), "Invaild IP Pattern", Toast.LENGTH_LONG).show();
@@ -102,9 +111,9 @@ public class SplashActivity extends AppCompatActivity {
             return;
         }
 
-        //ApplicationController application = new ApplicationController();
         ApplicationController application = ApplicationController.getInstance();
-        application.buildNetworkService(ip, port);
+        //application.buildService();
+        //application.buildNetworkService(ip, port);
     }
 
     public void networkError() {
