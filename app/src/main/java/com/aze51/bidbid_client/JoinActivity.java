@@ -117,7 +117,7 @@ public class JoinActivity extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"입력하신 인증번호가 다릅니다.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"인증번호 및 ID의 중복체크 확인하세요",Toast.LENGTH_SHORT).show();
                 }
             }
         });

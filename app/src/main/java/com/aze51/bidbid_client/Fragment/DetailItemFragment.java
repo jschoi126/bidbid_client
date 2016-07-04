@@ -81,8 +81,6 @@ public class DetailItemFragment extends Fragment {
                 auction.register_id = tmpRegisterId;
                 auction.user_id = user_id;
                 postBidResult(auction);
-
-
             }
         });
         return rootViewBasic;
@@ -116,11 +114,11 @@ public class DetailItemFragment extends Fragment {
 
             }
         });
-    }
+    } // BottomMenuFragment
+
     private void initNetworkService() {
         // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
         networkService = ApplicationController.getInstance().getNetworkService();
-
     }
 
     public void getDetailContent(int id){
@@ -139,5 +137,5 @@ public class DetailItemFragment extends Fragment {
 
             }
         });
-    }
+    } // DetailItemFragment
 }
