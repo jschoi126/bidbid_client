@@ -29,5 +29,7 @@ public interface NetworkService {
     Call<Auction> finishbid(@Body Auction auction);
     @POST("content/search/{inputContents}")
     Call<String> searchContents(@Path("inputContents") String intputContents);
+    @GET("product")
+    Call<List<List<Product>>> getProducts();
 
 }

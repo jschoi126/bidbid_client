@@ -23,8 +23,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApplicationController extends Application {
     //created by tae joon jeon. singleton 2016 07 02
     //어플리케이션 전체에서 접근할 상품 객체 생성
-    private static List<Product> products;
+    private static List<Product> products, products1, products2, products3;
+    private static List<List<Product>> getProducts;
     private static int productPostion;
+    String tmp, tmp2;
+    //private static Auction auction;
     private static String user;
     private Context mainActivityContext;
 
@@ -36,8 +39,29 @@ public class ApplicationController extends Application {
     }
 
     private Call<List<Product>> listCall;
+    private Call<List<List<Product>>> getlistCall;
     public void getDataFromServer(){
 
+        getlistCall = networkService.getProducts();
+        getlistCall.enqueue(new Callback<List<List<Product>>>() {
+            @Override
+            public void onResponse(Call<List<List<Product>>> call, Response<List<List<Product>>> response) {
+                if(response.isSuccessful()){
+                    getProducts = response.body();
+                    products1 = getProducts.get(0);
+                    products2 = getProducts.get(1);
+                    products3 = getProducts.get(2);
+                    tmp = products2.get(1).product_name;
+                    tmp2 = products2.get(1).product_name;
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<List<Product>>> call, Throwable t) {
+
+            }
+        });
         listCall = networkService.getContents();
         listCall.enqueue(new Callback<List<Product>>() {
             @Override
@@ -66,6 +90,9 @@ public class ApplicationController extends Application {
     public static void setPosition(int pos){productPostion = pos;}
     public static String getUserId(){return user;}
     public static void setUserId(String id){user = id;}
+    //public static Auction getAuction(){return auction;}
+    //public static void setAuction(Auction a){auction = a;}
+
 
     // Applcation 인스턴스 선언
     private static ApplicationController instance;

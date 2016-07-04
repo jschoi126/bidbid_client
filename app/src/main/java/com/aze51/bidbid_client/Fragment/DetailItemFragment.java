@@ -72,7 +72,7 @@ public class DetailItemFragment extends Fragment {
         //detail_bidPrice.setText(detail_bidPrice.getText());
         //detail_time.setText("3:45");
         Glide.with(this).load(tmpImg).into(detail_img);
-        detail_bid.setOnClickListener(new View.OnClickListener() {
+       /* detail_bid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //detail_bidPrice.setText(detail_bidPrice.getText());
@@ -80,9 +80,10 @@ public class DetailItemFragment extends Fragment {
                 auction.deal_price = Integer.parseInt(detail_bidPrice.getText().toString());
                 auction.register_id = tmpRegisterId;
                 auction.user_id = ApplicationController.getUserId();
-                postBidResult(auction);
+                ApplicationController.setAuction(auction);
+                //postBidResult(auction);
             }
-        });
+        });*/
         return rootViewBasic;
     }
 
