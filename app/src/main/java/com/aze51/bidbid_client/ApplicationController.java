@@ -25,10 +25,10 @@ public class ApplicationController extends Application {
     //어플리케이션 전체에서 접근할 상품 객체 생성
     private static List<Product> products, products1, products2, products3;
     private static List<List<Product>> getProducts;
-    private static int productPostion;
-    String tmp, tmp2;
+    private static int postion;
     //private static Auction auction;
     private static String user;
+    private static int productPos;
     private Context mainActivityContext;
 
     public void setMainActivityContext(Context ctx){
@@ -51,9 +51,8 @@ public class ApplicationController extends Application {
                     products1 = getProducts.get(0);
                     products2 = getProducts.get(1);
                     products3 = getProducts.get(2);
-                    tmp = products2.get(1).product_name;
-                    tmp2 = products2.get(1).product_name;
-
+                   // tmp = products2.get(1).product_name;
+                   // tmp2 = products2.get(1).product_name;
                 }
             }
 
@@ -85,9 +84,21 @@ public class ApplicationController extends Application {
             }
         });
     }
-    public static List<Product> getProduct(){return products;}
-    public static int getPosition(){return productPostion;}
-    public static void setPosition(int pos){productPostion = pos;}
+    public static List<Product> getProducts(int id){
+        if(id == 0){
+            return products1;
+        }
+        else if(id == 1){
+            return products2;
+        }
+        else {
+            return products3;
+        }
+    }
+    public static int getPosition(){return postion;}
+    public static void setPosition(int pos){postion = pos;}
+    public static int getPos(){return productPos;}
+    public static void setPos(int pos){productPos = pos;}
     public static String getUserId(){return user;}
     public static void setUserId(String id){user = id;}
     //public static Auction getAuction(){return auction;}

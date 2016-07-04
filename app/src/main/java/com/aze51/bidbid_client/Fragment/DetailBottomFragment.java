@@ -51,8 +51,9 @@ public class DetailBottomFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         initNetworkService();
-        products = ApplicationController.getInstance().getProduct();
-        position = ApplicationController.getPosition();
+        int pos = ApplicationController.getInstance().getPosition();
+        products = ApplicationController.getInstance().getProducts(pos);;
+        position = ApplicationController.getInstance().getPos();
         final int tmpRegisterId = products.get(position).register_id; //
         final int tmpPrice = products.get(position).register_minprice;
         rootViewBasic = inflater.inflate(R.layout.detail_bottom_fragment,container,false);
@@ -98,10 +99,10 @@ public class DetailBottomFragment extends Fragment {
                 auction = new Auction();
                 auction.user_id = ApplicationController.getUserId();
                 auction.register_id = tmpRegisterId;
-                auction.deal_price = tmpPrice;
+                auction.deal_price = Integer.parseInt(bidText.getText().toString());
                 postBidResult(auction);
                 Log.i("TAG","입찰 버튼 투름");
-                Toast.makeText(ctx,"입찰하셨습니다",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ctx,"입찰하셨습니다",Toast.LENGTH_SHORT).show();
             }
         });
         return rootViewBasic;
@@ -114,8 +115,17 @@ public class DetailBottomFragment extends Fragment {
             public void onResponse(Call<Auction> call, Response<Auction> response) {
                 if(response.isSuccessful()){
                     Log.i("TAG","입찰 성공");
-                    tmpMessage = "입찰 성공";
-                    //Toast.makeText(getContext(), tmpMessage, Toast.LENGTH_SHORT).show();
+                    //tmpMessage = "입찰 성공";
+                    tmpMessage = response.body().resultMessage;
+                    if(tmpMessage.equals("성공"))
+                    {
+
+                    }
+                    else if(tmpMessage.equals("실패"))
+                    {
+
+                    }
+                    Toast.makeText(getContext(), tmpMessage, Toast.LENGTH_SHORT).show();
                 }
                 else{
 

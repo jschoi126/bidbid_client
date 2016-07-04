@@ -7,4 +7,5 @@ public class Auction {
     public int register_id;
     public String user_id;
     public int deal_price;
+    public String resultMessage;
 }

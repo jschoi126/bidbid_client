@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.BottomLayout,emptyFragment).commit();
-
             fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout,detailBottomFragment).commit();
         }
     }
@@ -283,11 +282,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }*/
     // 처음으로 서버로 부터 값을 가져오는
-    /*@Override
+    @Override
     protected void onResume(){
         super.onResume();
-        initiate();
+        ApplicationController.getInstance().setPosition(viewpager.getCurrentItem());
         //show_current_list();
-    }*/
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
 
+        ApplicationController.getInstance().setPosition(viewpager.getCurrentItem());
+    }
 }

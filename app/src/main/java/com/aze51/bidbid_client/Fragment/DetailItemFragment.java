@@ -51,9 +51,10 @@ public class DetailItemFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         initNetworkService();
-        rootViewBasic = inflater.inflate(R.layout.detail_item_cardview,container,false);
-        products = ApplicationController.getInstance().getProduct();
-        position = ApplicationController.getPosition();
+        int pos = ApplicationController.getInstance().getPosition();
+        rootViewBasic = inflater.inflate(R.layout.detail_item_cardview, container,false);
+        products = ApplicationController.getInstance().getProducts(pos);
+        position = ApplicationController.getInstance().getPos();
         initView();
         //detail_price = (TextView)rootViewBasic.findViewById(R.id.detail_price);
         //detail_time = (TextView)rootViewBasic.findViewById(R.id.detail_time);
