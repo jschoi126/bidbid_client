@@ -21,6 +21,7 @@ import com.aze51.bidbid_client.Fragment.FavoriteFragment;
 import com.aze51.bidbid_client.Fragment.MypageFragment;
 import com.aze51.bidbid_client.Fragment.PushListFragment;
 import com.aze51.bidbid_client.Fragment.SearchFragment;
+import com.aze51.bidbid_client.Fragment.SearchListOnClickedFragment;
 import com.aze51.bidbid_client.Fragment.TitleFragment;
 import com.aze51.bidbid_client.Network.TimeThread;
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     DetailTitleFragment detailTitleFragment;
     EmptyFragment emptyFragment;
     EmptyFragment emptyFragmentDetail;
+    SearchListOnClickedFragment searchListOnClickedFragment;
     View rootViewBasic;//for listfragment
 
     //태준 작업중
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     ///
     int pageState = 0; // 0 = main, 1 = detail
                        // 2 = favorite, 3 = mypage 4 = search 5 = push
-                       // 6 = setting
+                       // 6 = search list on clicked
     public int getPageState(){return pageState;}
 
     //ViewPager
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     int favoriteFlag = 0;
     int myPageFlag = 0;
     int searchFlag = 0;
+    int searchClickedFlag = 0;
     int pushListFlag = 0;
 
     TimeThread timeThread;
@@ -129,6 +132,9 @@ public class MainActivity extends AppCompatActivity {
         else if (pageState ==5){//on push page
             super.onBackPressed();
         }
+        else if(pageState == 6){//on search on clicked
+            show_search_list();
+        }
         else{
             super.onBackPressed();
         }
@@ -167,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
         favoriteFragment = new FavoriteFragment();
         mypageFragment = new MypageFragment();
         searchFragment = new SearchFragment();
+        searchListOnClickedFragment = new SearchListOnClickedFragment();
 
         fragmentManager = getSupportFragmentManager();
         titleFragment = new TitleFragment();
@@ -240,6 +247,20 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
         }
     }
+    public void show_search_list_onclicked(){
+        pageState = 6;
+        if(searchClickedFlag ==0){
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, detailTitleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, searchListOnClickedFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+            searchClickedFlag = 1;
+        }
+        else{
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, searchListOnClickedFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+        }
+    }
     public class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
        // public Context ctx;
         public ListFragment(){
@@ -259,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
             //ViewHolder viewHolder = ApplicationController.getInstance().getViewHolder();
             //TimeThread timeThread = new TimeThread(ApplicationController.getInstance().getViewHolder());
             //timeThread.start();
+
 
             return rootViewBasic;
         }

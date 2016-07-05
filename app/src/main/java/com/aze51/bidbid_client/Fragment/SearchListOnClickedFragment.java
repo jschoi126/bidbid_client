@@ -6,39 +6,47 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
-import com.aze51.bidbid_client.ViewPager.RecyclerItemClickListener;
 import com.aze51.bidbid_client.ViewPager.RecyclerViewCustomAdapter;
 
 import java.util.ArrayList;
 
 /**
- * Created by jeon3029 on 16. 7. 4..
+ * Created by jeon3029 on 16. 7. 5..
  */
-public class MypageFragment extends Fragment {
+public class SearchListOnClickedFragment extends Fragment {
     View rootViewBasic;
+    ArrayList<ListItemData> itemDatas;
     RecyclerView recyclerView;
     RecyclerView.Adapter mAdapter;
     LinearLayoutManager mLayoutManager;
     Context mContext;
-    ArrayList<ListItemData> itemDatas;
-    public MypageFragment() {
+    Button searchButton;
+    EditText searchText;
+    public SearchListOnClickedFragment(){
+        //생성자
     }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootViewBasic = inflater.inflate(R.layout.mypage_list_fragment,container,false);
-        recyclerView = (RecyclerView)rootViewBasic.findViewById(R.id.recyclerView_mypage);
+        rootViewBasic = inflater.inflate(R.layout.search_list_onclicked_fragment,container,false);
+        recyclerView = (RecyclerView)rootViewBasic.findViewById(R.id.recyclerView_search);
+        searchButton = (Button)rootViewBasic.findViewById(R.id.search_button_onclicked);
+        searchText = (EditText)rootViewBasic.findViewById(R.id.search_edit_text_onclicked);
+
+        recyclerView.setHasFixedSize(true);
         mContext = ApplicationController.getInstance().getMainActivityContext();
 
         mLayoutManager = new LinearLayoutManager(mContext);//Mainactivity 의 this
@@ -48,26 +56,26 @@ public class MypageFragment extends Fragment {
         itemDatas = new ArrayList<ListItemData>();
         mAdapter = new RecyclerViewCustomAdapter(mContext,itemDatas);
         recyclerView.setAdapter(mAdapter);
-         //TODO : 서버에 유저 아이디 보내서 유저가 입찰하고 있는 리스트 받아야 함
+        //TODO : 검색어 보내서 아이템 서버로 부터 받아야 함 그리고 itemDatas에 추가
+        //검색어는 application controller 의 getsearchtext로 string객체로 받을 수 있음
+
         Product p = new Product();
         p.store_name = ApplicationController.getInstance().GetSearchtext();
         p.register_minprice = 1000;
         ListItemData tempitem = new ListItemData(p);
         itemDatas.add(tempitem);
 
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
-                new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        //TODO :여기서 프로덕트의 리스트를 사용하면 안되고 서버로 부터 받은 유저가 입찰하고 있는 리스트 사용해야 됨
-                        ApplicationController.getInstance().setPos(position);
-                        ((MainActivity) mContext).show_detail_list();
-                        String pos = String.valueOf(position);
-                        Toast toast = Toast.makeText(mContext,
-                                "포지션 : " + pos, Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-                    }
-                }));
+        searchButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Context ctx;
+                ctx = ApplicationController.getInstance().getMainActivityContext();
+                String text = searchText.getText().toString();
+                ApplicationController.getInstance().SetSearchText(text);
+                //text = 검색어 텍스트
+                ((MainActivity)ctx).show_search_list_onclicked();
+            }
+        });
         return rootViewBasic;
     }
 }

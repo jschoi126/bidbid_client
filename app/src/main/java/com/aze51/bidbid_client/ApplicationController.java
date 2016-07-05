@@ -29,6 +29,10 @@ import retrofit.Retrofit;
  * Created by Leekh on 2016-06-18.
  */
 public class ApplicationController extends Application {
+    //search text
+    private String searchtext;
+    public void SetSearchText(String s){searchtext = s;}
+    public String GetSearchtext(){return searchtext;}
 
     //created by tae joon jeon. singleton 2016 07 02
     //어플리케이션 전체에서 접근할 상품 객체 생성
@@ -38,6 +42,10 @@ public class ApplicationController extends Application {
     private static int postion;
     //private static Auction auction;
     private static String user;
+    private static boolean isFacebook = false;
+    public void SetFacebook(){isFacebook = true;}
+    public boolean GetIsFacebook(){return isFacebook;}
+
     private static int productPos;
     private Context mainActivityContext;
     private static ViewHolder viewHolders;
@@ -81,8 +89,6 @@ public class ApplicationController extends Application {
                     products1 = getProducts.get(0);
                     products2 = getProducts.get(1);
                     products3 = getProducts.get(2);
-                    // tmp = products2.get(1).product_name;
-                    // tmp2 = products2.get(1).product_name;
                 }
             }
 

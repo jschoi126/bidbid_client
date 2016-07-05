@@ -9,6 +9,10 @@
               android:layout_marginTop="@dimen/activity_vertical_margin"
               android:layout_marginBottom="@dimen/activity_vertical_margin"
               tools:context="com.aze51.bidbid_client.MainActivity">
+
+
+
+    
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="match_parent"

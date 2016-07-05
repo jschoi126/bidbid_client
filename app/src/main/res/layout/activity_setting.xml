@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/top_relative_setting"
+        >
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/back"
+            android:id="@+id/logo_image"
+            android:background="#e42828"
+            />
+        <ImageView
+            android:id="@+id/setting_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/setting"
+            android:background="#e42828"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="BID - BID"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/setting_image"
+            android:layout_toRightOf="@id/logo_image"
+            android:textSize="35sp"
+            android:textColor="#FFFFFF"
+            android:background="#e42828"
+            android:id="@+id/bidbid_text"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/top_relative_setting"
+        >
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  고객지원"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#ff0000"/>
+
+        <TextView
+            android:layout_marginBottom="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="#ffffff"
+            android:text="  도움말"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ededed" >
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:text="  이용약관"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ededed" >
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:text="  개인정보 취급방침"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ededed" >
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:text="  로그아웃"
+            android:textSize="14sp"
+            android:textColor="#939598"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ededed" >
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
+

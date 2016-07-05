@@ -1,9 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.aze51.bidbid_client"
@@ -47,6 +46,6 @@ dependencies {
     compile 'com.xdu.xhin:library:0.1.0' //tab color
 
     compile 'com.facebook.android:facebook-android-sdk:[4,5)' //facebook
-
+    compile 'com.github.navasmdc:MaterialDesign:1.+@aar'
 }
 apply plugin: 'com.google.gms.google-services'
