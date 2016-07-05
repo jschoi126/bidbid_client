@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.Auction;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
@@ -53,16 +54,21 @@ public class DetailBottomFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         initNetworkService();
+        ctx = ApplicationController.getInstance().getMainActivityContext();
         int pos = ApplicationController.getInstance().getPosition();
-        products = ApplicationController.getInstance().getProducts(pos);;
-        position = ApplicationController.getInstance().getPos();
+        if(((MainActivity)ctx).getFromState()==6){
+            products = ApplicationController.getInstance().getProducts(5);
+        }
+        else {
+            products = ApplicationController.getInstance().getProducts(pos);
+        }
+        //position = ApplicationController.getInstance().getPos();
         final int tmpRegisterId = products.get(position).register_id; //
-        final int tmpPrice = products.get(position).register_minprice;
+        //final int tmpPrice = products.get(position).register_minprice;
         rootViewBasic = inflater.inflate(R.layout.detail_bottom_fragment,container,false);
         //image1 = (ImageView)rootViewBasic.findViewById(R.id.logo_image);
         //text = (TextView)rootViewBasic.findViewById(R.id.bidbid_text);
         //image2 = (ImageView)rootViewBasic.findViewById(R.id.setting_image);
-        ctx = ApplicationController.getInstance().getMainActivityContext();
         upDownImage = (ImageView)rootViewBasic.findViewById(R.id.detail_up_image);
         bidBtn = (Button)rootViewBasic.findViewById(R.id.bidbtn);
         bidText = (EditText)rootViewBasic.findViewById(R.id.inputPrice);
@@ -139,7 +145,6 @@ public class DetailBottomFragment extends Fragment {
 
                 }
             }
-
             @Override
             public void onFailure(Throwable t) {
 

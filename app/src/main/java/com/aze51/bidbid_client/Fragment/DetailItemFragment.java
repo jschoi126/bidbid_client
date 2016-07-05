@@ -57,6 +57,7 @@ public class DetailItemFragment extends Fragment {
     String tmpMessage;
     NetworkService networkService;
     Auction auction;
+    Context ctx;
     //static String user_id = "lkh034";
     Product tmpProduct;
     public DetailItemFragment(){
@@ -68,7 +69,13 @@ public class DetailItemFragment extends Fragment {
         initNetworkService();
         int pos = ApplicationController.getInstance().getPosition();
         rootViewBasic = inflater.inflate(R.layout.detail_item_cardview, container,false);
-        products = ApplicationController.getInstance().getProducts(pos);
+        ctx = ApplicationController.getInstance().getMainActivityContext();
+        if(((MainActivity)ctx).getFromState()==6){
+            products = ApplicationController.getInstance().getProducts(5);
+        }
+        else{
+            products = ApplicationController.getInstance().getProducts(pos);
+        }
         position = ApplicationController.getInstance().getPos();
         initView();
         String tmpName = products.get(position).product_name;

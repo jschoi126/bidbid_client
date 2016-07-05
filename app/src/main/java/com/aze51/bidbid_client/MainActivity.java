@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     int fromState = 0;
 
     public int getPageState(){return pageState;}
+    public int getFromState(){return fromState;}
 
     //ViewPager
     ViewPager viewpager;
@@ -119,6 +120,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(pageState == 1 && fromState == 5){//from push detail
             show_push_list();
+        }
+        else if(pageState == 1 && fromState == 6){
+            show_search_list_onclicked();
         }
         else if(pageState ==1){//on detail page
             show_current_list();
@@ -261,6 +265,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void show_search_list_onclicked(){
+        if(pageState == 1){//from detail page
+            fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
+        }
         fromState = pageState;
         pageState = 6;
         if(searchClickedFlag ==0){

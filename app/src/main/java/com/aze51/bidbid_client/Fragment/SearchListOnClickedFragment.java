@@ -19,6 +19,7 @@ import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
+import com.aze51.bidbid_client.ViewPager.RecyclerItemClickListener;
 import com.aze51.bidbid_client.ViewPager.SearchRecyclerViewAdapter;
 
 import java.util.ArrayList;
@@ -44,9 +45,8 @@ public class SearchListOnClickedFragment extends Fragment {
     NetworkService networkService;
     List<Product> products;
     String text;
-    ArrayList<ListItemData> listItemDatas;
     Context ctx;
-    boolean get = false;
+
     public SearchListOnClickedFragment(){
         //생성자
     }
@@ -57,6 +57,7 @@ public class SearchListOnClickedFragment extends Fragment {
         recyclerView = (RecyclerView)rootViewBasic.findViewById(R.id.recyclerView_search);
         searchButton = (Button)rootViewBasic.findViewById(R.id.search_button_onclicked);
         searchText = (EditText)rootViewBasic.findViewById(R.id.search_edit_text_onclicked);
+        ctx = ApplicationController.getInstance().getMainActivityContext();
         initNetworkService();
         recyclerView.setHasFixedSize(true);
         mContext = ApplicationController.getInstance().getMainActivityContext();
@@ -68,23 +69,41 @@ public class SearchListOnClickedFragment extends Fragment {
         itemDatas = new ArrayList<ListItemData>();
         //TODO : 검색어 보내서 아이템 서버로 부터 받아야 함 그리고 itemDatas에 추가
         //검색어는 application controller 의 getsearchtext로 string객체로 받을 수 있음
+        text = ApplicationController.getInstance().GetSearchText();
+        searchText.setText(text);
+
         if(ApplicationController.getInstance().GetGridViewOnClicked()==1){
-            String text = ApplicationController.getInstance().GetSearchtext();
-            CallRecomandSearch(text);
             ApplicationController.getInstance().SetGridViewOnClick(0);
+            CallRecomandSearch(text);
         }
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                ctx = ApplicationController.getInstance().getMainActivityContext();
                 text = searchText.getText().toString();
                 ApplicationController.getInstance().SetSearchText(text);
                 if(itemDatas!=null)
                     itemDatas.clear();
-                CallRecomandSearch(text);
+                if(((MainActivity)ctx).getFromState() == 1){//detail page back
+
+                }
+                else{
+                    CallRecomandSearch(text);
+                }
                 //CallRecomandSearch(text);
             }
         });
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        ApplicationController.getInstance().setPos(position);
+                        ((MainActivity) mContext).show_detail_list();
+                        //String pos = String.valueOf(position);
+                        //Toast toast = Toast.makeText(mContext,
+                        //        "포지션 : " + pos, Toast.LENGTH_LONG);
+                        //toast.setGravity(Gravity.CENTER, 0, 0);
+                        //toast.show();
+                    }
+                }));
         return rootViewBasic;
     }
     private void CallRecomandSearch(String content){
@@ -94,10 +113,11 @@ public class SearchListOnClickedFragment extends Fragment {
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
                 if (response.isSuccess()) {
                     products = response.body();
-                    get = true;
                     for (Product p : products) {
                         itemDatas.add(new ListItemData(p));
                     }
+                    ApplicationController.getInstance().SetProducts6(products);
+                    //application controller 의 search product list 수정
                     mAdapter = new SearchRecyclerViewAdapter(mContext,itemDatas);
                     recyclerView.setAdapter(mAdapter);
                     ((MainActivity) ctx).show_search_list_onclicked();
@@ -110,6 +130,7 @@ public class SearchListOnClickedFragment extends Fragment {
             }
         });
     }
+
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
     }

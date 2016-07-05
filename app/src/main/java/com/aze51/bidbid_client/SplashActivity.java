@@ -59,14 +59,12 @@ public class SplashActivity extends AppCompatActivity {
                     Log.d("MyTag",response.body().user_id);
                 connectSuccess(response.code());
             }
-
             @Override
             public void onFailure(Throwable t) {
                 networkError();
             }
         });
     }
-
     public void connectSuccess(int statusCode) {
         Intent intent;
         if(statusCode == 200){

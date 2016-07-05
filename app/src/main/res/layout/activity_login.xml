@@ -1,156 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
+
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#eeeeee"
               tools:context="com.aze51.bidbid_client.LoginActivity">
 
     <LinearLayout
-        android:layout_marginTop="46dp"
-        android:layout_marginBottom="18dp"
-        android:layout_width="360dp"
-        android:layout_height="124dp"
         android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="124dp"
-            android:layout_height="124dp"
-            android:src="@mipmap/loginlogo"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="It's Bid Time!"
-            android:textSize="14sp"
-            android:textColor="#7b7b7b"
-            android:layout_gravity="center" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginRight="44dp"
-        android:layout_marginLeft="44dp"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:paddingLeft="15dp"
-            android:drawableLeft="@mipmap/person"
-            android:drawablePadding="30dp"
-            android:gravity="left|center_vertical"
-            android:background="@drawable/whitecircleshape"
+        <LinearLayout
+            android:layout_marginTop="46dp"
+            android:layout_marginBottom="18dp"
+            android:layout_width="360dp"
+            android:layout_height="140dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="124dp"
+                android:layout_height="124dp"
+                android:src="@mipmap/loginlogo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="It's Bid Time!"
+                android:textSize="14sp"
+                android:textColor="#7b7b7b"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_marginRight="44dp"
             android:layout_marginLeft="44dp"
-            android:layout_width="272dp"
-            android:id="@+id/login_id"
+            android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:inputType="textEmailAddress"
-            android:hint="아이디"
-            android:textSize="14sp"/>
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:gravity="center">
 
-    <LinearLayout
-        android:layout_marginRight="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_gravity="center"
-        android:gravity="center">
+            <EditText
+                android:paddingLeft="15dp"
+                android:drawableLeft="@mipmap/person"
+                android:drawablePadding="30dp"
+                android:gravity="left|center_vertical"
+                android:background="@drawable/whitecircleshape"
+                android:layout_marginRight="44dp"
+                android:layout_marginLeft="44dp"
+                android:layout_width="272dp"
+                android:id="@+id/login_id"
+                android:layout_height="35dp"
+                android:inputType="textEmailAddress"
+                android:hint="아이디"
+                android:textSize="14sp"/>
+        </LinearLayout>
 
-        <EditText
-            android:paddingLeft="15dp"
-            android:drawableLeft="@mipmap/password"
-            android:drawablePadding="30dp"
-            android:gravity="left|center_vertical"
-            android:background="@drawable/whitecircleshape"
+        <LinearLayout
             android:layout_marginRight="44dp"
             android:layout_marginLeft="44dp"
-            android:layout_width="272dp"
-            android:layout_height="35dp"
-            android:id="@+id/login_pw"
-            android:hint="비밀번호"
-            android:inputType="textEmailAddress"
-            android:textSize="14sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center">
-
-        <Button
-            android:background="@drawable/graycircleshape"
-            android:layout_marginLeft="44dp"
-            android:layout_marginRight="44dp"
-            android:layout_width="272dp"
-            android:layout_height="35dp"
-            android:text="로그인"
-            android:id="@+id/LoginButton"
-            android:textSize="14dp"
-            android:textColor="#ffffff"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OR"/>
-
-        <FrameLayout
-            android:layout_width="272dp"
-            android:layout_height="35dp"
-            android:background="@drawable/bluecircleshape" >
-            <com.facebook.login.widget.LoginButton
-                android:layout_width="260dp"
-                android:layout_height="match_parent"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:id="@+id/facebook_LoginButton"
-                android:layout_gravity="center"/>
-        </FrameLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="아직도 회원이 아니신가요?"
-            android:textSize="12dp"/>
-        <Button
             android:layout_marginTop="8dp"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:text="가입하기"
-            android:textSize="12dp"
-            android:textColor="#ff0000"
-            android:id="@+id/join_button"
-            android:background="#eeeeee"
-            android:gravity="center"
-            android:layout_gravity="center"/>
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <EditText
+                android:paddingLeft="15dp"
+                android:drawableLeft="@mipmap/password"
+                android:drawablePadding="30dp"
+                android:gravity="left|center_vertical"
+                android:background="@drawable/whitecircleshape"
+                android:layout_marginRight="44dp"
+                android:layout_marginLeft="44dp"
+                android:layout_width="272dp"
+                android:layout_height="35dp"
+                android:id="@+id/login_pw"
+                android:hint="비밀번호"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <Button
+                android:background="@drawable/graycircleshape"
+                android:layout_marginLeft="44dp"
+                android:layout_marginRight="44dp"
+                android:layout_width="272dp"
+                android:layout_height="35dp"
+                android:text="로그인"
+                android:id="@+id/LoginButton"
+                android:textSize="14dp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OR"
+                android:textSize="12sp"/>
+
+            <FrameLayout
+                android:layout_width="272dp"
+                android:layout_height="35dp"
+                android:background="@drawable/bluecircleshape" >
+                <com.facebook.login.widget.LoginButton
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:id="@+id/facebook_LoginButton"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아직도 회원이 아니신가요?"
+                android:textSize="12dp"/>
+
+            <Button
+                android:background="@drawable/notshapebutton"
+                android:layout_marginTop="3dp"
+                android:layout_width="60dp"
+                android:layout_height="17dp"
+                android:text="가입하기"
+                android:textSize="14sp"
+                android:textColor="#ff0000"
+                android:id="@+id/join_button"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="146dp" />
-    </LinearLayout>
+            android:layout_height="146dp"
+            android:src="@mipmap/loginill"/>
+    </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
