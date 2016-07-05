@@ -39,6 +39,10 @@ public class ApplicationController extends Application {
     private static int postion;
     //private static Auction auction;
     private static String user;
+    private static boolean isFacebook = false;
+    public void SetFacebook(){isFacebook = true;}
+    public boolean GetIsFacebook(){return isFacebook;}
+
     private static int productPos;
     private Context mainActivityContext;
 

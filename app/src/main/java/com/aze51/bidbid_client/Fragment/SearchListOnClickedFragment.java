@@ -56,13 +56,15 @@ public class SearchListOnClickedFragment extends Fragment {
         itemDatas = new ArrayList<ListItemData>();
         mAdapter = new RecyclerViewCustomAdapter(mContext,itemDatas);
         recyclerView.setAdapter(mAdapter);
+        //TODO : 검색어 보내서 아이템 서버로 부터 받아야 함 그리고 itemDatas에 추가
+        //검색어는 application controller 의 getsearchtext로 string객체로 받을 수 있음
 
         Product p = new Product();
         p.store_name = ApplicationController.getInstance().GetSearchtext();
         p.register_minprice = 1000;
         ListItemData tempitem = new ListItemData(p);
         itemDatas.add(tempitem);
-        //여기에 아이템 추가해 줘야함.!!
+
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
