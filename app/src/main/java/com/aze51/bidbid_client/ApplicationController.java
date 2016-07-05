@@ -51,8 +51,8 @@ public class ApplicationController extends Application {
                     products1 = getProducts.get(0);
                     products2 = getProducts.get(1);
                     products3 = getProducts.get(2);
-                    tmp = products2.get(1).product_name;
-                    tmp2 = products2.get(1).product_name;
+                    //tmp = products2.get(1).product_name;
+                    //tmp2 = products2.get(1).product_name;
 
                 }
             }
