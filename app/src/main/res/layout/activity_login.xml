@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#eeeeee"
-              tools:context="com.aze51.bidbid_client.MainActivity">
+              tools:context="com.aze51.bidbid_client.LoginActivity">
 
     <LinearLayout
         android:layout_marginTop="46dp"

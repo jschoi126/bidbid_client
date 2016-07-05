@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e42828"
-    tools:context="com.aze51.bidbid_client.MainActivity">
-
+    tools:context="com.aze51.bidbid_client.SplashActivity">
     <LinearLayout
         android:layout_marginTop="104dp"
         android:orientation="vertical"
@@ -25,15 +24,13 @@
             android:textSize="14sp"
             android:textColor="#ffffff"
             android:layout_gravity="center"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_marginTop="180dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:text="\@aze51"
-            android:gravity="center"
-            android:textSize="12sp" />
-
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text="\@aze51"
+        android:gravity="center"
+        android:textSize="20sp"
+        />
 </LinearLayout>

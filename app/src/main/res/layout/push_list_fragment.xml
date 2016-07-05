@@ -7,6 +7,5 @@
         android:layout_height="match_parent"
         android:id="@+id/push_list_view"
         >
-
     </ListView>
 </LinearLayout>
