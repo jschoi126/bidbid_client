@@ -2,31 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
+              android:background="#eeeeee"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:layout_marginRight= "@dimen/activity_horizontal_margin"
-              android:layout_marginLeft="@dimen/activity_horizontal_margin"
-              android:layout_marginTop="@dimen/activity_vertical_margin"
-              android:layout_marginBottom="@dimen/activity_vertical_margin"
               tools:context="com.aze51.bidbid_client.MainActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="18dp"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:src="@mipmap/joinlogo"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
 
 
-    
     <LinearLayout
         android:layout_width="360dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center">
-        
 
         <LinearLayout
             android:layout_gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="88dp"
             android:paddingLeft="44dp"
             android:paddingRight="44dp">
 
@@ -35,7 +49,6 @@
                 android:drawableLeft="@mipmap/person"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
-
 
                 <EditText
                     android:layout_width="158dp"
@@ -77,7 +90,6 @@
         </LinearLayout>
 
         <LinearLayout
-
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,7 +158,9 @@
                 android:hint="비밀번호 확인"
                 android:textSize="14sp"/>
         </LinearLayout>
+
         <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="44dp">
@@ -156,9 +170,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 android:text="이용약관을 확인하였습니다."
-                android:textColor="#F42828"/>
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="약관보기"
+                android:textSize="14sp"
+                android:textColor="e42828"/>
+
+
         </LinearLayout>
+
         <LinearLayout
             android:paddingTop="8dp"
             android:layout_width="match_parent"
