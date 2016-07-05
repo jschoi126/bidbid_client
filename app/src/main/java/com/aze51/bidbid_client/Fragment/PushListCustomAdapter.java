@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.aze51.bidbid_client.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -54,13 +56,14 @@ public class PushListCustomAdapter extends BaseAdapter{
         }
 
         ImageView productImageView = (ImageView) convertView.findViewById(R.id.push_image) ;
-        TextView titleTextView = (TextView) convertView.findViewById(R.id.push_text) ;
-
+        TextView title = (TextView) convertView.findViewById(R.id.push_text) ;
+        TextView price = (TextView)convertView.findViewById(R.id.push_price);
+        TextView remainTime = (TextView)convertView.findViewById(R.id.push_remain_time);
         PushListViewItem itemData_temp = itemDatas.get(position);
-
         productImageView.setImageResource(itemData_temp.img);
-        titleTextView.setText(itemData_temp.title);
-
+        title.setText(itemData_temp.title);
+        price.setText(String.valueOf(itemData_temp.bidPrice));
+        remainTime.setText(String.valueOf(itemData_temp.remainTime));
         return convertView;
     }
 }

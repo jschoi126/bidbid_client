@@ -1,13 +1,11 @@
 package com.aze51.bidbid_client;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,20 +21,11 @@ import com.aze51.bidbid_client.Fragment.FavoriteFragment;
 import com.aze51.bidbid_client.Fragment.MypageFragment;
 import com.aze51.bidbid_client.Fragment.PushListFragment;
 import com.aze51.bidbid_client.Fragment.SearchFragment;
+import com.aze51.bidbid_client.Fragment.SearchListOnClickedFragment;
 import com.aze51.bidbid_client.Fragment.TitleFragment;
-import com.aze51.bidbid_client.Network.NetworkService;
-import com.aze51.bidbid_client.Network.Product;
-import com.aze51.bidbid_client.Network.User;
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
 import com.aze51.bidbid_client.ViewPager.ViewPagerCustomAdapter;
 import com.google.firebase.FirebaseApp;
-
-import java.util.List;
-
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -52,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     DetailTitleFragment detailTitleFragment;
     EmptyFragment emptyFragment;
     EmptyFragment emptyFragmentDetail;
+    SearchListOnClickedFragment searchListOnClickedFragment;
     View rootViewBasic;//for listfragment
 
     //태준 작업중
@@ -63,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
     ///
     int pageState = 0; // 0 = main, 1 = detail
                        // 2 = favorite, 3 = mypage 4 = search 5 = push
-                       // 6 = setting
+                       // 6 = search list on clicked
+    int fromState = 0;
+
     public int getPageState(){return pageState;}
 
     //ViewPager
@@ -82,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     int favoriteFlag = 0;
     int myPageFlag = 0;
     int searchFlag = 0;
+    int searchClickedFlag = 0;
     int pushListFlag = 0;
 
     ViewPagerCustomAdapter viewPagerCustomAdapter = new ViewPagerCustomAdapter(this);
@@ -98,9 +91,8 @@ public class MainActivity extends AppCompatActivity {
         initiate();
         show_current_list();
     }
-
-
     public void show_detail_list() {
+        fromState = pageState;
         pageState = 1;
         if(detailFlag == 0){
             fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
@@ -119,7 +111,16 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        if(pageState ==1){//on detail page
+        if(pageState == 1 && fromState == 3) {//mypage and detail
+            show_mypage_list();
+        }
+        else if(pageState == 1 && fromState == 2){//from favorite detail
+            show_favorite_list();
+        }
+        else if(pageState == 1 && fromState == 5){//from push detail
+            show_push_list();
+        }
+        else if(pageState ==1){//on detail page
             show_current_list();
         }
         else if (pageState ==0){//on main page
@@ -137,12 +138,16 @@ public class MainActivity extends AppCompatActivity {
         else if (pageState ==5){//on push page
             super.onBackPressed();
         }
+        else if(pageState == 6){//on search on clicked
+            show_search_list();
+        }
         else{
             super.onBackPressed();
         }
     }
     //Made By Tae Joon 2016 06 27 : 현재 판매중인 목록 프래그먼트로 보여주기.
     public void show_current_list() {
+        fromState = pageState;
         if(pageState == 1){//from detail page
             fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
         }
@@ -175,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
         favoriteFragment = new FavoriteFragment();
         mypageFragment = new MypageFragment();
         searchFragment = new SearchFragment();
+        searchListOnClickedFragment = new SearchListOnClickedFragment();
 
         fragmentManager = getSupportFragmentManager();
         titleFragment = new TitleFragment();
@@ -189,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void show_favorite_list() {
+        fromState = pageState;
         pageState = 2;
         if(favoriteFlag ==0) {
             fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
@@ -203,6 +210,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void show_mypage_list() {
+        if(pageState == 1){//from detail page
+            fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
+        }
+        fromState = pageState;
         pageState = 3;
         if(myPageFlag ==0) {
             fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
@@ -217,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void show_search_list() {
+        fromState = pageState;
         pageState = 4;
         if(searchFlag ==0) {
             fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
@@ -231,6 +243,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void show_push_list() {
+        if(pageState == 1){//from detail page
+            fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
+        }
+        fromState = pageState;
         pageState = 5;
         if(pushListFlag ==0) {
             fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
@@ -241,6 +257,21 @@ public class MainActivity extends AppCompatActivity {
         else{
             fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.ListLayout, pushListFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+        }
+    }
+    public void show_search_list_onclicked(){
+        fromState = pageState;
+        pageState = 6;
+        if(searchClickedFlag ==0){
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, detailTitleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, searchListOnClickedFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
+            searchClickedFlag = 1;
+        }
+        else{
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.ListLayout, searchListOnClickedFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
         }
     }
@@ -260,7 +291,6 @@ public class MainActivity extends AppCompatActivity {
             //ctx = getActivity().getApplicationContext();
             changeColorTab = (CustomChangeColorTab)rootViewBasic.findViewById(R.id.change_color_tab);
             changeColorTab.setViewpager((ViewPager)rootViewBasic.findViewById(R.id.viewPager));
-
             return rootViewBasic;
         }
     }

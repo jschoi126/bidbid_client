@@ -27,8 +27,11 @@ public class BottomMenuFragment extends Fragment {
     ImageView image4;
     ImageView image5;
     NetworkService networkService;
+    int pageState;
+    int first = 0;
     Context ctx;
     public BottomMenuFragment() {
+        first = 0;
     }
     @Nullable
     @Override
@@ -54,7 +57,25 @@ public class BottomMenuFragment extends Fragment {
         // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
         networkService = ApplicationController.getInstance().getNetworkService();
         ctx = ApplicationController.getInstance().getMainActivityContext();
-        image1.setImageResource(R.mipmap.home_click);
+        pageState = ((MainActivity)ctx).getPageState();
+        if(pageState == 0) {
+            image1.setImageResource(R.mipmap.home_click);
+        }
+        else if (pageState == 1){
+            image1.setImageResource(R.mipmap.home_click);
+        }
+        else if(pageState == 2){
+            image2.setImageResource(R.mipmap.favorite_bottom_click);
+        }
+        else if(pageState == 3){
+            image3.setImageResource(R.mipmap.mypage_click);
+        }
+        else if(pageState ==4){
+            image4.setImageResource(R.mipmap.search_click);
+        }
+        else if (pageState == 5) {
+            image5.setImageResource(R.mipmap.push_click);
+        }
         image1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
