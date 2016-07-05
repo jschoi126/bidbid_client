@@ -55,27 +55,28 @@ public class MypageFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
-        mAdapter = new MyPageRecyclerViewAdapter(mContext,itemDatas);
-        recyclerView.setAdapter(mAdapter);
+
          //TODO : 서버에 유저 아이디 보내서 유저가 입찰하고 있는 리스트 받아야 함
         String user = ApplicationController.getInstance().getUserId();
         Call<List<Product>> userCall = networkService.getMyPage(user);
         userCall.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
-                if(response.isSuccess()){
+                if(response.isSuccess()) {
                     myProducts = response.body();
-                    if(myProducts.isEmpty() != true){
-                        for (Product product: myProducts) {
+                    if (myProducts.isEmpty() != true) {
+                        for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
                         }
+                        mAdapter = new MyPageRecyclerViewAdapter(mContext,itemDatas);
+                        recyclerView.setAdapter(mAdapter);
                     }
+
                     else{
                         Toast.makeText(getContext(),"입찰하신 상품이 없습니다.",Toast.LENGTH_SHORT).show();
                     }
+                 }
                 }
-            }
-
             @Override
             public void onFailure(Throwable t) {
 

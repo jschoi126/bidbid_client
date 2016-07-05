@@ -12,36 +12,33 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 /**
- * Created by jeon3029 on 16. 6. 28..
+ * Created by Leekh on 2016-07-06.
  */
-public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<ViewHolder>{
+public class FavoriteViewAdapter extends RecyclerView.Adapter<FavoriteViewHolder>{
     private ArrayList<ListItemData> itemDatas;
     Context mContext;
 
-    public RecyclerViewCustomAdapter(Context mContext, ArrayList<ListItemData> itemDatas){
+    public FavoriteViewAdapter(Context mContext, ArrayList<ListItemData> itemDatas){
         this.itemDatas = itemDatas;
         this.mContext = mContext;
-        notifyDataSetChanged();
 
     }
     //ViewHolder 생성
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FavoriteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_cardview, parent,false);
-        ViewHolder viewHolder = new ViewHolder(itemView);
+                .inflate(R.layout.favorite_item_cardview, parent, false);
+        FavoriteViewHolder viewHolder = new FavoriteViewHolder(itemView);
         return viewHolder;
     }
     //ListView의 getView()랑 동일
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(FavoriteViewHolder holder, int position) {
         //holder.imageView.setImageResource(itemDatas.get(position).getImage());
         Glide.with(mContext).load(itemDatas.get(position).getImg()).into(holder.imageView);
         holder.text1.setText(itemDatas.get(position).getProduct_name());
         holder.text2.setText(itemDatas.get(position).getPrice());
-        holder.text3.setText(itemDatas.get(position).getRemain_time_hour());
-        holder.text4.setText(itemDatas.get(position).getRemain_time_min());
-        holder.text5.setText(itemDatas.get(position).getRemain_time_sec());
+        //holder.text3.setText(itemDatas.get(position).getRemain_time());
     }
     @Override
     public int getItemCount() {
