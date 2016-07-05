@@ -12,13 +12,13 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 /**
- * Created by jeon3029 on 16. 6. 28..
+ * Created by Leekh on 2016-07-05.
  */
-public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<ViewHolder>{
+public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchViewHolder>{
     private ArrayList<ListItemData> itemDatas;
     Context mContext;
 
-    public RecyclerViewCustomAdapter(Context mContext, ArrayList<ListItemData> itemDatas){
+    public SearchRecyclerViewAdapter(Context mContext, ArrayList<ListItemData> itemDatas){
         this.itemDatas = itemDatas;
         this.mContext = mContext;
         notifyDataSetChanged();
@@ -26,20 +26,20 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<ViewHolder>{
     }
     //ViewHolder 생성
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SearchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_cardview, parent,false);
-        ViewHolder viewHolder = new ViewHolder(itemView);
-        return viewHolder;
+                .inflate(R.layout.search_item_cardview, parent,false);
+        SearchViewHolder searchViewHolder = new SearchViewHolder(itemView);
+        return searchViewHolder;
     }
     //ListView의 getView()랑 동일
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(SearchViewHolder holder, int position) {
         //holder.imageView.setImageResource(itemDatas.get(position).getImage());
         Glide.with(mContext).load(itemDatas.get(position).getImg()).into(holder.imageView);
         holder.text1.setText(itemDatas.get(position).getProduct_name());
         holder.text2.setText(itemDatas.get(position).getPrice());
-        holder.text3.setText(itemDatas.get(position).getRemain_time());
+        //holder.text3.setText(itemDatas.get(position).getRemain_time());
     }
     @Override
     public int getItemCount() {
