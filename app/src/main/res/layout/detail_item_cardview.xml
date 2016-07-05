@@ -155,6 +155,7 @@
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
+                        android:id="@+id/detail_share_image"
                         android:layout_marginRight="20dp"
                         android:src="@mipmap/share"
                         />
