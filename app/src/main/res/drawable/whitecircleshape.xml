@@ -6,9 +6,9 @@
 
 
     <corners android:bottomRightRadius="15dp"
-        android:bottomLeftRadius="15dp"
-        android:topLeftRadius="15dp"
-        android:topRightRadius="15dp"/>
+    android:bottomLeftRadius="15dp"
+    android:topLeftRadius="15dp"
+    android:topRightRadius="15dp"/>
 
     <stroke
         android:color="#A4A5A8"
