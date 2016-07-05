@@ -20,9 +20,10 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * Created by jeon3029 on 16. 7. 2..
@@ -51,9 +52,10 @@ public class DetailItemFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         initNetworkService();
-        rootViewBasic = inflater.inflate(R.layout.detail_item_cardview,container,false);
-        products = ApplicationController.getInstance().getProduct();
-        position = ApplicationController.getPosition();
+        int pos = ApplicationController.getInstance().getPosition();
+        rootViewBasic = inflater.inflate(R.layout.detail_item_cardview, container,false);
+        products = ApplicationController.getInstance().getProducts(pos);
+        position = ApplicationController.getInstance().getPos();
         initView();
         //detail_price = (TextView)rootViewBasic.findViewById(R.id.detail_price);
         //detail_time = (TextView)rootViewBasic.findViewById(R.id.detail_time);
@@ -100,8 +102,8 @@ public class DetailItemFragment extends Fragment {
         Call<Auction> auctionCall = networkService.finishbid(auction);
         auctionCall.enqueue(new Callback<Auction>() {
             @Override
-            public void onResponse(Call<Auction> call, Response<Auction> response) {
-                if(response.isSuccessful()){
+            public void onResponse(Response<Auction> response, Retrofit retrofit) {
+                if(response.isSuccess()){
                     tmpMessage = "입찰 성공";
                     Toast.makeText(getContext(), tmpMessage, Toast.LENGTH_SHORT).show();
                 }
@@ -111,7 +113,7 @@ public class DetailItemFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Auction> call, Throwable t) {
+            public void onFailure(Throwable t) {
 
             }
         });
@@ -126,15 +128,15 @@ public class DetailItemFragment extends Fragment {
         Call<Product> callProduct = networkService.getContent(id);
         callProduct.enqueue(new Callback<Product>() {
             @Override
-            public void onResponse(Call<Product> call, Response<Product> response) {
-                if(response.isSuccessful()){
+            public void onResponse(Response<Product> response, Retrofit retrofit) {
+                if(response.isSuccess()){
                     tmpProduct = new Product();
                     tmpProduct = response.body();
                 }
             }
 
             @Override
-            public void onFailure(Call<Product> call, Throwable t) {
+            public void onFailure(Throwable t) {
 
             }
         });

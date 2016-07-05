@@ -36,7 +36,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_centerHorizontal="true"
                     android:layout_height="1dip"
-                    android:background="#FF909090"></View>
+                    android:background="#ededed"></View>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                     android:layout_below="@+id/remain_time"
                     android:id="@+id/view"
                     android:layout_marginTop="5dp"
-                    android:background="#FF909090"
+                    android:background="#ededed"
                     android:layout_centerHorizontal="true"></View>
 
                 <LinearLayout

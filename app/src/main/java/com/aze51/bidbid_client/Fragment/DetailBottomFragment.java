@@ -23,9 +23,10 @@ import com.aze51.bidbid_client.R;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * Created by jeon3029 on 16. 7. 4..
@@ -51,8 +52,9 @@ public class DetailBottomFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         initNetworkService();
-        products = ApplicationController.getInstance().getProduct();
-        position = ApplicationController.getPosition();
+        int pos = ApplicationController.getInstance().getPosition();
+        products = ApplicationController.getInstance().getProducts(pos);;
+        position = ApplicationController.getInstance().getPos();
         final int tmpRegisterId = products.get(position).register_id; //
         final int tmpPrice = products.get(position).register_minprice;
         rootViewBasic = inflater.inflate(R.layout.detail_bottom_fragment,container,false);
@@ -65,6 +67,7 @@ public class DetailBottomFragment extends Fragment {
         bidText = (EditText)rootViewBasic.findViewById(R.id.inputPrice);
         detailLinearBid = (LinearLayout)rootViewBasic.findViewById(R.id.detail_linear_bid);
         relativeLayout = (RelativeLayout)rootViewBasic.findViewById(R.id.detail_bottom_relative);
+        //업다운 클릭 2016 07 03 태준
         upDownImage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -98,10 +101,10 @@ public class DetailBottomFragment extends Fragment {
                 auction = new Auction();
                 auction.user_id = ApplicationController.getUserId();
                 auction.register_id = tmpRegisterId;
-                auction.deal_price = tmpPrice;
+                auction.deal_price = Integer.parseInt(bidText.getText().toString());
                 postBidResult(auction);
                 Log.i("TAG","입찰 버튼 투름");
-                Toast.makeText(ctx,"입찰하셨습니다",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ctx,"입찰하셨습니다",Toast.LENGTH_SHORT).show();
             }
         });
         return rootViewBasic;
@@ -111,18 +114,28 @@ public class DetailBottomFragment extends Fragment {
         Call<Auction> auctionCall = networkService.finishbid(auction);
         auctionCall.enqueue(new Callback<Auction>() {
             @Override
-            public void onResponse(Call<Auction> call, Response<Auction> response) {
-                if(response.isSuccessful()){
+            public void onResponse(Response<Auction> response, Retrofit retrofit) {
+                if(response.isSuccess()){
                     Log.i("TAG","입찰 성공");
-                    tmpMessage = "입찰 성공";
-                    //Toast.makeText(getContext(), tmpMessage, Toast.LENGTH_SHORT).show();
+                    //tmpMessage = "입찰 성공";
+                    tmpMessage = response.body().resultMessage;
+                    if(tmpMessage.equals("성공"))
+                    {
+
+                    }
+                    else if(tmpMessage.equals("실패"))
+                    {
+
+                    }
+                    Toast.makeText(getContext(), tmpMessage, Toast.LENGTH_SHORT).show();
                 }
                 else{
 
                 }
             }
+
             @Override
-            public void onFailure(Call<Auction> call, Throwable t) {
+            public void onFailure(Throwable t) {
 
             }
         });

@@ -61,7 +61,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             recyclerView.setAdapter(mAdapter);
 
             //products = ((MainActivity)mContext).products;
-            products = ApplicationController.getInstance().getProduct();
+            products = ApplicationController.getInstance().getProducts(position);
             if(products == null || products.isEmpty()){
                 Log.i("TAG","0viewpager 비어있습니다");
             }
@@ -90,7 +90,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
 
             //itemDatas.add(new ListItemData(R.mipmap.b,"이름222","가격2222","3:57 남음"));
             //products = ((MainActivity)mContext).products;
-            products = ApplicationController.getInstance().getProduct();
+            products = ApplicationController.getInstance().getProducts(position);
 
             if(products == null || products.isEmpty()){
                 Log.i("TAG","1viewpager 비어있습니다");
@@ -120,7 +120,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             //itemDatas.add(new ListItemData(R.mipmap.b,"이름333","가격3333","3:57 남음"));
 
             //products = ((MainActivity)mContext).products;
-            products = ApplicationController.getInstance().getProduct();
+            products = ApplicationController.getInstance().getProducts(position);
 
             if(products == null || products.isEmpty()){
 
@@ -137,7 +137,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
             @Override public void onItemClick(View view, int position) {
-                ApplicationController.setPosition(position);
+                ApplicationController.getInstance().setPos(position);
                         ((MainActivity) mContext).show_detail_list();
                 String pos = String.valueOf(position);
                 Toast toast = Toast.makeText(mContext,
