@@ -63,7 +63,8 @@ public class GridViewAdapter extends BaseAdapter {
                 Context ctx;
                 ctx = ApplicationController.getInstance().getMainActivityContext();
                 String text = btn.getText().toString();
-                //그리드 뷰 텍스트
+                //text = 그리드 뷰 텍스트
+                ApplicationController.getInstance().SetSearchText(text);
                 ((MainActivity)ctx).show_search_list_onclicked();
             }
         });

@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
     public void show_search_list_onclicked(){
         pageState = 6;
         if(searchClickedFlag ==0){
-            fragmentManager.beginTransaction().replace(R.id.TitleLayout, titleFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.TitleLayout, detailTitleFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.ListLayout, searchListOnClickedFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
             searchClickedFlag = 1;

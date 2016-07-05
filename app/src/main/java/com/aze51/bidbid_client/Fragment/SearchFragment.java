@@ -75,7 +75,8 @@ public class SearchFragment extends Fragment {
                 Context ctx;
                 ctx = ApplicationController.getInstance().getMainActivityContext();
                 String text = searchText.getText().toString();
-                //검색어 텍스트
+                ApplicationController.getInstance().SetSearchText(text);
+                //text = 검색어 텍스트
                 ((MainActivity)ctx).show_search_list_onclicked();
             }
         });

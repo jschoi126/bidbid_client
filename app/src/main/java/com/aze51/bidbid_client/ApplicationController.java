@@ -27,6 +27,10 @@ import retrofit.Retrofit;
  * Created by Leekh on 2016-06-18.
  */
 public class ApplicationController extends Application {
+    //search text
+    private String searchtext;
+    public void SetSearchText(String s){searchtext = s;}
+    public String GetSearchtext(){return searchtext;}
 
     //created by tae joon jeon. singleton 2016 07 02
     //어플리케이션 전체에서 접근할 상품 객체 생성
