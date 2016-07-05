@@ -7,4 +7,6 @@ public class PushListViewItem {
     int img;
     String title;
     int productID;
+    int bidPrice;
+    int remainTime;
 }

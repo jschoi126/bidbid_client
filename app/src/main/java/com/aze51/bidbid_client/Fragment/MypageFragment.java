@@ -17,8 +17,8 @@ import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
+import com.aze51.bidbid_client.ViewPager.MyPageRecyclerViewAdapter;
 import com.aze51.bidbid_client.ViewPager.RecyclerItemClickListener;
-import com.aze51.bidbid_client.ViewPager.RecyclerViewCustomAdapter;
 
 import java.util.ArrayList;
 
@@ -46,7 +46,7 @@ public class MypageFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
-        mAdapter = new RecyclerViewCustomAdapter(mContext,itemDatas);
+        mAdapter = new MyPageRecyclerViewAdapter(mContext,itemDatas);
         recyclerView.setAdapter(mAdapter);
          //TODO : 서버에 유저 아이디 보내서 유저가 입찰하고 있는 리스트 받아야 함
         Product p = new Product();

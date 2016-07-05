@@ -45,6 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4000"
+                    android:id="@+id/push_price"
                     android:textSize="20sp"
                     />
                 <TextView
@@ -72,6 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="15"
+                    android:id="@+id/push_remain_time"
                     android:textSize="20sp"
                     android:layout_gravity="center_vertical"
                     />
