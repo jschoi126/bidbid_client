@@ -3,9 +3,11 @@ package com.aze51.bidbid_client;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
+import com.aze51.bidbid_client.ViewPager.ViewHolder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.Interceptor;
@@ -31,13 +33,14 @@ public class ApplicationController extends Application {
     //created by tae joon jeon. singleton 2016 07 02
     //어플리케이션 전체에서 접근할 상품 객체 생성
     private static List<Product> products, products1, products2, products3;
+    private static TextView text11, text12, text13;
     private static List<List<Product>> getProducts;
     private static int postion;
     //private static Auction auction;
     private static String user;
     private static int productPos;
     private Context mainActivityContext;
-
+    private static ViewHolder viewHolders;
     public void setMainActivityContext(Context ctx){
         mainActivityContext = ctx;
     }
@@ -49,6 +52,24 @@ public class ApplicationController extends Application {
 
     private static String baseUrl = "http://52.78.66.175:3000";
     private Call<List<List<Product>>> getlistCall;
+    public void setViewHolder(ViewHolder viewHolder){
+        text11 = viewHolders.text3;
+        text12 = viewHolders.text4;
+        text13 = viewHolders.text5;
+    }
+    public void setTextview1(TextView text){
+        this.text11 = text;
+    }
+    public void setTextview2(TextView text){
+        this.text12 = text;
+    }
+    public void setTextview3(TextView text){
+        this.text13 = text;
+    }
+    public TextView getTextView(){return text11;}
+    public TextView getTextView2(){return text12;}
+    public TextView getTextView3(){return text13;}
+    //public ViewHolder getViewHolder(){return viewHolders;}
     public void getDataFromServer(){
 
         getlistCall = networkService.getProducts();

@@ -188,5 +188,6 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             pbHeaderProgress.setVisibility(View.GONE);
         }
     }
+
 }
 

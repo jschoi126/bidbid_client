@@ -117,6 +117,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void networkError() {
-        Toast.makeText(getApplicationContext(), "인터넷 연결 상태를 확인해주세요.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "서버가 망했어요.", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

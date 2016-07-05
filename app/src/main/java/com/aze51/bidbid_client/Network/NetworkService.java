@@ -43,12 +43,14 @@ public interface NetworkService {
     Call<List<List<Product>>> getProducts();
     @GET("content/myPage/{user_id}")
     Call<List<Product>> getMyPage(@Path("user_id") String userId);
-
+    //@GET("content/favoritePage")
+    //Call<>
     // check session
     @GET("/sign")
     Call<User> getSession();
     // 로그아웃
     @GET("/sign/out")
     Call<User> logout();
+    //@GET("")
 
 }

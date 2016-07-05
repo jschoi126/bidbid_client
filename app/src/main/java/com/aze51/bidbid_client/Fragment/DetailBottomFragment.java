@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.Auction;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
@@ -120,7 +121,8 @@ public class DetailBottomFragment extends Fragment {
                     tmpMessage = response.body().resultMessage;
                     if(tmpMessage.equals("성공"))
                     {
-
+                        Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                        ((MainActivity)ctx).show_current_list();
                     }
                     else if(tmpMessage.equals("실패"))
                     {

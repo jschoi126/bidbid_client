@@ -10,6 +10,7 @@ public class Product {
     public String product_description;
     public String product_img;
     public int register_minprice;
+    public int rtime;
     //public long product_time_start;
     //public long product_time_finish;
     //경매 상황(예정, 진행중, 마감)(product_bid_status)

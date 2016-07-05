@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.Network.Auction;
@@ -19,11 +18,6 @@ import com.aze51.bidbid_client.R;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
-
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 /**
  * Created by jeon3029 on 16. 7. 2..
@@ -98,7 +92,7 @@ public class DetailItemFragment extends Fragment {
         detail_bidPrice = (TextView)rootViewBasic.findViewById(R.id.inputPrice);
 
     }
-    public void postBidResult(Auction auction){
+   /* public void postBidResult(Auction auction){
         Call<Auction> auctionCall = networkService.finishbid(auction);
         auctionCall.enqueue(new Callback<Auction>() {
             @Override
@@ -117,14 +111,14 @@ public class DetailItemFragment extends Fragment {
 
             }
         });
-    } // BottomMenuFragment
+    } // BottomMenuFragment*/
 
     private void initNetworkService() {
         // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
         networkService = ApplicationController.getInstance().getNetworkService();
     }
 
-    public void getDetailContent(int id){
+    /*public void getDetailContent(int id){
         Call<Product> callProduct = networkService.getContent(id);
         callProduct.enqueue(new Callback<Product>() {
             @Override
@@ -140,5 +134,5 @@ public class DetailItemFragment extends Fragment {
 
             }
         });
-    } // DetailItemFragment
+    } // DetailItemFragment*/
 }
