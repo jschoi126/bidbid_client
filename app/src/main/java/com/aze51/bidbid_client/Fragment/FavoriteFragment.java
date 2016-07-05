@@ -48,11 +48,11 @@ public class FavoriteFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(mContext);//Mainactivity 의 this
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
+
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
         mAdapter = new RecyclerViewCustomAdapter(mContext,itemDatas);
         recyclerView.setAdapter(mAdapter);
-
 
 
         //TODO : 패이버릿 리스트 저장하고있는거 서버에 보내서 받아서 itemdatas 에 추가해햐됨
