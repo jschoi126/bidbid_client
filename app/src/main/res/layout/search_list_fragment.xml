@@ -29,6 +29,7 @@
                     android:layout_width="210dp"
                     android:layout_height="match_parent"
                     android:hint="검색어를 입력하세요"
+                    android:id="@+id/search_edit_text"
                     android:textColorHint="#939598"
                     android:singleLine="true"
                     android:textSize="14sp"
@@ -39,7 +40,7 @@
             </LinearLayout>
             <Button
                 android:layout_marginRight="18dp"
-                android:id="@+id/deleteButton"
+                android:id="@+id/search_button"
                 android:background="@drawable/redcircleshape"
                 android:layout_width="78dp"
                 android:layout_height="26dp"

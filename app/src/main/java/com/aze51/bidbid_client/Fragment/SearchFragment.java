@@ -7,9 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 
 import com.aze51.bidbid_client.ApplicationController;
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 
 import java.util.ArrayList;
@@ -19,6 +22,8 @@ import java.util.ArrayList;
  */
 public class SearchFragment extends Fragment {
     View rootViewBasic;
+    Button searchButton;
+    EditText searchText;
     GridView gridView;
     GridViewAdapter gridViewAdapter;
     Context ctx;
@@ -36,9 +41,15 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.search_list_fragment,container,false);
+        searchButton = (Button)rootViewBasic.findViewById(R.id.search_button);
+        searchText = (EditText)rootViewBasic.findViewById(R.id.search_edit_text);
+
         itemDatas = new ArrayList<GridViewItem>();
         //5~8개의 랜덤 개수 추천
         randomCnt = (int)(Math.random()*3)+5;
+        //initiate
+        for(int i=0;i<totalRecomendation.length;i++)checkDuplication[i]=false;
+
         for(int i=0;i<randomCnt;){
             //전체 랜덤 토큰
             int random = (int)(Math.random()*totalRecomendation.length);
@@ -58,6 +69,16 @@ public class SearchFragment extends Fragment {
         gridViewAdapter = new GridViewAdapter(itemDatas, ctx);
         gridView = (GridView)rootViewBasic.findViewById(R.id.gridView1);
         gridView.setAdapter(gridViewAdapter);
+        searchButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Context ctx;
+                ctx = ApplicationController.getInstance().getMainActivityContext();
+                String text = searchText.getText().toString();
+                //검색어 텍스트
+                ((MainActivity)ctx).show_search_list_onclicked();
+            }
+        });
         return rootViewBasic;
     }
 }

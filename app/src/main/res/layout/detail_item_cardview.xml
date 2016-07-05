@@ -22,7 +22,7 @@
                 />
 
             <RelativeLayout
-                android:id="@+id/secend_view"
+                android:id="@+id/detail_second_relative"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 android:background="#ffffff"

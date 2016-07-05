@@ -67,6 +67,7 @@ public class DetailBottomFragment extends Fragment {
         bidText = (EditText)rootViewBasic.findViewById(R.id.inputPrice);
         detailLinearBid = (LinearLayout)rootViewBasic.findViewById(R.id.detail_linear_bid);
         relativeLayout = (RelativeLayout)rootViewBasic.findViewById(R.id.detail_bottom_relative);
+        //업다운 클릭 2016 07 03 태준
         upDownImage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
