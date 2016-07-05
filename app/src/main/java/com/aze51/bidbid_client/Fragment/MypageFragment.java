@@ -20,9 +20,7 @@ public class MypageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.mypage_list_fragment,container,false);
-        //image1 = (ImageView)rootViewBasic.findViewById(R.id.logo_image);
-        //text = (TextView)rootViewBasic.findViewById(R.id.bidbid_text);
-        //image2 = (ImageView)rootViewBasic.findViewById(R.id.setting_image);
+
         return rootViewBasic;
     }
 }

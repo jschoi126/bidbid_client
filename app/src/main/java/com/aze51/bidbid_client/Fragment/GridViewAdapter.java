@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 
 import com.aze51.bidbid_client.R;
 
@@ -50,6 +51,8 @@ public class GridViewAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.search_grid_item,parent,false);
         }
         GridViewItem itemData_temp = itemDatas.get(position);
+        Button btn = (Button)convertView.findViewById(R.id.gridItem);
+        btn.setText(itemData_temp.item);
 
         return convertView;
     }
