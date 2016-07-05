@@ -56,10 +56,13 @@ public class DetailBottomFragment extends Fragment {
         initNetworkService();
         ctx = ApplicationController.getInstance().getMainActivityContext();
         int pos = ApplicationController.getInstance().getPosition();
-        if(((MainActivity)ctx).getFromState()==6){
+        if(((MainActivity)ctx).getFromState()==6){//from search on clicked detail list
             products = ApplicationController.getInstance().getProducts(5);
         }
-        else {
+        else if(((MainActivity)ctx).getFromState()==3){//from mypage detail list
+            products = ApplicationController.getInstance().getProducts(4);
+        }
+        else {//view Pager
             products = ApplicationController.getInstance().getProducts(pos);
         }
         //position = ApplicationController.getInstance().getPos();

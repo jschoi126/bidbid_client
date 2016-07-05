@@ -65,13 +65,13 @@ public class MypageFragment extends Fragment {
                 if(response.isSuccess()) {
                     myProducts = response.body();
                     if (myProducts.isEmpty() != true) {
+                        ApplicationController.getInstance().SetProducts5(myProducts);
                         for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
                         }
                         mAdapter = new MyPageRecyclerViewAdapter(mContext,itemDatas);
                         recyclerView.setAdapter(mAdapter);
                     }
-
                     else{
                         Toast.makeText(getContext(),"입찰하신 상품이 없습니다.",Toast.LENGTH_SHORT).show();
                     }

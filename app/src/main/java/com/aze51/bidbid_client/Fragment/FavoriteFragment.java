@@ -60,14 +60,9 @@ public class FavoriteFragment extends Fragment {
 
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
+        initNetworkService();
         CallFavoriteList();
-
-
-
         //TODO : 패이버릿 리스트 저장하고있는거 서버에 보내서 받아서 itemdatas 에 추가해햐됨
-
-
-
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {

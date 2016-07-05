@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingLeft="10dp"
-                        android:id="@+id/minimim_price"
+                        android:id="@+id/minimum_price"
                         android:text="1000"
                         android:textColor="#000000"
                         android:textSize="24sp"
@@ -225,19 +225,6 @@
                     android:id="@+id/item_layout_person_su"
                     android:layout_below="@+id/view"
                     >
-                    <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-
-                        android:layout_toLeftOf="@id/people_su"
-                        android:src="@mipmap/joinperson"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10"
-                        android:layout_toLeftOf="@id/textview_join1"
-                        android:id="@+id/people_su"/>
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_alignParentRight="true"
@@ -246,6 +233,18 @@
                         android:text="명 참여중"
                         android:layout_marginRight="18dp"
                         />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:layout_toLeftOf="@id/textview_join1"
+                        android:id="@+id/people_su"/>
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+
+                        android:layout_toLeftOf="@id/people_su"
+                        android:src="@mipmap/joinperson"/>
                 </RelativeLayout>
                 <View
                     android:layout_width="match_parent"

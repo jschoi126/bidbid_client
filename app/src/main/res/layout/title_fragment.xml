@@ -10,6 +10,7 @@
         android:layout_marginLeft="18dp"
         android:id="@+id/logo_image"
         android:background="#e42828"
+        android:src="@mipmap/logo"
         />
     <ImageView
         android:id="@+id/setting_image"
@@ -17,7 +18,6 @@
         android:layout_height="48dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="18dp"
-
         android:src="@mipmap/setting"
         android:background="#e42828"
         />
@@ -31,6 +31,6 @@
         android:textSize="35sp"
         android:textColor="#FFFFFF"
         android:background="#e42828"
-        android:id="@+id/bidbid_text"
+        android:id="@+id/bidbid_image"
         />
 </RelativeLayout>
