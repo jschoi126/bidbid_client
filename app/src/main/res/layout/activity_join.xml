@@ -114,7 +114,7 @@
                     android:layout_width="102dp"
                     android:layout_height="35dp"
                     android:background="@drawable/redcircleshape"
-                    android:text="아이디 중복 확인"
+                    android:text="아이디중복 확인"
                     android:id="@+id/check_id"
                     android:textColor="#FFFFFF"
                     android:textSize="12sp"/>
@@ -159,8 +159,8 @@
                 android:textSize="14sp"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <RelativeLayout
+            android:id="@+id/abc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="44dp">
@@ -171,18 +171,25 @@
                 android:layout_gravity="left"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:text="이용약관을 확인하였습니다."
+                android:text="이용약관 확인"
                 android:textColor="#000000"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
                 android:text="약관보기"
                 android:textSize="14sp"
-                android:textColor="e42828"/>
+                android:textColor="#e42828"
+                android:layout_marginRight="52dp"
+                android:layout_marginEnd="52dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
 
 
-        </LinearLayout>
 
         <LinearLayout
             android:paddingTop="8dp"
@@ -240,23 +247,27 @@
                 android:textSize="14sp"/>
 
         </LinearLayout>
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             android:paddingLeft="44dp"
             android:paddingRight="44dp"
-            android:gravity="right"
-            >
+            android:gravity="right" >
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="11sp"
-                android:text="남은 시간"
+                android:text="3분 00초"
                 android:paddingTop="5dp"
-                android:background="#ffffff"
-                android:textColor="#000000"/>
-        </LinearLayout>
+                android:background="#eeeeee"
+                android:textColor="#000000"
+                android:layout_marginRight="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -266,7 +277,7 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:background="@drawable/graycircleshape"
                 android:id="@+id/memjoin_button"
                 android:text="가입하기"
@@ -274,4 +285,17 @@
                 android:textSize="14sp"/>
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="146dp"
+            android:src="@mipmap/joinill"/>
+    </LinearLayout>
+
 </LinearLayout>

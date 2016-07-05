@@ -11,17 +11,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
+import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
-import com.aze51.bidbid_client.ViewPager.RecyclerViewCustomAdapter;
+import com.aze51.bidbid_client.ViewPager.SearchRecyclerViewAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * Created by jeon3029 on 16. 7. 5..
@@ -35,6 +41,12 @@ public class SearchListOnClickedFragment extends Fragment {
     Context mContext;
     Button searchButton;
     EditText searchText;
+    NetworkService networkService;
+    List<Product> products;
+    String text;
+    ArrayList<ListItemData> listItemDatas;
+    Context ctx;
+    boolean get = false;
     public SearchListOnClickedFragment(){
         //생성자
     }
@@ -45,7 +57,7 @@ public class SearchListOnClickedFragment extends Fragment {
         recyclerView = (RecyclerView)rootViewBasic.findViewById(R.id.recyclerView_search);
         searchButton = (Button)rootViewBasic.findViewById(R.id.search_button_onclicked);
         searchText = (EditText)rootViewBasic.findViewById(R.id.search_edit_text_onclicked);
-
+        initNetworkService();
         recyclerView.setHasFixedSize(true);
         mContext = ApplicationController.getInstance().getMainActivityContext();
 
@@ -54,28 +66,51 @@ public class SearchListOnClickedFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
-        mAdapter = new RecyclerViewCustomAdapter(mContext,itemDatas);
-        recyclerView.setAdapter(mAdapter);
         //TODO : 검색어 보내서 아이템 서버로 부터 받아야 함 그리고 itemDatas에 추가
         //검색어는 application controller 의 getsearchtext로 string객체로 받을 수 있음
-
-        Product p = new Product();
-        p.store_name = ApplicationController.getInstance().GetSearchtext();
-        p.register_minprice = 1000;
-        ListItemData tempitem = new ListItemData(p);
-        itemDatas.add(tempitem);
-
+        if(ApplicationController.getInstance().GetGridViewOnClicked()==1){
+            String text = ApplicationController.getInstance().GetSearchtext();
+            CallRecomandSearch(text);
+            ApplicationController.getInstance().SetGridViewOnClick(0);
+        }
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Context ctx;
                 ctx = ApplicationController.getInstance().getMainActivityContext();
-                String text = searchText.getText().toString();
+                text = searchText.getText().toString();
                 ApplicationController.getInstance().SetSearchText(text);
-                //text = 검색어 텍스트
-                ((MainActivity)ctx).show_search_list_onclicked();
+                if(itemDatas!=null)
+                    itemDatas.clear();
+                CallRecomandSearch(text);
+                //CallRecomandSearch(text);
             }
         });
         return rootViewBasic;
+    }
+    private void CallRecomandSearch(String content){
+        Call<List<Product>> recommendCall = networkService.searchContents(content);
+        recommendCall.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
+                if (response.isSuccess()) {
+                    products = response.body();
+                    get = true;
+                    for (Product p : products) {
+                        itemDatas.add(new ListItemData(p));
+                    }
+                    mAdapter = new SearchRecyclerViewAdapter(mContext,itemDatas);
+                    recyclerView.setAdapter(mAdapter);
+                    ((MainActivity) ctx).show_search_list_onclicked();
+                } else {
+                    Toast.makeText(getContext(), "검색하신 상품이 없습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Throwable t) {
+            }
+        });
+    }
+    private void initNetworkService() {
+        networkService = ApplicationController.getInstance().getNetworkService();
     }
 }

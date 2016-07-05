@@ -14,8 +14,6 @@ import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.R;
 
-import retrofit.Call;
-
 /**
  * Created by jeon3029 on 16. 6. 27..
  */
@@ -49,12 +47,8 @@ public class BottomMenuFragment extends Fragment {
         image4 = (ImageView) rootViewBasic.findViewById(R.id.search_image);
         image5 = (ImageView) rootViewBasic.findViewById(R.id.bell_image);
     }
-    public void searchContents(String content){
-        Call<String> callSearch = networkService.searchContents(content);
 
-    }
     private void initNetworkService() {
-        // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
         networkService = ApplicationController.getInstance().getNetworkService();
         ctx = ApplicationController.getInstance().getMainActivityContext();
         pageState = ((MainActivity)ctx).getPageState();

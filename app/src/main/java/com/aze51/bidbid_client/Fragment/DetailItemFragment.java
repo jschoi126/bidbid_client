@@ -1,8 +1,13 @@
 package com.aze51.bidbid_client.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +17,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.Auction;
+import com.aze51.bidbid_client.Network.Content;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
+import com.aze51.bidbid_client.SharingActivity;
 import com.bumptech.glide.Glide;
+import com.facebook.share.ShareApi;
+import com.facebook.share.model.ShareOpenGraphAction;
+import com.facebook.share.model.ShareOpenGraphContent;
+import com.facebook.share.model.ShareOpenGraphObject;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 
 import java.util.List;
 
@@ -39,6 +54,11 @@ public class DetailItemFragment extends Fragment {
     String get_img;
     ImageView detail_img;
     List<Product> products;
+
+    //facebookshare
+    ImageView shareImage;
+    Bitmap image;
+
     int position;
     String tmpMessage;
     NetworkService networkService;
@@ -86,6 +106,61 @@ public class DetailItemFragment extends Fragment {
                 //postBidResult(auction);
             }
         });*/
+        image = BitmapFactory.decodeResource(getResources(),R.drawable.food);
+        shareImage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.i("TAG","share clicked");
+                /*
+                SharePhoto photo = new SharePhoto.Builder()
+                        .setBitmap(image)
+                        .build();
+                SharePhotoContent content = new SharePhotoContent.Builder()
+                        .addPhoto(photo)
+                        .build();
+                ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
+                        .putString("og:type", "fitness.course")
+                        .putString("og:title", "Sample Course")
+                        .putString("og:description", "This is a sample course.")
+                        .putInt("fitness:duration:value", 100)
+                        .putString("fitness:duration:units", "s")
+                        .putInt("fitness:distance:value", 12)
+                        .putString("fitness:distance:units", "km")
+                        .putInt("fitness:speed:value", 5)
+                        .putString("fitness:speed:units", "m/s")
+                        .build();
+                ShareOpenGraphAction action = new ShareOpenGraphAction.Builder()
+                        .setActionType("fitness.runs")
+                        .putObject("fitness:course", object)
+                        .build();
+                ShareOpenGraphContent content2 = new ShareOpenGraphContent.Builder()
+                        .setPreviewPropertyName("fitness:course")
+                        .setAction(action)
+                        .build();*/
+                /*
+                ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
+                        .putString("og:type", "books.book")
+                        .putString("og:title", "Bid Bid")
+                        .putString("og:description", "경매형 마케팅 플랫폼")
+                        .putString("books:isbn", "0-553-57340-3")
+                        .build();
+                ShareOpenGraphAction action = new ShareOpenGraphAction.Builder()
+                        .setActionType("books.reads")
+                        .putObject("book", object)
+                        .build();
+                // Create the content
+                ShareOpenGraphContent content = new ShareOpenGraphContent.Builder()
+                        .setPreviewPropertyName("book")
+                        .setAction(action)
+                        .build();
+                //ShareApi.share(content, null);
+                //Context ctx = ApplicationController.getInstance().getMainActivityContext()
+                ShareDialog.show(getActivity(), content);*/
+                Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                Intent intent =new Intent(ctx, SharingActivity.class);
+                startActivity(intent);
+            }
+        });
         return rootViewBasic;
     }
 
@@ -96,6 +171,8 @@ public class DetailItemFragment extends Fragment {
         detail_img = (ImageView)rootViewBasic.findViewById(R.id.detail_ImageView);
         detail_bid = (Button)rootViewBasic.findViewById(R.id.bidbtn);
         detail_bidPrice = (TextView)rootViewBasic.findViewById(R.id.inputPrice);
+
+        shareImage = (ImageView)rootViewBasic.findViewById(R.id.detail_share_image);
 
     }
     public void postBidResult(Auction auction){
@@ -111,7 +188,6 @@ public class DetailItemFragment extends Fragment {
 
                 }
             }
-
             @Override
             public void onFailure(Throwable t) {
 
@@ -120,7 +196,6 @@ public class DetailItemFragment extends Fragment {
     } // BottomMenuFragment
 
     private void initNetworkService() {
-        // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
         networkService = ApplicationController.getInstance().getNetworkService();
     }
 
@@ -134,7 +209,6 @@ public class DetailItemFragment extends Fragment {
                     tmpProduct = response.body();
                 }
             }
-
             @Override
             public void onFailure(Throwable t) {
 
