@@ -39,7 +39,9 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<ViewHolder>{
         Glide.with(mContext).load(itemDatas.get(position).getImg()).into(holder.imageView);
         holder.text1.setText(itemDatas.get(position).getProduct_name());
         holder.text2.setText(itemDatas.get(position).getPrice());
-        holder.text3.setText(itemDatas.get(position).getRemain_time());
+        holder.text3.setText(itemDatas.get(position).getRemain_time_hour());
+        holder.text4.setText(itemDatas.get(position).getRemain_time_min());
+        holder.text5.setText(itemDatas.get(position).getRemain_time_sec());
     }
     @Override
     public int getItemCount() {
