@@ -24,8 +24,6 @@ public class ListItemData {
         this.product_name = product.product_name;
         this.prices = product.register_minprice;
         this.remain_time = "미정";
-
-
     }
     public int getImage(){return image;}
     public String getImg(){return img;}

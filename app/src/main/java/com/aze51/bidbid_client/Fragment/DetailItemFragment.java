@@ -74,6 +74,8 @@ public class DetailItemFragment extends Fragment {
         //detail_bidPrice.setText(detail_bidPrice.getText());
         //detail_time.setText("3:45");
         Glide.with(this).load(tmpImg).into(detail_img);
+        getDetailContent(position);
+
        /* detail_bid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,6 +133,10 @@ public class DetailItemFragment extends Fragment {
                 if(response.isSuccess()){
                     tmpProduct = new Product();
                     tmpProduct = response.body();
+                    detail_title.setText(tmpProduct.product_name);
+                    Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
+                    detail_price.setText(tmpProduct.register_minprice);
+
                 }
             }
 

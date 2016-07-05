@@ -31,7 +31,6 @@ public interface NetworkService {
 
     @GET("content/detail/{product_id}")
     Call<Product> getContent(@Path("product_id") long id);
-
     // SMS 인증
     @GET("certify/{phonenum}")
     Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);
@@ -43,6 +42,7 @@ public interface NetworkService {
     Call<List<List<Product>>> getProducts();
     @GET("userinfo/{user_id}")
     Call<List<Product>> getMyPage(@Path("user_id") String userId);
+    //@POST("favorite/{user_id,}")
     // check session
     @GET("/sign")
     Call<User> getSession();
