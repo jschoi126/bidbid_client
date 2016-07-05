@@ -53,7 +53,7 @@ public class FavoriteFragment extends Fragment {
         //TODO : 패이버릿 리스트 저장하고있는거 서버에 보내서 받아서 itemdatas 에 추가해햐됨
 
         Product p = new Product();
-        p.store_name = ApplicationController.getInstance().GetSearchtext();
+        p.store_name = ApplicationController.getInstance().GetSearchText();
         p.register_minprice = 1000;
         ListItemData tempitem = new ListItemData(p);
         itemDatas.add(tempitem);

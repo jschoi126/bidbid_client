@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -15,6 +16,7 @@ import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
+import com.aze51.bidbid_client.ViewPager.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 
@@ -80,13 +82,29 @@ public class SearchFragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Context ctx;
                 ctx = ApplicationController.getInstance().getMainActivityContext();
                 String text = searchText.getText().toString();
                 ApplicationController.getInstance().SetSearchText(text);
                 //text = 검색어 텍스트
-                ApplicationController.getInstance().SetGridViewOnClick(1);
                 ((MainActivity) ctx).show_search_list_onclicked();
+            }
+        });
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the GridView selected/clicked item text
+                //String selectedItem = parent.getItemAtPosition(position).toString();
+                // Display the selected/clicked item text and position on TextView
+                Button btn = (Button)view.findViewById(R.id.gridItem);
+                Context ctx;
+                ctx = ApplicationController.getInstance().getMainActivityContext();
+                String text = btn.getText().toString();
+                //String text = selectedItem;
+                //text = 그리드 뷰 텍스트
+                ApplicationController.getInstance().SetSearchText(text);
+                ApplicationController.getInstance().SetGridViewOnClick(1);//그리드 뷰 클릭일 경우
+                ((MainActivity)ctx).show_search_list_onclicked();
             }
         });
         return rootViewBasic;

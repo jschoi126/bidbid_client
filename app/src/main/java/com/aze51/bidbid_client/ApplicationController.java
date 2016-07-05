@@ -30,7 +30,8 @@ public class ApplicationController extends Application {
     //search text
     private String searchtext;
     public void SetSearchText(String s){searchtext = s;}
-    public String GetSearchtext(){return searchtext;}
+    public String GetSearchText(){
+        return searchtext;}
 
     private int gridViewOnClicked = 0;
     public void SetGridViewOnClick(int num){gridViewOnClicked = num;}
@@ -39,7 +40,12 @@ public class ApplicationController extends Application {
 
     //created by tae joon jeon. singleton 2016 07 02
     //어플리케이션 전체에서 접근할 상품 객체 생성
-    private static List<Product> products, products1, products2, products3;
+    private static List<Product> products, products1, products2, products3,products4,products5,products6;
+    //product1 : 진행 2: 예정 3: 마감 4: favorite 5: mypage  6 :search
+    public void SetProducts3(List<Product> temp){products3 = temp;}
+    public void SetProducts4(List<Product> temp){products4 = temp;}
+    public void SetProducts5(List<Product> temp){products5 = temp;}
+    public void SetProducts6(List<Product> temp){products6 = temp;}
     private static List<List<Product>> getProducts;
     private static int postion;
     //private static Auction auction;
@@ -63,7 +69,6 @@ public class ApplicationController extends Application {
     private static String baseUrl = "http://52.78.66.175:3000";
     private Call<List<List<Product>>> getlistCall;
     public void getDataFromServer(){
-
         getlistCall = networkService.getProducts();
         getlistCall.enqueue(new Callback<List<List<Product>>>() {
             @Override
@@ -75,7 +80,6 @@ public class ApplicationController extends Application {
                     products3 = getProducts.get(2);
                 }
             }
-
             @Override
             public void onFailure(Throwable t) {
 
@@ -112,8 +116,21 @@ public class ApplicationController extends Application {
         else if(id == 1){
             return products2;
         }
-        else {
+        else if(id == 2){
             return products3;
+        }
+        else if(id ==3){
+            return products4;
+        }
+        else if(id == 4){
+            return products5;
+        }
+        else if(id == 5){
+            return products6;
+        }
+        else {
+            Log.i("TAG","else get Products");
+            return  products;
         }
     }
     public static int getPosition(){return postion;}

@@ -82,7 +82,7 @@ public class MypageFragment extends Fragment {
             }
         });
         /*Product p = new Product();
-        p.store_name = ApplicationController.getInstance().GetSearchtext();
+        p.store_name = ApplicationController.getInstance().GetSearchText();
         p.register_minprice = 1000;
         ListItemData tempitem = new ListItemData(p);
         itemDatas.add(tempitem);*/

@@ -13,5 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gridItem"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
         android:text="product1"/>
 </LinearLayout>
