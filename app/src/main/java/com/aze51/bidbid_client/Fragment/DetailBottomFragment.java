@@ -23,9 +23,10 @@ import com.aze51.bidbid_client.R;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * Created by jeon3029 on 16. 7. 4..
@@ -112,8 +113,8 @@ public class DetailBottomFragment extends Fragment {
         Call<Auction> auctionCall = networkService.finishbid(auction);
         auctionCall.enqueue(new Callback<Auction>() {
             @Override
-            public void onResponse(Call<Auction> call, Response<Auction> response) {
-                if(response.isSuccessful()){
+            public void onResponse(Response<Auction> response, Retrofit retrofit) {
+                if(response.isSuccess()){
                     Log.i("TAG","입찰 성공");
                     //tmpMessage = "입찰 성공";
                     tmpMessage = response.body().resultMessage;
@@ -131,8 +132,9 @@ public class DetailBottomFragment extends Fragment {
 
                 }
             }
+
             @Override
-            public void onFailure(Call<Auction> call, Throwable t) {
+            public void onFailure(Throwable t) {
 
             }
         });

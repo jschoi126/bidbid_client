@@ -3,7 +3,6 @@ package com.aze51.bidbid_client;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
@@ -29,9 +28,10 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class LoginActivity extends Activity {
     Button shareButton = null;
@@ -46,9 +46,7 @@ public class LoginActivity extends Activity {
     PasswordTransformationMethod passWtm;
     EditText getLogin_id, getLogin_pw;
     String deviceToken;
-    private static final String IP_PATTERN =
-            "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}" +
-                    "(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,15 +61,14 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         initView();
-        Connecting();
-        initNetworkService();
+
         protected_passwd();
-        ApplicationController.getInstance().getDataFromServer();
 
 
         facebook_loginButton = (LoginButton) findViewById(R.id.facebook_LoginButton);
         shareButton = (Button) findViewById(R.id.facebook_LoginButton);
         callbackManager = CallbackManager.Factory.create();
+        networkService = ApplicationController.getInstance().getNetworkService();
 
         facebook_loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,8 +130,8 @@ public class LoginActivity extends Activity {
                 Call<Login> loginCall = networkService.getMember(login);
                 loginCall.enqueue(new Callback<Login>() {
                     @Override
-                    public void onResponse(Call<Login> call, Response<Login> response) {
-                        if(response.isSuccessful()){
+                    public void onResponse(Response<Login> response, Retrofit retrofit) {
+                        if(response.isSuccess()){
                             Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(intent);
@@ -145,7 +142,7 @@ public class LoginActivity extends Activity {
                     }
 
                     @Override
-                    public void onFailure(Call<Login> call, Throwable t) {
+                    public void onFailure(Throwable t) {
                         Toast.makeText(getApplicationContext(),"망했어요",Toast.LENGTH_LONG).show();
                     }
                 });
@@ -168,40 +165,14 @@ public class LoginActivity extends Activity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    protected void Connecting() {
-        String ip = "52.78.66.175";
-        if (TextUtils.isEmpty(ip) || ip.matches(IP_PATTERN) != true) {
-            Toast.makeText(getApplicationContext(), "Invaild IP Pattern", Toast.LENGTH_LONG).show();
-            return;
-        }
-        String portString = "3000";
-        if (TextUtils.isEmpty(portString) || TextUtils.isDigitsOnly(portString) != true) {
-            Toast.makeText(getApplicationContext(), "Invaild port value",
-                    Toast.LENGTH_LONG).show();
-            return;
-        }
-        int port = Integer.parseInt(portString);
-        if (0 > port || port > 65535) {
-            Toast.makeText(getApplicationContext(), "Invalid port value",
-                    Toast.LENGTH_LONG).show();
-            return;
-        }
 
-        //ApplicationController application = new ApplicationController();
-        ApplicationController application = ApplicationController.getInstance();
-        application.buildNetworkService(ip, port);
-    }
     protected void initView() {
         loginButton = (Button) findViewById(R.id.LoginButton);
         joinButton = (Button) findViewById(R.id.join_button);
         getLogin_id = (EditText) findViewById(R.id.login_id);
         getLogin_pw = (EditText) findViewById(R.id.login_pw);
     }
-    private void initNetworkService() {
-        // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
-        networkService = ApplicationController.getInstance().getNetworkService();
 
-    }
     private void protected_passwd() {
         passWtm = new PasswordTransformationMethod();
         getLogin_pw.setTransformationMethod(passWtm);

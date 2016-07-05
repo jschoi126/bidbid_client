@@ -44,7 +44,7 @@ public class ConnectActivity extends AppCompatActivity {
         }
 
         ApplicationController application = ApplicationController.getInstance();
-        application.buildNetworkService(ip, port);
+        //application.buildService();
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         finish();

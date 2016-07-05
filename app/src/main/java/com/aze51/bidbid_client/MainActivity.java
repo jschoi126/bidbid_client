@@ -1,11 +1,13 @@
 package com.aze51.bidbid_client;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +24,20 @@ import com.aze51.bidbid_client.Fragment.MypageFragment;
 import com.aze51.bidbid_client.Fragment.PushListFragment;
 import com.aze51.bidbid_client.Fragment.SearchFragment;
 import com.aze51.bidbid_client.Fragment.TitleFragment;
+import com.aze51.bidbid_client.Network.NetworkService;
+import com.aze51.bidbid_client.Network.Product;
+import com.aze51.bidbid_client.Network.User;
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
 import com.aze51.bidbid_client.ViewPager.ViewPagerCustomAdapter;
 import com.google.firebase.FirebaseApp;
+
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
 
 public class MainActivity extends AppCompatActivity {
     public MainActivity reference;
@@ -85,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
         initiate();
         show_current_list();
     }
+
+
     public void show_detail_list() {
         pageState = 1;
         if(detailFlag == 0){
