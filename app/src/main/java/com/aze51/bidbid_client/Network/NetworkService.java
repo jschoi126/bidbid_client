@@ -1,6 +1,6 @@
 package com.aze51.bidbid_client.Network;
 
-import org.simpleframework.xml.Path;
+
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
-
+import retrofit.http.Path;
 /**
  * Created by Leekh on 2016-06-29.
  */
@@ -37,13 +37,12 @@ public interface NetworkService {
     Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);
     @POST("content/bid")
     Call<Auction> finishbid(@Body Auction auction);
-    @POST("content/search/{inputContents}")
-    Call<String> searchContents(@Path("inputContents") String intputContents);
+    @GET("search/{inputContents}")
+    Call<List<Product>> searchContents(@Path("inputContents") String intputContents);
     @GET("product")
     Call<List<List<Product>>> getProducts();
-    @GET("content/myPage/{user_id}")
+    @GET("userinfo/{user_id}")
     Call<List<Product>> getMyPage(@Path("user_id") String userId);
-
     // check session
     @GET("/sign")
     Call<User> getSession();

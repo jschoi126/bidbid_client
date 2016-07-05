@@ -14,6 +14,7 @@ import android.widget.GridView;
 import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
+import com.aze51.bidbid_client.ViewPager.ListItemData;
 
 import java.util.ArrayList;
 
@@ -25,16 +26,21 @@ public class SearchFragment extends Fragment {
     Button searchButton;
     EditText searchText;
     GridView gridView;
+    //NetworkService networkService;
     GridViewAdapter gridViewAdapter;
+    ArrayList<ListItemData> itemData;
     Context ctx;
+    Context mContext;
+    boolean get = false;
     //for the suggestion of the search token 2016 07 05 태준
-    String totalRecomendation[] = {"치킨","파스타","맥북","커피","고데기","세종대","맛집","영화","홍대","멋진최준성형","전태준","이경호 : 오로나민씨","권순짱","박예원:서버여신","김가영 : 차기 디자인파트장","재지니","아영짱","잘생긴 송성호","한장호찡",
-            "세정 : 레이아웃파트장","디비여신 박예원","우윳빛깔 박예원","피자장인 송성호"};
+    String totalRecomendation[] = {"치킨","파스타","맥북","초밥","샐러드바","세종대","맛집","샐러드바","홍대","멋진최준성형","전태준","이경호 : 오로나민씨","권순짱","박예원:서버여신","김가영 : 차기 디자인파트장","재지니","아영짱","잘생긴 송성호","한장호찡",
+            "세정 : 레이아웃파트장","디비여신 박예원","우윳빛깔 박예원","피자장인 송성호","강남","파스타"};
     //default : false
     boolean[] checkDuplication = new boolean[totalRecomendation.length];
     int randomCnt;
     ///
     private ArrayList<GridViewItem> itemDatas = null;
+
     public SearchFragment() {
     }
     @Nullable
@@ -43,8 +49,10 @@ public class SearchFragment extends Fragment {
         rootViewBasic = inflater.inflate(R.layout.search_list_fragment,container,false);
         searchButton = (Button)rootViewBasic.findViewById(R.id.search_button);
         searchText = (EditText)rootViewBasic.findViewById(R.id.search_edit_text);
-
+        itemData = new ArrayList<ListItemData>();
         itemDatas = new ArrayList<GridViewItem>();
+        mContext = ApplicationController.getInstance().getMainActivityContext();
+
         //5~8개의 랜덤 개수 추천
         randomCnt = (int)(Math.random()*3)+5;
         //initiate
@@ -77,7 +85,8 @@ public class SearchFragment extends Fragment {
                 String text = searchText.getText().toString();
                 ApplicationController.getInstance().SetSearchText(text);
                 //text = 검색어 텍스트
-                ((MainActivity)ctx).show_search_list_onclicked();
+                ApplicationController.getInstance().SetGridViewOnClick(1);
+                ((MainActivity) ctx).show_search_list_onclicked();
             }
         });
         return rootViewBasic;
