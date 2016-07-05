@@ -17,21 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
-import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.Auction;
-import com.aze51.bidbid_client.Network.Content;
+import com.aze51.bidbid_client.Network.Favorite;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.SharingActivity;
 import com.bumptech.glide.Glide;
-import com.facebook.share.ShareApi;
-import com.facebook.share.model.ShareOpenGraphAction;
-import com.facebook.share.model.ShareOpenGraphContent;
-import com.facebook.share.model.ShareOpenGraphObject;
-import com.facebook.share.model.SharePhoto;
-import com.facebook.share.model.SharePhotoContent;
-import com.facebook.share.widget.ShareDialog;
 
 import java.util.List;
 
@@ -54,11 +46,13 @@ public class DetailItemFragment extends Fragment {
     String get_img;
     ImageView detail_img;
     List<Product> products;
-
+    int registerID;
+    int tmpRegisterId;
+    Favorite f;
     //facebookshare
-    ImageView shareImage;
+    ImageView shareImage, shareImage2;
     Bitmap image;
-
+    boolean flag = false;
     int position;
     String tmpMessage;
     NetworkService networkService;
@@ -77,42 +71,21 @@ public class DetailItemFragment extends Fragment {
         products = ApplicationController.getInstance().getProducts(pos);
         position = ApplicationController.getInstance().getPos();
         initView();
-        //detail_price = (TextView)rootViewBasic.findViewById(R.id.detail_price);
-        //detail_time = (TextView)rootViewBasic.findViewById(R.id.detail_time);
-        //detail_price.setText("120000");
         String tmpName = products.get(position).product_name;
         int tmpPrice = products.get(position).register_minprice;
         String tmpImg = products.get(position).product_img;
-        final int tmpRegisterId = products.get(position).register_id; //
-        /*getDetailContent(tmpRegisterId);
-        String detailName = tmpProduct.product_name;
-        String detailImg = tmpProduct.product_img;
-        int detailPrice = tmpProduct.register_minprice;*/
-        //String tmpPrice = (products.get(position).register_minprice);
+        tmpRegisterId = products.get(position).register_id; //
+        f = new Favorite();
         detail_title.setText(tmpName);
         detail_price.setText(Integer.toString(tmpPrice));
-        //detail_bidPrice.setText(detail_bidPrice.getText());
-        //detail_time.setText("3:45");
         Glide.with(this).load(tmpImg).into(detail_img);
-        getDetailContent(position);
+        getDetailContent(pos);
 
-       /* detail_bid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //detail_bidPrice.setText(detail_bidPrice.getText());
-                auction = new Auction();
-                auction.deal_price = Integer.parseInt(detail_bidPrice.getText().toString());
-                auction.register_id = tmpRegisterId;
-                auction.user_id = ApplicationController.getUserId();
-                ApplicationController.setAuction(auction);
-                //postBidResult(auction);
-            }
-        });*/
         image = BitmapFactory.decodeResource(getResources(),R.drawable.food);
-        shareImage.setOnClickListener(new View.OnClickListener(){
+        shareImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("TAG","share clicked");
+                Log.i("TAG", "share clicked");
                 /*
                 SharePhoto photo = new SharePhoto.Builder()
                         .setBitmap(image)
@@ -159,8 +132,21 @@ public class DetailItemFragment extends Fragment {
                 //Context ctx = ApplicationController.getInstance().getMainActivityContext()
                 ShareDialog.show(getActivity(), content);*/
                 Context ctx = ApplicationController.getInstance().getMainActivityContext();
-                Intent intent =new Intent(ctx, SharingActivity.class);
+                Intent intent = new Intent(ctx, SharingActivity.class);
                 startActivity(intent);
+            }
+        });
+        shareImage2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(flag == true){
+                    CheckOutFavorite();
+                    flag = false;
+                }
+                else{
+                    CheckInFavorite();
+                    flag = true;
+                }
             }
         });
         return rootViewBasic;
@@ -175,7 +161,7 @@ public class DetailItemFragment extends Fragment {
         detail_bidPrice = (TextView)rootViewBasic.findViewById(R.id.inputPrice);
 
         shareImage = (ImageView)rootViewBasic.findViewById(R.id.detail_share_image);
-
+        shareImage2 = (ImageView)rootViewBasic.findViewById(R.id.detail_favorite_image);
     }
     public void postBidResult(Auction auction){
         Call<Auction> auctionCall = networkService.finishbid(auction);
@@ -202,13 +188,14 @@ public class DetailItemFragment extends Fragment {
     }
 
     public void getDetailContent(int id){
-        Call<Product> callProduct = networkService.getContent(id);
+        Call<Product> callProduct = networkService.getContent(tmpRegisterId);
         callProduct.enqueue(new Callback<Product>() {
             @Override
             public void onResponse(Response<Product> response, Retrofit retrofit) {
                 if(response.isSuccess()){
                     tmpProduct = new Product();
                     tmpProduct = response.body();
+                    registerID = tmpProduct.register_id;
                     detail_title.setText(tmpProduct.product_name);
                     Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
                     detail_price.setText(tmpProduct.register_minprice);
@@ -221,4 +208,38 @@ public class DetailItemFragment extends Fragment {
             }
         });
     } // DetailItemFragment
+    private void CheckInFavorite(){
+        f.registerId = Integer.toString(registerID);
+        Call<Favorite> pushFavoriteCall = networkService.registerFavorite(f);
+        pushFavoriteCall.enqueue(new Callback<Favorite>() {
+            @Override
+            public void onResponse(Response<Favorite> response, Retrofit retrofit) {
+                if(response.isSuccess()){
+                    Toast.makeText(getContext(),"즐겨찾기에 등록되었습니다.",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
+    }
+    private void CheckOutFavorite(){
+        String userid = ApplicationController.getInstance().getUserId();
+        Call<Void> checkoutCall = networkService.deleteFavorite(userid, f.registerId);
+        checkoutCall.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Response<Void> response, Retrofit retrofit) {
+                if(response.isSuccess()){
+                    Toast.makeText(getContext(),"즐겨찾기에 해제되었습니다.",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
+    }
 }

@@ -14,13 +14,20 @@ import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
+import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
+import com.aze51.bidbid_client.ViewPager.FavoriteViewAdapter;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
 import com.aze51.bidbid_client.ViewPager.RecyclerItemClickListener;
-import com.aze51.bidbid_client.ViewPager.RecyclerViewCustomAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * Created by jeon3029 on 16. 7. 4..
@@ -32,6 +39,8 @@ public class FavoriteFragment extends Fragment {
     RecyclerView.Adapter mAdapter;
     LinearLayoutManager mLayoutManager;
     Context mContext;
+    NetworkService networkService;
+    List<Product> myProducts;
     private static final String FAVORITE_NUM = "FAVORITE_NUM_";
     //private static final String SAVE_FAVORITE = "SAVE_FAVORITE_";
 
@@ -50,18 +59,18 @@ public class FavoriteFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
-        mAdapter = new RecyclerViewCustomAdapter(mContext,itemDatas);
-        recyclerView.setAdapter(mAdapter);
+        CallFavoriteList();
+
 
 
 
         //TODO : 패이버릿 리스트 저장하고있는거 서버에 보내서 받아서 itemdatas 에 추가해햐됨
 
-        Product p = new Product();
+        /*Product p = new Product();
         p.store_name = ApplicationController.getInstance().GetSearchtext();
         p.register_minprice = 1000;
         ListItemData tempitem = new ListItemData(p);
-        itemDatas.add(tempitem);
+        itemDatas.add(tempitem);*/
 
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
@@ -78,6 +87,34 @@ public class FavoriteFragment extends Fragment {
                     }
                 }));
         return rootViewBasic;
+    }
+
+    private void CallFavoriteList(){
+        String userId = ApplicationController.getInstance().getUserId();
+        Call<List<Product>> getFavorite = networkService.getFavoriteProduct(userId);
+        getFavorite.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
+                if (response.isSuccess()) {
+                    myProducts = response.body();
+                    if (myProducts.isEmpty() != true) {
+                        for (Product product : myProducts) {
+                            itemDatas.add(new ListItemData(product));
+                        }
+                        mAdapter = new FavoriteViewAdapter(mContext,itemDatas);
+                        recyclerView.setAdapter(mAdapter);
+                    }
+                }
+            }
+            @Override
+            public void onFailure (Throwable t) {
+
+            }
+        });
+    }
+
+    private void initNetworkService() {
+        networkService = ApplicationController.getInstance().getNetworkService();
     }
 
 }
