@@ -4,23 +4,23 @@
     android:layout_height="match_parent"
     >
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:src="@mipmap/logo"
         android:id="@+id/logo_image"
         android:background="#e42828"
         />
     <ImageView
         android:id="@+id/setting_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentRight="true"
         android:src="@mipmap/setting"
         android:background="#e42828"
         />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="48dp"
         android:text="BID - BID"
         android:gravity="center"
         android:layout_toLeftOf="@id/setting_image"
