@@ -23,7 +23,6 @@
             android:layout_height="60dp"
             android:layout_marginRight="18dp"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/setting"
             android:background="#e42828"
             />
         <ImageView
