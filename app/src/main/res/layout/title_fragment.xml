@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     >
     <ImageView
+        android:id="@+id/logo_image"
+        android:src="@mipmap/back"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@mipmap/logo"
-        android:id="@+id/logo_image"
         android:background="#e42828"
         />
     <ImageView
