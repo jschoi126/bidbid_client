@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#ffffff"
+    android:background="#e42828"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="48dp"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -10,6 +10,7 @@
         android:id="@+id/top_relative_setting"
         >
         <ImageView
+            android:layout_marginLeft="18dp"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@mipmap/back"
@@ -20,14 +21,14 @@
             android:id="@+id/setting_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginRight="18dp"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/setting"
             android:background="#e42828"
             />
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="BID - BID"
+            android:layout_height="48dp"
+            android:src="@mipmap/bidbid"
             android:gravity="center"
             android:layout_toLeftOf="@id/setting_image"
             android:layout_toRightOf="@id/logo_image"
