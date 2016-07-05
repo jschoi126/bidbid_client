@@ -29,7 +29,8 @@ public class SearchFragment extends Fragment {
     Context ctx;
     //for the suggestion of the search token 2016 07 05 태준
     String totalRecomendation[] = {"치킨","파스타","맥북","커피","고데기","세종대","맛집","영화","홍대","멋진최준성형","전태준","이경호 : 오로나민씨","권순짱","박예원:서버여신","김가영 : 차기 디자인파트장","재지니","아영짱","잘생긴 송성호","한장호찡",
-            "세정 : 레이아웃파트장","디비여신 박예원","우윳빛깔 박예원","피자장인 송성호"};
+            "세정 : 레이아웃파트장","디비여" +
+            "신 박예원","우윳빛깔 박예원","피자장인 송성호"};
     //default : false
     boolean[] checkDuplication = new boolean[totalRecomendation.length];
     int randomCnt;
