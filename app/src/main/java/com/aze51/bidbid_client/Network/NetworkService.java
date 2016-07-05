@@ -31,5 +31,7 @@ public interface NetworkService {
     Call<String> searchContents(@Path("inputContents") String intputContents);
     @GET("product")
     Call<List<List<Product>>> getProducts();
+    @GET("content/myPage/{user_id}")
+    Call<List<Product>> getMyPage(@Path("user_id") String userId);
 
 }
