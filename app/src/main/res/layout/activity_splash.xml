@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e42828"
-    tools:context="com.aze51.bidbid_client.MainActivity">
+    tools:context="com.aze51.bidbid_client.SplashActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
@@ -18,7 +18,7 @@
         android:background="#e42828"
         android:src="@mipmap/splashlogo"/>
     </LinearLayout>
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"

@@ -82,6 +82,17 @@ public class SplashActivity extends AppCompatActivity {
             return;
         }
 
+       new Thread() {
+           @Override
+           public void run() {
+               try {
+                   Thread.sleep(1500);
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
+           }
+       }.run();
+
         startActivity(intent);
         finish();
     }
