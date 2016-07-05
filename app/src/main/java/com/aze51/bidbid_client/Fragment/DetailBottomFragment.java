@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,13 +99,18 @@ public class DetailBottomFragment extends Fragment {
             @Override
             public void onClick(View v) {
                // getAuction = ApplicationController.getAuction();
-                auction = new Auction();
-                auction.user_id = ApplicationController.getUserId();
-                auction.register_id = tmpRegisterId;
-                auction.deal_price = Integer.parseInt(bidText.getText().toString());
-                postBidResult(auction);
-                Log.i("TAG","입찰 버튼 투름");
-                //Toast.makeText(ctx,"입찰하셨습니다",Toast.LENGTH_SHORT).show();
+                if(!TextUtils.isEmpty(bidText.getText())) {
+                    auction = new Auction();
+                    auction.user_id = ApplicationController.getUserId();
+                    auction.register_id = tmpRegisterId;
+
+                    auction.deal_price = Integer.parseInt(bidText.getText().toString());
+                    postBidResult(auction);
+                    Log.i("TAG", "입찰 버튼 투름");
+                    //Toast.makeText(ctx,"입찰하셨습니다",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ctx, "가격을 입력해주세요", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return rootViewBasic;

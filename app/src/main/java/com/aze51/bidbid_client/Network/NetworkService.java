@@ -50,4 +50,17 @@ public interface NetworkService {
     @GET("/sign/out")
     Call<User> logout();
 
+    //즐겨찾기 조회
+    @GET("favorite/{user_id}")
+    Call<List<Product>> getFavoriteProduct(@Path("user_id") String userId);
+
+    //즐겨찾기 등록
+    @POST("favorite")
+    Call<Favorite> registerFavorite(@Body Favorite favorite);
+
+    //즐겨찾기 삭제
+    @GET("favorite/{user_id}/{register_id}")
+    Call<Void> deleteFavorite(@Path("user_id") String userId, @Path("register_id") String registerId);
+
+
 }

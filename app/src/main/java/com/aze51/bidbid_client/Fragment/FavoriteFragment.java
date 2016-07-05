@@ -32,6 +32,9 @@ public class FavoriteFragment extends Fragment {
     RecyclerView.Adapter mAdapter;
     LinearLayoutManager mLayoutManager;
     Context mContext;
+    private static final String FAVORITE_NUM = "FAVORITE_NUM_";
+    //private static final String SAVE_FAVORITE = "SAVE_FAVORITE_";
+
     public FavoriteFragment() {
     }
     @Nullable
@@ -49,6 +52,8 @@ public class FavoriteFragment extends Fragment {
         itemDatas = new ArrayList<ListItemData>();
         mAdapter = new RecyclerViewCustomAdapter(mContext,itemDatas);
         recyclerView.setAdapter(mAdapter);
+
+
 
         //TODO : 패이버릿 리스트 저장하고있는거 서버에 보내서 받아서 itemdatas 에 추가해햐됨
 
@@ -74,4 +79,5 @@ public class FavoriteFragment extends Fragment {
                 }));
         return rootViewBasic;
     }
+
 }
