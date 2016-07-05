@@ -55,12 +55,9 @@ public class PushListCustomAdapter extends BaseAdapter{
 
         ImageView productImageView = (ImageView) convertView.findViewById(R.id.push_image) ;
         TextView titleTextView = (TextView) convertView.findViewById(R.id.push_text) ;
-
         PushListViewItem itemData_temp = itemDatas.get(position);
-
         productImageView.setImageResource(itemData_temp.img);
         titleTextView.setText(itemData_temp.title);
-
         return convertView;
     }
 }

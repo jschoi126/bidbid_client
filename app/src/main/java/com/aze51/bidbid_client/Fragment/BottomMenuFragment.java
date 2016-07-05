@@ -14,7 +14,7 @@ import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.R;
 
-import retrofit2.Call;
+import retrofit.Call;
 
 /**
  * Created by jeon3029 on 16. 6. 27..

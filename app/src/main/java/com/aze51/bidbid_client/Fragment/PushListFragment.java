@@ -25,7 +25,6 @@ public class PushListFragment extends Fragment {
     ListView listView;
     private ArrayList<PushListViewItem> itemDatas = null;
     PushListCustomAdapter pushListCustomAdapter;
-
     public PushListFragment(){
         //생성자
     }

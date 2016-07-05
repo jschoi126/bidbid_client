@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:id="@+id/search_relative"
+        android:id="@+id/search_relative_onclicked"
         >
         <RelativeLayout
-            android:id="@+id/informLayout"
+            android:id="@+id/informLayout_onclicked"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffffff">
@@ -29,7 +29,7 @@
                     android:layout_width="210dp"
                     android:layout_height="match_parent"
                     android:hint="검색어를 입력하세요"
-                    android:id="@+id/search_edit_text"
+                    android:id="@+id/search_edit_text_onclicked"
                     android:textColorHint="#939598"
                     android:singleLine="true"
                     android:textSize="14sp"
@@ -40,7 +40,7 @@
             </LinearLayout>
             <Button
                 android:layout_marginRight="18dp"
-                android:id="@+id/search_button"
+                android:id="@+id/search_button_onclicked"
                 android:background="@drawable/redcircleshape"
                 android:layout_width="78dp"
                 android:layout_height="26dp"
@@ -53,23 +53,11 @@
                 android:layout_centerVertical="true" />
         </RelativeLayout>
     </RelativeLayout>
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_search"
         android:layout_width="match_parent"
+        android:layout_below="@id/search_relative_onclicked"
         android:layout_height="match_parent"
-        android:layout_below="@id/search_relative"
         >
-        <GridView
-            android:id="@+id/gridView1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:columnWidth="100dp"
-            android:numColumns="auto_fit"
-            android:verticalSpacing="10dp"
-            android:horizontalSpacing="10dp"
-            android:stretchMode="columnWidth"
-            android:gravity="center">
-        </GridView>
-    </RelativeLayout>
-
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>
-
