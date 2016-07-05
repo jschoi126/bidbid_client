@@ -8,24 +8,32 @@
               tools:context="com.aze51.bidbid_client.MainActivity">
 
     <LinearLayout
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="18dp"
         android:layout_width="360dp"
-        android:layout_height="232dp"
+        android:layout_height="124dp"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center">
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="124dp"
+            android:layout_height="124dp"
             android:src="@mipmap/loginlogo"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="It's Bid Time!"
+            android:textSize="14sp"
+            android:textColor="#7b7b7b"
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_marginRight="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_gravity="center"
         android:gravity="center">
@@ -41,11 +49,9 @@
             android:layout_width="272dp"
             android:id="@+id/login_id"
             android:layout_height="35dp"
-
             android:inputType="textEmailAddress"
-
             android:hint="아이디"
-            android:textSize="14dp"/>
+            android:textSize="14sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -58,7 +64,6 @@
         android:gravity="center">
 
         <EditText
-
             android:paddingLeft="15dp"
             android:drawableLeft="@mipmap/password"
             android:drawablePadding="30dp"
@@ -70,21 +75,21 @@
             android:layout_height="35dp"
             android:id="@+id/login_pw"
             android:hint="비밀번호"
-
             android:inputType="textEmailAddress"
-
-            android:textSize="14dp"/>
+            android:textSize="14sp"/>
     </LinearLayout>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center">
 
         <Button
-            android:background="@drawable/bluecircleshape"
+            android:background="@drawable/graycircleshape"
             android:layout_marginLeft="44dp"
             android:layout_marginRight="44dp"
             android:layout_width="272dp"
@@ -95,46 +100,29 @@
             android:textColor="#ffffff"
             android:textStyle="bold"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginRight="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="22dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"/>
 
         <FrameLayout
             android:layout_width="272dp"
             android:layout_height="35dp"
-            android:background="@drawable/bluecircleshape"
-            >
+            android:background="@drawable/bluecircleshape" >
             <com.facebook.login.widget.LoginButton
                 android:layout_width="260dp"
                 android:layout_height="match_parent"
-
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:gravity="center"
                 android:id="@+id/facebook_LoginButton"
                 android:layout_gravity="center"/>
         </FrameLayout>
+
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginRight="44dp"
-        android:layout_marginLeft="44dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center">
@@ -145,8 +133,8 @@
             android:textSize="12dp"/>
         <Button
             android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="31dp"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
             android:text="가입하기"
             android:textSize="12dp"
             android:textColor="#ff0000"
@@ -154,6 +142,15 @@
             android:background="#eeeeee"
             android:gravity="center"
             android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="146dp" />
     </LinearLayout>
 
 </LinearLayout>

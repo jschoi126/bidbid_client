@@ -8,7 +8,7 @@ import android.widget.ImageView;
 public class SettingActivity extends AppCompatActivity {
 
     ImageView logo_image;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
