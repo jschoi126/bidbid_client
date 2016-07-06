@@ -97,15 +97,7 @@ public class DetailItemFragment extends Fragment {
             registerID = ApplicationController.getInstance().getRegisterId();
             f.user_id = ApplicationController.getInstance().getUserId();
             f.register_id = registerID;
-        /*String tmpName = products.get(position).product_name;
-        int tmpPrice = products.get(position).register_minprice;
-        String tmpImg = products.get(position).product_img;
-        tmpRegisterId = products.get(position).register_id; //
-
-        detail_title.setText(tmpName);
-        detail_price.setText(Integer.toString(tmpPrice));
-        Glide.with(this).load(tmpImg).into(detail_img);*/
-            getDetailContent(registerID);
+            getDetailContent(registerID, f.user_id);
        // image = BitmapFactory.decodeResource(getResources(),R.drawable.food);
         shareImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,8 +174,6 @@ public class DetailItemFragment extends Fragment {
         //detail_time = (TextView)rootViewBasic.findViewById(R.id.detail_time);
         detail_title = (TextView)rootViewBasic.findViewById(R.id.detail_item_name);
         detail_img = (ImageView)rootViewBasic.findViewById(R.id.detail_ImageView);
-        //detail_bid = (Button)rootViewBasic.findViewById(R.id.bidbtn);
-        //detail_bidPrice = (TextView)rootViewBasic.findViewById(R.id.inputPrice);
         detail_time_hour = (TextView)rootViewBasic.findViewById(R.id.detail_time_hour);
         detail_time_min = (TextView)rootViewBasic.findViewById(R.id.detail_time_min);
         detail_time_sec = (TextView)rootViewBasic.findViewById(R.id.detail_time_sec);
@@ -195,8 +185,8 @@ public class DetailItemFragment extends Fragment {
         networkService = ApplicationController.getInstance().getNetworkService();
     }
 
-    public void getDetailContent(int id){
-        Call<List<Product>> callProduct = networkService.getContent(id);
+    public void getDetailContent(int id, String user_id){
+        Call<List<Product>> callProduct = networkService.getContent(id, user_id);
         callProduct.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
@@ -208,12 +198,8 @@ public class DetailItemFragment extends Fragment {
                     Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
                     detail_price.setText(Integer.toString(tmpProduct.register_minprice));
                     tmp_time = tmpProduct.rtime;
-                    /*rHour = (tmp_time/3600);
-                    double tmp2 = ((tmp_time/3600.0)-rHour)*60.0;
-                    rMin = ((int)tmp2);
-                    double tmp3 = (tmp2-rMin)*60;
-                    rSec = ((int)tmp3);*/
                     dealPrice = tmpProduct.deal_price;
+                    clearTime();
                     getTime();
                     startRemainingTimeCount();
                     ApplicationController.getInstance().sets(1);
@@ -240,7 +226,6 @@ public class DetailItemFragment extends Fragment {
             }
             @Override
             public void onFailure(Throwable t) {
-
             }
         });
     }
@@ -297,5 +282,10 @@ public class DetailItemFragment extends Fragment {
         double tmp3 = (tmp2-rMin)*60;
         rSec = ((int)tmp3);
         dealPrice = tmpProduct.deal_price;
+    }
+    private void clearTime(){
+        rHour = 0;
+        rMin = 0;
+        rSec = 0;
     }
 }

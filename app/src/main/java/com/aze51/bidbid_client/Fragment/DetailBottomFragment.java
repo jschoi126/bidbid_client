@@ -42,6 +42,7 @@ public class DetailBottomFragment extends Fragment {
     EditText bidText;
     Button bidBtn;
     int position;
+    int tmpRegisterId;
     List<Product> products;
     LinearLayout detailLinearBid;
     RelativeLayout relativeLayout;
@@ -56,17 +57,21 @@ public class DetailBottomFragment extends Fragment {
         initNetworkService();
         ctx = ApplicationController.getInstance().getMainActivityContext();
         int pos = ApplicationController.getInstance().getPosition();
-        if(((MainActivity)ctx).getFromState()==6){//from search on clicked detail list
+        if (((MainActivity) ctx).getFromState() == 6) { //from search on clicked  detail
             products = ApplicationController.getInstance().getProducts(5);
-        }
-        else if(((MainActivity)ctx).getFromState()==3){//from mypage detail list
+            ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
+        } else if (((MainActivity) ctx).getFromState() == 2) { //from favorite detail
+            products = ApplicationController.getInstance().getProducts(3);
+            ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
+        } else if (((MainActivity) ctx).getFromState() == 3) { //from mypage detail
             products = ApplicationController.getInstance().getProducts(4);
-        }
-        else {//view Pager
-            products = ApplicationController.getInstance().getProducts(pos);
+            ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
+        } else {
+            products = ApplicationController.getInstance().getProducts(position);
+            ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
         }
         //position = ApplicationController.getInstance().getPos();
-        final int tmpRegisterId = products.get(position).register_id; //
+        tmpRegisterId = products.get(position).register_id;
         //final int tmpPrice = products.get(position).register_minprice;
         rootViewBasic = inflater.inflate(R.layout.detail_bottom_fragment,container,false);
         //image1 = (ImageView)rootViewBasic.findViewById(R.id.logo_image);

@@ -198,6 +198,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void show_favorite_list() {
+        if(pageState == 1){//from detail page
+            fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
+        }
         fromState = pageState;
         pageState = 2;
         if(favoriteFlag ==0) {
