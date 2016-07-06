@@ -21,8 +21,7 @@ import com.aze51.bidbid_client.SettingActivity;
 public class TitleFragment extends Fragment {
     View rootViewBasic;
     //ImageView image1;
-    TextView text;
-    ImageView image2;
+    ImageView bidbidimage;
     ImageView settingImage;
     public TitleFragment(){
         //생성자
@@ -32,9 +31,9 @@ public class TitleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.title_fragment,container,false);
         //image1 = (ImageView)rootViewBasic.findViewById(R.id.logo_image);
-        text = (TextView)rootViewBasic.findViewById(R.id.bidbid_text);
-        image2 = (ImageView)rootViewBasic.findViewById(R.id.setting_image);
-        image2.setOnClickListener(new View.OnClickListener(){
+        //bidbidimage = (ImageView)rootViewBasic.findViewById(R.id.bidbid_image);
+        settingImage = (ImageView)rootViewBasic.findViewById(R.id.setting_image);
+        settingImage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Context ctx = ApplicationController.getInstance().getMainActivityContext();

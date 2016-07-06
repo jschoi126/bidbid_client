@@ -110,22 +110,22 @@ public class ApplicationController extends Application {
         });
     }
     public static List<Product> getProducts(int id){
-        if(id == 0){
+        if(id == 0){//진행
             return products1;
         }
-        else if(id == 1){
+        else if(id == 1){//예정
             return products2;
         }
-        else if(id == 2){
+        else if(id == 2){//마감
             return products3;
         }
-        else if(id ==3){
+        else if(id ==3){//favorite
             return products4;
         }
-        else if(id == 4){
+        else if(id == 4){//mypage
             return products5;
         }
-        else if(id == 5){
+        else if(id == 5){//search
             return products6;
         }
         else {

@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/detail_up"
             android:id="@+id/detail_up_image"
-            android:background="#88e7d1d1"/>
+            android:background="#ededed"/>
     </LinearLayout>
     <LinearLayout
         android:visibility="gone"
@@ -44,8 +44,10 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#e42828"
+        android:background="@mipmap/bidbutton"
         android:layout_below="@id/detail_linear_bid"
         android:id="@+id/bidbtn"
-        android:text="입찰하기 >" />
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:text="입찰하기" />
 </RelativeLayout>

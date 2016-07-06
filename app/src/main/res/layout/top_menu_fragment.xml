@@ -54,10 +54,6 @@
             android:id="@+id/approaching_btn"
             android:background="#eeeeee"
             android:textColor="#848589"
-
             />
     </LinearLayout>
-
-
-
 </LinearLayout>

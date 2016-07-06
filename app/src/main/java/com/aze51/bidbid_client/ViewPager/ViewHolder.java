@@ -21,7 +21,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         imageView = (ImageView)itemView.findViewById(R.id.ImageView);
         text1 = (TextView)itemView.findViewById(R.id.item_name);
-        text2 = (TextView)itemView.findViewById(R.id.item_price);
+        text2 = (TextView)itemView.findViewById(R.id.minimum_price);
         text3 = (TextView)itemView.findViewById(R.id.remain_time_hour);
         text4 = (TextView)itemView.findViewById(R.id.remain_time_min);
         text5 = (TextView)itemView.findViewById(R.id.remain_time_sec);
