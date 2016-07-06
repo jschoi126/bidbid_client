@@ -25,28 +25,37 @@ configurations {
     compile.exclude module: 'xpp3'
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
 
+    //tab color
+
+    //facebook
+
+
     compile 'com.android.support:appcompat-v7:23.1.1'
-
-    //compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.google.firebase:firebase-core:9.0.2'
-    compile 'com.google.firebase:firebase-messaging:9.0.2'
-
-    compile 'com.android.support:recyclerview-v7:23.1.1'
-    compile 'com.android.support:cardview-v7:23.1.1'
-
-
-    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
-    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
-    compile 'com.squareup.retrofit:converter-simplexml:2.0.0-beta2'
-    compile 'com.github.bumptech.glide:glide:3.6.1'
 
     compile 'com.xdu.xhin:library:0.1.0' //tab color
 
     compile 'com.facebook.android:facebook-android-sdk:[4,5)' //facebook
 
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.google.firebase:firebase-core:9.0.2'
+    compile 'com.google.firebase:firebase-messaging:9.0.2'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.github.paolorotolo:appintro:4.0.0'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-simplexml:2.0.0-beta2'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.xdu.xhin:library:0.1.0'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.android.support:support-v4:23.4.0'
 }
 apply plugin: 'com.google.gms.google-services'
