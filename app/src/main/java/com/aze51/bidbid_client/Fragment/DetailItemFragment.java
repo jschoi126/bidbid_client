@@ -53,7 +53,7 @@ public class DetailItemFragment extends Fragment {
     int tmpRegisterId;
     Favorite f;
     //facebookshare
-    ImageView shareImage, shareImage2;
+    ImageView shareImage, favoriteImage;
     Bitmap image;
     boolean favoriteFlag = false;
     int position, pos;
@@ -153,14 +153,16 @@ public class DetailItemFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        shareImage2.setOnClickListener(new View.OnClickListener() {
+        favoriteImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(favoriteFlag == true){
+                    favoriteImage.setImageResource(R.mipmap.favorite);
                     CheckOutFavorite();
                     favoriteFlag = false;
                 }
                 else{
+                    favoriteImage.setImageResource(R.mipmap.favorite_click);
                     CheckInFavorite();
                     favoriteFlag = true;
                 }
@@ -179,7 +181,7 @@ public class DetailItemFragment extends Fragment {
         detail_time_sec = (TextView)rootViewBasic.findViewById(R.id.detail_time_sec);
 
         shareImage = (ImageView)rootViewBasic.findViewById(R.id.detail_share_image);
-        shareImage2 = (ImageView)rootViewBasic.findViewById(R.id.detail_favorite_image);
+        favoriteImage = (ImageView)rootViewBasic.findViewById(R.id.detail_favorite_image);
     }
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();

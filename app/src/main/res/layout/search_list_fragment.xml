@@ -56,20 +56,49 @@
                 android:layout_centerVertical="true" />
         </RelativeLayout>
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingTop="16dp"
+        android:background="#ffffff"
+        android:paddingLeft="18dp"
+        android:paddingBottom="16dp"
+        android:layout_below="@id/search_relative"
+        android:id="@+id/suggest_star"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
 
+            android:src="@mipmap/star"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="추천 검색어"
+            android:textColor="#e42828"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1dp"
+        android:background="#ededed"
+        android:layout_centerHorizontal="true"
+        ></View>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/search_relative"
+        android:layout_below="@id/suggest_star"
         >
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#eeeeee"
             >
         </LinearLayout>
-
         <GridView
             android:id="@+id/gridView1"
             android:layout_width="fill_parent"

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.aze51.bidbid_client.AppIntro.BidBidIntro;
 import com.aze51.bidbid_client.Network.Login;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.facebook.CallbackManager;
@@ -91,7 +92,11 @@ public class LoginActivity extends Activity {
                                     //finish();
                                     //MainActivity 실행
                                     //이 아니라 로딩할 액티비티 실행
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                                    startActivity(intent);
+
+                                    //sharedpreference가 있으면 MainActivity로
+                                    Intent intent = new Intent(getApplicationContext(), BidBidIntro.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -133,8 +138,11 @@ public class LoginActivity extends Activity {
                     public void onResponse(Response<Login> response, Retrofit retrofit) {
                         if(response.isSuccess()){
                             Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            //sharedpreference가 있으면 MainActivity로
+                            Intent intent = new Intent(getApplicationContext(), BidBidIntro.class);
                             startActivity(intent);
+//                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+//                            startActivity(intent);
                             finish();
                         }
                         else

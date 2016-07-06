@@ -36,6 +36,7 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         //holder.imageView.setImageResource(itemDatas.get(position).getImage());
+
         Glide.with(mContext).load(itemDatas.get(position).getImg()).fitCenter().into(holder.imageView);
         holder.text1.setText(itemDatas.get(position).getProduct_name());
         holder.text2.setText(itemDatas.get(position).getPrice());

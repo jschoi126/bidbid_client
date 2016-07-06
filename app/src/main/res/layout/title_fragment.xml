@@ -9,6 +9,7 @@
         android:layout_height="48dp"
         android:layout_marginLeft="18dp"
         android:id="@+id/logo_image"
+        android:visibility="invisible"
         android:background="#e42828"
         android:src="@mipmap/logo"
         />

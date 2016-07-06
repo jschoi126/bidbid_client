@@ -56,22 +56,24 @@ public class DetailBottomFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         initNetworkService();
         ctx = ApplicationController.getInstance().getMainActivityContext();
-        int pos = ApplicationController.getInstance().getPosition();
+
+        int pos = ApplicationController.getInstance().getPos();
         if (((MainActivity) ctx).getFromState() == 6) { //from search on clicked  detail
             products = ApplicationController.getInstance().getProducts(5);
             ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
         } else if (((MainActivity) ctx).getFromState() == 2) { //from favorite detail
             products = ApplicationController.getInstance().getProducts(3);
-            ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
+            ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
         } else if (((MainActivity) ctx).getFromState() == 3) { //from mypage detail
             products = ApplicationController.getInstance().getProducts(4);
-            ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
-        } else {
+            ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
+        } else {//on viewPager
+            position = ApplicationController.getInstance().getPosition();
             products = ApplicationController.getInstance().getProducts(position);
             ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
         }
         //position = ApplicationController.getInstance().getPos();
-        tmpRegisterId = products.get(position).register_id;
+        tmpRegisterId = products.get(pos).register_id;
         //final int tmpPrice = products.get(position).register_minprice;
         rootViewBasic = inflater.inflate(R.layout.detail_bottom_fragment,container,false);
         //image1 = (ImageView)rootViewBasic.findViewById(R.id.logo_image);
@@ -90,7 +92,7 @@ public class DetailBottomFragment extends Fragment {
                 if(upDownState == false){//현재 다운
                     upDownState = true;
                     detailLinearBid.setVisibility(LinearLayout.VISIBLE);
-                    upDownImage.setImageResource(R.drawable.detail_down);
+                    upDownImage.setImageResource(R.mipmap.bidbar_down);
 
                     int paddingPixel = 0;
                     float density = ctx.getResources().getDisplayMetrics().density;
@@ -100,7 +102,7 @@ public class DetailBottomFragment extends Fragment {
                 else if(upDownState == true){//현재 업
                     upDownState = false;
                     detailLinearBid.setVisibility(LinearLayout.GONE);
-                    upDownImage.setImageResource(R.drawable.detail_up);
+                    upDownImage.setImageResource(R.mipmap.bidbar_up);
 
                     int paddingPixel = 50;
                     float density = ctx.getResources().getDisplayMetrics().density;
@@ -113,7 +115,16 @@ public class DetailBottomFragment extends Fragment {
             @Override
             public void onClick(View v) {
                // getAuction = ApplicationController.getAuction();
-                if(!TextUtils.isEmpty(bidText.getText())) {
+                if(upDownState==false){
+                    upDownState = true;
+                    detailLinearBid.setVisibility(LinearLayout.VISIBLE);
+                    upDownImage.setImageResource(R.mipmap.bidbar_down);
+                    int paddingPixel = 0;
+                    float density = ctx.getResources().getDisplayMetrics().density;
+                    int paddingDp = (int)(paddingPixel * density);
+                    relativeLayout.setPaddingRelative(0,paddingDp,0,0);
+                }
+                else if(!TextUtils.isEmpty(bidText.getText())) {
                     auction = new Auction();
                     auction.user_id = ApplicationController.getUserId();
                     auction.register_id = tmpRegisterId;
