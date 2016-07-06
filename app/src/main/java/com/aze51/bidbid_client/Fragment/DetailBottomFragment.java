@@ -56,23 +56,24 @@ public class DetailBottomFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         initNetworkService();
         ctx = ApplicationController.getInstance().getMainActivityContext();
+
         int pos = ApplicationController.getInstance().getPos();
         if (((MainActivity) ctx).getFromState() == 6) { //from search on clicked  detail
             products = ApplicationController.getInstance().getProducts(5);
             ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
         } else if (((MainActivity) ctx).getFromState() == 2) { //from favorite detail
             products = ApplicationController.getInstance().getProducts(3);
-            ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
+            ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
         } else if (((MainActivity) ctx).getFromState() == 3) { //from mypage detail
             products = ApplicationController.getInstance().getProducts(4);
-
-            ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
-        } else {
+            ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
+        } else {//on viewPager
+            position = ApplicationController.getInstance().getPosition();
             products = ApplicationController.getInstance().getProducts(position);
             ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
         }
         //position = ApplicationController.getInstance().getPos();
-        tmpRegisterId = products.get(position).register_id;
+        tmpRegisterId = products.get(pos).register_id;
         //final int tmpPrice = products.get(position).register_minprice;
         rootViewBasic = inflater.inflate(R.layout.detail_bottom_fragment,container,false);
         //image1 = (ImageView)rootViewBasic.findViewById(R.id.logo_image);
