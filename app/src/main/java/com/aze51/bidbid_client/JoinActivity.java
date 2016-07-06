@@ -203,6 +203,7 @@ public class JoinActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                textViewKeyTimer.setText("인증 번호가 만료 되었습니다");
                 isKeyExpired = true;
             }
         };
