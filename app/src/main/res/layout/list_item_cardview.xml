@@ -26,33 +26,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="270dp"
                 android:background="#ffffff"
-                android:layout_alignParentRight="true"
                 android:layout_below="@id/ImageView"
                 >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginLeft="18dp"
-                    android:id="@+id/like_and_share_linear">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="48dp"
-                        android:src="@mipmap/favorite"/>
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="48dp"
-                        android:src="@mipmap/share"/>
-
-                </LinearLayout>
                 <View
                     android:layout_width="320dp"
                     android:layout_marginBottom="16dp"
-                    android:layout_centerHorizontal="true"
                     android:layout_height="1dip"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="20dp"
                     android:id="@+id/view_line1"
-                    android:layout_below="@+id/like_and_share_linear"
-                    android:background="#ededed"></View>
+                    android:background="#ededed">
+                </View>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,7 +89,8 @@
                     android:layout_below="@id/item_price_linear"
                     android:layout_marginLeft="18dp"
                     android:id="@+id/item_layout_remain1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    >
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
