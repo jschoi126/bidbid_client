@@ -123,7 +123,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="시"
+                        android:text="시간"
                         android:textSize="18sp"
                         android:layout_marginLeft="3dp"
                         android:id="@+id/remain_time2"

@@ -20,7 +20,6 @@ public class ListItemData {
     }
     public ListItemData(Product product)
     {
-
         this.img = product.product_img;
         this.product_name = product.product_name;
         this.prices = product.register_minprice;

@@ -137,6 +137,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:id="@+id/detail_time_hour"
+                            android:text=""
                             android:textSize="12sp"
                             android:textColor="#A6A6A6"
                             />

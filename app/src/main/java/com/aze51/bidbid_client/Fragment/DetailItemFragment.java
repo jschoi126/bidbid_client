@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -47,7 +48,8 @@ public class DetailItemFragment extends Fragment {
     String get_img;
     ImageView detail_img;
     List<Product> products, tmp_Product;
-    int registerID;
+    int registerID, dealPrice;
+    long rHour, rMin, rSec;
     int tmpRegisterId;
     Favorite f;
     //facebookshare
@@ -55,13 +57,16 @@ public class DetailItemFragment extends Fragment {
     Bitmap image;
     boolean favoriteFlag = false;
     int position, pos;
-    int tmp_time;
+    long tmp_time;
     String tmpMessage;
     NetworkService networkService;
     Auction auction;
     Context ctx;
     //static String user_id = "lkh034";
     Product tmpProduct;
+    private TextView textViewKeyTimer;
+    private boolean isKeyExpired = true;
+
     public DetailItemFragment(){
         //생성자
     }
@@ -202,7 +207,15 @@ public class DetailItemFragment extends Fragment {
                     detail_title.setText(tmpProduct.product_name);
                     Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
                     detail_price.setText(Integer.toString(tmpProduct.register_minprice));
-                    //tmp_time = tmpProduct.rtime;
+                    tmp_time = tmpProduct.rtime;
+                    /*rHour = (tmp_time/3600);
+                    double tmp2 = ((tmp_time/3600.0)-rHour)*60.0;
+                    rMin = ((int)tmp2);
+                    double tmp3 = (tmp2-rMin)*60;
+                    rSec = ((int)tmp3);*/
+                    dealPrice = tmpProduct.deal_price;
+                    getTime();
+                    startRemainingTimeCount();
                     ApplicationController.getInstance().sets(1);
 
                 }
@@ -222,7 +235,7 @@ public class DetailItemFragment extends Fragment {
             @Override
             public void onResponse(Response<Favorite> response, Retrofit retrofit) {
                 if(response.isSuccess()){
-                    Toast.makeText(getContext(),"즐겨찾기에 등록되었습니다.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "즐겨찾기에 등록되었습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
@@ -231,29 +244,58 @@ public class DetailItemFragment extends Fragment {
             }
         });
     }
-    private void CheckOutFavorite(){
-        //String userid = ApplicationController.getInstance().getUserId();
+
+    private void CheckOutFavorite() {
         Call<Void> checkoutCall = networkService.deleteFavorite(f.user_id, f.register_id);
         checkoutCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Response<Void> response, Retrofit retrofit) {
-                if(response.isSuccess()){
+                if (response.isSuccess()){
                     Toast.makeText(getContext(),"즐겨찾기에 해제되었습니다.",Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Throwable t) {
-
             }
         });
     }
-    public void setDetail(List<Product>detail ){
-        tmpProduct = detail.get(0);
-        registerID = tmpProduct.register_id;
-        detail_title.setText(tmpProduct.product_name);
-        Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
-        detail_price.setText(tmpProduct.register_minprice);
-        //tmp_time = tmpProduct.rtime;
+
+    private void startRemainingTimeCount() {
+        isKeyExpired = false;
+        CountDownTimer timer = new CountDownTimer(tmp_time* 1000, 1000) {
+
+            //int counter = 3 * 60;
+            @Override
+            public void onTick(long millisUntilFinished) {
+                tmp_time= millisUntilFinished/1000;
+                rSec--;
+                if(rSec == -1){
+                    rMin--;
+                    rSec = 59;
+                }
+                else if(rMin == -1){
+                    rMin = 59;
+                    rHour--;
+                }
+                detail_time_sec.setText(Long.toString(rSec));
+                detail_time_hour.setText(Long.toString(rHour));
+                detail_time_min.setText(Long.toString(rMin));
+            }
+
+            @Override
+            public void onFinish() {
+                if(rHour == 0)
+                    Toast.makeText(getContext(),"경매 마감", Toast.LENGTH_SHORT).show();
+            }
+        };
+        timer.start();
+    }
+    private void getTime(){
+        rHour = (tmp_time/3600);
+        double tmp2 = ((tmp_time/3600.0)-rHour)*60.0;
+        rMin = ((int)tmp2);
+        double tmp3 = (tmp2-rMin)*60;
+        rSec = ((int)tmp3);
+        dealPrice = tmpProduct.deal_price;
     }
 }
