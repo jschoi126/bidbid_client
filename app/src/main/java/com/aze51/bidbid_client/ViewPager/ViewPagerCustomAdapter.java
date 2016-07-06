@@ -22,11 +22,6 @@ import com.aze51.bidbid_client.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
-
 /**
  * Created by jeon3029 on 16. 6. 28..
  */
@@ -203,8 +198,8 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             pbHeaderProgress.setVisibility(View.GONE);
         }
     }
-    public void getDetailContent(int id){
-        Call<List<Product>> callProduct = networkService.getContent(id);
+   /* public void getDetailContent(int id, String userid){
+        Call<List<Product>> callProduct = networkService.getContent(id,userid);
         callProduct.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
@@ -215,7 +210,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
                     detail_title.setText(tmpProduct.product_name);
                     Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
                     detail_price.setText(tmpProduct.register_minprice);
-                    //tmp_time = tmpProduct.rtime;*/
+                    //tmp_time = tmpProduct.rtime;
 
                 }
 
@@ -226,7 +221,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
 
             }
         });
-    } // DetailItemFragment
+    }  //DetailItemFragment*/
 
 }
 

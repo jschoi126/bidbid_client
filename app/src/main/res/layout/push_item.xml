@@ -14,11 +14,12 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/push_image"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="18dp"
             android:layout_width="100dp"
             android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"
             android:layout_height="100dp" />
         <LinearLayout
             android:orientation="vertical"
@@ -26,11 +27,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp">
 
+
             <TextView
                 android:id="@+id/push_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="[노원구] 맛난 파스타"
                 android:textColor="#000000"
@@ -56,7 +57,7 @@
                     android:layout_marginBottom="16dp"
                     android:text="원을 입찰하였습니다."
                     android:textColor="#939898"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:gravity="center_vertical" />
             </LinearLayout>
             <LinearLayout
@@ -74,9 +75,7 @@
                     android:layout_height="wrap_content"
                     android:text="15"
                     android:id="@+id/push_remain_time"
-                    android:textSize="12sp"
-                    android:layout_gravity="center_vertical"
-                    />
+                    android:textSize="12sp" />
                 <TextView
                     android:id="@+id/push_textView3"
                     android:layout_width="wrap_content"

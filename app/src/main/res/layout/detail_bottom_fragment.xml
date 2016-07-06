@@ -6,16 +6,18 @@
     android:id="@+id/detail_bottom_relative"
     android:orientation="vertical">
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:gravity="center_horizontal"
         android:id="@+id/detail_up_layout"
         >
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:src="@drawable/detail_up"
+            android:src="@mipmap/bidbar_up"
             android:id="@+id/detail_up_image"
-            android:background="#ededed"/>
+            />
     </LinearLayout>
     <LinearLayout
         android:visibility="gone"
@@ -39,6 +41,7 @@
             android:inputType="number"
             android:id="@+id/inputPrice"
             android:textColor="#000000"
+            android:textSize="20sp"
             >
         </EditText>
     </LinearLayout>
@@ -48,7 +51,7 @@
         android:background="@mipmap/bidbutton"
         android:layout_below="@id/detail_linear_bid"
         android:id="@+id/bidbtn"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textColor="#ffffff"
         android:text="입찰하기" />
 </RelativeLayout>

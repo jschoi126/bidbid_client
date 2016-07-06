@@ -137,6 +137,7 @@ public class ApplicationController extends Application {
     }
     public static int getPosition(){return postion;}
     public static void setPosition(int pos){postion = pos;}
+
     public static int getPos(){return productPos;}
     public static void setPos(int pos){productPos = pos;}
     public static String getUserId(){return user;}
