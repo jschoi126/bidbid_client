@@ -44,6 +44,7 @@ public class JoinActivity extends AppCompatActivity {
     public String check;
     public String tmpCertifiacation;
 
+    TextView showPrivacy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +125,14 @@ public class JoinActivity extends AppCompatActivity {
                 /*} else{   ???
                     Toast.makeText(getApplicationContext(),"인증번호 및 ID의 중복체크 확인하세요",Toast.LENGTH_SHORT).show();
                 */}
+            }
+        });
+        showPrivacy = (TextView)findViewById(R.id.show_privacy_view);
+        showPrivacy.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PrivacyActivity.class);
+                startActivity(intent);
             }
         });
     }

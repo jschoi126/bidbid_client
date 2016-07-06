@@ -62,6 +62,9 @@ public class DetailBottomFragment extends Fragment {
         else if(((MainActivity)ctx).getFromState()==3){//from mypage detail list
             products = ApplicationController.getInstance().getProducts(4);
         }
+        else if(((MainActivity)ctx).getFromState()==2){//from favorite detail list
+            products = ApplicationController.getInstance().getProducts(3);
+        }
         else {//view Pager
             products = ApplicationController.getInstance().getProducts(pos);
         }

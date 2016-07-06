@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,19 +59,24 @@ public class MypageFragment extends Fragment {
 
          //TODO : 서버에 유저 아이디 보내서 유저가 입찰하고 있는 리스트 받아야 함
         String user = ApplicationController.getInstance().getUserId();
+
         Call<List<Product>> userCall = networkService.getMyPage(user);
         userCall.enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
                 if(response.isSuccess()) {
                     myProducts = response.body();
+                    Log.i("TAG","get response");
+                    ApplicationController.getInstance().SetProducts5(myProducts);
                     if (myProducts.isEmpty() != true) {
+                        Log.i("TAG","response not empty");
                         ApplicationController.getInstance().SetProducts5(myProducts);
                         for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
                         }
                         mAdapter = new MyPageRecyclerViewAdapter(mContext,itemDatas);
                         recyclerView.setAdapter(mAdapter);
+                        ((MainActivity)mContext).show_mypage_list();
                     }
                     else{
                         Toast.makeText(getContext(),"입찰하신 상품이 없습니다.",Toast.LENGTH_SHORT).show();

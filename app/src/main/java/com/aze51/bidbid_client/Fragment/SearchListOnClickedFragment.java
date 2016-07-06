@@ -76,6 +76,9 @@ public class SearchListOnClickedFragment extends Fragment {
             ApplicationController.getInstance().SetGridViewOnClick(0);
             CallRecomandSearch(text);
         }
+        else{
+            CallRecomandSearch(text);
+        }
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

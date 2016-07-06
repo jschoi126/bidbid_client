@@ -163,6 +163,7 @@
             android:id="@+id/abc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:paddingLeft="44dp">
 
             <CheckBox
@@ -175,15 +176,15 @@
                 android:textColor="#000000"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="75dp"
+                android:layout_height="35dp"
                 android:layout_gravity="right"
                 android:text="약관보기"
+                android:gravity="center_vertical|center_horizontal|right"
                 android:textSize="14sp"
                 android:textColor="#e42828"
-                android:layout_marginRight="52dp"
-                android:layout_marginEnd="52dp"
-                android:layout_centerVertical="true"
+                android:layout_marginRight="45dp"
+                android:id="@+id/show_privacy_view"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 

@@ -88,6 +88,7 @@ public class FavoriteFragment extends Fragment {
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
                 if (response.isSuccess()) {
                     myProducts = response.body();
+                    ApplicationController.getInstance().SetProducts4(myProducts);
                     if (myProducts.isEmpty() != true) {
                         for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
