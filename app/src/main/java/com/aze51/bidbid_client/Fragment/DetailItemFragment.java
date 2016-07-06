@@ -3,7 +3,6 @@ package com.aze51.bidbid_client.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -47,7 +46,7 @@ public class DetailItemFragment extends Fragment {
     TextView detail_bidPrice;
     String get_img;
     ImageView detail_img;
-    List<Product> products;
+    List<Product> products, tmp_Product;
     int registerID;
     int tmpRegisterId;
     Favorite f;
@@ -55,7 +54,7 @@ public class DetailItemFragment extends Fragment {
     ImageView shareImage, shareImage2;
     Bitmap image;
     boolean favoriteFlag = false;
-    int position;
+    int position, pos;
     int tmp_time;
     String tmpMessage;
     NetworkService networkService;
@@ -69,35 +68,40 @@ public class DetailItemFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
-        initNetworkService();
-        int pos = ApplicationController.getInstance().getPosition();
-        rootViewBasic = inflater.inflate(R.layout.detail_item_cardview, container,false);
-        ctx = ApplicationController.getInstance().getMainActivityContext();
-        if(((MainActivity)ctx).getFromState()==6){ //from search on clicked  detail
-            products = ApplicationController.getInstance().getProducts(5);
-        }
-        else if(((MainActivity)ctx).getFromState()==2){ //from favorite detail
-            products = ApplicationController.getInstance().getProducts(3);
-        }
-        else if(((MainActivity)ctx).getFromState()==3){ //from mypage detail
-            products = ApplicationController.getInstance().getProducts(4);
-        }
-        else{
-            products = ApplicationController.getInstance().getProducts(pos);
-        }
-        position = ApplicationController.getInstance().getPos();
-        initView();
-        String tmpName = products.get(position).product_name;
+            initNetworkService();
+            pos = ApplicationController.getInstance().getPos();
+            position = ApplicationController.getInstance().getPosition();
+            rootViewBasic = inflater.inflate(R.layout.detail_item_cardview, container, false);
+            ctx = ApplicationController.getInstance().getMainActivityContext();
+            if (((MainActivity) ctx).getFromState() == 6) { //from search on clicked  detail
+                products = ApplicationController.getInstance().getProducts(5);
+                ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
+            } else if (((MainActivity) ctx).getFromState() == 2) { //from favorite detail
+                products = ApplicationController.getInstance().getProducts(3);
+                ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
+            } else if (((MainActivity) ctx).getFromState() == 3) { //from mypage detail
+                products = ApplicationController.getInstance().getProducts(4);
+                ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
+            } else {
+                products = ApplicationController.getInstance().getProducts(position);
+                ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
+            }
+
+            initView();
+            f = new Favorite();
+            registerID = ApplicationController.getInstance().getRegisterId();
+            f.user_id = ApplicationController.getInstance().getUserId();
+            f.register_id = registerID;
+        /*String tmpName = products.get(position).product_name;
         int tmpPrice = products.get(position).register_minprice;
         String tmpImg = products.get(position).product_img;
         tmpRegisterId = products.get(position).register_id; //
-        f = new Favorite();
+
         detail_title.setText(tmpName);
         detail_price.setText(Integer.toString(tmpPrice));
-        Glide.with(this).load(tmpImg).into(detail_img);
-        getDetailContent(pos);
-        f.user_id = ApplicationController.getInstance().getUserId();
-        image = BitmapFactory.decodeResource(getResources(),R.drawable.food);
+        Glide.with(this).load(tmpImg).into(detail_img);*/
+            getDetailContent(registerID);
+       // image = BitmapFactory.decodeResource(getResources(),R.drawable.food);
         shareImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,11 +174,11 @@ public class DetailItemFragment extends Fragment {
 
     protected void initView(){
         detail_price = (TextView)rootViewBasic.findViewById(R.id.detail_price);
-        detail_time = (TextView)rootViewBasic.findViewById(R.id.detail_time);
+        //detail_time = (TextView)rootViewBasic.findViewById(R.id.detail_time);
         detail_title = (TextView)rootViewBasic.findViewById(R.id.detail_item_name);
         detail_img = (ImageView)rootViewBasic.findViewById(R.id.detail_ImageView);
-        detail_bid = (Button)rootViewBasic.findViewById(R.id.bidbtn);
-        detail_bidPrice = (TextView)rootViewBasic.findViewById(R.id.inputPrice);
+        //detail_bid = (Button)rootViewBasic.findViewById(R.id.bidbtn);
+        //detail_bidPrice = (TextView)rootViewBasic.findViewById(R.id.inputPrice);
         detail_time_hour = (TextView)rootViewBasic.findViewById(R.id.detail_time_hour);
         detail_time_min = (TextView)rootViewBasic.findViewById(R.id.detail_time_min);
         detail_time_sec = (TextView)rootViewBasic.findViewById(R.id.detail_time_sec);
@@ -182,29 +186,29 @@ public class DetailItemFragment extends Fragment {
         shareImage = (ImageView)rootViewBasic.findViewById(R.id.detail_share_image);
         shareImage2 = (ImageView)rootViewBasic.findViewById(R.id.detail_favorite_image);
     }
-
-
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
     }
 
     public void getDetailContent(int id){
-        Call<Product> callProduct = networkService.getContent(tmpRegisterId);
-        callProduct.enqueue(new Callback<Product>() {
+        Call<List<Product>> callProduct = networkService.getContent(id);
+        callProduct.enqueue(new Callback<List<Product>>() {
             @Override
-            public void onResponse(Response<Product> response, Retrofit retrofit) {
-                if(response.isSuccess()){
-                    tmpProduct = new Product();
-                    tmpProduct = response.body();
+            public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
+                if(response.isSuccess()) {
+                    tmp_Product = response.body();
+                    tmpProduct = tmp_Product.get(0);
                     registerID = tmpProduct.register_id;
                     detail_title.setText(tmpProduct.product_name);
                     Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
-                    detail_price.setText(tmpProduct.register_minprice);
-                    tmp_time = tmpProduct.rtime;
-
+                    detail_price.setText(Integer.toString(tmpProduct.register_minprice));
+                    //tmp_time = tmpProduct.rtime;
+                    ApplicationController.getInstance().sets(1);
 
                 }
+
             }
+
             @Override
             public void onFailure(Throwable t) {
 
@@ -212,7 +216,7 @@ public class DetailItemFragment extends Fragment {
         });
     } // DetailItemFragment
     private void CheckInFavorite(){
-        f.register_id = registerID;
+
         Call<Favorite> pushFavoriteCall = networkService.registerFavorite(f);
         pushFavoriteCall.enqueue(new Callback<Favorite>() {
             @Override
@@ -228,8 +232,8 @@ public class DetailItemFragment extends Fragment {
         });
     }
     private void CheckOutFavorite(){
-        String userid = ApplicationController.getInstance().getUserId();
-        Call<Void> checkoutCall = networkService.deleteFavorite(userid, f.register_id);
+        //String userid = ApplicationController.getInstance().getUserId();
+        Call<Void> checkoutCall = networkService.deleteFavorite(f.user_id, f.register_id);
         checkoutCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Response<Void> response, Retrofit retrofit) {
@@ -243,5 +247,13 @@ public class DetailItemFragment extends Fragment {
 
             }
         });
+    }
+    public void setDetail(List<Product>detail ){
+        tmpProduct = detail.get(0);
+        registerID = tmpProduct.register_id;
+        detail_title.setText(tmpProduct.product_name);
+        Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
+        detail_price.setText(tmpProduct.register_minprice);
+        //tmp_time = tmpProduct.rtime;
     }
 }

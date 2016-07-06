@@ -37,7 +37,7 @@ public class MyPageRecyclerViewAdapter extends RecyclerView.Adapter<MyPageViewHo
         //holder.imageView.setImageResource(itemDatas.get(position).getImage());
         Glide.with(mContext).load(itemDatas.get(position).getImg()).into(holder.imageView);
         holder.text1.setText(itemDatas.get(position).getProduct_name());
-        holder.text2.setText(itemDatas.get(position).getPrice());
+        holder.text2.setText(itemDatas.get(position).getDealPrice());
         //holder.text3.setText(itemDatas.get(position).getRemain_time());
     }
     @Override

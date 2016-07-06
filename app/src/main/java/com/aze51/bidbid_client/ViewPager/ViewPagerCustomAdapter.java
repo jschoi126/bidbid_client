@@ -13,26 +13,37 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
+import com.aze51.bidbid_client.Fragment.DetailItemFragment;
 import com.aze51.bidbid_client.MainActivity;
+import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
 /**
  * Created by jeon3029 on 16. 6. 28..
  */
 public class ViewPagerCustomAdapter extends PagerAdapter {
     private Context mContext;
-
+    NetworkService networkService;
     ArrayList<ListItemData> itemDatas;
     RecyclerView recyclerView;
+    Context ctx;
+    List<Product> productss, tmp_Product;
+    int position, pos;
     RecyclerView.Adapter mAdapter;
     LinearLayoutManager mLayoutManager;
     //int productPostion;
     //Call<List<Product>> listCall;
     List<Product> products;
+    DetailItemFragment detailItemFragment;
     public ProgressBar pbHeaderProgress;
     //NetworkService networkService;
     public ViewPagerCustomAdapter(Context context) {
@@ -40,6 +51,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
     }
     @Override
     public Object instantiateItem(ViewGroup collection, final int position) {
+
         ModelObject modelObject = ModelObject.values()[position];
         LayoutInflater inflater = LayoutInflater.from(mContext);
         ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
@@ -118,7 +130,6 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             mAdapter = new RecyclerViewCustomAdapter(mContext,itemDatas);
             recyclerView.setAdapter(mAdapter);
             //itemDatas.add(new ListItemData(R.mipmap.b,"이름333","가격3333","3:57 남음"));
-
             //products = ((MainActivity)mContext).products;
             products = ApplicationController.getInstance().getProducts(position);
 
@@ -137,8 +148,12 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
             @Override public void onItemClick(View view, int position) {
-                ApplicationController.getInstance().setPos(position);
-                        ((MainActivity) mContext).show_detail_list();
+                ApplicationController.getInstance().setPos(position);   // 리스트의 상품 순서 번호
+                    ((MainActivity) mContext).show_detail_list();
+                if(ApplicationController.getInstance().gets() == 1) {
+                    notifyDataSetChanged();
+                    ((MainActivity) mContext).show_detail_list();
+                }
                 String pos = String.valueOf(position);
                 Toast toast = Toast.makeText(mContext,
                         "포지션 : " + pos, Toast.LENGTH_LONG);
@@ -188,5 +203,30 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
             pbHeaderProgress.setVisibility(View.GONE);
         }
     }
+    public void getDetailContent(int id){
+        Call<List<Product>> callProduct = networkService.getContent(id);
+        callProduct.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
+                if(response.isSuccess()) {
+                    tmp_Product = response.body();
+                    /*tmpProduct = tmp_Product.get(0);
+                    registerID = tmpProduct.register_id;
+                    detail_title.setText(tmpProduct.product_name);
+                    Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
+                    detail_price.setText(tmpProduct.register_minprice);
+                    //tmp_time = tmpProduct.rtime;*/
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
+    } // DetailItemFragment
+
 }
 

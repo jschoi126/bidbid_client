@@ -48,9 +48,11 @@ public class ApplicationController extends Application {
     public void SetProducts6(List<Product> temp){products6 = temp;}
     private static List<List<Product>> getProducts;
     private static int postion;
+    private static int registerId;
     //private static Auction auction;
     private static String user;
     private static boolean isFacebook = false;
+    private static int detail = 0;
     public void SetFacebook(){isFacebook = true;}
     public boolean GetIsFacebook(){return isFacebook;}
 
@@ -66,7 +68,7 @@ public class ApplicationController extends Application {
 
     private Call<List<Product>> listCall;
 
-    private static String baseUrl = "http://52.78.69.183:3000";
+    private static String baseUrl = "http://52.78.66.175:3000";
     private Call<List<List<Product>>> getlistCall;
     public void getDataFromServer(){
         getlistCall = networkService.getProducts();
@@ -139,6 +141,10 @@ public class ApplicationController extends Application {
     public static void setPos(int pos){productPos = pos;}
     public static String getUserId(){return user;}
     public static void setUserId(String id){user = id;}
+    public static int getRegisterId(){return registerId;};
+    public static void setRegisterId(int registerid) {registerId = registerid;}
+    public static int gets(){return detail;};
+    public static void sets(int details) {detail = details;}
     //public static Auction getAuction(){return auction;}
     //public static void setAuction(Auction a){auction = a;}
 

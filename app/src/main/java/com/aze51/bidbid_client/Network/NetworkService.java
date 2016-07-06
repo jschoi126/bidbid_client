@@ -29,8 +29,8 @@ public interface NetworkService {
     @GET("content/check_id/{user_id}")
     Call<String> getID(@Path("user_id") String user_id);
 
-    @GET("content/detail/{product_id}")
-    Call<Product> getContent(@Path("product_id") long id);
+    @GET("/detail/{product_id}")
+    Call<List<Product>> getContent(@Path("product_id") long id);
     // SMS 인증
     @GET("certify/{phonenum}")
     Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);

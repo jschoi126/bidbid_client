@@ -16,7 +16,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:id="@+id/detail_ImageView"
-                android:src="@drawable/food"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="0dp"
                 />

@@ -30,6 +30,7 @@
                     android:layout_height="26dp" />
 
                 <TextView
+                    android:id="@+id/favorite_title"
                     android:layout_width="match_parent"
                     android:layout_height="26dp"
                     android:layout_marginLeft="8dp"
@@ -48,9 +49,9 @@
             <ImageView
                 android:layout_width="128dp"
                 android:layout_height="100dp"
-                android:id="@+id/detail_ImageView"
+                android:id="@+id/favorite_ImageView"
                 android:layout_below="@+id/favorite_cardview1"
-                android:src="@drawable/food" />
+                />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -91,6 +92,7 @@
                             android:textSize="12sp"
                             android:textColor="#939598"/>
                         <TextView
+                            android:id="@+id/favorite_remain_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="남은시간"
@@ -143,6 +145,7 @@
              android:textSize="18sp"
              android:textColor="#e42828"/>
                 <TextView
+                    android:id="@+id/favorite_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="가격"

@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.BottomLayout,emptyFragment).commit();
-
             fragmentManager.beginTransaction().add(R.id.detail_bottom_layout,detailBottomFragment).commit();
             detailFlag = 1;
         }
