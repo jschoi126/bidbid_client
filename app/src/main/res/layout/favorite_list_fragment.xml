@@ -6,8 +6,8 @@
     <RelativeLayout
         android:id="@+id/informLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#ffffff">
+        android:layout_height="48dp"
+        android:background="#eeeeee">
         <CheckBox
             android:layout_marginLeft="18dp"
             android:layout_width="wrap_content"
@@ -43,6 +43,7 @@
         android:id="@+id/recyclerView_favorite"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#ffffff"
         >
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>

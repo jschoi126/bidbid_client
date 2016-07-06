@@ -52,7 +52,7 @@ public class GridViewAdapter extends BaseAdapter {
         }
         //아이템 데이터 연결 20160705태준
         GridViewItem itemData_temp = itemDatas.get(position);
-        btn = (Button)convertView.findViewById(R.id.gridItem2);
+        btn = (Button)convertView.findViewById(R.id.gridItem);
         btn.setText(itemData_temp.item);
         //그리드 뷰 아이템 클릭했을 경우
         /*

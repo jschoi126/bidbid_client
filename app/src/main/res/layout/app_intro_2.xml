@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/app_intro_1"
-    android:background="@drawable/intro_2">
+    android:background="#eeeeee"
+    >
+    <ImageView
+        android:id="@+id/app_intro_image"
+        android:layout_width="360dp"
+        android:layout_height="340dp"
+        android:src="@mipmap/intro2"
+        android:layout_centerHorizontal="true"
+  />
+    <View
+        android:id="@+id/app_intro_view"
+        android:layout_below="@+id/app_intro_image"
+        android:layout_width="84dp"
+        android:layout_height="4dip"
+        android:layout_marginBottom="24dp"
+        android:layout_centerHorizontal="true"
+        android:background="#744644">
+    </View>
+    <TextView
+        android:id="@+id/app_intro_text1"
+        android:layout_below="@+id/app_intro_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_centerHorizontal="true"
+        android:text="비드비드 입찰과정"
+        android:textSize="24sp"
+        android:textColor="#744644"/>
+    <TextView
+        android:id="@+id/app_intro_text2"
+        android:layout_below="@+id/app_intro_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="경매는 제한시간 내 비공개 입찰 방식으로 진행됩니다."
+        android:textSize="14sp"
+        android:textColor="#848689"/>
+    <TextView
+        android:id="@+id/app_intro_text3"
+        android:layout_below="@+id/app_intro_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="상품 페이지의 하단 버튼을 눌러 입찰하실 수 있습니다."
+        android:textSize="14sp"
+        android:textColor="#848689"/>
+    <TextView
+        android:id="@+id/app_intro_text4"
+        android:layout_below="@+id/app_intro_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="낙찰된 상품은 쿠폰을 통해 이용하실 수 있습니다."
+        android:textSize="14sp"
+        android:textColor="#848689"/>
 
-</LinearLayout>
+</RelativeLayout>
