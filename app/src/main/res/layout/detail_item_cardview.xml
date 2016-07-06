@@ -2,20 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="90dp">
         <android.support.v7.widget.CardView
             android:id = "@+id/detail_cardView"
             android:layout_width="match_parent"
-            android:layout_height="415dp"
+            android:layout_height="match_parent"
             android:layout_margin = "4dp">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/detail_layout">
-                <ImageView
+                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:id="@+id/detail_ImageView"
@@ -26,7 +27,7 @@
                 <RelativeLayout
                     android:id="@+id/detail_second_relative"
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
+                    android:layout_height="wrap_content"
                     android:background="#ffffff"
 
                     android:layout_alignParentRight="true"
@@ -36,7 +37,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_center="true"
                         android:layout_marginRight="50dp"
                         android:layout_marginTop="8dp">
                         <ImageView
@@ -59,7 +59,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_toRightOf="@+id/detail_minmax_image"
-                            android:layout_marginBottom="31dp"
+                            android:layout_marginBottom="23dp"
                             android:text="15000"
                             android:textSize="10sp"/>
                         <TextView
@@ -105,7 +105,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="최저입찰가"
-
                             android:textSize="18sp"
                             android:textColor="#FF0000"
                             />
@@ -366,7 +365,7 @@
                         android:layout_height="25dp"
                         android:layout_marginTop="11dp"
                         android:layout_below="@+id/detail_view1"
-                        android:text="상세정보"
+                        android:text="상품정보"
                         android:textSize="14sp"
                         android:textColor="#e42828"
                         android:layout_centerInParent="true"/>
@@ -374,6 +373,7 @@
                         android:id="@+id/detail_view2"
                         android:layout_width="324dp"
                         android:layout_height="2dip"
+                        android:layout_marginBottom="16dp"
                         android:layout_below="@+id/detail_infomation"
                         android:layout_centerHorizontal="true"
                         android:background="#e42828">
@@ -465,7 +465,25 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="1만원-2만원대"
+                                    android:text="1만원"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="2만원"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="대"
                                     android:textSize="12sp"
                                     android:textColor="#939598"/>
                             </LinearLayout>
@@ -489,7 +507,19 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="08:00~23:00"
+                                    android:text="08:00"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="~"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="23:00"
                                     android:textSize="12sp"
                                     android:textColor="#939598"/>
                             </LinearLayout>
@@ -562,6 +592,7 @@
                                     android:textColor="#939598"/>
                             </LinearLayout>
                             <LinearLayout
+                                android:id="@+id/detail_inform_address"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"

@@ -6,8 +6,8 @@
     <RelativeLayout
         android:id="@+id/informLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#ffffff">
+        android:layout_height="48dp"
+        android:background="#eeeeee">
         <CheckBox
             android:layout_marginLeft="18dp"
             android:layout_width="wrap_content"
