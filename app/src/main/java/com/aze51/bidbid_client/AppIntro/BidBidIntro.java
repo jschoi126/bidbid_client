@@ -30,8 +30,8 @@ public class BidBidIntro extends AppIntro{
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         IntroFragment fragment1 = new IntroFragment();
-        IntroFragment fragment2 = new IntroFragment();
-        IntroFragment fragment3 = new IntroFragment();
+        IntroFragment2 fragment2 = new IntroFragment2();
+        IntroFragment3 fragment3 = new IntroFragment3();
 
 //        fragmentManager.beginTransaction().add(R.id.app_intro_1,fragment1).commit();
 
@@ -45,9 +45,9 @@ public class BidBidIntro extends AppIntro{
 
 
 
-//        addSlide(AppIntroFragment.newInstance("Intro_first", "1111", R.drawable.intro_1, Color.WHITE));
-//        addSlide(AppIntroFragment.newInstance("Intro_second", "1111", R.drawable.intro_1, Color.WHITE));
-//        addSlide(AppIntroFragment.newInstance("Intro_third", "1111", R.drawable.intro_1, Color.WHITE));
+       //addSlide(AppIntroFragment.newInstance("Intro_first", "1111", R.drawable.intro_1, Color.WHITE));
+      // addSlide(AppIntroFragment.newInstance("Intro_second", "1111", R.drawable.intro_2, Color.WHITE));
+       //addSlide(AppIntroFragment.newInstance("Intro_third", "1111", R.drawable.intro_3, Color.WHITE));
 
         // OPTIONAL METHODS
         // Override bar/separator color.

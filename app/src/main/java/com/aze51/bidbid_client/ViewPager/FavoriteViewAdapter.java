@@ -23,6 +23,10 @@ public class FavoriteViewAdapter extends RecyclerView.Adapter<FavoriteViewHolder
         this.mContext = mContext;
 
     }
+    public void setItemData(ArrayList<ListItemData> itemDatas){
+        this.itemDatas = itemDatas;
+        this.notifyDataSetChanged();
+    }
     //ViewHolder 생성
     @Override
     public FavoriteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,10 +42,14 @@ public class FavoriteViewAdapter extends RecyclerView.Adapter<FavoriteViewHolder
         Glide.with(mContext).load(itemDatas.get(position).getImg()).into(holder.imageView);
         holder.text1.setText(itemDatas.get(position).getProduct_name());
         holder.text2.setText(itemDatas.get(position).getPrice());
+        holder.text3.setText(itemDatas.get(position).getRemain_time_hour());
+        holder.text4.setText(itemDatas.get(position).getRemain_time_min());
         //holder.text3.setText(itemDatas.get(position).getRemain_time());
     }
     @Override
     public int getItemCount() {
         return (itemDatas != null) ? itemDatas.size() : 0;
     }
+
+
 }

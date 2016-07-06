@@ -36,7 +36,7 @@ public class FavoriteFragment extends Fragment {
     View rootViewBasic;
     ArrayList<ListItemData> itemDatas;
     RecyclerView recyclerView;
-    RecyclerView.Adapter mAdapter;
+    FavoriteViewAdapter mAdapter;
     LinearLayoutManager mLayoutManager;
     Context mContext;
     NetworkService networkService;
@@ -57,9 +57,10 @@ public class FavoriteFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(mContext);//Mainactivity 의 this
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
-
+        init();
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
+        mAdapter = new FavoriteViewAdapter(mContext,itemDatas);
         initNetworkService();
         CallFavoriteList();
         //TODO : 패이버릿 리스트 저장하고있는거 서버에 보내서 받아서 itemdatas 에 추가해햐됨
@@ -83,6 +84,7 @@ public class FavoriteFragment extends Fragment {
         return rootViewBasic;
     }
 
+
     private void CallFavoriteList(){
         String userId = ApplicationController.getInstance().getUserId();
         Call<List<Product>> getFavorite = networkService.getFavoriteProduct(userId);
@@ -96,8 +98,7 @@ public class FavoriteFragment extends Fragment {
                         for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
                         }
-                        mAdapter = new FavoriteViewAdapter(mContext,itemDatas);
-                        recyclerView.setAdapter(mAdapter);
+                        mAdapter.setItemData(itemDatas);
                     }
                 }
             }
@@ -111,5 +112,8 @@ public class FavoriteFragment extends Fragment {
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
     }
-
+    private void init(){
+        mAdapter = new FavoriteViewAdapter(mContext,itemDatas);
+        recyclerView.setAdapter(mAdapter);
+    }
 }

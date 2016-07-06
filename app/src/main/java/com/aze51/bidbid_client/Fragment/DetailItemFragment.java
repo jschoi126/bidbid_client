@@ -50,7 +50,7 @@ public class DetailItemFragment extends Fragment {
     List<Product> products, tmp_Product;
     int registerID, dealPrice;
     long rHour, rMin, rSec;
-    int tmpRegisterId;
+    int tmpRegisterId, tmpPage, tmpPage2;
     Favorite f;
     //facebookshare
     ImageView shareImage, favoriteImage;
@@ -83,10 +83,10 @@ public class DetailItemFragment extends Fragment {
                 ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
             } else if (((MainActivity) ctx).getFromState() == 2) { //from favorite detail
                 products = ApplicationController.getInstance().getProducts(3);
-                ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
+                ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
             } else if (((MainActivity) ctx).getFromState() == 3) { //from mypage detail
                 products = ApplicationController.getInstance().getProducts(4);
-                ApplicationController.getInstance().setRegisterId(products.get(position).register_id);
+                ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
             } else {
                 products = ApplicationController.getInstance().getProducts(position);
                 ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
@@ -249,30 +249,39 @@ public class DetailItemFragment extends Fragment {
 
     private void startRemainingTimeCount() {
         isKeyExpired = false;
-        CountDownTimer timer = new CountDownTimer(tmp_time* 1000, 1000) {
+        final CountDownTimer timer = new CountDownTimer(tmp_time* 1000, 1000) {
 
             //int counter = 3 * 60;
             @Override
             public void onTick(long millisUntilFinished) {
+                tmpPage = ((MainActivity) ctx).getPageState();
+                tmpPage2 = ((MainActivity) ctx).getFromState();
+                /*if(tmpPage == tmpPage2){
+                    cancel();
+                }*/
                 tmp_time= millisUntilFinished/1000;
                 rSec--;
                 if(rSec == -1){
                     rMin--;
                     rSec = 59;
-                }
-                else if(rMin == -1){
+                }if(rMin == -1){
                     rMin = 59;
                     rHour--;
                 }
+
                 detail_time_sec.setText(Long.toString(rSec));
                 detail_time_hour.setText(Long.toString(rHour));
                 detail_time_min.setText(Long.toString(rMin));
+
+
             }
 
             @Override
             public void onFinish() {
                 if(rHour == 0)
                     Toast.makeText(getContext(),"경매 마감", Toast.LENGTH_SHORT).show();
+                clearTime();
+
             }
         };
         timer.start();
