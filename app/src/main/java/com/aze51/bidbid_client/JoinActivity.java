@@ -1,6 +1,7 @@
 package com.aze51.bidbid_client;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -44,10 +46,73 @@ public class JoinActivity extends AppCompatActivity {
     public String check;
     public String tmpCertifiacation;
 
+    TextView textView;
+    Button button;
+    CheckBox checkbox;
+    RadioButton radiobutton;
+    Typeface font, font2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
+
+        textView = (TextView)findViewById(R.id.user_name);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.user_id);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.user_password);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.check_password);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.phone_number);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.phone_auth);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        button = (Button)findViewById(R.id.check_id);
+        font2 = Typeface.createFromAsset(getAssets(), "NanumGothicBold.ttf");
+        button.setTypeface(font2);
+
+        button = (Button)findViewById(R.id.auth_Phone);
+        font2 = Typeface.createFromAsset(getAssets(), "NanumGothicBold.ttf");
+        button.setTypeface(font2);
+
+        button = (Button)findViewById(R.id.memjoin_button);
+        font2 = Typeface.createFromAsset(getAssets(), "NanumGothicBold.ttf");
+        button.setTypeface(font2);
+
+        radiobutton = (RadioButton)findViewById(R.id.radiobtn_male);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        radiobutton.setTypeface(font);
+
+        radiobutton = (RadioButton)findViewById(R.id.radiobtn_female);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        radiobutton.setTypeface(font);
+
+        checkbox = (CheckBox)findViewById(R.id.check);
+        font2 = Typeface.createFromAsset(getAssets(), "NanumGothicBold.ttf");
+        checkbox.setTypeface(font2);
+
+        textView = (TextView)findViewById(R.id.look);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.textview_keytimer);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
         initView();
         initNetworkService();
         protected_passwd();

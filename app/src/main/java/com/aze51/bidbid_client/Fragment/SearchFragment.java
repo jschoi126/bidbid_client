@@ -1,6 +1,7 @@
 package com.aze51.bidbid_client.Fragment;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,12 +12,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
-import com.aze51.bidbid_client.ViewPager.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,13 @@ import java.util.ArrayList;
  * Created by jeon3029 on 16. 7. 4..
  */
 public class SearchFragment extends Fragment {
+
+    TextView textView;
+    Button button;
+    Typeface font;
+
+
+
     View rootViewBasic;
     Button searchButton;
     EditText searchText;
@@ -48,12 +56,19 @@ public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
+
         rootViewBasic = inflater.inflate(R.layout.search_list_fragment,container,false);
         searchButton = (Button)rootViewBasic.findViewById(R.id.search_button);
         searchText = (EditText)rootViewBasic.findViewById(R.id.search_edit_text);
         itemData = new ArrayList<ListItemData>();
         itemDatas = new ArrayList<GridViewItem>();
         mContext = ApplicationController.getInstance().getMainActivityContext();
+
+        //textView = (TextView)findViewById(R.id.recommend_search);
+        //font = Typeface.createFromAsset(getAssets(), "NanumGothicBold.ttf");
+        //textView.setTypeface(font);
 
         //5~8개의 랜덤 개수 추천
         randomCnt = (int)(Math.random()*3)+5;
@@ -96,7 +111,8 @@ public class SearchFragment extends Fragment {
                 // Get the GridView selected/clicked item text
                 //String selectedItem = parent.getItemAtPosition(position).toString();
                 // Display the selected/clicked item text and position on TextView
-                Button btn = (Button)view.findViewById(R.id.gridItem);
+                Button btn = (Button)view.findViewById(R.id.gridItem1);
+
                 Context ctx;
                 ctx = ApplicationController.getInstance().getMainActivityContext();
                 String text = btn.getText().toString();
