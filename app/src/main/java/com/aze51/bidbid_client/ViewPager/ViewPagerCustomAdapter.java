@@ -55,7 +55,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
         pbHeaderProgress = (ProgressBar)collection.findViewById(R.id.pbHeaderProgress);
         if(position == 0) {//첫 번째 페이지 일 경우
             //notifyDataSetChanged();
-            recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_current);
+            recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_approaching);
             //아이템이 일정할 경우 고정
             recyclerView.setHasFixedSize(true);
             //LayoutManager 초기화
@@ -83,7 +83,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
         }
         else if(position == 1){
             //notifyDataSetChanged();
-            recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_scheduled);
+            recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_current);
             //아이템이 일정할 경우 고정
             recyclerView.setHasFixedSize(true);
             //LayoutManager 초기화
@@ -113,7 +113,7 @@ public class ViewPagerCustomAdapter extends PagerAdapter {
         else if(position == 2){
             Log.i("TAG", "2");
             //notifyDataSetChanged();
-            recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_approaching);
+            recyclerView = (RecyclerView) collection.findViewById(R.id.recyclerView_scheduled);
             //아이템이 일정할 경우 고정
             recyclerView.setHasFixedSize(true);
             //LayoutManager 초기화

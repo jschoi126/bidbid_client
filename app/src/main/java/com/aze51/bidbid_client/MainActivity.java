@@ -1,9 +1,11 @@
 package com.aze51.bidbid_client;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ import com.aze51.bidbid_client.Fragment.TitleFragment;
 import com.aze51.bidbid_client.ViewPager.CustomChangeColorTab;
 import com.aze51.bidbid_client.ViewPager.ViewPagerCustomAdapter;
 import com.google.firebase.FirebaseApp;
+import com.viewpagerindicator.TabPageIndicator;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout currentLinear;
     LinearLayout scheduledLinear;
     LinearLayout approachingLinear;
+    TabPageIndicator mIndicator;
 
 
     TextView detail_price;
@@ -287,6 +291,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().replace(R.id.BottomLayout, bottomMenuFragment).commit();
         }
     }
+    //protected static final String[] CONTENT = new String[] { "마감임박","진행","예정" };
     public class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
        // public Context ctx;
         public ListFragment(){
@@ -298,14 +303,42 @@ public class MainActivity extends AppCompatActivity {
             rootViewBasic = inflater.inflate(R.layout.list_fragment,container,false);
             viewpager = (ViewPager) rootViewBasic.findViewById(R.id.viewPager);
             //viewpager.setAdapter(new ViewPagerCustomAdapter(reference));//Main Activity 의 this 를 보내야함.
+            //FragmentPagerAdapter adapter = new GoogleMusicAdapter(getSupportFragmentManager());
+
             viewpager.setAdapter(viewPagerCustomAdapter);
+            //viewpager.setAdapter(adapter);
             viewpager.setOffscreenPageLimit(0);
+            mIndicator = (TabPageIndicator)rootViewBasic.findViewById(R.id.id_indicator);
+            //mIndicator.setBackgroundColor(Color.RED);
+            //mIndicator.setDrawingCacheBackgroundColor(Color.RED);
+            mIndicator.setViewPager(viewpager);
             //ctx = getActivity().getApplicationContext();
             changeColorTab = (CustomChangeColorTab)rootViewBasic.findViewById(R.id.change_color_tab);
             changeColorTab.setViewpager((ViewPager)rootViewBasic.findViewById(R.id.viewPager));
             return rootViewBasic;
         }
     }
+    /*
+    class GoogleMusicAdapter extends FragmentPagerAdapter {
+        public GoogleMusicAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return CONTENT[position % CONTENT.length].toUpperCase();
+        }
+
+        @Override
+        public int getCount() {
+            return CONTENT.length;
+        }
+    }*/
 
     /*public class TopMenuFragment extends Fragment {
         Button btn1;
@@ -348,7 +381,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause(){
         super.onPause();
-
         ApplicationController.getInstance().setPosition(viewpager.getCurrentItem());
     }
 }

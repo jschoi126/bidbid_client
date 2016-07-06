@@ -7,9 +7,9 @@ import com.aze51.bidbid_client.R;
  *
  */
 public enum ModelObject {
-    CURRENT(R.string.current, R.layout.current_list),
-    SCHEDULED(R.string.scheduled, R.layout.scheduled_list),
-    APPROACHING(R.string.approaching, R.layout.approaching_list);
+    APPROACHING(R.string.empty, R.layout.approaching_list),
+    CURRENT(R.string.empty, R.layout.current_list),
+    SCHEDULED(R.string.empty, R.layout.scheduled_list)                                                         ;
     private int mTitleResId;
     private int mLayoutResId;
 

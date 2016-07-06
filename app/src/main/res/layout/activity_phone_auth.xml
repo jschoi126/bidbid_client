@@ -58,8 +58,6 @@
             android:paddingTop="8dp"
             android:paddingLeft="44dp"
             android:paddingRight="44dp">
-
-
             <EditText
                 android:layout_width="272dp"
                 android:layout_height="35dp"
