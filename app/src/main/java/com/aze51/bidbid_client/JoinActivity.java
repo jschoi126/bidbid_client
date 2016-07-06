@@ -2,15 +2,18 @@ package com.aze51.bidbid_client;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.Network.Join;
@@ -30,8 +33,12 @@ public class JoinActivity extends AppCompatActivity {
     private EditText username, userid, userpw, checkpw, editPhoneNumber, editPhoneAuth;
     private RadioGroup radioGroupGender;
     private RadioButton radioButtonMale, radioButtonFemale;
+    private TextView textViewKeyTimer;
+
     private boolean checkedPhoneCertficate = false;
     private boolean checkPermintId = false;
+    private boolean isKeyExpired = true;
+
     public String getId;
     public String tmp;
     public String check;
@@ -134,6 +141,7 @@ public class JoinActivity extends AppCompatActivity {
         radioButtonMale = (RadioButton) findViewById(R.id.radiobtn_male);
         radioButtonFemale = (RadioButton) findViewById(R.id.radiobtn_female);
         phoneAuth = (Button)findViewById(R.id.auth_Phone);
+        textViewKeyTimer = (TextView) findViewById(R.id.textview_keytimer);
 
 
     }
@@ -142,8 +150,7 @@ public class JoinActivity extends AppCompatActivity {
         networkService = ApplicationController.getInstance().getNetworkService();
     }
 
-    private void protected_passwd()
-    {
+    private void protected_passwd() {
         passWtm = new PasswordTransformationMethod();
         userpw.setTransformationMethod(passWtm);
         checkpw.setTransformationMethod(passWtm);
@@ -159,21 +166,48 @@ public class JoinActivity extends AppCompatActivity {
         }
     };
     public void GetPhoneAuthNum(){
-        long phoneNum = Long.parseLong(editPhoneNumber.getText().toString());
-        Call<String> callPhoneAuth = networkService.getPhoneCertification(phoneNum);
-        callPhoneAuth.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Response<String> response, Retrofit retrofit) {
-                if (response.isSuccess()){
-                    tmpCertifiacation = response.body().toString();
+        if(!TextUtils.isEmpty(editPhoneNumber.getText())) {
+            long phoneNum = Long.parseLong(editPhoneNumber.getText().toString());
+            Call<String> callPhoneAuth = networkService.getPhoneCertification(phoneNum);
+            callPhoneAuth.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Response<String> response, Retrofit retrofit) {
+                    if (response.isSuccess()) {
+                        Toast.makeText(getApplicationContext(), "인증번호가 전송되었습니다", Toast.LENGTH_SHORT).show();
+                        tmpCertifiacation = response.body().toString();
+                        startRemainingTimeCount();
+                    }
                 }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Toast.makeText(getApplicationContext(), "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(JoinActivity.this, "휴대폰 번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void startRemainingTimeCount() {
+        isKeyExpired = false;
+        CountDownTimer timer = new CountDownTimer(3 * 60 * 1000, 1000) {
+
+            int counter = 3 * 60;
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                counter--;
+                textViewKeyTimer.setText( Long.toString(millisUntilFinished / 1000) + " 초 남음");
             }
 
             @Override
-            public void onFailure(Throwable t) {
-
+            public void onFinish() {
+                isKeyExpired = true;
             }
-        });
+        };
+
+        timer.start();
     }
 
     public void onBackPressed() {
