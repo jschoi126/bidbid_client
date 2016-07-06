@@ -89,7 +89,6 @@ public class FavoriteFragment extends Fragment {
                 if (response.isSuccess()) {
                     myProducts = response.body();
                     ApplicationController.getInstance().SetProducts4(myProducts);
-
                     if (myProducts.isEmpty() != true) {
                         for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
