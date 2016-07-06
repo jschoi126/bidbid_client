@@ -8,6 +8,7 @@
     <com.aze51.bidbid_client.ViewPager.CustomChangeColorTab
         android:id="@+id/change_color_tab"
         android:layout_width="match_parent"
+        android:background="#eeeeee"
         android:layout_height="60dp">
 
         <com.xdu.xhin.library.view.ChangeColorItem
@@ -15,10 +16,10 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:padding="5dp"
-            tab:item_color="#ff45c01a"
-            tab:item_icon="@drawable/ic_menu_start_conversation"
+            tab:item_color="#000000"
+            tab:item_icon="@drawable/bar_mdpi"
             tab:item_text="진행"
-            tab:item_text_size="12sp" />
+            tab:item_text_size="30sp" />
 
         <com.xdu.xhin.library.view.ChangeColorItem
             android:id="@+id/id_indicator_two"
@@ -26,20 +27,20 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:padding="5dp"
-            tab:item_color="@color/colorAccent"
-            tab:item_icon="@drawable/ic_menu_friendslist"
+            tab:item_color="#000000"
+            tab:item_icon="@drawable/bar_mdpi"
             tab:item_text="예정"
-            tab:item_text_size="12sp" />
+            tab:item_text_size="30sp" />
 
         <com.xdu.xhin.library.view.ChangeColorItem
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:padding="5dp"
-            tab:item_color="#ff45c01a"
-            tab:item_icon="@drawable/ic_menu_allfriends"
+            tab:item_color="#000000"
+            tab:item_icon="@drawable/bar_mdpi"
             tab:item_text="마감임박"
-            tab:item_text_size="12sp" />
+            tab:item_text_size="30sp" />
 
     </com.aze51.bidbid_client.ViewPager.CustomChangeColorTab>
     <android.support.v4.view.ViewPager
