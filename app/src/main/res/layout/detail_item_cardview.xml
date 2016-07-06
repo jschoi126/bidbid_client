@@ -383,14 +383,16 @@
                     <RelativeLayout
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/detail_view2">
                         <ImageView
                             android:id="@+id/detail_inform_image"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="518dp"
+                            android:scaleType="fitXY"
                             android:layout_marginLeft="18dp"
-                            android:layout_marginRight="18dp"/>
+                            android:layout_marginRight="18dp"
+                            android:src="@drawable/dgif"/>
 
                         <TextView
                             android:id="@+id/detail_inform_text"
