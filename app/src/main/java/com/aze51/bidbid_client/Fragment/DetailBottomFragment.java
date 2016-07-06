@@ -56,7 +56,7 @@ public class DetailBottomFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         initNetworkService();
         ctx = ApplicationController.getInstance().getMainActivityContext();
-        int pos = ApplicationController.getInstance().getPosition();
+        int pos = ApplicationController.getInstance().getPos();
         if (((MainActivity) ctx).getFromState() == 6) { //from search on clicked  detail
             products = ApplicationController.getInstance().getProducts(5);
             ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);

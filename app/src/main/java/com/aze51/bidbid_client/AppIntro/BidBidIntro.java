@@ -85,6 +85,7 @@ public class BidBidIntro extends AppIntro{
         super.onDonePressed(currentFragment);
         // Do something when users tap on Done button.
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
     }
     @Override
     public void onSlideChanged(@Nullable Fragment oldFragment, @Nullable Fragment newFragment) {
