@@ -111,7 +111,7 @@ public class SearchFragment extends Fragment {
                 // Get the GridView selected/clicked item text
                 //String selectedItem = parent.getItemAtPosition(position).toString();
                 // Display the selected/clicked item text and position on TextView
-                Button btn = (Button)view.findViewById(R.id.gridItem1);
+                Button btn = (Button)view.findViewById(R.id.gridItem);
 
                 Context ctx;
                 ctx = ApplicationController.getInstance().getMainActivityContext();
