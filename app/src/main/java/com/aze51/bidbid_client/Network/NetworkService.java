@@ -60,7 +60,7 @@ public interface NetworkService {
 
     //즐겨찾기 삭제
     @GET("favorite/{user_id}/{register_id}")
-    Call<Void> deleteFavorite(@Path("user_id") String userId, @Path("register_id") String registerId);
+    Call<Void> deleteFavorite(@Path("user_id") String userId, @Path("register_id") int registerId);
 
 
 }

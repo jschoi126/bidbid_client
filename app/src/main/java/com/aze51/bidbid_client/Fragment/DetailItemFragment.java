@@ -42,6 +42,7 @@ public class DetailItemFragment extends Fragment {
     TextView detail_price;
     TextView detail_time;
     TextView detail_title;
+    TextView detail_time_hour, detail_time_min, detail_time_sec;
     Button detail_bid;
     TextView detail_bidPrice;
     String get_img;
@@ -55,6 +56,7 @@ public class DetailItemFragment extends Fragment {
     Bitmap image;
     boolean flag = false;
     int position;
+    int tmp_time;
     String tmpMessage;
     NetworkService networkService;
     Auction auction;
@@ -88,7 +90,7 @@ public class DetailItemFragment extends Fragment {
         detail_price.setText(Integer.toString(tmpPrice));
         Glide.with(this).load(tmpImg).into(detail_img);
         getDetailContent(pos);
-
+        f.user_id = ApplicationController.getInstance().getUserId();
         image = BitmapFactory.decodeResource(getResources(),R.drawable.food);
         shareImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,11 +169,14 @@ public class DetailItemFragment extends Fragment {
         detail_img = (ImageView)rootViewBasic.findViewById(R.id.detail_ImageView);
         detail_bid = (Button)rootViewBasic.findViewById(R.id.bidbtn);
         detail_bidPrice = (TextView)rootViewBasic.findViewById(R.id.inputPrice);
+        detail_time_hour = (TextView)rootViewBasic.findViewById(R.id.detail_time_hour);
+        detail_time_min = (TextView)rootViewBasic.findViewById(R.id.detail_time_min);
+        detail_time_sec = (TextView)rootViewBasic.findViewById(R.id.detail_time_sec);
 
         shareImage = (ImageView)rootViewBasic.findViewById(R.id.detail_share_image);
         shareImage2 = (ImageView)rootViewBasic.findViewById(R.id.detail_favorite_image);
     }
-    public void postBidResult(Auction auction){
+    /*public void postBidResult(Auction auction){
         Call<Auction> auctionCall = networkService.finishbid(auction);
         auctionCall.enqueue(new Callback<Auction>() {
             @Override
@@ -189,7 +194,7 @@ public class DetailItemFragment extends Fragment {
 
             }
         });
-    } // BottomMenuFragment
+    } // BottomMenuFragment*/
 
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
@@ -207,6 +212,8 @@ public class DetailItemFragment extends Fragment {
                     detail_title.setText(tmpProduct.product_name);
                     Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
                     detail_price.setText(tmpProduct.register_minprice);
+                    tmp_time = tmpProduct.rtime;
+
 
                 }
             }
@@ -217,7 +224,7 @@ public class DetailItemFragment extends Fragment {
         });
     } // DetailItemFragment
     private void CheckInFavorite(){
-        f.registerId = Integer.toString(registerID);
+        f.register_id = registerID;
         Call<Favorite> pushFavoriteCall = networkService.registerFavorite(f);
         pushFavoriteCall.enqueue(new Callback<Favorite>() {
             @Override
@@ -235,7 +242,7 @@ public class DetailItemFragment extends Fragment {
     }
     private void CheckOutFavorite(){
         String userid = ApplicationController.getInstance().getUserId();
-        Call<Void> checkoutCall = networkService.deleteFavorite(userid, f.registerId);
+        Call<Void> checkoutCall = networkService.deleteFavorite(userid, f.register_id);
         checkoutCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Response<Void> response, Retrofit retrofit) {

@@ -110,8 +110,7 @@
                     android:layout_below="@+id/detail_layout_remian_time"
                     android:layout_marginLeft="18dp"
                     android:layout_marginBottom="16dp"
-                    android:id="@+id/detail_layout_remian_time1"
-                    >
+                    android:id="@+id/detail_layout_remian_time1">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -121,19 +120,72 @@
                         android:textSize="12sp"
                         android:textColor="#cacaca"
                         />
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="-"
-                        android:textSize="12sp"
-                        android:textColor="#cacaca"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="남은시간"
-                        android:textSize="12sp"
-                        android:textColor="#cacaca"
-                        />
+                        android:layout_below="@id/detail_time"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/item_layout_remain1"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@mipmap/clock"
+                            android:layout_gravity="center"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/detail_time_hour"
+                            android:textSize="12sp"
+                            android:textColor="#A6A6A6"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="시간"
+                            android:textSize="12sp"
+                            android:layout_marginLeft="3dp"
+                            android:id="@+id/remain_time2"
+                            android:textColor="#A6A6A6"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="12sp"
+                            android:id="@+id/detail_time_min"
+                            android:textColor="#A6A6A6"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="분"
+                            android:textSize="12sp"
+                            android:layout_marginLeft="3dp"
+                            android:id="@+id/remain_time3"
+                            android:textColor="#A6A6A6"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="12sp"
+                            android:id="@+id/detail_time_sec"
+                            android:textColor="#A6A6A6"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="초"
+                            android:textSize="12sp"
+                            android:layout_marginLeft="3dp"
+                            android:id="@+id/remain_time4"
+                            android:textColor="#A6A6A6"
+                            />
+
+                    </LinearLayout>
 
                 </LinearLayout>
                 <LinearLayout

@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:text="시"
                         android:textSize="18sp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="3dp"
                         android:id="@+id/remain_time2"
                         android:textColor="#A6A6A6"
                         />
@@ -142,28 +142,11 @@
                         android:layout_height="wrap_content"
                         android:text="분"
                         android:textSize="18sp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="3dp"
                         android:id="@+id/remain_time3"
                         android:textColor="#A6A6A6"
                         />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textSize="18sp"
-                        android:id="@+id/remain_time_sec"
-                        android:textColor="#A6A6A6"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:text="초"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/remain_time_remain3"
-                        android:textColor="#A6A6A6"
-                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
