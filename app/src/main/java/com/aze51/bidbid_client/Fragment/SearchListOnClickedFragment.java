@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,7 @@ public class SearchListOnClickedFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d("MyTag", "onCreateView");
         rootViewBasic = inflater.inflate(R.layout.search_list_onclicked_fragment,container,false);
         recyclerView = (RecyclerView)rootViewBasic.findViewById(R.id.recyclerView_search);
         searchButton = (Button)rootViewBasic.findViewById(R.id.search_button_onclicked);
@@ -109,6 +111,17 @@ public class SearchListOnClickedFragment extends Fragment {
                 }));
         return rootViewBasic;
     }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        Log.d("MyTag", "onViewStateRestored");
+        searchText = (EditText)rootViewBasic.findViewById(R.id.search_edit_text_onclicked);
+        //검색어는 application controller 의 getsearchtext로 string객체로 받을 수 있음
+        text = ApplicationController.getInstance().GetSearchText();
+        searchText.setText(text);
+    }
+
     private void CallRecomandSearch(String content){
         Call<List<Product>> recommendCall = networkService.searchContents(content);
         recommendCall.enqueue(new Callback<List<Product>>() {
