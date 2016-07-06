@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.Network.Auction;
 import com.aze51.bidbid_client.Network.Favorite;
 import com.aze51.bidbid_client.Network.NetworkService;
