@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 
-import com.aze51.bidbid_client.ApplicationController;
-import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 
 import java.util.ArrayList;
@@ -54,7 +52,7 @@ public class GridViewAdapter extends BaseAdapter {
         }
         //아이템 데이터 연결 20160705태준
         GridViewItem itemData_temp = itemDatas.get(position);
-        btn = (Button)convertView.findViewById(R.id.gridItem);
+        btn = (Button)convertView.findViewById(R.id.gridItem2);
         btn.setText(itemData_temp.item);
         //그리드 뷰 아이템 클릭했을 경우
         /*

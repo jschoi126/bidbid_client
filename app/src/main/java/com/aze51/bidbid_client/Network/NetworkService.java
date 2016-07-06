@@ -36,7 +36,7 @@ public interface NetworkService {
     // SMS 인증
     @GET("certify/{phonenum}")
     Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);
-    @POST("content/bid")
+    @POST("bid")
     Call<Auction> finishbid(@Body Auction auction);
     @GET("search/{inputContents}")
     Call<List<Product>> searchContents(@Path("inputContents") String intputContents);

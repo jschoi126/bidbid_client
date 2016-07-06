@@ -27,6 +27,7 @@
                 android:src="@mipmap/loginlogo"/>
 
             <TextView
+                android:id="@+id/bidtime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="It's Bid Time!"
@@ -107,6 +108,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/or"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="OR"
@@ -135,6 +137,7 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/member"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="아직도 회원이 아니신가요?"
