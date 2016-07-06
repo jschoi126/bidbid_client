@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="415dp"
             android:layout_margin = "4dp">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -91,7 +92,7 @@
                             android:id="@+id/detail_time"
                             android:textSize="18sp"
                             android:textColor="#FF0000"
-                            />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
