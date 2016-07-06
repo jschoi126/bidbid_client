@@ -17,7 +17,7 @@
             android:padding="5dp"
             tab:item_color="#ff45c01a"
             tab:item_icon="@drawable/ic_menu_start_conversation"
-            tab:item_text="진행"
+            tab:item_text="마감임박"
             tab:item_text_size="12sp" />
 
         <com.xdu.xhin.library.view.ChangeColorItem
@@ -28,7 +28,7 @@
             android:padding="5dp"
             tab:item_color="@color/colorAccent"
             tab:item_icon="@drawable/ic_menu_friendslist"
-            tab:item_text="예정"
+            tab:item_text="진행"
             tab:item_text_size="12sp" />
 
         <com.xdu.xhin.library.view.ChangeColorItem
@@ -38,7 +38,7 @@
             android:padding="5dp"
             tab:item_color="#ff45c01a"
             tab:item_icon="@drawable/ic_menu_allfriends"
-            tab:item_text="마감임박"
+            tab:item_text="예정"
             tab:item_text_size="12sp" />
 
     </com.aze51.bidbid_client.ViewPager.CustomChangeColorTab>

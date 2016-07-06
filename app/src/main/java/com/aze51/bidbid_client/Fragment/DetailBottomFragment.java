@@ -88,7 +88,7 @@ public class DetailBottomFragment extends Fragment {
                 if(upDownState == false){//현재 다운
                     upDownState = true;
                     detailLinearBid.setVisibility(LinearLayout.VISIBLE);
-                    upDownImage.setImageResource(R.drawable.detail_down);
+                    upDownImage.setImageResource(R.mipmap.bidbar_down);
 
                     int paddingPixel = 0;
                     float density = ctx.getResources().getDisplayMetrics().density;
@@ -98,7 +98,7 @@ public class DetailBottomFragment extends Fragment {
                 else if(upDownState == true){//현재 업
                     upDownState = false;
                     detailLinearBid.setVisibility(LinearLayout.GONE);
-                    upDownImage.setImageResource(R.drawable.detail_up);
+                    upDownImage.setImageResource(R.mipmap.bidbar_up);
 
                     int paddingPixel = 50;
                     float density = ctx.getResources().getDisplayMetrics().density;
@@ -111,7 +111,16 @@ public class DetailBottomFragment extends Fragment {
             @Override
             public void onClick(View v) {
                // getAuction = ApplicationController.getAuction();
-                if(!TextUtils.isEmpty(bidText.getText())) {
+                if(upDownState==false){
+                    upDownState = true;
+                    detailLinearBid.setVisibility(LinearLayout.VISIBLE);
+                    upDownImage.setImageResource(R.mipmap.bidbar_down);
+                    int paddingPixel = 0;
+                    float density = ctx.getResources().getDisplayMetrics().density;
+                    int paddingDp = (int)(paddingPixel * density);
+                    relativeLayout.setPaddingRelative(0,paddingDp,0,0);
+                }
+                else if(!TextUtils.isEmpty(bidText.getText())) {
                     auction = new Auction();
                     auction.user_id = ApplicationController.getUserId();
                     auction.register_id = tmpRegisterId;

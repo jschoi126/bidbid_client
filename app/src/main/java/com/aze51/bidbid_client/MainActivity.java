@@ -120,8 +120,11 @@ public class MainActivity extends AppCompatActivity {
         else if(pageState == 1 && fromState == 5){//from push detail
             show_push_list();
         }
-        else if(pageState == 1 && fromState == 6){
+        else if(pageState == 1 && fromState == 6){//from search on clicked detail
             show_search_list_onclicked();
+        }
+        else if(pageState == 1 && fromState == 2){//from favorite detail
+            show_favorite_list();
         }
         else if(pageState ==1){//on detail page
             show_current_list();
@@ -198,6 +201,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void show_favorite_list() {
+        if(pageState == 1){//from detail page
+            fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
+        }
         fromState = pageState;
         pageState = 2;
         if(favoriteFlag ==0) {
