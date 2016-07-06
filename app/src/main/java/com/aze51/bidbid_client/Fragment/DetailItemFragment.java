@@ -53,7 +53,7 @@ public class DetailItemFragment extends Fragment {
     //facebookshare
     ImageView shareImage, shareImage2;
     Bitmap image;
-    boolean flag = false;
+    boolean favoriteFlag = false;
     int position;
     String tmpMessage;
     NetworkService networkService;
@@ -71,8 +71,14 @@ public class DetailItemFragment extends Fragment {
         int pos = ApplicationController.getInstance().getPosition();
         rootViewBasic = inflater.inflate(R.layout.detail_item_cardview, container,false);
         ctx = ApplicationController.getInstance().getMainActivityContext();
-        if(((MainActivity)ctx).getFromState()==6){
+        if(((MainActivity)ctx).getFromState()==6){ //from search on clicked  detail
             products = ApplicationController.getInstance().getProducts(5);
+        }
+        else if(((MainActivity)ctx).getFromState()==2){ //from favorite detail
+            products = ApplicationController.getInstance().getProducts(3);
+        }
+        else if(((MainActivity)ctx).getFromState()==3){ //from mypage detail
+            products = ApplicationController.getInstance().getProducts(4);
         }
         else{
             products = ApplicationController.getInstance().getProducts(pos);
@@ -147,13 +153,13 @@ public class DetailItemFragment extends Fragment {
         shareImage2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(flag == true){
+                if(favoriteFlag == true){
                     CheckOutFavorite();
-                    flag = false;
+                    favoriteFlag = false;
                 }
                 else{
                     CheckInFavorite();
-                    flag = true;
+                    favoriteFlag = true;
                 }
             }
         });
@@ -171,25 +177,6 @@ public class DetailItemFragment extends Fragment {
         shareImage = (ImageView)rootViewBasic.findViewById(R.id.detail_share_image);
         shareImage2 = (ImageView)rootViewBasic.findViewById(R.id.detail_favorite_image);
     }
-    public void postBidResult(Auction auction){
-        Call<Auction> auctionCall = networkService.finishbid(auction);
-        auctionCall.enqueue(new Callback<Auction>() {
-            @Override
-            public void onResponse(Response<Auction> response, Retrofit retrofit) {
-                if(response.isSuccess()){
-                    tmpMessage = "입찰 성공";
-                    Toast.makeText(getContext(), tmpMessage, Toast.LENGTH_SHORT).show();
-                }
-                else{
-
-                }
-            }
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-        });
-    } // BottomMenuFragment
 
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
@@ -226,7 +213,6 @@ public class DetailItemFragment extends Fragment {
                     Toast.makeText(getContext(),"즐겨찾기에 등록되었습니다.",Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Throwable t) {
 

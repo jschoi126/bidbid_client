@@ -64,6 +64,7 @@ public class MypageFragment extends Fragment {
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
                 if(response.isSuccess()) {
                     myProducts = response.body();
+                    ApplicationController.getInstance().SetProducts5(myProducts);
                     if (myProducts.isEmpty() != true) {
                         ApplicationController.getInstance().SetProducts5(myProducts);
                         for (Product product : myProducts) {
