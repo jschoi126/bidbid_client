@@ -84,8 +84,6 @@
             android:paddingTop="8dp"
             android:paddingLeft="44dp"
             android:paddingRight="44dp">
-
-
             <EditText
                 android:id="@+id/input_num"
                 android:layout_width="272dp"

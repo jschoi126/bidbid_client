@@ -141,6 +141,12 @@ public class DetailBottomFragment extends Fragment {
         return rootViewBasic;
     }
 
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        bidText.setText("");
+    }
+
     public void postBidResult(Auction auction){
         Call<Auction> auctionCall = networkService.finishbid(auction);
         auctionCall.enqueue(new Callback<Auction>() {
@@ -150,6 +156,7 @@ public class DetailBottomFragment extends Fragment {
                     Log.i("TAG","입찰 성공");
                     //tmpMessage = "입찰 성공";
                     tmpMessage = response.body().resultMessage;
+                    bidText.setText("");
                     if(tmpMessage.equals("성공"))
                     {
 
@@ -174,4 +181,5 @@ public class DetailBottomFragment extends Fragment {
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
     }
+
 }

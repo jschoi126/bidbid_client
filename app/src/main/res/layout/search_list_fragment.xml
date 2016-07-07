@@ -59,7 +59,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:paddingTop="16dp"
-        android:background="#ffffff"
         android:paddingLeft="18dp"
         android:paddingBottom="16dp"
         android:layout_below="@id/search_relative"
