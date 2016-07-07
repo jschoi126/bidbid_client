@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
         approachingLinear = (LinearLayout)findViewById(R.id.linear_approaching);
 
         detail_price = (TextView)findViewById(R.id.detail_price);
-        detail_time = (TextView)findViewById(R.id.detail_time);
+
 
     }
     public void show_favorite_list() {

@@ -2,6 +2,7 @@ package com.aze51.bidbid_client.Fragment;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.Network.NetworkService;
@@ -22,6 +24,12 @@ import java.util.List;
  */
 public class ListItemCardViewFragment extends Fragment {
     View rootViewBasic;
+    TextView textViewItemName;
+//    TextView textView;
+//    TextView textView;
+//    TextView textView;
+//    TextView textView;
+    Typeface font, font2;
     ImageView hotIcon, hurryIcon;
     ImageView stateImage1, stateImage2;
     Context ctx;
@@ -40,6 +48,8 @@ public class ListItemCardViewFragment extends Fragment {
         ctx = ApplicationController.getInstance().getMainActivityContext();
 
         initView();
+        font = Typeface.createFromAsset(getActivity().getAssets(), "NanumGothic.ttf");
+        textViewItemName.setTypeface(font);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -71,7 +81,7 @@ public class ListItemCardViewFragment extends Fragment {
         ctx = ApplicationController.getInstance().getMainActivityContext();
         hotIcon = (ImageView) rootViewBasic.findViewById(R.id.hotIcon);
         hurryIcon = (ImageView) rootViewBasic.findViewById(R.id.hurryIcon);
-
+        textViewItemName = (TextView) rootViewBasic.findViewById(R.id.item_name);
         hotIcon.setVisibility(View.VISIBLE);
         hurryIcon.setVisibility(View.VISIBLE);
     }
