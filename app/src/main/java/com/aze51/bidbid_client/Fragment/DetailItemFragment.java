@@ -25,6 +25,10 @@ import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.SharingActivity;
 import com.bumptech.glide.Glide;
+import com.facebook.share.model.ShareOpenGraphAction;
+import com.facebook.share.model.ShareOpenGraphContent;
+import com.facebook.share.model.ShareOpenGraphObject;
+import com.facebook.share.widget.ShareDialog;
 
 import java.util.List;
 
@@ -129,12 +133,21 @@ public class DetailItemFragment extends Fragment {
                         .setPreviewPropertyName("fitness:course")
                         .setAction(action)
                         .build();*/
+                String temp;
                 /*
+                if(tmpProduct!=null){
+                    temp = tmpProduct.product_img;
+                }
+                else{
+                    temp = "www.naver.com";
+                }
                 ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
                         .putString("og:type", "books.book")
                         .putString("og:title", "Bid Bid")
-                        .putString("og:description", "경매형 마케팅 플랫폼")
-                        .putString("books:isbn", "0-553-57340-3")
+                        .putString("og:description", "경매형 오픈 마케팅 플랫폼")
+                        .putString("og:image",temp)
+                        .putString("og:site:name","https://www.facebook.com/bidbid7979/?skip_nax_wizard=true")
+                        .putString("fb:app_id",String.valueOf(R.string.facebook_app_id))
                         .build();
                 ShareOpenGraphAction action = new ShareOpenGraphAction.Builder()
                         .setActionType("books.reads")
@@ -145,12 +158,13 @@ public class DetailItemFragment extends Fragment {
                         .setPreviewPropertyName("book")
                         .setAction(action)
                         .build();
+
                 //ShareApi.share(content, null);
                 //Context ctx = ApplicationController.getInstance().getMainActivityContext()
                 ShareDialog.show(getActivity(), content);*/
-                Context ctx = ApplicationController.getInstance().getMainActivityContext();
-                Intent intent = new Intent(ctx, SharingActivity.class);
-                startActivity(intent);
+                //Context ctx = ApplicationController.getInstance().getMainActivityContext();
+               // Intent intent = new Intent(ctx, SharingActivity.class);
+                //startActivity(intent);
             }
         });
         favoriteImage.setOnClickListener(new View.OnClickListener() {
