@@ -2,6 +2,7 @@ package com.aze51.bidbid_client.ViewPager;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class FavoriteViewHolder extends RecyclerView.ViewHolder {
     TextView text1;
     TextView text2;
     TextView text3, text4;
+    CheckBox checkBox;
     public FavoriteViewHolder(View itemView) {
         super(itemView);
         imageView = (ImageView)itemView.findViewById(R.id.favorite_ImageView);
@@ -22,6 +24,7 @@ public class FavoriteViewHolder extends RecyclerView.ViewHolder {
         text2 = (TextView)itemView.findViewById(R.id.favorite_price);
         text3 = (TextView)itemView.findViewById(R.id.favorite_hour);
         text4 = (TextView)itemView.findViewById(R.id.favorite_min);
+        checkBox = (CheckBox)itemView.findViewById(R.id.check_favorite);
         //text3 = (TextView)itemView.findViewById(R.id.mypage_remain_time);
     }
 }

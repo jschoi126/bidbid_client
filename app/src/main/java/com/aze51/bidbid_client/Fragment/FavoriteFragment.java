@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
@@ -41,6 +42,7 @@ public class FavoriteFragment extends Fragment {
     Context mContext;
     NetworkService networkService;
     List<Product> myProducts;
+    CheckBox checkBox;
     private static final String FAVORITE_NUM = "FAVORITE_NUM_";
     //private static final String SAVE_FAVORITE = "SAVE_FAVORITE_";
 
@@ -51,16 +53,16 @@ public class FavoriteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.favorite_list_fragment,container,false);
         recyclerView = (RecyclerView)rootViewBasic.findViewById(R.id.recyclerView_favorite);
+
         recyclerView.setHasFixedSize(true);
         mContext = ApplicationController.getInstance().getMainActivityContext();
 
         mLayoutManager = new LinearLayoutManager(mContext);//Mainactivity 의 this
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
-        init();
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
-        mAdapter = new FavoriteViewAdapter(mContext,itemDatas);
+        //mAdapter = new FavoriteViewAdapter(mContext,itemDatas);
         initNetworkService();
         CallFavoriteList();
         //TODO : 패이버릿 리스트 저장하고있는거 서버에 보내서 받아서 itemdatas 에 추가해햐됨
@@ -98,6 +100,7 @@ public class FavoriteFragment extends Fragment {
                         for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
                         }
+                        init();
                         mAdapter.setItemData(itemDatas);
                     }
                 }
