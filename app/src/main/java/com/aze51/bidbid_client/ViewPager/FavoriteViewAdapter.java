@@ -63,7 +63,6 @@ public class FavoriteViewAdapter extends RecyclerView.Adapter<FavoriteViewHolder
         holder.text4.setText(itemDatas.get(position).getRemain_time_min());
         holder.text5.setText(FORMAT.format(itemDatas.get(position).getStime()));
         holder.text6.setText(FORMAT.format(itemDatas.get(position).getFtime()));
-
     }
     @Override
     public int getItemCount() {

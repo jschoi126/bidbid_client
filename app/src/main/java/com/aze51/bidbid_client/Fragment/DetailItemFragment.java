@@ -55,7 +55,9 @@ public class DetailItemFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         Log.d("MyTag", "ondetach");
-        timer.cancel();
+        if(timer!=null) {
+            timer.cancel();
+        }
     }
 
     int favoriteCheck;
@@ -97,7 +99,7 @@ public class DetailItemFragment extends Fragment {
             } else if (((MainActivity) ctx).getFromState() == 3) { //from mypage detail
                 products = ApplicationController.getInstance().getProducts(4);
                 ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
-            } else {
+            } else {//from view pager.
                 products = ApplicationController.getInstance().getProducts(position);
                 ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
             }
@@ -139,7 +141,7 @@ public class DetailItemFragment extends Fragment {
                         .setPreviewPropertyName("fitness:course")
                         .setAction(action)
                         .build();*/
-                String temp;
+                //String temp;
                 /*
                 if(tmpProduct!=null){
                     temp = tmpProduct.product_img;
@@ -227,8 +229,7 @@ public class DetailItemFragment extends Fragment {
                             .into(detail_img);
 
                     //detail_img.setImageResource(R.drawable.foodppp);
-                    //Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
-
+                    Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
                     detail_price.setText(Integer.toString(tmpProduct.register_minprice));
                     tmp_time = tmpProduct.rtime;
                     dealPrice = tmpProduct.deal_price;
@@ -246,11 +247,9 @@ public class DetailItemFragment extends Fragment {
                     getTime();
                     startRemainingTimeCount();
                     ApplicationController.getInstance().sets(1);
-
                 }
 
             }
-
             @Override
             public void onFailure(Throwable t) {
 
@@ -331,9 +330,10 @@ public class DetailItemFragment extends Fragment {
         rSec = ((int)tmp3);
         dealPrice = tmpProduct.deal_price;
     }
-    private void clearTime(){
+    private void clearTime() {
         rHour = 0;
         rMin = 0;
         rSec = 0;
     }
+
 }
