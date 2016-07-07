@@ -17,10 +17,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="18dp"
-            android:layout_width="100dp"
+            android:layout_width="46dp"
             android:layout_gravity="center_vertical"
             android:scaleType="fitXY"
-            android:layout_height="100dp" />
+            android:layout_height="46dp" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                 android:id="@+id/push_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:text="[노원구] 맛난 파스타"
                 android:textColor="#000000"
                 android:textSize="14sp"
@@ -54,7 +54,7 @@
                     android:id="@+id/push_textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="8dp"
                     android:text="원을 입찰하였습니다."
                     android:textColor="#939898"
                     android:textSize="14sp"
