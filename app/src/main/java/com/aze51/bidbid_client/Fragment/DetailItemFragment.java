@@ -46,7 +46,19 @@ public class DetailItemFragment extends Fragment {
     String get_img;
     ImageView detail_img;
     List<Product> products, tmp_Product;
-    int registerID, dealPrice, dealCount, favoriteCheck;
+    int registerID;
+    int dealPrice;
+    int dealCount;
+    CountDownTimer timer;
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.d("MyTag", "ondetach");
+        timer.cancel();
+    }
+
+    int favoriteCheck;
     long rHour, rMin, rSec;
     int tmpRegisterId, tmpPage, tmpPage2;
     Favorite f;
@@ -167,11 +179,13 @@ public class DetailItemFragment extends Fragment {
                 if(favoriteCheck == 1){
                     favoriteImage.setImageResource(R.mipmap.favorite);
                     CheckOutFavorite();
+                    favoriteCheck = 0;
                     favoriteFlag = false;
                 }
                 else{
                     favoriteImage.setImageResource(R.mipmap.favorite_click);
                     CheckInFavorite();
+                    favoriteCheck = 1;
                     favoriteFlag = true;
                 }
             }
@@ -276,7 +290,7 @@ public class DetailItemFragment extends Fragment {
 
     private void startRemainingTimeCount() {
         isKeyExpired = false;
-        final CountDownTimer timer = new CountDownTimer(tmp_time* 1000, 1000) {
+        timer = new CountDownTimer(tmp_time* 1000, 1000) {
 
             //int counter = 3 * 60;
             @Override
@@ -305,7 +319,6 @@ public class DetailItemFragment extends Fragment {
                 if(rHour == 0)
                     Toast.makeText(getContext(),"경매 마감", Toast.LENGTH_SHORT).show();
                 clearTime();
-
             }
         };
         timer.start();
