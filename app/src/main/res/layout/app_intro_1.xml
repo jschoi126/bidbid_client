@@ -1,16 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
-    android:id="@+id/app_intro_1"
-    android:background="@drawable/intro_1">
-    <CheckBox
+    android:background="#eeeeee">
+    <ImageView
+        android:id="@+id/app_intro_image"
+        android:layout_width="272dp"
+        android:layout_height="278dp"
+        android:src="@mipmap/intro1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp" />
+
+    <View
+        android:id="@+id/app_intro_view"
+        android:layout_below="@+id/app_intro_image"
+        android:layout_width="84dp"
+        android:layout_height="4dip"
+        android:layout_marginBottom="24dp"
+        android:layout_centerHorizontal="true"
+        android:background="#744644">
+        </View>
+    <TextView
+        android:id="@+id/app_intro_text1"
+        android:layout_below="@+id/app_intro_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="클릭시 튜토리얼 다시 띄우지 않기"
-        android:id="@+id/tutorial_checkbox"
-        />
-</LinearLayout>
+        android:layout_marginBottom="12dp"
+        android:layout_centerHorizontal="true"
+        android:text="IT's BIDTIME"
+        android:textSize="24sp"
+        android:textColor="#744644"/>
+    <TextView
+        android:id="@+id/app_intro_text2"
+        android:layout_below="@+id/app_intro_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="눈속임 최저가만 찾는 쇼핑은 이제그만!"
+        android:textSize="14sp"
+        android:textColor="#848689"/>
+    <TextView
+        android:id="@+id/app_intro_text3"
+        android:layout_below="@+id/app_intro_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="이제 비드비드를 통해"
+        android:textSize="14sp"
+        android:textColor="#848689"/>
+    <TextView
+        android:id="@+id/app_intro_text4"
+        android:layout_below="@+id/app_intro_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="새로운 경매형 마켓을 경험하세요."
+        android:textSize="14sp"
+        android:textColor="#848689"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="클릭시 튜토리얼 다시 띄우지 않기"
+            android:id="@+id/tutorial_checkbox"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/linearLayout"
+            android:layout_toEndOf="@+id/linearLayout" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+

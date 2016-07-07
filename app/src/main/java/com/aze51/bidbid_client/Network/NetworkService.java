@@ -2,6 +2,8 @@ package com.aze51.bidbid_client.Network;
 
 
 
+import com.aze51.bidbid_client.Fragment.PushListViewItem;
+
 import java.util.List;
 
 import retrofit.Call;
@@ -34,7 +36,7 @@ public interface NetworkService {
     // SMS 인증
     @GET("certify/{phonenum}")
     Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);
-    @POST("content/bid")
+    @POST("bid")
     Call<Auction> finishbid(@Body Auction auction);
     @GET("search/{inputContents}")
     Call<List<Product>> searchContents(@Path("inputContents") String intputContents);
@@ -61,6 +63,9 @@ public interface NetworkService {
     //즐겨찾기 삭제
     @GET("favorite/{user_id}/{register_id}")
     Call<Void> deleteFavorite(@Path("user_id") String userId, @Path("register_id") int registerId);
+    // 푸시 알림 리스트
+    @GET("notify/{user_id}")
+    Call<List<PushListViewItem>> getPushList(@Path("user_id") String userId);
 
 
 }

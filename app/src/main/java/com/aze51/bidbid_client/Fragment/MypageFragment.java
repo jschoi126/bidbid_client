@@ -42,6 +42,7 @@ public class MypageFragment extends Fragment {
     Context mContext;
     ArrayList<ListItemData> itemDatas;
     List<Product> myProducts;
+
     public MypageFragment() {
     }
     @Nullable
@@ -65,12 +66,12 @@ public class MypageFragment extends Fragment {
             @Override
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
                 if(response.isSuccess()) {
+                    if(response.body().get(0).product_img != null){ // 사용자가 입찰하지 않을 경우 서버에서 어떻게 처리해야되나?
                     myProducts = response.body();
                     Log.i("TAG","get response");
                     ApplicationController.getInstance().SetProducts5(myProducts);
-                    if (myProducts.isEmpty() != true) {
                         Log.i("TAG","response not empty");
-                        ApplicationController.getInstance().SetProducts5(myProducts);
+                        //ApplicationController.getInstance().SetProducts5(myProducts);
                         for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
                         }

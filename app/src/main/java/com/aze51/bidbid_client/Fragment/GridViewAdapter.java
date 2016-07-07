@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 
-import com.aze51.bidbid_client.ApplicationController;
-import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 
 import java.util.ArrayList;

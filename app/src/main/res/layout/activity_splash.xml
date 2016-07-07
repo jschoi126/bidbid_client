@@ -20,6 +20,7 @@
             android:layout_gravity="center" />
 
         <TextView
+            android:id="@+id/bidtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="It's Bid Time!"
@@ -29,13 +30,14 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/aze51"
         android:layout_marginBottom="64dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
         android:text="\@aze51"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

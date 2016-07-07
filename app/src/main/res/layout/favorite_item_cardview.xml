@@ -29,10 +29,13 @@
                     android:layout_marginTop="16dp"
                     android:id="@+id/favorite_cardview1">
 
-                    <CheckBox
-                        android:layout_marginLeft="18dp"
-                        android:layout_width="26dp"
-                        android:layout_height="26dp" />
+
+                <CheckBox
+                    android:id="@+id/check_favorite"
+                    android:layout_marginLeft="18dp"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp" />
+
 
                     <TextView
                         android:id="@+id/favorite_title"
@@ -44,43 +47,79 @@
                         android:textColor="#58595b" />
                 </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:id="@+id/favorite_cardview_2"
+                android:layout_below="@+id/favorite_cardview1"
+                android:layout_marginLeft="18dp">
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="118dp"
+                android:id="@+id/favorite_ImageView"
+                android:layout_below="@+id/favorite_cardview1"
+                />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="18dp"
-                    android:id="@+id/favorite_cardview_2"
-                    android:layout_below="@+id/favorite_cardview1"
-                    android:layout_marginLeft="18dp">
-                <ImageView
-                    android:layout_width="128dp"
-                    android:layout_height="118dp"
-                    android:id="@+id/favorite_ImageView"
-                    android:layout_below="@+id/favorite_cardview1"
-                    />
+                    android:orientation="vertical"
+                    android:layout_marginLeft="8dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="2dp"
+                            android:src="@mipmap/clock" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="남은시간"
+                            android:textSize="18sp"
+                            android:textColor="#000000"/>
+                        <TextView
+                            android:id="@+id/favorite_hour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:layout_marginLeft="5dp"
+                            android:textSize="18sp"
+                            android:textColor="#000000"/>
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="시간"
+                        android:textSize="18sp"
+                        android:textColor="#000000"/>
+                        <TextView
+                            android:id="@+id/favorite_min"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:textColor="#000000"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="분"
+                            android:textSize="18sp"
+                            android:textColor="#000000"/>
+
+
+                    </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginLeft="8dp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="14dp"
-                                android:layout_height="14dp"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginRight="2dp"
-                                android:src="@mipmap/clock" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="남은시간"
-                                android:textSize="18sp"
-                                android:textColor="#000000"/>
 
-                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -136,17 +175,19 @@
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
+</LinearLayout>
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/favorite_cardview_3"
-                    android:layout_below="@+id/favorite_cardview_2"
-                    android:gravity="right"
-                    android:layout_marginRight="18dp"
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/favorite_cardview_3"
+                android:layout_below="@+id/favorite_cardview_2"
+                android:gravity="right"
+                android:layout_marginRight="18dp"
                     android:layout_marginBottom="20dp">
-             <TextView
+
+                <TextView
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="최저입찰가"
@@ -159,6 +200,11 @@
                         android:layout_height="wrap_content"
                         android:text="가격"
                         android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="원"
+                    android:textSize="15sp"/>
                 </LinearLayout>
                <RelativeLayout
                    android:layout_width="match_parent"
@@ -193,3 +239,5 @@
         </android.support.v7.widget.CardView>
     </LinearLayout>
 </LinearLayout>
+
+

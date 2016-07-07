@@ -2,20 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="90dp">
         <android.support.v7.widget.CardView
             android:id = "@+id/detail_cardView"
             android:layout_width="match_parent"
-            android:layout_height="415dp"
+            android:layout_height="match_parent"
             android:layout_margin = "4dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
+                android:layout_height="match_parent"
+                android:id="@+id/detail_layout">
+                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:id="@+id/detail_ImageView"
@@ -26,13 +28,61 @@
                 <RelativeLayout
                     android:id="@+id/detail_second_relative"
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
+                    android:layout_height="wrap_content"
                     android:background="#ffffff"
 
                     android:layout_alignParentRight="true"
                     android:layout_below="@id/detail_ImageView"
                     >
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginTop="8dp">
+                        <ImageView
+                            android:id="@+id/detail_minmax_image"
+                            android:layout_width="42dp"
+                            android:layout_height="106dp"
+                            android:src="@mipmap/minmaxbar" />
+                        <TextView
+                            android:id="@+id/detail_max_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/detail_minmax_image"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="MAX"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/detail_max_price"
+                            android:layout_below="@+id/detail_max_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/detail_minmax_image"
+                            android:layout_marginBottom="23dp"
+                            android:text="15000"
+                            android:textSize="10sp"/>
+                        <TextView
+                            android:id="@+id/detail_min_text"
+                            android:layout_below="@+id/detail_max_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_toRightOf="@+id/detail_minmax_image"
+                            android:text="MIN"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/detail_min_price"
+                            android:layout_below="@+id/detail_min_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/detail_minmax_image"
+                            android:text="15000"
+                            android:textSize="10sp"/>
 
+
+                    </RelativeLayout>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -56,7 +106,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="최저입찰가"
-
                             android:textSize="18sp"
                             android:textColor="#FF0000"
                             />
@@ -318,7 +367,7 @@
                         android:layout_height="25dp"
                         android:layout_marginTop="11dp"
                         android:layout_below="@+id/detail_view1"
-                        android:text="상세정보"
+                        android:text="상품정보"
                         android:textSize="14sp"
                         android:textColor="#e42828"
                         android:layout_centerInParent="true"/>
@@ -326,14 +375,257 @@
                         android:id="@+id/detail_view2"
                         android:layout_width="324dp"
                         android:layout_height="2dip"
+                        android:layout_marginBottom="16dp"
                         android:layout_below="@+id/detail_infomation"
                         android:layout_centerHorizontal="true"
                         android:background="#e42828">
 
                     </View>
+
+                    <RelativeLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/detail_view2">
+                        <ImageView
+                            android:id="@+id/detail_inform_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="518dp"
+                            android:scaleType="fitXY"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:src="@drawable/dgif"/>
+
+                        <TextView
+                            android:id="@+id/detail_inform_text"
+                            android:layout_below="@+id/detail_inform_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="11dp"
+                            android:text="상세정보"
+                            android:textSize="14sp"
+                            android:textColor="#e42828"
+                            android:layout_centerInParent="true"/>
+                        <View
+                            android:id="@+id/detail_inform_view"
+                            android:layout_width="324dp"
+                            android:layout_height="2dip"
+                            android:layout_below="@+id/detail_inform_text"
+                            android:layout_marginBottom="18dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="#e42828">
+
+                        </View>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="36dp"
+                            android:orientation="vertical"
+                            android:layout_below="@+id/detail_inform_view">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:src="@mipmap/menu"
+                                    android:layout_marginRight="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="메뉴:"
+                                    android:textSize="12sp"
+                                    android:textColor="#000000"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="피자,파스타 등"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:src="@mipmap/won"
+                                    android:layout_marginRight="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="가격대:"
+                                    android:textSize="12sp"
+                                    android:textColor="#000000"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1만원"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="2만원"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="대"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:src="@mipmap/clock"
+                                    android:layout_marginRight="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="영업시간:"
+                                    android:textSize="12sp"
+                                    android:textColor="#000000"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="08:00"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="~"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="23:00"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="22dp"
+                                    android:text="휴무:"
+                                    android:textSize="12sp"
+                                    android:textColor="#000000"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="연중무휴"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:src="@mipmap/call"
+                                    android:layout_marginRight="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="전화번호:"
+                                    android:textSize="12sp"
+                                    android:textColor="#000000"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="02-333-3333"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:src="@mipmap/park"
+                                    android:layout_marginRight="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="주차:"
+                                    android:textSize="12sp"
+                                    android:textColor="#000000"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="있음"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/detail_inform_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="16dp">
+                                <ImageView
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:src="@mipmap/location"
+                                    android:layout_marginRight="8dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="주소:"
+                                    android:textSize="12sp"
+                                    android:textColor="#000000"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="서울시 서대문 256번지"
+                                    android:textSize="12sp"
+                                    android:textColor="#939598"/>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
                 </RelativeLayout>
 
             </RelativeLayout>
+
         </android.support.v7.widget.CardView>
     </ScrollView>
 
