@@ -55,7 +55,6 @@ public class PushListCustomAdapter extends BaseAdapter{
 
         ImageView productImageView = (ImageView) convertView.findViewById(R.id.push_image) ;
         TextView title = (TextView) convertView.findViewById(R.id.push_text) ;
-        TextView price = (TextView)convertView.findViewById(R.id.push_price);
         TextView remainTime = (TextView)convertView.findViewById(R.id.push_remain_time);
         TextView testView = (TextView)convertView.findViewById(R.id.test);
         PushListViewItem itemData_temp = itemDatas.get(position);
