@@ -11,6 +11,7 @@
         android:layout_width="360dp"
         android:layout_height="340dp"
         android:src="@mipmap/intro2"
+        android:background="#eeeeee"
         android:layout_centerHorizontal="true"
   />
     <View

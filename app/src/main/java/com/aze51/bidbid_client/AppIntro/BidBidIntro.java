@@ -9,8 +9,11 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.widget.CheckBox;
 
+import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
+import com.aze51.bidbid_client.R;
 import com.github.paolorotolo.appintro.AppIntro;
 
 /**
@@ -84,6 +87,10 @@ public class BidBidIntro extends AppIntro{
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
         // Do something when users tap on Done button.
+        CheckBox tutorialCheckBox = (CheckBox)findViewById(R.id.tutorial_checkbox);
+        if(tutorialCheckBox.isChecked()){
+            ApplicationController.getInstance().SetSharedTutorial(1);
+        }
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }

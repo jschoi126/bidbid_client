@@ -27,7 +27,7 @@ public class PhoneAuthActivity extends AppCompatActivity {
         font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
         editText.setTypeface(font);
 
-        button = (Button)findViewById(R.id.confirm_num);
+        button = (Button)findViewById(R.id.facebook_confirm_btn);
         font2 = Typeface.createFromAsset(getAssets(), "NanumGothicBold.ttf");
         button.setTypeface(font);
 

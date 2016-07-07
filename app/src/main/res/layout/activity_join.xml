@@ -212,6 +212,7 @@
                     android:background="@drawable/whitecircleshape"
                     android:drawableLeft="@mipmap/phone"
                     android:hint="핸드폰 번호"
+                    android:inputType="number"
                     android:textSize="14sp"/>
             </LinearLayout>
             <LinearLayout
@@ -247,6 +248,7 @@
                 android:background="@drawable/whitecircleshape"
                 android:drawableLeft="@mipmap/phone"
                 android:hint="인증번호 입력"
+                android:inputType="number"
                 android:textSize="14sp"/>
 
         </LinearLayout>

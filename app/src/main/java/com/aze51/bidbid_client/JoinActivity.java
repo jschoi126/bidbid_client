@@ -149,6 +149,7 @@ public class JoinActivity extends AppCompatActivity {
         phoneAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                phoneAuth.setText("확인");
                 GetPhoneAuthNum();
             }
         });
@@ -252,7 +253,6 @@ public class JoinActivity extends AppCompatActivity {
                         startRemainingTimeCount();
                     }
                 }
-
                 @Override
                 public void onFailure(Throwable t) {
                     Toast.makeText(getApplicationContext(), "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show();
@@ -268,7 +268,6 @@ public class JoinActivity extends AppCompatActivity {
         CountDownTimer timer = new CountDownTimer(3 * 60 * 1000, 1000) {
 
             int counter = 3 * 60;
-
             @Override
             public void onTick(long millisUntilFinished) {
                 counter--;

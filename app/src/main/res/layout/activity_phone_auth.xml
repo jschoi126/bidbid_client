@@ -59,6 +59,7 @@
                     android:background="@drawable/whitecircleshape"
                     android:drawableLeft="@mipmap/phone"
                     android:hint="핸드폰 번호"
+                    android:inputType="number"
                     android:textSize="14sp"/>
             </LinearLayout>
             <LinearLayout
@@ -67,7 +68,7 @@
                 android:paddingLeft="8dp">
 
                 <Button
-                    android:id="@+id/confirm_num"
+                    android:id="@+id/facebook_confirm_btn"
                     android:layout_width="102dp"
                     android:layout_height="35dp"
                     android:background="@drawable/redcircleshape"

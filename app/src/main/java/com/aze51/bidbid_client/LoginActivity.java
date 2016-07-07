@@ -142,8 +142,13 @@ public class LoginActivity extends Activity {
 
                                     //sharedpreference가 있으면 MainActivity로
                                     //Intent intent = new Intent(getApplicationContext(), BidBidIntro.class);
-
-                                    Intent intent = new Intent(getApplicationContext(), PhoneAuthActivity.class);
+                                    Intent intent;
+                                    if(ApplicationController.getInstance().GetSharedTutorial()==1){
+                                        intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    }
+                                    else {
+                                        intent = new Intent(getApplicationContext(), PhoneAuthActivity.class);
+                                    }
 
                                     startActivity(intent);
                                     finish();
@@ -187,7 +192,13 @@ public class LoginActivity extends Activity {
                         if(response.isSuccess()){
                             Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
                             //sharedpreference가 있으면 MainActivity로
-                            Intent intent = new Intent(getApplicationContext(), BidBidIntro.class);
+                            Intent intent;
+                            if(ApplicationController.getInstance().GetSharedTutorial()==1){
+                                intent = new Intent(getApplicationContext(), MainActivity.class);
+                            }
+                            else{
+                                intent = new Intent(getApplicationContext(), BidBidIntro.class);
+                            }
                             startActivity(intent);
 //                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
 //                            startActivity(intent);

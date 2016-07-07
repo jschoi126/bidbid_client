@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.R;
 
 /**
@@ -19,6 +20,10 @@ public class IntroFragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.app_intro_3, container, false);
+        tutorialCheckBox = (CheckBox)container.findViewById(R.id.tutorial_checkbox);
+        if(tutorialCheckBox.isChecked()){
+            ApplicationController.getInstance().SetSharedTutorial(1);
+        }
         return view;
     }
 }
