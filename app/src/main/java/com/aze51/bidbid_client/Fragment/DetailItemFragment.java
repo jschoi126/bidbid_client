@@ -197,7 +197,10 @@ public class DetailItemFragment extends Fragment {
                     tmpProduct = tmp_Product.get(0);
                     registerID = tmpProduct.register_id;
                     detail_title.setText(tmpProduct.product_name);
-                    Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
+                    Glide
+                            .with(getContext())
+                            .load(tmpProduct.product_img)
+                            .into(detail_img);
                     detail_price.setText(Integer.toString(tmpProduct.register_minprice));
                     tmp_time = tmpProduct.rtime;
                     dealPrice = tmpProduct.deal_price;
