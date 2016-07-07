@@ -226,7 +226,7 @@ public class LoginActivity extends Activity {
                     @Override
                     public void onResponse(Response<Login> response, Retrofit retrofit) {
                         if(response.isSuccess()){
-                            Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
                             //sharedpreference가 있으면 MainActivity로
                             Intent intent;
                             if(ApplicationController.getInstance().GetSharedTutorial()==1){
@@ -242,11 +242,11 @@ public class LoginActivity extends Activity {
                             finish();
                         }
                         else
-                            Toast.makeText(getApplicationContext(),"로그인 실패",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"아이디나 비밀번호를 확인해주세요",Toast.LENGTH_LONG).show();
                     }
                     @Override
                     public void onFailure(Throwable t) {
-                        Toast.makeText(getApplicationContext(),"망했어요",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"네트워크 상태를 확인해주세요",Toast.LENGTH_LONG).show();
                     }
                 });
 

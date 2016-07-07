@@ -154,7 +154,7 @@
                 android:id="@+id/member"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="아직도 회원이 아니신가요?"
+                android:text="처음 방문하셨나요?"
                 android:textSize="12dp"/>
 
             <Button
