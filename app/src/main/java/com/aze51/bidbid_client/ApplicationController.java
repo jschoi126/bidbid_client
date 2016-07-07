@@ -40,6 +40,20 @@ public class ApplicationController extends Application {
         editor.putString("tuto", String.valueOf(n));
         editor.commit();
     }
+    public void SetSharedFaceBook(String id){
+        SharedPreferences tutorial = getSharedPreferences("facebook", MODE_PRIVATE);
+        SharedPreferences.Editor editor = tutorial.edit();
+        editor.putString("facebook", id);
+        editor.commit();
+    }
+    public String GetSharedFaceBook(){
+        SharedPreferences tutorial = getSharedPreferences("facebook", MODE_PRIVATE);
+        String ret = tutorial.getString("facebook", "");
+        if(ret.length() == 0){
+            return null;
+        }
+        return ret;
+    }
     public int GetSharedTutorial(){
         SharedPreferences tutorial = getSharedPreferences("tutorial", MODE_PRIVATE);
         String ret = tutorial.getString("tuto", "");

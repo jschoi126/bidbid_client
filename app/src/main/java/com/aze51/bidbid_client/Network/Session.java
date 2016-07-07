@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 /**
  * Created by ChoiJunsung on 2016. 7. 4..
  */
-public class Session {
+public class  Session {
     private SharedPreferences sharedPreferences;
 
     public Session(Context ctx) {

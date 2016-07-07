@@ -114,11 +114,11 @@
                 android:text="OR"
                 android:textSize="12sp"/>
             <TextView
-                android:text="Login With Facebook"
+                android:text="Facebook으로 로그인"
                 android:id="@+id/btnLogin"
                 android:paddingLeft="15dp"
                 android:drawableLeft="@mipmap/facebook"
-                android:drawablePadding="30dp"
+                android:drawablePadding="35dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/bluecircleshape"
                 android:textColor="#ffffff"

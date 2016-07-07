@@ -7,11 +7,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.aze51.bidbid_client.Network.FaceBookLogin;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.User;
+import com.aze51.bidbid_client.service.FaceBookUser;
 import com.aze51.bidbid_client.service.PrefUtils;
 import com.facebook.CallbackManager;
+import com.facebook.login.LoginManager;
 
 import org.w3c.dom.Text;
 
@@ -60,21 +64,37 @@ public class SettingActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                FaceBookUser user = new FaceBookUser();
+                user.facebookID = PrefUtils.getCurrentUser(getApplicationContext()).facebookID;
+                user.device_token=PrefUtils.getCurrentUser(getApplicationContext()).device_token;
+                //ApplicationController.getInstance().SetFacebook(false);
+                //PrefUtils.clearCurrentUser(getApplicationContext());
                 networkService = ApplicationController.getInstance().getNetworkService();
-                Call<User> logoutCall = networkService.logout();
-                logoutCall.enqueue(new Callback<User>() {
+                Call<FaceBookUser> logoutCall = networkService.f_logout();
+                logoutCall.enqueue(new Callback<FaceBookUser>() {
                     @Override
-                    public void onResponse(Response<User> response, Retrofit retrofit) {
+                    public void onResponse(Response<FaceBookUser> response, Retrofit retrofit) {
                         if(response.isSuccess()){
                             if(ApplicationController.getInstance().GetIsFacebook()==true){
                                 ApplicationController.getInstance().SetFacebook(false);
-                                PrefUtils.clearCurrentUser(getApplicationContext());
                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                String str = ApplicationController.getInstance().GetSharedFaceBook();
+                                if(str !=null) {
+                                    Toast.makeText(SettingActivity.this, str + "님 로그아웃 하셨습니다. ", Toast.LENGTH_LONG).show();
+                                }
+                                else{
+                                    Toast.makeText(SettingActivity.this, "로그아웃 하셨습니다. ", Toast.LENGTH_LONG).show();
+                                }
+                                LoginManager.getInstance().logOut();
+                                PrefUtils.clearCurrentUser(getApplicationContext());
                                 startActivity(intent);
                                 finish();
                             }
                             else{
                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                Toast.makeText(SettingActivity.this,ApplicationController.getInstance().getUserId() + " 님 로그아웃 하셨습니다. ",Toast.LENGTH_LONG).show();
+                                PrefUtils.clearCurrentUser(getApplicationContext());
+                                LoginManager.getInstance().logOut();
                                 startActivity(intent);
                                 finish();
                             }

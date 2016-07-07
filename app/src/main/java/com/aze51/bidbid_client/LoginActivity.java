@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.AppIntro.BidBidIntro;
+import com.aze51.bidbid_client.Network.FaceBookLogin;
 import com.aze51.bidbid_client.Network.Login;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.service.FaceBookUser;
@@ -25,14 +26,11 @@ import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONObject;
-
-import java.util.Arrays;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -116,8 +114,16 @@ public class LoginActivity extends Activity {
             else{
                 intent = new Intent(getApplicationContext(), BidBidIntro.class);
             }
+            String str = ApplicationController.getInstance().GetSharedFaceBook();
+            if(str!=null){
+                Toast.makeText(LoginActivity.this,str + "님 페이스북으로 로그인 하셨습니다. ",Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(LoginActivity.this, "페이스북으로 로그인 하셨습니다. ", Toast.LENGTH_LONG).show();
+            }
             ApplicationController.getInstance().SetFacebook(true);
             startActivity(intent);
+            finish();
         }
         /*
         facebook_loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -318,6 +324,42 @@ public class LoginActivity extends Activity {
                                 e.printStackTrace();
                             }
                             Toast.makeText(LoginActivity.this,"welcome "+user.name,Toast.LENGTH_LONG).show();
+
+                            FaceBookLogin login = new FaceBookLogin();
+                            Log.i("TAG",user.facebookID);
+
+                            login.facebookID = user.facebookID;
+                            login.user_device_token = deviceToken;
+                            ApplicationController.getInstance().SetSharedFaceBook(user.name);
+
+                            Call<FaceBookLogin> loginCall = networkService.getFaceBookMember(login);
+                            loginCall.enqueue(new Callback<FaceBookLogin>() {
+                                @Override
+                                public void onResponse(Response<FaceBookLogin> response, Retrofit retrofit) {
+                                    if(response.isSuccess()){
+                                        Toast.makeText(getApplicationContext(),user.name +" 님 페이스북 로그인 성공",Toast.LENGTH_LONG).show();
+                                        //sharedpreference가 있으면 MainActivity로
+                                        Intent intent;
+                                        if(ApplicationController.getInstance().GetSharedTutorial()==1){
+                                            intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        }
+                                        else{
+                                            intent = new Intent(getApplicationContext(), BidBidIntro.class);
+                                        }
+                                        ApplicationController.getInstance().SetFacebook(false);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                    else
+                                        Toast.makeText(getApplicationContext(),"로그인 실패",Toast.LENGTH_LONG).show();
+                                }
+                                @Override
+                                public void onFailure(Throwable t) {
+                                    Toast.makeText(getApplicationContext(),"망했어요",Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            /*
+                            ApplicationController.getInstance().SetSharedFaceBook(user.name);
                             Intent intent;
                             if(ApplicationController.getInstance().GetSharedTutorial()==1){
                                 intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -326,8 +368,7 @@ public class LoginActivity extends Activity {
                                 intent = new Intent(getApplicationContext(), BidBidIntro.class);
                             }
                             startActivity(intent);
-                            finish();
-
+                            finish();*/
                         }
 
                     });

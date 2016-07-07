@@ -11,8 +11,10 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aze51.bidbid_client.AppIntro.BidBidIntro;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.User;
+import com.aze51.bidbid_client.service.PrefUtils;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -78,10 +80,30 @@ public class SplashActivity extends AppCompatActivity {
     }
     public void connectSuccess(int statusCode) {
         Intent intent;
-        if(statusCode == 200){
+        if(PrefUtils.getCurrentUser(SplashActivity.this) != null){
+            Log.i("TAG","splash facebook");
+            if(ApplicationController.getInstance().GetSharedTutorial()==1){
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+            }
+            else{
+                intent = new Intent(getApplicationContext(), BidBidIntro.class);
+            }
+
+            String str = ApplicationController.getInstance().GetSharedFaceBook();
+            if(str!=null){
+                Toast.makeText(SplashActivity.this,str + "님 페이스북으로 로그인 하셨습니다. ",Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(SplashActivity.this, "페이스북으로 로그인 하셨습니다. ", Toast.LENGTH_LONG).show();
+            }
+            ApplicationController.getInstance().SetFacebook(true);
+            //startActivity(intent);
+            //finish();
+        }
+        else if(statusCode == 200){
             Log.d("MyTag", "Has session");
 
-            intent = new Intent(getApplicationContext(), MainActivity.class);
+             intent = new Intent(getApplicationContext(), MainActivity.class);
         }
         else if(statusCode == 401){
             Log.d("MyTag", "Has no session ");

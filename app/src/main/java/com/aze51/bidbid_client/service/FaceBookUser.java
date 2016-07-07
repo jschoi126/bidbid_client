@@ -11,4 +11,5 @@ public class FaceBookUser {
     public String facebookID;
 
     public String gender;
+    public String device_token;
 }

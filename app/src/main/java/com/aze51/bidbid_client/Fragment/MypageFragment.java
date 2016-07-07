@@ -49,6 +49,16 @@ public class MypageFragment extends Fragment {
     TextView userid;
     public MypageFragment() {
     }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(ApplicationController.getInstance().GetIsFacebook()==true){
+            username.setText(PrefUtils.getCurrentUser(mContext).name);
+            userid.setText(PrefUtils.getCurrentUser(mContext).email);
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,7 +71,6 @@ public class MypageFragment extends Fragment {
             username.setText(PrefUtils.getCurrentUser(mContext).name);
             userid.setText(PrefUtils.getCurrentUser(mContext).email);
         }
-
         initNetworkService();
         mLayoutManager = new LinearLayoutManager(mContext);//Mainactivity 의 this
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

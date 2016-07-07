@@ -26,6 +26,9 @@ public interface NetworkService {
     @POST("sign/in")
     Call<Login> getMember(@Body Login login);
 
+    @POST("sign/facebook")
+    Call<FaceBookLogin> getFaceBookMember(@Body FaceBookLogin login);
+
     @GET("content/product")
     Call<List<Product>> getContents();
 
@@ -49,6 +52,10 @@ public interface NetworkService {
     // check session
     @GET("/sign")
     Call<User> getSession();
+
+    @GET("/sign/facebook")
+    Call<FaceBookUser> getFaceBookSession();
+
     // 로그아웃
     @GET("/sign/out")
         Call<User> logout();
