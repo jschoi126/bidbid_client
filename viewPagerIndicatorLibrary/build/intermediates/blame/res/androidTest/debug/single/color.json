@@ -1,10 +1,18 @@
 [
     {
-        "merged": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/res/merged/androidTest/debug/color/vpi__dark_theme.xml",
-        "source": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/color/vpi__dark_theme.xml"
+        "merged": "C:\\Users\\jeon3029\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "C:\\Users\\jeon3029\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
     },
     {
-        "merged": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/res/merged/androidTest/debug/color/vpi__light_theme.xml",
-        "source": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/color/vpi__light_theme.xml"
+        "merged": "C:\\Users\\jeon3029\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "C:\\Users\\jeon3029\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
+    },
+    {
+        "merged": "C:\\Appjam\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "C:\\Appjam\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
+    },
+    {
+        "merged": "C:\\Appjam\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "C:\\Appjam\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
     }
 ]

@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/res/merged/androidTest/debug/drawable/vpi__tab_indicator.xml",
-        "source": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/drawable/vpi__tab_indicator.xml"
+        "merged": "C:\\Appjam\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\vpi__tab_indicator.xml",
+        "source": "C:\\Appjam\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable\\vpi__tab_indicator.xml"
+    },
+    {
+        "merged": "C:\\Users\\jeon3029\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\vpi__tab_indicator.xml",
+        "source": "C:\\Users\\jeon3029\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable\\vpi__tab_indicator.xml"
     }
 ]
