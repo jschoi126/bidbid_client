@@ -103,7 +103,6 @@ public class DetailItemFragment extends Fragment {
                 products = ApplicationController.getInstance().getProducts(position);
                 ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
             }
-
             initView();
             f = new Favorite();
             registerID = ApplicationController.getInstance().getRegisterId();
