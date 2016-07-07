@@ -167,11 +167,13 @@ public class DetailItemFragment extends Fragment {
                 if(favoriteCheck == 1){
                     favoriteImage.setImageResource(R.mipmap.favorite);
                     CheckOutFavorite();
+                    favoriteCheck = 0;
                     favoriteFlag = false;
                 }
                 else{
                     favoriteImage.setImageResource(R.mipmap.favorite_click);
                     CheckInFavorite();
+                    favoriteCheck = 1;
                     favoriteFlag = true;
                 }
             }
