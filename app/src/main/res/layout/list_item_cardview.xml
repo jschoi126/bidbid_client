@@ -9,7 +9,7 @@
         android:id = "@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="358dp"
-        android:layout_margin = "4dp"
+        android:background="#ffffff"
         >
         <RelativeLayout
             android:layout_width="match_parent"
