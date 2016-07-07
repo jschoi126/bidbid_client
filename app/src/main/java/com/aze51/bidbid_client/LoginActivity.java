@@ -280,7 +280,6 @@ public class LoginActivity extends Activity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 progressDialog = new ProgressDialog(LoginActivity.this);
                 progressDialog.setMessage("Loading...");
                 progressDialog.show();
@@ -290,7 +289,6 @@ public class LoginActivity extends Activity {
                 facebook_loginButton.registerCallback(callbackManager, mCallBack);
                 facebook_loginButton.setPressed(false);
                 facebook_loginButton.invalidate();
-
             }
         });
     }
