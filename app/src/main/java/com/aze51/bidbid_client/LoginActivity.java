@@ -116,6 +116,32 @@ public class LoginActivity extends Activity {
         callbackManager = CallbackManager.Factory.create();
         networkService = ApplicationController.getInstance().getNetworkService();
 
+        facebook_loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+                Intent intent;
+                if(ApplicationController.getInstance().GetSharedTutorial()==1){
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                }
+                else {
+                    intent = new Intent(getApplicationContext(), PhoneAuthActivity.class);
+                }
+
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+            }
+        });
         facebook_loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,6 +202,7 @@ public class LoginActivity extends Activity {
         });
         loginButton = (Button) findViewById(R.id.LoginButton);
         joinButton = (Button) findViewById(R.id.join_button);
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,7 +234,6 @@ public class LoginActivity extends Activity {
                         else
                             Toast.makeText(getApplicationContext(),"로그인 실패",Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onFailure(Throwable t) {
                         Toast.makeText(getApplicationContext(),"망했어요",Toast.LENGTH_LONG).show();
@@ -225,21 +251,17 @@ public class LoginActivity extends Activity {
             }
         });
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
-
-
     protected void initView() {
         loginButton = (Button) findViewById(R.id.LoginButton);
         joinButton = (Button) findViewById(R.id.join_button);
         getLogin_id = (EditText) findViewById(R.id.login_id);
         getLogin_pw = (EditText) findViewById(R.id.login_pw);
     }
-
     private void protected_passwd() {
         passWtm = new PasswordTransformationMethod();
         getLogin_pw.setTransformationMethod(passWtm);
