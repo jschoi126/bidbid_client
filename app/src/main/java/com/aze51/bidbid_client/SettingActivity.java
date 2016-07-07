@@ -31,6 +31,7 @@ public class SettingActivity extends AppCompatActivity {
     TextView privacy;
     TextView logout;
     NetworkService networkService;
+    FaceBookUser user;
     CallbackManager callbackManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,22 +65,23 @@ public class SettingActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                FaceBookUser user = new FaceBookUser();
-                user.facebookID = PrefUtils.getCurrentUser(getApplicationContext()).facebookID;
-                user.device_token=PrefUtils.getCurrentUser(getApplicationContext()).device_token;
+                user = new FaceBookUser();
                 //ApplicationController.getInstance().SetFacebook(false);
                 //PrefUtils.clearCurrentUser(getApplicationContext());
                 networkService = ApplicationController.getInstance().getNetworkService();
-                Call<FaceBookUser> logoutCall = networkService.f_logout();
-                logoutCall.enqueue(new Callback<FaceBookUser>() {
-                    @Override
-                    public void onResponse(Response<FaceBookUser> response, Retrofit retrofit) {
-                        if(response.isSuccess()){
-                            if(ApplicationController.getInstance().GetIsFacebook()==true){
-                                ApplicationController.getInstance().SetFacebook(false);
+                if(ApplicationController.getInstance().GetIsFacebook() == true){
+                    Call<FaceBookUser> logoutCall = networkService.f_logout();
+                    user.facebookID = PrefUtils.getCurrentUser(getApplicationContext()).facebookID;
+                    user.device_token=PrefUtils.getCurrentUser(getApplicationContext()).device_token;
+                    ApplicationController.getInstance().SetFacebook(false);
+                    logoutCall.enqueue(new Callback<FaceBookUser>() {
+                        @Override
+                        public void onResponse(Response<FaceBookUser> response, Retrofit retrofit) {
+                            if(response.isSuccess()){
+
                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                 String str = ApplicationController.getInstance().GetSharedFaceBook();
-                                if(str !=null) {
+                                if(str !=null && str.length()!=0) {
                                     Toast.makeText(SettingActivity.this, str + "님 로그아웃 하셨습니다. ", Toast.LENGTH_LONG).show();
                                 }
                                 else{
@@ -90,23 +92,44 @@ public class SettingActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             }
-                            else{
+                        }
+                        @Override
+                        public void onFailure(Throwable t) {
+                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                }
+                else{
+                    Call<User> logoutCall = networkService.logout();
+                    logoutCall.enqueue(new Callback<User>() {
+                        @Override
+                        public void onResponse(Response<User> response, Retrofit retrofit) {
+                            if(response.isSuccess()){
                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                Toast.makeText(SettingActivity.this,ApplicationController.getInstance().getUserId() + " 님 로그아웃 하셨습니다. ",Toast.LENGTH_LONG).show();
-                                PrefUtils.clearCurrentUser(getApplicationContext());
-                                LoginManager.getInstance().logOut();
+                                String id = ApplicationController.getInstance().getUserId();
+                                if(id!=null) {
+                                    Toast.makeText(SettingActivity.this,id + " 님 로그아웃 하셨습니다. ", Toast.LENGTH_LONG).show();
+                                }
+                                else{
+                                    Toast.makeText(SettingActivity.this,"로그아웃 하셨습니다. ", Toast.LENGTH_LONG).show();
+                                }
+                                //PrefUtils.clearCurrentUser(getApplicationContext());
+                                //LoginManager.getInstance().logOut();
                                 startActivity(intent);
                                 finish();
                             }
                         }
-                    }
-                    @Override
-                    public void onFailure(Throwable t) {
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
+                        @Override
+                        public void onFailure(Throwable t) {
+                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                }
+
 
             }
         });
