@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/res/merged/androidTest/debug/values/values.xml",
+        "outputFile": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 95
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 143
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 193
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 243
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -87,7 +87,7 @@
                     "endOffset": 306
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -106,7 +106,7 @@
                     "endOffset": 366
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -125,7 +125,7 @@
                     "endOffset": 427
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -144,7 +144,7 @@
                     "endOffset": 494
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -163,7 +163,7 @@
                     "endOffset": 557
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -182,7 +182,7 @@
                     "endOffset": 629
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -201,7 +201,7 @@
                     "endOffset": 701
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -220,7 +220,7 @@
                     "endOffset": 775
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -239,7 +239,7 @@
                     "endOffset": 849
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -258,7 +258,7 @@
                     "endOffset": 925
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -277,7 +277,7 @@
                     "endOffset": 998
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -296,7 +296,7 @@
                     "endOffset": 1073
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -315,7 +315,7 @@
                     "endOffset": 1144
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -334,7 +334,7 @@
                     "endOffset": 1223
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -349,17 +349,17 @@
                     "startLine": 20,
                     "startColumn": 4,
                     "startOffset": 1228,
-                    "endColumn": 61,
-                    "endOffset": 1285
+                    "endColumn": 51,
+                    "endOffset": 1275
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
                         "startOffset": 1228,
-                        "endColumn": 61,
-                        "endOffset": 1285
+                        "endColumn": 51,
+                        "endOffset": 1275
                     }
                 }
             },
@@ -367,18 +367,18 @@
                 "to": {
                     "startLine": 21,
                     "startColumn": 4,
-                    "startOffset": 1290,
-                    "endColumn": 62,
-                    "endOffset": 1348
+                    "startOffset": 1280,
+                    "endColumn": 53,
+                    "endOffset": 1329
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
-                        "startOffset": 1290,
-                        "endColumn": 62,
-                        "endOffset": 1348
+                        "startOffset": 1280,
+                        "endColumn": 53,
+                        "endOffset": 1329
                     }
                 }
             },
@@ -386,18 +386,18 @@
                 "to": {
                     "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 1353,
-                    "endColumn": 77,
-                    "endOffset": 1426
+                    "startOffset": 1334,
+                    "endColumn": 61,
+                    "endOffset": 1391
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
-                        "startOffset": 1353,
-                        "endColumn": 77,
-                        "endOffset": 1426
+                        "startOffset": 1334,
+                        "endColumn": 61,
+                        "endOffset": 1391
                     }
                 }
             },
@@ -405,18 +405,18 @@
                 "to": {
                     "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 1431,
-                    "endColumn": 78,
-                    "endOffset": 1505
+                    "startOffset": 1396,
+                    "endColumn": 62,
+                    "endOffset": 1454
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
-                        "startOffset": 1431,
-                        "endColumn": 78,
-                        "endOffset": 1505
+                        "startOffset": 1396,
+                        "endColumn": 62,
+                        "endOffset": 1454
                     }
                 }
             },
@@ -424,18 +424,18 @@
                 "to": {
                     "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 1510,
-                    "endColumn": 92,
-                    "endOffset": 1598
+                    "startOffset": 1459,
+                    "endColumn": 77,
+                    "endOffset": 1532
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
-                        "startOffset": 1510,
-                        "endColumn": 92,
-                        "endOffset": 1598
+                        "startOffset": 1459,
+                        "endColumn": 77,
+                        "endOffset": 1532
                     }
                 }
             },
@@ -443,18 +443,18 @@
                 "to": {
                     "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 1603,
-                    "endColumn": 92,
-                    "endOffset": 1691
+                    "startOffset": 1537,
+                    "endColumn": 78,
+                    "endOffset": 1611
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 25,
                         "startColumn": 4,
-                        "startOffset": 1603,
-                        "endColumn": 92,
-                        "endOffset": 1691
+                        "startOffset": 1537,
+                        "endColumn": 78,
+                        "endOffset": 1611
                     }
                 }
             },
@@ -462,18 +462,18 @@
                 "to": {
                     "startLine": 26,
                     "startColumn": 4,
-                    "startOffset": 1696,
-                    "endColumn": 107,
-                    "endOffset": 1799
+                    "startOffset": 1616,
+                    "endColumn": 92,
+                    "endOffset": 1704
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 26,
                         "startColumn": 4,
-                        "startOffset": 1696,
-                        "endColumn": 107,
-                        "endOffset": 1799
+                        "startOffset": 1616,
+                        "endColumn": 92,
+                        "endOffset": 1704
                     }
                 }
             },
@@ -481,56 +481,56 @@
                 "to": {
                     "startLine": 27,
                     "startColumn": 4,
-                    "startOffset": 1804,
-                    "endColumn": 107,
-                    "endOffset": 1907
+                    "startOffset": 1709,
+                    "endColumn": 92,
+                    "endOffset": 1797
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,
-                        "startOffset": 1804,
+                        "startOffset": 1709,
+                        "endColumn": 92,
+                        "endOffset": 1797
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1802,
+                    "endColumn": 107,
+                    "endOffset": 1905
+                },
+                "from": {
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1802,
                         "endColumn": 107,
-                        "endOffset": 1907
+                        "endOffset": 1905
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 33,
+                    "startLine": 29,
                     "startColumn": 4,
-                    "startOffset": 3851,
-                    "endColumn": 61,
-                    "endOffset": 3908
+                    "startOffset": 1910,
+                    "endColumn": 107,
+                    "endOffset": 2013
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
-                        "startLine": 33,
+                        "startLine": 29,
                         "startColumn": 4,
-                        "startOffset": 3851,
-                        "endColumn": 61,
-                        "endOffset": 3908
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 34,
-                    "startColumn": 4,
-                    "startOffset": 3913,
-                    "endColumn": 67,
-                    "endOffset": 3976
-                },
-                "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 34,
-                        "startColumn": 4,
-                        "startOffset": 3913,
-                        "endColumn": 67,
-                        "endOffset": 3976
+                        "startOffset": 1910,
+                        "endColumn": 107,
+                        "endOffset": 2013
                     }
                 }
             },
@@ -538,18 +538,18 @@
                 "to": {
                     "startLine": 35,
                     "startColumn": 4,
-                    "startOffset": 3981,
-                    "endColumn": 62,
-                    "endOffset": 4039
+                    "startOffset": 3957,
+                    "endColumn": 61,
+                    "endOffset": 4014
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 35,
                         "startColumn": 4,
-                        "startOffset": 3981,
-                        "endColumn": 62,
-                        "endOffset": 4039
+                        "startOffset": 3957,
+                        "endColumn": 61,
+                        "endOffset": 4014
                     }
                 }
             },
@@ -557,18 +557,18 @@
                 "to": {
                     "startLine": 36,
                     "startColumn": 4,
-                    "startOffset": 4044,
-                    "endColumn": 64,
-                    "endOffset": 4104
+                    "startOffset": 4019,
+                    "endColumn": 67,
+                    "endOffset": 4082
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 36,
                         "startColumn": 4,
-                        "startOffset": 4044,
-                        "endColumn": 64,
-                        "endOffset": 4104
+                        "startOffset": 4019,
+                        "endColumn": 67,
+                        "endOffset": 4082
                     }
                 }
             },
@@ -576,18 +576,18 @@
                 "to": {
                     "startLine": 37,
                     "startColumn": 4,
-                    "startOffset": 4109,
-                    "endColumn": 65,
-                    "endOffset": 4170
+                    "startOffset": 4087,
+                    "endColumn": 62,
+                    "endOffset": 4145
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 37,
                         "startColumn": 4,
-                        "startOffset": 4109,
-                        "endColumn": 65,
-                        "endOffset": 4170
+                        "startOffset": 4087,
+                        "endColumn": 62,
+                        "endOffset": 4145
                     }
                 }
             },
@@ -595,18 +595,18 @@
                 "to": {
                     "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 4175,
-                    "endColumn": 66,
-                    "endOffset": 4237
+                    "startOffset": 4150,
+                    "endColumn": 64,
+                    "endOffset": 4210
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
-                        "startOffset": 4175,
-                        "endColumn": 66,
-                        "endOffset": 4237
+                        "startOffset": 4150,
+                        "endColumn": 64,
+                        "endOffset": 4210
                     }
                 }
             },
@@ -614,18 +614,18 @@
                 "to": {
                     "startLine": 39,
                     "startColumn": 4,
-                    "startOffset": 4242,
-                    "endColumn": 77,
-                    "endOffset": 4315
+                    "startOffset": 4215,
+                    "endColumn": 65,
+                    "endOffset": 4276
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 39,
                         "startColumn": 4,
-                        "startOffset": 4242,
-                        "endColumn": 77,
-                        "endOffset": 4315
+                        "startOffset": 4215,
+                        "endColumn": 65,
+                        "endOffset": 4276
                     }
                 }
             },
@@ -633,18 +633,18 @@
                 "to": {
                     "startLine": 40,
                     "startColumn": 4,
-                    "startOffset": 4320,
-                    "endColumn": 89,
-                    "endOffset": 4405
+                    "startOffset": 4281,
+                    "endColumn": 66,
+                    "endOffset": 4343
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 40,
                         "startColumn": 4,
-                        "startOffset": 4320,
-                        "endColumn": 89,
-                        "endOffset": 4405
+                        "startOffset": 4281,
+                        "endColumn": 66,
+                        "endOffset": 4343
                     }
                 }
             },
@@ -652,18 +652,18 @@
                 "to": {
                     "startLine": 41,
                     "startColumn": 4,
-                    "startOffset": 4410,
-                    "endColumn": 72,
-                    "endOffset": 4478
+                    "startOffset": 4348,
+                    "endColumn": 77,
+                    "endOffset": 4421
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 41,
                         "startColumn": 4,
-                        "startOffset": 4410,
-                        "endColumn": 72,
-                        "endOffset": 4478
+                        "startOffset": 4348,
+                        "endColumn": 77,
+                        "endOffset": 4421
                     }
                 }
             },
@@ -671,18 +671,18 @@
                 "to": {
                     "startLine": 42,
                     "startColumn": 4,
-                    "startOffset": 4483,
-                    "endColumn": 68,
-                    "endOffset": 4547
+                    "startOffset": 4426,
+                    "endColumn": 89,
+                    "endOffset": 4511
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 42,
                         "startColumn": 4,
-                        "startOffset": 4483,
-                        "endColumn": 68,
-                        "endOffset": 4547
+                        "startOffset": 4426,
+                        "endColumn": 89,
+                        "endOffset": 4511
                     }
                 }
             },
@@ -690,18 +690,18 @@
                 "to": {
                     "startLine": 43,
                     "startColumn": 4,
-                    "startOffset": 4552,
-                    "endColumn": 64,
-                    "endOffset": 4612
+                    "startOffset": 4516,
+                    "endColumn": 72,
+                    "endOffset": 4584
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 43,
                         "startColumn": 4,
-                        "startOffset": 4552,
-                        "endColumn": 64,
-                        "endOffset": 4612
+                        "startOffset": 4516,
+                        "endColumn": 72,
+                        "endOffset": 4584
                     }
                 }
             },
@@ -709,18 +709,18 @@
                 "to": {
                     "startLine": 44,
                     "startColumn": 4,
-                    "startOffset": 4617,
-                    "endColumn": 67,
-                    "endOffset": 4680
+                    "startOffset": 4589,
+                    "endColumn": 68,
+                    "endOffset": 4653
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 44,
                         "startColumn": 4,
-                        "startOffset": 4617,
-                        "endColumn": 67,
-                        "endOffset": 4680
+                        "startOffset": 4589,
+                        "endColumn": 68,
+                        "endOffset": 4653
                     }
                 }
             },
@@ -728,18 +728,18 @@
                 "to": {
                     "startLine": 45,
                     "startColumn": 4,
-                    "startOffset": 4685,
-                    "endColumn": 65,
-                    "endOffset": 4746
+                    "startOffset": 4658,
+                    "endColumn": 64,
+                    "endOffset": 4718
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 45,
                         "startColumn": 4,
-                        "startOffset": 4685,
-                        "endColumn": 65,
-                        "endOffset": 4746
+                        "startOffset": 4658,
+                        "endColumn": 64,
+                        "endOffset": 4718
                     }
                 }
             },
@@ -747,18 +747,18 @@
                 "to": {
                     "startLine": 46,
                     "startColumn": 4,
-                    "startOffset": 4751,
-                    "endColumn": 68,
-                    "endOffset": 4815
+                    "startOffset": 4723,
+                    "endColumn": 67,
+                    "endOffset": 4786
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 46,
                         "startColumn": 4,
-                        "startOffset": 4751,
-                        "endColumn": 68,
-                        "endOffset": 4815
+                        "startOffset": 4723,
+                        "endColumn": 67,
+                        "endOffset": 4786
                     }
                 }
             },
@@ -766,18 +766,18 @@
                 "to": {
                     "startLine": 47,
                     "startColumn": 4,
-                    "startOffset": 4820,
-                    "endColumn": 78,
-                    "endOffset": 4894
+                    "startOffset": 4791,
+                    "endColumn": 65,
+                    "endOffset": 4852
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 47,
                         "startColumn": 4,
-                        "startOffset": 4820,
-                        "endColumn": 78,
-                        "endOffset": 4894
+                        "startOffset": 4791,
+                        "endColumn": 65,
+                        "endOffset": 4852
                     }
                 }
             },
@@ -785,18 +785,18 @@
                 "to": {
                     "startLine": 48,
                     "startColumn": 4,
-                    "startOffset": 4899,
-                    "endColumn": 72,
-                    "endOffset": 4967
+                    "startOffset": 4857,
+                    "endColumn": 68,
+                    "endOffset": 4921
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 48,
                         "startColumn": 4,
-                        "startOffset": 4899,
-                        "endColumn": 72,
-                        "endOffset": 4967
+                        "startOffset": 4857,
+                        "endColumn": 68,
+                        "endOffset": 4921
                     }
                 }
             },
@@ -804,18 +804,18 @@
                 "to": {
                     "startLine": 49,
                     "startColumn": 4,
-                    "startOffset": 4972,
-                    "endColumn": 73,
-                    "endOffset": 5041
+                    "startOffset": 4926,
+                    "endColumn": 78,
+                    "endOffset": 5000
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 49,
                         "startColumn": 4,
-                        "startOffset": 4972,
-                        "endColumn": 73,
-                        "endOffset": 5041
+                        "startOffset": 4926,
+                        "endColumn": 78,
+                        "endOffset": 5000
                     }
                 }
             },
@@ -823,62 +823,79 @@
                 "to": {
                     "startLine": 50,
                     "startColumn": 4,
-                    "startOffset": 5046,
-                    "endLine": 53,
-                    "endColumn": 12,
-                    "endOffset": 5241
+                    "startOffset": 5005,
+                    "endColumn": 72,
+                    "endOffset": 5073
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 50,
                         "startColumn": 4,
-                        "startOffset": 5046,
-                        "endLine": 53,
-                        "endColumn": 12,
-                        "endOffset": 5241
+                        "startOffset": 5005,
+                        "endColumn": 72,
+                        "endOffset": 5073
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 54,
+                    "startLine": 51,
                     "startColumn": 4,
-                    "startOffset": 5246,
-                    "endLine": 56,
-                    "endColumn": 12,
-                    "endOffset": 5408
+                    "startOffset": 5078,
+                    "endColumn": 73,
+                    "endOffset": 5147
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
-                        "startLine": 54,
+                        "startLine": 51,
                         "startColumn": 4,
-                        "startOffset": 5246,
-                        "endLine": 56,
-                        "endColumn": 12,
-                        "endOffset": 5408
+                        "startOffset": 5078,
+                        "endColumn": 73,
+                        "endOffset": 5147
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 57,
+                    "startLine": 52,
                     "startColumn": 4,
-                    "startOffset": 5413,
+                    "startOffset": 5152,
+                    "endLine": 55,
+                    "endColumn": 12,
+                    "endOffset": 5347
+                },
+                "from": {
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 5152,
+                        "endLine": 55,
+                        "endColumn": 12,
+                        "endOffset": 5347
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 5352,
                     "endLine": 58,
                     "endColumn": 12,
-                    "endOffset": 5447
+                    "endOffset": 5514
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
-                        "startLine": 57,
+                        "startLine": 56,
                         "startColumn": 4,
-                        "startOffset": 5413,
+                        "startOffset": 5352,
                         "endLine": 58,
                         "endColumn": 12,
-                        "endOffset": 5447
+                        "endOffset": 5514
                     }
                 }
             },
@@ -886,20 +903,41 @@
                 "to": {
                     "startLine": 59,
                     "startColumn": 4,
-                    "startOffset": 5452,
-                    "endLine": 69,
+                    "startOffset": 5519,
+                    "endLine": 60,
                     "endColumn": 12,
-                    "endOffset": 6049
+                    "endOffset": 5553
                 },
                 "from": {
-                    "file": "/Users/jeon3029/bidbid_client/viewPagerIndicatorLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 59,
                         "startColumn": 4,
-                        "startOffset": 5452,
-                        "endLine": 69,
+                        "startOffset": 5519,
+                        "endLine": 60,
                         "endColumn": 12,
-                        "endOffset": 6049
+                        "endOffset": 5553
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 61,
+                    "startColumn": 4,
+                    "startOffset": 5558,
+                    "endLine": 71,
+                    "endColumn": 12,
+                    "endOffset": 6155
+                },
+                "from": {
+                    "file": "E:\\AndroidStudioProjects\\bidbid_client\\viewPagerIndicatorLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 5558,
+                        "endLine": 71,
+                        "endColumn": 12,
+                        "endOffset": 6155
                     }
                 }
             }

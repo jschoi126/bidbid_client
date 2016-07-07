@@ -24,7 +24,6 @@ import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.SharingActivity;
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -42,13 +41,13 @@ public class DetailItemFragment extends Fragment {
     TextView detail_price;
     TextView detail_time;
     TextView detail_title;
-    TextView detail_time_hour, detail_time_min, detail_time_sec;
+    TextView detail_time_hour, detail_time_min, detail_time_sec, detailCount, detailFavorite, detail_deal;
     Button detail_bid;
     TextView detail_bidPrice;
     String get_img;
     ImageView detail_img;
     List<Product> products, tmp_Product;
-    int registerID, dealPrice;
+    int registerID, dealPrice, dealCount, favoriteCheck;
     long rHour, rMin, rSec;
     int tmpRegisterId, tmpPage, tmpPage2;
     Favorite f;
@@ -156,7 +155,7 @@ public class DetailItemFragment extends Fragment {
         favoriteImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(favoriteFlag == true){
+                if(favoriteCheck == 1){
                     favoriteImage.setImageResource(R.mipmap.favorite);
                     CheckOutFavorite();
                     favoriteFlag = false;
@@ -179,9 +178,12 @@ public class DetailItemFragment extends Fragment {
         detail_time_hour = (TextView)rootViewBasic.findViewById(R.id.detail_time_hour);
         detail_time_min = (TextView)rootViewBasic.findViewById(R.id.detail_time_min);
         detail_time_sec = (TextView)rootViewBasic.findViewById(R.id.detail_time_sec);
-
+        //detail = (TextView)rootViewBasic.findViewById(R.id.detail_bid);
+        detailCount = (TextView)rootViewBasic.findViewById(R.id.detail_people_su);
+        detail_deal = (TextView)rootViewBasic.findViewById(R.id.detail_bid);
         shareImage = (ImageView)rootViewBasic.findViewById(R.id.detail_share_image);
         favoriteImage = (ImageView)rootViewBasic.findViewById(R.id.detail_favorite_image);
+
     }
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
@@ -197,10 +199,21 @@ public class DetailItemFragment extends Fragment {
                     tmpProduct = tmp_Product.get(0);
                     registerID = tmpProduct.register_id;
                     detail_title.setText(tmpProduct.product_name);
-                    Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
+                    detail_img.setImageResource(R.drawable.foodppp);
+                    //Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
                     detail_price.setText(Integer.toString(tmpProduct.register_minprice));
                     tmp_time = tmpProduct.rtime;
                     dealPrice = tmpProduct.deal_price;
+                    dealCount = tmpProduct.dealCount;
+                    detail_deal.setText(Integer.toString(dealPrice));
+                    detailCount.setText(Integer.toString(dealCount));
+                    favoriteCheck = tmpProduct.favorite;
+                    if(favoriteCheck == 1){
+                        favoriteImage.setImageResource(R.mipmap.favorite_click);
+                    }
+                    else{
+                        favoriteImage.setImageResource(R.mipmap.favorite);
+                    }
                     clearTime();
                     getTime();
                     startRemainingTimeCount();

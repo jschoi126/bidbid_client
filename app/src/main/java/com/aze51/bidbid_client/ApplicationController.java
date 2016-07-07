@@ -52,6 +52,7 @@ public class ApplicationController extends Application {
     //private static Auction auction;
     private static String user;
     private static boolean isFacebook = false;
+    private static boolean flag = false;
     private static int detail = 0;
     public void SetFacebook(){isFacebook = true;}
     public boolean GetIsFacebook(){return isFacebook;}
@@ -68,7 +69,7 @@ public class ApplicationController extends Application {
 
     private Call<List<Product>> listCall;
 
-    private static String baseUrl = "http://52.78.66.175:3000";
+    private static String baseUrl = "http://52.78.69.183:3000";
     private Call<List<List<Product>>> getlistCall;
     public void getDataFromServer(){
         getlistCall = networkService.getProducts();
@@ -146,6 +147,8 @@ public class ApplicationController extends Application {
     public static void setRegisterId(int registerid) {registerId = registerid;}
     public static int gets(){return detail;};
     public static void sets(int details) {detail = details;}
+    public static boolean getFlag(){return flag;}
+    public static void setFlag(boolean flags){flag = flags;}
     //public static Auction getAuction(){return auction;}
     //public static void setAuction(Auction a){auction = a;}
 
@@ -172,6 +175,9 @@ public class ApplicationController extends Application {
 
     public void buildService() {
 
+        /*Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-ddTHH:mm:ss.SSSZ")
+                .create();
+        GsonConverterFactory factory = GsonConverterFactory.create(gson);*/
         final CookieManager cookieManager = new CookieManager();
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
 
@@ -209,7 +215,7 @@ public class ApplicationController extends Application {
 
             if(networkService == null){
                 //baseUrl = String.format("http://%s:%d",ip,port);
-                Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T':HH:mm:ss.SSS'Z'")
+                Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss")
                         .create();
                 GsonConverterFactory factory = GsonConverterFactory.create(gson);
 

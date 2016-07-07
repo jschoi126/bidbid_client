@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
@@ -42,21 +41,29 @@ public class FavoriteFragment extends Fragment {
     Context mContext;
     NetworkService networkService;
     List<Product> myProducts;
-    CheckBox checkBox;
+    int tmpPos;
+    int rtmp;
+    String uId;
     private static final String FAVORITE_NUM = "FAVORITE_NUM_";
     //private static final String SAVE_FAVORITE = "SAVE_FAVORITE_";
 
     public FavoriteFragment() {
     }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.favorite_list_fragment,container,false);
         recyclerView = (RecyclerView)rootViewBasic.findViewById(R.id.recyclerView_favorite);
-
         recyclerView.setHasFixedSize(true);
         mContext = ApplicationController.getInstance().getMainActivityContext();
-
+        tmpPos = ApplicationController.getInstance().getPos();
+        uId = ApplicationController.getInstance().getUserId();
         mLayoutManager = new LinearLayoutManager(mContext);//Mainactivity 의 this
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -68,12 +75,13 @@ public class FavoriteFragment extends Fragment {
         //TODO : 패이버릿 리스트 저장하고있는거 서버에 보내서 받아서 itemdatas 에 추가해햐됨
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(mContext,
                 new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
+                    @Override
+                    public void onItemClick(View view, int position) {
                         //TODO :여기서 프로덕트의 리스트를 사용하면 안되고 새로히 받은 페이버릿의 리스트를 사용해야 됨
 
                         ApplicationController.getInstance().setPos(position);
-                                ((MainActivity) mContext).show_detail_list();
-                        if(ApplicationController.getInstance().gets() == 1) {
+                        ((MainActivity) mContext).show_detail_list();
+                        if (ApplicationController.getInstance().gets() == 1) {
                             ((MainActivity) mContext).show_detail_list();
                         }
                         String pos = String.valueOf(position);
@@ -83,6 +91,7 @@ public class FavoriteFragment extends Fragment {
                         toast.show();
                     }
                 }));
+        //checkBoxEvent();
         return rootViewBasic;
     }
 
@@ -100,6 +109,7 @@ public class FavoriteFragment extends Fragment {
                         for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
                         }
+                        //rtmp = itemDatas.get(tmpPos).getRegister();
                         init();
                         mAdapter.setItemData(itemDatas);
                     }
@@ -118,5 +128,8 @@ public class FavoriteFragment extends Fragment {
     private void init(){
         mAdapter = new FavoriteViewAdapter(mContext,itemDatas);
         recyclerView.setAdapter(mAdapter);
+
     }
+
+
 }

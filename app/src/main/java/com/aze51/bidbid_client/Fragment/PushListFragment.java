@@ -46,7 +46,7 @@ public class PushListFragment extends Fragment {
         listView = (ListView)rootViewBasic.findViewById(R.id.push_list_view);
         initNetworkService();
         userId = ApplicationController.getInstance().getUserId();
-        String tmp = "dpdnjs1222";
+        //String tmp = "dpdnjs1222";
         itemDatas = new ArrayList<PushListViewItem>();
         ctx = ApplicationController.getInstance().getMainActivityContext();
 
@@ -56,7 +56,7 @@ public class PushListFragment extends Fragment {
         tempItem.title = "제품 이름";
         tempItem.bidPrice = 5000;
         tempItem.remainTime = 15;//분*/
-        Call<List<PushListViewItem>> getList = networkService.getPushList(tmp);
+        Call<List<PushListViewItem>> getList = networkService.getPushList(userId);
         getList.enqueue(new Callback<List<PushListViewItem>>() {
                             @Override
                             public void onResponse(Response<List<PushListViewItem>> response, Retrofit retrofit) {

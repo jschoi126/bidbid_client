@@ -2,6 +2,8 @@ package com.aze51.bidbid_client.ViewPager;
 
 import com.aze51.bidbid_client.Network.Product;
 
+import java.util.Date;
+
 /**
  * Created by jeon3029 on 16. 6. 28..
  */
@@ -11,6 +13,7 @@ public class ListItemData {
     String price;
     int registerid;
     int remain_time, rHour, rMin, rSec, dealPrice;
+    Date stime, ftime;
     public String img;
     int prices;
     public ListItemData(int image,String product_name,String price,String remain_time){
@@ -32,6 +35,9 @@ public class ListItemData {
         this.rSec = ((int)tmp3);
         this.dealPrice = product.deal_price;
         this.registerid = product.register_id;
+       // this.stime = product.register_stime;
+       // this.ftime = product.register_ftime;
+
     }
     //public int getImage(){return image;}
     public String getImg(){return img;}
@@ -44,5 +50,8 @@ public class ListItemData {
     public int getPrices(){return prices;}
     public int getDealPrices(){return dealPrice;}
     public int getRegister(){return registerid;}
+    public Date getStime() {return stime;}
+    public Date getFtime() {return ftime;}
+
 
 }
