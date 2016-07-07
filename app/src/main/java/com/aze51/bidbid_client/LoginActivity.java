@@ -106,7 +106,8 @@ public class LoginActivity extends Activity {
         facebook_loginButton = (LoginButton) findViewById(R.id.facebook_LoginButton);
         callbackManager = CallbackManager.Factory.create();
         networkService = ApplicationController.getInstance().getNetworkService();
-        if(PrefUtils.getCurrentUser(LoginActivity.this) != null){
+        //has session
+        if(ApplicationController.getInstance().GetStatic()!=401 && PrefUtils.getCurrentUser(LoginActivity.this) != null){
             Intent intent;
             if(ApplicationController.getInstance().GetSharedTutorial()==1){
                 intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -346,7 +347,7 @@ public class LoginActivity extends Activity {
                                         else{
                                             intent = new Intent(getApplicationContext(), BidBidIntro.class);
                                         }
-                                        ApplicationController.getInstance().SetFacebook(false);
+                                        ApplicationController.getInstance().SetFacebook(true);
                                         startActivity(intent);
                                         finish();
                                     }

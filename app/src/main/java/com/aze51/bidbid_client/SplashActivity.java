@@ -80,7 +80,8 @@ public class SplashActivity extends AppCompatActivity {
     }
     public void connectSuccess(int statusCode) {
         Intent intent;
-        if(PrefUtils.getCurrentUser(SplashActivity.this) != null){
+        ApplicationController.getInstance().SetStatic(statusCode);
+        if(statusCode ==200 && PrefUtils.getCurrentUser(SplashActivity.this) != null){
             Log.i("TAG","splash facebook");
             if(ApplicationController.getInstance().GetSharedTutorial()==1){
                 intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -120,6 +121,7 @@ public class SplashActivity extends AppCompatActivity {
                    Thread.sleep(1500);
                } catch (InterruptedException e) {
                    e.printStackTrace();
+
                }
            }
        }.run();

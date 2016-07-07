@@ -28,6 +28,10 @@ import retrofit.Retrofit;
  * Created by Leekh on 2016-06-18.
  */
 public class ApplicationController extends Application {
+    private static int state;
+    public void SetStatic(int n){state = n;}
+    public int GetStatic(){return state;}
+
     //search text
     private String searchtext;
     public void SetSearchText(String s){searchtext = s;}
@@ -85,7 +89,9 @@ public class ApplicationController extends Application {
     private static boolean flag = false;
     private static int detail = 0;
 
-    public void SetFacebook(boolean t){isFacebook = t;}
+    public void SetFacebook(boolean t){
+        isFacebook = t;
+    }
     public boolean GetIsFacebook(){return isFacebook;}
 
     private static int productPos;
