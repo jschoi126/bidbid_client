@@ -161,6 +161,7 @@
                     android:orientation="horizontal"
                     >
                     <TextView
+                        android:id="@+id/start_bid_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
@@ -177,6 +178,7 @@
                         android:paddingRight="3dp"
                         />
                     <TextView
+                        android:id="@+id/finish_bid_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
