@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 
+import com.aze51.bidbid_client.ApplicationController;
+import com.aze51.bidbid_client.MainActivity;
 import com.aze51.bidbid_client.R;
 
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public class GridViewAdapter extends BaseAdapter {
         btn = (Button)convertView.findViewById(R.id.gridItem);
         btn.setText(itemData_temp.item);
         //그리드 뷰 아이템 클릭했을 경우
-        /*
+/*
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -67,8 +69,8 @@ public class GridViewAdapter extends BaseAdapter {
                 ApplicationController.getInstance().SetGridViewOnClick(1);//그리드 뷰 클릭일 경우
                 ((MainActivity)ctx).show_search_list_onclicked();
             }
-        });*/
-        ///////
+        });
+        //////*/
         return convertView;
     }
 }

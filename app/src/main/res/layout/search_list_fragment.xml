@@ -114,6 +114,5 @@
             android:gravity="center">
         </GridView>
     </RelativeLayout>
-
 </RelativeLayout>
 

@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,9 +57,6 @@ public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
-
         rootViewBasic = inflater.inflate(R.layout.search_list_fragment,container,false);
         searchButton = (Button)rootViewBasic.findViewById(R.id.search_button);
         searchText = (EditText)rootViewBasic.findViewById(R.id.search_edit_text);
@@ -112,7 +110,7 @@ public class SearchFragment extends Fragment {
                 //String selectedItem = parent.getItemAtPosition(position).toString();
                 // Display the selected/clicked item text and position on TextView
                 Button btn = (Button)view.findViewById(R.id.gridItem);
-
+                Log.i("TAG",position + "클릭");
                 Context ctx;
                 ctx = ApplicationController.getInstance().getMainActivityContext();
                 String text = btn.getText().toString();
