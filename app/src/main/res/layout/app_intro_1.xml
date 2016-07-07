@@ -4,7 +4,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="bottom"
     android:id="@+id/app_intro_1"
     android:background="@drawable/intro_1">
-
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="클릭시 튜토리얼 다시 띄우지 않기"
+        android:id="@+id/tutorial_checkbox"
+        />
 </LinearLayout>

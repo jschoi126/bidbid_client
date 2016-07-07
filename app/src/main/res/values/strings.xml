@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Bid-Bid</string>
-    <string name="current">CURRENT</string>
-    <string name="scheduled">SCHEDULED</string>
-    <string name="approaching">APPROACHING</string>
+    <string name="current">진행</string>
+    <string name="scheduled">예정</string>
+    <string name="approaching">마감 임박</string>
     <string name="empty"></string>
     <string name="facebook_app_id">528905803977741</string>
     <string name="app_id">528905803977741</string>
