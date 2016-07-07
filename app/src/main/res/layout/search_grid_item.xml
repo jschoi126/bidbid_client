@@ -8,22 +8,22 @@
 
     <LinearLayout
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="1dp"
         android:layout_marginLeft="32dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </LinearLayout>
     <LinearLayout
-        android:paddingTop="16dp"
-        android:layout_width="match_parent"
+        android:layout_width="130dp"
+        android:gravity="center"
         android:layout_height="wrap_content">
-
         <Button
             android:id="@+id/gridItem"
-            android:layout_marginLeft="30dp"
-            android:layout_width="102dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="product1"
             android:background="@drawable/whitebttonshape2"/>
 
