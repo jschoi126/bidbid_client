@@ -4,79 +4,80 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/app_intro_layout"
-    android:background="#eeeeee"
-    >
+    android:id="@+id/app_intro_1"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:background="#eeeeee">
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">
-    <ImageView
-        android:id="@+id/app_intro_image"
-        android:layout_width="272dp"
-        android:layout_height="278dp"
-        android:src="@mipmap/intro3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp" />
+        <ImageView
+            android:id="@+id/app_intro_image"
+            android:layout_width="272dp"
+            android:layout_height="278dp"
+            android:src="@mipmap/intro3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="64dp" />
 
-    <View
-        android:id="@+id/app_intro_view"
-        android:layout_below="@+id/app_intro_image"
-        android:layout_width="84dp"
-        android:layout_height="4dip"
-        android:layout_marginBottom="24dp"
-        android:layout_centerHorizontal="true"
-        android:background="#744644">
-    </View>
-    <TextView
-        android:id="@+id/app_intro_text1"
-        android:layout_below="@+id/app_intro_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_centerHorizontal="true"
-        android:text="끝장나게 저렴한 가격!"
-        android:textSize="24sp"
-        android:textColor="#744644"/>
-    <TextView
-        android:id="@+id/app_intro_text2"
-        android:layout_below="@+id/app_intro_text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_centerHorizontal="true"
-        android:text="유명 레스토랑, 체인점, 문화 컨텐츠 등의 상품들을"
-        android:textSize="14sp"
-        android:textColor="#848689"/>
-    <TextView
-        android:id="@+id/app_intro_text3"
-        android:layout_below="@+id/app_intro_text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_centerHorizontal="true"
-        android:text="생각지도 못한 최저 입찰가로 즐기실 수 있습니다."
-        android:textSize="14sp"
-        android:textColor="#848689"/>
-    <TextView
-        android:id="@+id/app_intro_text4"
-        android:layout_below="@+id/app_intro_text3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="지금 바로 입찰하여 경매의 주인공이 되어보세요!"
-        android:textSize="14sp"
-        android:textColor="#848689"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-        <CheckBox
+        <View
+            android:id="@+id/app_intro_view"
+            android:layout_below="@+id/app_intro_image"
+            android:layout_width="84dp"
+            android:layout_height="4dip"
+            android:layout_marginBottom="24dp"
+            android:layout_centerHorizontal="true"
+            android:background="#744644">
+        </View>
+        <TextView
+            android:id="@+id/app_intro_text1"
+            android:layout_below="@+id/app_intro_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_centerHorizontal="true"
+            android:text="끝장나게 저렴한 가격!"
+            android:textSize="24sp"
+            android:textColor="#744644"/>
+        <TextView
+            android:id="@+id/app_intro_text2"
+            android:layout_below="@+id/app_intro_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="유명 레스토랑, 체인점, 문화 컨텐츠 등의 상품들을"
+            android:textSize="14sp"
+            android:textColor="#848689"/>
+        <TextView
+            android:id="@+id/app_intro_text3"
+            android:layout_below="@+id/app_intro_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="생각지도 못한 최저 입찰가로 즐기실 수 있습니다."
+            android:textSize="14sp"
+            android:textColor="#848689"/>
+        <TextView
+            android:id="@+id/app_intro_text4"
+            android:layout_below="@+id/app_intro_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="지금 바로 입찰하여 경매의 주인공이 되어보세요!"
+            android:textSize="14sp"
+            android:textColor="#848689"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_below="@id/app_intro_text4"
+            android:layout_marginTop="16dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
             android:text="클릭시 튜토리얼 다시 띄우지 않기"
             android:id="@+id/tutorial_checkbox"
             />
+
     </RelativeLayout>
 </RelativeLayout>

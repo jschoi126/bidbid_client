@@ -20,6 +20,7 @@
             android:layout_gravity="center_horizontal"/>
 
         <TextView
+            android:id="@+id/enterMember"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="18dp"
             android:layout_width="wrap_content"
@@ -51,12 +52,12 @@
                 android:layout_height="36dp">
 
                 <EditText
+                    android:id="@+id/user_name"
                     android:layout_width="158dp"
                     android:layout_height="36dp"
                     android:drawableLeft="@mipmap/person"
                     android:background="@drawable/whitecircleshape"
                     android:paddingLeft="12dp"
-                    android:id="@+id/user_name"
                     android:hint="이름"
                     android:textSize="14sp"
                     android:inputType="text"/>
@@ -76,14 +77,14 @@
                     android:orientation="horizontal"
                     android:id="@+id/radiogrp_gender">
                     <RadioButton
+                        android:id="@+id/radiobtn_male"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:id="@+id/radiobtn_male"
                         android:text="남"/>
                     <RadioButton
+                        android:id="@+id/radiobtn_female"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:id="@+id/radiobtn_female"
                         android:text="여"/>
                 </RadioGroup>
             </LinearLayout>
@@ -98,9 +99,9 @@
             android:paddingRight="44dp">
 
             <EditText
-                android:layout_width="158dp"
-                android:layout_height="36dp"
                 android:id="@+id/user_id"
+                android:layout_width="158dp"
+                android:layout_height="35dp"
                 android:paddingLeft="12dp"
                 android:background="@drawable/whitecircleshape"
                 android:drawableLeft="@mipmap/person"
@@ -111,11 +112,11 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="8dp">
                 <Button
+                    android:id="@+id/check_id"
                     android:layout_width="102dp"
                     android:layout_height="35dp"
                     android:background="@drawable/redcircleshape"
                     android:text="아이디중복 확인"
-                    android:id="@+id/check_id"
                     android:textColor="#FFFFFF"
                     android:textSize="12sp"/>
             </LinearLayout>
@@ -130,9 +131,9 @@
             android:paddingRight="44dp">
 
             <EditText
-                android:layout_width="272dp"
-                android:layout_height="36dp"
                 android:id="@+id/user_password"
+                android:layout_width="272dp"
+                android:layout_height="35dp"
                 android:paddingLeft="12dp"
                 android:background="@drawable/whitecircleshape"
                 android:drawableLeft="@mipmap/password"
@@ -149,12 +150,12 @@
             android:paddingRight="44dp">
 
             <EditText
+                android:id="@+id/check_password"
                 android:layout_width="272dp"
                 android:layout_height="36dp"
                 android:paddingLeft="12dp"
                 android:background="@drawable/whitecircleshape"
                 android:drawableLeft="@mipmap/password"
-                android:id="@+id/check_password"
                 android:hint="비밀번호 확인"
                 android:textSize="14sp"/>
         </LinearLayout>
@@ -167,6 +168,7 @@
             android:paddingLeft="44dp">
 
             <CheckBox
+                android:id="@+id/check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -176,15 +178,15 @@
                 android:textColor="#000000"/>
 
             <TextView
-                android:layout_width="75dp"
-                android:layout_height="35dp"
+                android:id="@+id/show_privacy_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="약관보기"
                 android:gravity="center_vertical|center_horizontal|right"
                 android:textSize="14sp"
                 android:textColor="#e42828"
                 android:layout_marginRight="45dp"
-                android:id="@+id/show_privacy_view"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
@@ -203,13 +205,14 @@
                 android:layout_height="match_parent">
 
                 <EditText
+                    android:id="@+id/phone_number"
                     android:layout_width="158dp"
                     android:layout_height="36dp"
                     android:paddingLeft="12dp"
-                    android:id="@+id/phone_number"
                     android:background="@drawable/whitecircleshape"
                     android:drawableLeft="@mipmap/phone"
                     android:hint="핸드폰 번호"
+                    android:inputType="number"
                     android:textSize="14sp"/>
             </LinearLayout>
             <LinearLayout
@@ -238,13 +241,14 @@
 
 
             <EditText
+                android:id="@+id/phone_auth"
                 android:layout_width="272dp"
                 android:layout_height="36dp"
                 android:paddingLeft="12dp"
                 android:background="@drawable/whitecircleshape"
-                android:id="@+id/phone_auth"
                 android:drawableLeft="@mipmap/phone"
                 android:hint="인증번호 입력"
+                android:inputType="number"
                 android:textSize="14sp"/>
 
         </LinearLayout>
@@ -257,11 +261,11 @@
             android:gravity="right" >
 
             <TextView
+                android:id="@+id/textview_keytimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="11sp"
                 android:text="3분 00초"
-                android:id="@+id/textview_keytimer"
                 android:paddingTop="5dp"
                 android:background="#eeeeee"
                 android:textColor="#000000"
@@ -278,10 +282,10 @@
             android:paddingRight="44dp">
 
             <Button
+                android:id="@+id/memjoin_button"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@drawable/graycircleshape"
-                android:id="@+id/memjoin_button"
                 android:text="가입하기"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"/>

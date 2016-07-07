@@ -4,8 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eeeeee"
->
+    android:background="#eeeeee">
     <ImageView
         android:id="@+id/app_intro_image"
         android:layout_width="272dp"
@@ -62,5 +61,23 @@
         android:text="새로운 경매형 마켓을 경험하세요."
         android:textSize="14sp"
         android:textColor="#848689"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="클릭시 튜토리얼 다시 띄우지 않기"
+            android:id="@+id/tutorial_checkbox"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/linearLayout"
+            android:layout_toEndOf="@+id/linearLayout" />
+    </LinearLayout>
+
+
 
 </RelativeLayout>
+

@@ -9,8 +9,11 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.widget.CheckBox;
 
+import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
+import com.aze51.bidbid_client.R;
 import com.github.paolorotolo.appintro.AppIntro;
 
 /**
@@ -30,8 +33,8 @@ public class BidBidIntro extends AppIntro{
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         IntroFragment fragment1 = new IntroFragment();
-        IntroFragment fragment2 = new IntroFragment();
-        IntroFragment fragment3 = new IntroFragment();
+        IntroFragment2 fragment2 = new IntroFragment2();
+        IntroFragment3 fragment3 = new IntroFragment3();
 
 //        fragmentManager.beginTransaction().add(R.id.app_intro_1,fragment1).commit();
 
@@ -45,9 +48,9 @@ public class BidBidIntro extends AppIntro{
 
 
 
-//        addSlide(AppIntroFragment.newInstance("Intro_first", "1111", R.drawable.intro_1, Color.WHITE));
-//        addSlide(AppIntroFragment.newInstance("Intro_second", "1111", R.drawable.intro_1, Color.WHITE));
-//        addSlide(AppIntroFragment.newInstance("Intro_third", "1111", R.drawable.intro_1, Color.WHITE));
+       //addSlide(AppIntroFragment.newInstance("Intro_first", "1111", R.drawable.intro_1, Color.WHITE));
+      // addSlide(AppIntroFragment.newInstance("Intro_second", "1111", R.drawable.intro_2, Color.WHITE));
+       //addSlide(AppIntroFragment.newInstance("Intro_third", "1111", R.drawable.intro_3, Color.WHITE));
 
         // OPTIONAL METHODS
         // Override bar/separator color.
@@ -84,6 +87,10 @@ public class BidBidIntro extends AppIntro{
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
         // Do something when users tap on Done button.
+        CheckBox tutorialCheckBox = (CheckBox)findViewById(R.id.tutorial_checkbox);
+        if(tutorialCheckBox.isChecked()){
+            ApplicationController.getInstance().SetSharedTutorial(1);
+        }
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }

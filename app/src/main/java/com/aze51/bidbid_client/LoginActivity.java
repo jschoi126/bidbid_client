@@ -2,12 +2,14 @@ package com.aze51.bidbid_client;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.AppIntro.BidBidIntro;
@@ -39,7 +41,7 @@ public class LoginActivity extends Activity {
     //facebook
     LoginButton facebook_loginButton;
     CallbackManager callbackManager;
-    //
+
     NetworkService networkService;
     Button loginButton;
     Button joinButton;
@@ -47,20 +49,63 @@ public class LoginActivity extends Activity {
     PasswordTransformationMethod passWtm;
     EditText getLogin_id, getLogin_pw;
     String deviceToken;
+    TextView textView;
+    Typeface font, font2, font3;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if(FirebaseInstanceId.getInstance() != null) {
-            deviceToken = FirebaseInstanceId.getInstance().getToken();
-            Log.d("MyTag", "Token : " + deviceToken);
-        }
-
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_login);
 
+
+        textView = (TextView)findViewById(R.id.member);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+        //font2 = Typeface.createFromAsset(getAssets(), "NanumGothicBold.ttf");
+        //font3 = Typeface.createFromAsset(getAssets(), "NanumGothicExtraBold.ttf");
+        //font4 = Typeface.createFromAsset(getAssets(), "Arista2.0.ttf");
+
+        textView = (TextView)findViewById(R.id.bidtime);
+        font3 = Typeface.createFromAsset(getAssets(), "Arista2.0 light.ttf");
+        textView.setTypeface(font3);
+
+        textView = (TextView)findViewById(R.id.or);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.login_id);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.login_pw);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.join_button);
+        font = Typeface.createFromAsset(getAssets(), "NanumGothic.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.LoginButton);
+        font2 = Typeface.createFromAsset(getAssets(), "NanumGothicBold.ttf");
+        textView.setTypeface(font2);
+
+
+
+
+
+        //textView2 = (TextView)findVieBy(R.id.bbb);
+        //textView2.setTypeface(font2);
+
+
+        //textView.append("텍스트 뷰에 들어갈 내용");
+        if(FirebaseInstanceId.getInstance() != null) {
+            deviceToken = FirebaseInstanceId.getInstance().getToken();
+            Log.d("MyTag", "Token : " + deviceToken);
+        }
         initView();
 
         protected_passwd();
@@ -96,7 +141,15 @@ public class LoginActivity extends Activity {
 //                                    startActivity(intent);
 
                                     //sharedpreference가 있으면 MainActivity로
-                                    Intent intent = new Intent(getApplicationContext(), BidBidIntro.class);
+                                    //Intent intent = new Intent(getApplicationContext(), BidBidIntro.class);
+                                    Intent intent;
+                                    if(ApplicationController.getInstance().GetSharedTutorial()==1){
+                                        intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    }
+                                    else {
+                                        intent = new Intent(getApplicationContext(), PhoneAuthActivity.class);
+                                    }
+
                                     startActivity(intent);
                                     finish();
                                 }
@@ -139,7 +192,13 @@ public class LoginActivity extends Activity {
                         if(response.isSuccess()){
                             Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
                             //sharedpreference가 있으면 MainActivity로
-                            Intent intent = new Intent(getApplicationContext(), BidBidIntro.class);
+                            Intent intent;
+                            if(ApplicationController.getInstance().GetSharedTutorial()==1){
+                                intent = new Intent(getApplicationContext(), MainActivity.class);
+                            }
+                            else{
+                                intent = new Intent(getApplicationContext(), BidBidIntro.class);
+                            }
                             startActivity(intent);
 //                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
 //                            startActivity(intent);

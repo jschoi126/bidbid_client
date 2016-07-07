@@ -2,6 +2,7 @@ package com.aze51.bidbid_client;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.aze51.bidbid_client.Network.NetworkService;
@@ -32,6 +33,21 @@ public class ApplicationController extends Application {
     public void SetSearchText(String s){searchtext = s;}
     public String GetSearchText(){
         return searchtext;}
+
+    public void SetSharedTutorial(int n){
+        SharedPreferences tutorial = getSharedPreferences("tutorial", MODE_PRIVATE);
+        SharedPreferences.Editor editor = tutorial.edit();
+        editor.putString("tuto", String.valueOf(n));
+        editor.commit();
+    }
+    public int GetSharedTutorial(){
+        SharedPreferences tutorial = getSharedPreferences("tutorial", MODE_PRIVATE);
+        String ret = tutorial.getString("tuto", "");
+        if(ret.length() == 0){
+            return 0;
+        }
+        return Integer.parseInt(ret);
+    }
 
     private int gridViewOnClicked = 0;
     public void SetGridViewOnClick(int num){gridViewOnClicked = num;}

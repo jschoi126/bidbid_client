@@ -34,14 +34,13 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="#FFFFFF"
-            android:textAlignment="center"
             android:hint="입찰가를 입력하세요"
             android:textColorHint="#BDBDBD"
             android:singleLine="true"
             android:inputType="number"
             android:id="@+id/inputPrice"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="16sp"
             >
         </EditText>
     </LinearLayout>

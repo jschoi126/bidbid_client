@@ -9,6 +9,7 @@ public class ListItemData {
     int image;
     String product_name;
     String price;
+    int registerid;
     int remain_time, rHour, rMin, rSec, dealPrice;
     public String img;
     int prices;
@@ -30,6 +31,7 @@ public class ListItemData {
         double tmp3 = (tmp2-rMin)*60;
         this.rSec = ((int)tmp3);
         this.dealPrice = product.deal_price;
+        this.registerid = product.register_id;
     }
     //public int getImage(){return image;}
     public String getImg(){return img;}
@@ -41,5 +43,6 @@ public class ListItemData {
     public String getDealPrice(){return Integer.toString(getDealPrices());}
     public int getPrices(){return prices;}
     public int getDealPrices(){return dealPrice;}
+    public int getRegister(){return registerid;}
 
 }

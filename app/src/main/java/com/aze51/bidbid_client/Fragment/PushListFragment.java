@@ -8,16 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
+import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.R;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * Created by jeon3029 on 16. 7. 3..
@@ -28,7 +32,10 @@ public class PushListFragment extends Fragment {
     ListView listView;
     private ArrayList<PushListViewItem> itemDatas = null;
     PushListCustomAdapter pushListCustomAdapter;
+    NetworkService networkService;
     Context ctx;
+    String userId;
+    List<PushListViewItem> tmpList;
     public PushListFragment(){
         //생성자
     }
@@ -37,19 +44,39 @@ public class PushListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootViewBasic = inflater.inflate(R.layout.push_list_fragment,container,false);
         listView = (ListView)rootViewBasic.findViewById(R.id.push_list_view);
-
+        initNetworkService();
+        userId = ApplicationController.getInstance().getUserId();
+        String tmp = "dpdnjs1222";
         itemDatas = new ArrayList<PushListViewItem>();
-        Context ctx = ApplicationController.getInstance().getMainActivityContext();
-        pushListCustomAdapter = new PushListCustomAdapter(itemDatas,ctx);
-        listView.setAdapter(pushListCustomAdapter);
+        ctx = ApplicationController.getInstance().getMainActivityContext();
+
         //TODO : 서버로부터 푸시 리스트 받아서 itemDatas에 add해준다.
-        PushListViewItem tempItem = new PushListViewItem();
-        tempItem.img = R.drawable.food;
+        final PushListViewItem tempItem = new PushListViewItem();
+        /*tempItem.img = R.drawable.food;
         tempItem.title = "제품 이름";
         tempItem.bidPrice = 5000;
-        tempItem.remainTime = 15;//분
-        itemDatas.add(tempItem);
-        listView.setOnItemClickListener(listener);
+        tempItem.remainTime = 15;//분*/
+        Call<List<PushListViewItem>> getList = networkService.getPushList(tmp);
+        getList.enqueue(new Callback<List<PushListViewItem>>() {
+                            @Override
+                            public void onResponse(Response<List<PushListViewItem>> response, Retrofit retrofit) {
+                                if(response.isSuccess()){
+                                    tmpList = response.body();
+                                    for(PushListViewItem p : tmpList){
+                                        itemDatas.add(p);
+                                    }
+                                    pushListCustomAdapter = new PushListCustomAdapter(itemDatas,ctx);
+                                    listView.setAdapter(pushListCustomAdapter);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Throwable t) {
+
+                            }
+                        });
+
+                listView.setOnItemClickListener(listener);
         return rootViewBasic;
     }
     AdapterView.OnItemClickListener listener= new AdapterView.OnItemClickListener() {
@@ -65,4 +92,8 @@ public class PushListFragment extends Fragment {
             ((MainActivity)ctx).show_detail_list();
         }
     };
+
+    private void initNetworkService() {
+        networkService = ApplicationController.getInstance().getNetworkService();
+    }
 }

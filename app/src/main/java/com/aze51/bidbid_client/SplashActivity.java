@@ -2,11 +2,13 @@ package com.aze51.bidbid_client;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.Network.NetworkService;
@@ -18,6 +20,9 @@ import retrofit.Response;
 import retrofit.Retrofit;
 
 public class SplashActivity extends AppCompatActivity {
+
+    TextView textView;
+    Typeface font;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -40,6 +45,15 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         sharedPreferences = getSharedPreferences("Cookie-Session", MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
+        textView = (TextView)findViewById(R.id.bidtime);
+        font = Typeface.createFromAsset(getAssets(), "Arista2.0 light.ttf");
+        textView.setTypeface(font);
+
+        textView = (TextView)findViewById(R.id.aze51);
+        font = Typeface.createFromAsset(getAssets(), "Arista2.0 light.ttf");
+        textView.setTypeface(font);
+
         //CookieManager cookiemanager = CookieManager.getInstance();
         connecting();
         initNetworkService();
