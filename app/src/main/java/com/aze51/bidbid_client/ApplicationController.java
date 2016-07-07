@@ -100,7 +100,7 @@ public class ApplicationController extends Application {
 
     private Call<List<Product>> listCall;
 
-    private static String baseUrl = "http://52.78.69.183:3000";
+    private static String baseUrl = "http://52.78.66.175:3000";
     private Call<List<List<Product>>> getlistCall;
     public void getDataFromServer(){
         getlistCall = networkService.getProducts();

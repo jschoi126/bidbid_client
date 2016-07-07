@@ -2,6 +2,7 @@ package com.aze51.bidbid_client.ViewPager;
 
 import com.aze51.bidbid_client.Network.Product;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -9,11 +10,13 @@ import java.util.Date;
  */
 public class ListItemData {
     int image;
+    SimpleDateFormat simpleDateFormat;
     String product_name;
     String price;
     int registerid;
+    Date sDate;
     int remain_time, rHour, rMin, rSec, dealPrice;
-    Date stime, ftime;
+    String stime, ftime;
     public String img;
     int prices;
     public ListItemData(int image,String product_name,String price,String remain_time){
@@ -24,6 +27,7 @@ public class ListItemData {
     }
     public ListItemData(Product product)
     {
+
         this.img = product.product_img;
         this.product_name = product.product_name;
         this.prices = product.register_minprice;
@@ -35,8 +39,8 @@ public class ListItemData {
         this.rSec = ((int)tmp3);
         this.dealPrice = product.deal_price;
         this.registerid = product.register_id;
-       // this.stime = product.register_stime;
-       // this.ftime = product.register_ftime;
+        this.stime = product.register_stime;
+        this.ftime = product.register_ftime;
 
     }
     //public int getImage(){return image;}
@@ -50,8 +54,13 @@ public class ListItemData {
     public int getPrices(){return prices;}
     public int getDealPrices(){return dealPrice;}
     public int getRegister(){return registerid;}
-    public Date getStime() {return stime;}
-    public Date getFtime() {return ftime;}
+    public String getStime() {return stime;}
+    public String getFtime() {return ftime;}
 
+    /*private void changeData(String str1){
+        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        str1 = format2.format(sDate);
+
+    }*/
 
 }

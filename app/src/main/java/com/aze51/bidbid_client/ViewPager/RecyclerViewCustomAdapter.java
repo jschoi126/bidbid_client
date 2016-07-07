@@ -42,6 +42,8 @@ public class RecyclerViewCustomAdapter extends RecyclerView.Adapter<ViewHolder>{
         holder.text2.setText(itemDatas.get(position).getPrice());
         holder.text3.setText(itemDatas.get(position).getRemain_time_hour());
         holder.text4.setText(itemDatas.get(position).getRemain_time_min());
+        holder.text5.setText(itemDatas.get(position).getStime());
+        holder.text6.setText(itemDatas.get(position).getFtime());
         //holder.text5.setText(itemDatas.get(position).getRemain_time_sec());
     }
     @Override

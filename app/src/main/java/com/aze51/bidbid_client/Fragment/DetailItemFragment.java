@@ -1,7 +1,6 @@
 package com.aze51.bidbid_client.Fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -23,13 +22,7 @@ import com.aze51.bidbid_client.Network.Favorite;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
-import com.aze51.bidbid_client.SharingActivity;
 import com.bumptech.glide.Glide;
-import com.facebook.share.model.ShareOpenGraphAction;
-import com.facebook.share.model.ShareOpenGraphContent;
-import com.facebook.share.model.ShareOpenGraphObject;
-import com.facebook.share.widget.ShareDialog;
-
 
 import java.util.List;
 
@@ -215,12 +208,11 @@ public class DetailItemFragment extends Fragment {
                     tmpProduct = tmp_Product.get(0);
                     registerID = tmpProduct.register_id;
                     detail_title.setText(tmpProduct.product_name);
-                    Glide
-                            .with(getContext())
+                    Glide.with(getContext())
                             .load(tmpProduct.product_img)
                             .into(detail_img);
 
-                    detail_img.setImageResource(R.drawable.foodppp);
+                    //detail_img.setImageResource(R.drawable.foodppp);
                     //Glide.with(getContext()).load(tmpProduct.product_img).into(detail_img);
 
                     detail_price.setText(Integer.toString(tmpProduct.register_minprice));
@@ -303,12 +295,9 @@ public class DetailItemFragment extends Fragment {
                     rMin = 59;
                     rHour--;
                 }
-
                 detail_time_sec.setText(Long.toString(rSec));
                 detail_time_hour.setText(Long.toString(rHour));
                 detail_time_min.setText(Long.toString(rMin));
-
-
             }
 
             @Override
