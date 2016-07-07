@@ -6,11 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
 import com.aze51.bidbid_client.MainActivity;
@@ -85,10 +83,10 @@ public class FavoriteFragment extends Fragment {
                             ((MainActivity) mContext).show_detail_list();
                         }
                         String pos = String.valueOf(position);
-                        Toast toast = Toast.makeText(mContext,
-                                "포지션 : " + pos, Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
+//                        Toast toast = Toast.makeText(mContext,
+//                                "포지션 : " + pos, Toast.LENGTH_LONG);
+//                        toast.setGravity(Gravity.CENTER, 0, 0);
+//                        toast.show();
                     }
                 }));
         //checkBoxEvent();
