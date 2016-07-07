@@ -18,6 +18,7 @@
                 android:layout_height="150dp"
                 android:id="@+id/ImageView"
                 android:src="@drawable/food"
+                android:scaleType="fitXY"
                 android:layout_centerHorizontal="true"
                 />
 

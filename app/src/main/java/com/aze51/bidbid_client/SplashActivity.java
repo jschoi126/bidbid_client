@@ -129,7 +129,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void initNetworkService() {
-        // TODO: 13. ApplicationConoller 객체를 이용하여 NetworkService 가져오기
         networkService = ApplicationController.getInstance().getNetworkService();
 
     }

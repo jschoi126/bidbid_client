@@ -29,14 +29,6 @@
                     android:layout_marginTop="16dp"
                     android:id="@+id/favorite_cardview1">
 
-
-                <CheckBox
-                    android:id="@+id/check_favorite"
-                    android:layout_marginLeft="18dp"
-                    android:layout_width="26dp"
-                    android:layout_height="26dp" />
-
-
                     <TextView
                         android:id="@+id/favorite_title"
                         android:layout_width="match_parent"
@@ -126,6 +118,7 @@
                             android:paddingTop="10dp"
                             android:orientation="horizontal">
                             <TextView
+                                android:id="@+id/favorite_start"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="남은시간"
@@ -138,7 +131,7 @@
                                 android:textSize="12sp"
                                 android:textColor="#939598"/>
                             <TextView
-                                android:id="@+id/favorite_remain_time"
+                                android:id="@+id/favorite_final"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="남은시간"
@@ -212,18 +205,10 @@
                    android:layout_marginLeft="18dp"
                    android:layout_marginRight="18dp"
                    android:id="@+id/favorite_cardview_4"
-
                    android:layout_below="@+id/favorite_cardview_3">
+
                    <Button
-                       android:layout_width="wrap_content"
-                       android:layout_height="36dp"
-                       android:background="@drawable/eegraycircleshape"
-                       android:text="선택삭제"
-                       android:textSize="14sp"
-                       android:textColor="#58595b"
-                       android:layout_marginBottom="48dp"
-                       />
-                   <Button
+                       android:id="@+id/select_detail"
                        android:layout_width="wrap_content"
                        android:layout_height="36dp"
                        android:text="상세정보"
@@ -233,6 +218,7 @@
                        android:layout_gravity="right"
                        android:textColor="#ffffff"
                        android:textStyle="bold"
+                       android:layout_marginBottom="36dp"
                        />
                </RelativeLayout>
             </RelativeLayout>

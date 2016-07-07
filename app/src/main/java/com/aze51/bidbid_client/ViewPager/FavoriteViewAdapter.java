@@ -6,18 +6,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aze51.bidbid_client.ApplicationController;
+import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.R;
 import com.bumptech.glide.Glide;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 /**
  * Created by Leekh on 2016-07-06.
  */
 public class FavoriteViewAdapter extends RecyclerView.Adapter<FavoriteViewHolder>{
     private ArrayList<ListItemData> itemDatas, tmpDatas;
-    Context mContext;
+    Context mContext, ctx;
     boolean flag;
+    int check;
+    String uId;
+    NetworkService networkService;
+    private static final SimpleDateFormat FORMAT =
+            new SimpleDateFormat("yyyy년 M월 d일 h시 m분에 게시");
 
 
     public FavoriteViewAdapter(Context mContext, ArrayList<ListItemData> itemDatas){
@@ -41,26 +53,41 @@ public class FavoriteViewAdapter extends RecyclerView.Adapter<FavoriteViewHolder
     @Override
     public void onBindViewHolder(final FavoriteViewHolder holder, final int position) {
         //holder.imageView.setImageResource(itemDatas.get(position).getImage());
+        initNetworkService();
+        flag = ApplicationController.getInstance().getFlag();
+        uId = ApplicationController.getInstance().getUserId();
         Glide.with(mContext).load(itemDatas.get(position).getImg()).into(holder.imageView);
         holder.text1.setText(itemDatas.get(position).getProduct_name());
         holder.text2.setText(itemDatas.get(position).getPrice());
         holder.text3.setText(itemDatas.get(position).getRemain_time_hour());
         holder.text4.setText(itemDatas.get(position).getRemain_time_min());
-        //holder.text3.setText(itemDatas.get(position).getRemain_time());
-        holder.checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(flag == true) {
-                    holder.checkBox.setChecked(true);
-                    itemDatas.get(position).getRegister();
-                }
-            }
-        });
+        holder.text5.setText(FORMAT.format(itemDatas.get(position).getStime()));
+        holder.text6.setText(FORMAT.format(itemDatas.get(position).getFtime()));
+
     }
     @Override
     public int getItemCount() {
         return (itemDatas != null) ? itemDatas.size() : 0;
     }
 
+    public void deleteCall(String user, int register){
+        Call<Void> deleteCall = networkService.deleteFavorite(user, register);
+        deleteCall.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Response<Void> response, Retrofit retrofit) {
+                if(response.isSuccess()){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
+    }
+    private void initNetworkService() {
+        networkService = ApplicationController.getInstance().getNetworkService();
+    }
 
 }

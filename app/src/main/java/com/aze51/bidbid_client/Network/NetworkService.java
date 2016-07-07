@@ -40,7 +40,7 @@ public interface NetworkService {
     // SMS 인증
     @GET("certify/{phonenum}")
     Call<String> getPhoneCertification(@Path("phonenum") long phoneNum);
-    @POST("bid")
+    @POST("bidbid")
     Call<Auction> finishbid(@Body Auction auction);
     @GET("search/{inputContents}")
     Call<List<Product>> searchContents(@Path("inputContents") String intputContents);
@@ -76,6 +76,9 @@ public interface NetworkService {
     // 푸시 알림 리스트
     @GET("notify/{user_id}")
     Call<List<PushListViewItem>> getPushList(@Path("user_id") String userId);
-
+    @GET("favorite/deteles/{user_id}")
+    Call<Void> deletesFavorite(@Path("user_id") String userId, @Body User user);
+    ///register .....1 2  3
+    //=> 배열 리스트 저장 -> Body
 
 }
