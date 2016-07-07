@@ -1,6 +1,7 @@
 package com.aze51.bidbid_client;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import com.aze51.bidbid_client.AppIntro.BidBidIntro;
 import com.aze51.bidbid_client.Network.Login;
 import com.aze51.bidbid_client.Network.NetworkService;
+import com.aze51.bidbid_client.service.FaceBookUser;
+import com.aze51.bidbid_client.service.PrefUtils;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -52,8 +55,8 @@ public class LoginActivity extends Activity {
     TextView textView;
     Typeface font, font2, font3;
 
-
-
+    ProgressDialog progressDialog;
+    FaceBookUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,15 +95,6 @@ public class LoginActivity extends Activity {
         textView = (TextView)findViewById(R.id.LoginButton);
         font2 = Typeface.createFromAsset(getAssets(), "NanumGothicBold.ttf");
         textView.setTypeface(font2);
-
-
-
-
-
-        //textView2 = (TextView)findVieBy(R.id.bbb);
-        //textView2.setTypeface(font2);
-
-
         //textView.append("텍스트 뷰에 들어갈 내용");
         if(FirebaseInstanceId.getInstance() != null) {
             deviceToken = FirebaseInstanceId.getInstance().getToken();
@@ -112,10 +106,20 @@ public class LoginActivity extends Activity {
 
 
         facebook_loginButton = (LoginButton) findViewById(R.id.facebook_LoginButton);
-        shareButton = (Button) findViewById(R.id.facebook_LoginButton);
         callbackManager = CallbackManager.Factory.create();
         networkService = ApplicationController.getInstance().getNetworkService();
-
+        if(PrefUtils.getCurrentUser(LoginActivity.this) != null){
+            Intent intent;
+            if(ApplicationController.getInstance().GetSharedTutorial()==1){
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+            }
+            else{
+                intent = new Intent(getApplicationContext(), BidBidIntro.class);
+            }
+            ApplicationController.getInstance().SetFacebook(true);
+            startActivity(intent);
+        }
+        /*
         facebook_loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -127,11 +131,9 @@ public class LoginActivity extends Activity {
                 else {
                     intent = new Intent(getApplicationContext(), PhoneAuthActivity.class);
                 }
-
                 startActivity(intent);
                 finish();
             }
-
             @Override
             public void onCancel() {
                 // App code
@@ -141,7 +143,8 @@ public class LoginActivity extends Activity {
             public void onError(FacebookException exception) {
                 // App code
             }
-        });
+        });*/
+        /*
         facebook_loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,7 +202,7 @@ public class LoginActivity extends Activity {
                     }
                 });
             }
-        });
+        });*/
         loginButton = (Button) findViewById(R.id.LoginButton);
         joinButton = (Button) findViewById(R.id.join_button);
 
@@ -226,6 +229,7 @@ public class LoginActivity extends Activity {
                             else{
                                 intent = new Intent(getApplicationContext(), BidBidIntro.class);
                             }
+                            ApplicationController.getInstance().SetFacebook(false);
                             startActivity(intent);
 //                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
 //                            startActivity(intent);
@@ -266,4 +270,84 @@ public class LoginActivity extends Activity {
         passWtm = new PasswordTransformationMethod();
         getLogin_pw.setTransformationMethod(passWtm);
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        callbackManager=CallbackManager.Factory.create();
+        facebook_loginButton= (LoginButton)findViewById(R.id.facebook_LoginButton);
+        facebook_loginButton.setReadPermissions("public_profile", "email","user_friends");
+        TextView btnLogin= (TextView) findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                progressDialog = new ProgressDialog(LoginActivity.this);
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+                facebook_loginButton.performClick();
+                facebook_loginButton.setPressed(true);
+                facebook_loginButton.invalidate();
+                facebook_loginButton.registerCallback(callbackManager, mCallBack);
+                facebook_loginButton.setPressed(false);
+                facebook_loginButton.invalidate();
+
+            }
+        });
+    }
+    private FacebookCallback<LoginResult> mCallBack = new FacebookCallback<LoginResult>() {
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+
+            progressDialog.dismiss();
+
+            // App code
+            GraphRequest request = GraphRequest.newMeRequest(
+                    loginResult.getAccessToken(),
+                    new GraphRequest.GraphJSONObjectCallback() {
+                        @Override
+                        public void onCompleted(
+                                JSONObject object,
+                                GraphResponse response) {
+                            Log.e("response: ", response + "");
+                            try {
+                                user = new FaceBookUser();
+                                user.facebookID = object.getString("id").toString();
+                                user.email = object.getString("email").toString();
+                                user.name = object.getString("name").toString();
+                                user.gender = object.getString("gender").toString();
+                                PrefUtils.setCurrentUser(user,LoginActivity.this);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(LoginActivity.this,"welcome "+user.name,Toast.LENGTH_LONG).show();
+                            Intent intent;
+                            if(ApplicationController.getInstance().GetSharedTutorial()==1){
+                                intent = new Intent(getApplicationContext(), MainActivity.class);
+                            }
+                            else{
+                                intent = new Intent(getApplicationContext(), BidBidIntro.class);
+                            }
+                            startActivity(intent);
+                            finish();
+
+                        }
+
+                    });
+
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "id,name,email,gender, birthday");
+            request.setParameters(parameters);
+            request.executeAsync();
+        }
+
+        @Override
+        public void onCancel() {
+            progressDialog.dismiss();
+        }
+
+        @Override
+        public void onError(FacebookException e) {
+            progressDialog.dismiss();
+        }
+    };
 }

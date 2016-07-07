@@ -113,10 +113,23 @@
                 android:layout_height="wrap_content"
                 android:text="OR"
                 android:textSize="12sp"/>
-
+            <TextView
+                android:text="Login With Facebook"
+                android:id="@+id/btnLogin"
+                android:paddingLeft="15dp"
+                android:drawableLeft="@mipmap/facebook"
+                android:drawablePadding="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bluecircleshape"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:gravity="left|center_vertical"
+                android:layout_width="272dp"
+                android:layout_height="35dp" />
             <FrameLayout
                 android:layout_width="272dp"
                 android:layout_height="35dp"
+                android:visibility="gone"
                 android:background="@drawable/bluecircleshape" >
                 <com.facebook.login.widget.LoginButton
                     android:layout_width="260dp"
@@ -125,6 +138,7 @@
                     android:gravity="center"
                     android:id="@+id/facebook_LoginButton"
                     android:layout_gravity="center"/>
+
             </FrameLayout>
 
         </LinearLayout>

@@ -69,7 +69,8 @@ public class ApplicationController extends Application {
     private static String user;
     private static boolean isFacebook = false;
     private static int detail = 0;
-    public void SetFacebook(){isFacebook = true;}
+
+    public void SetFacebook(boolean t){isFacebook = t;}
     public boolean GetIsFacebook(){return isFacebook;}
 
     private static int productPos;

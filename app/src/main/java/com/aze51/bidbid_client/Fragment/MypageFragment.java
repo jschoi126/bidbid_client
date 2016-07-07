@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aze51.bidbid_client.ApplicationController;
@@ -21,6 +22,7 @@ import com.aze51.bidbid_client.R;
 import com.aze51.bidbid_client.ViewPager.ListItemData;
 import com.aze51.bidbid_client.ViewPager.MyPageRecyclerViewAdapter;
 import com.aze51.bidbid_client.ViewPager.RecyclerItemClickListener;
+import com.aze51.bidbid_client.service.PrefUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,8 @@ public class MypageFragment extends Fragment {
     ArrayList<ListItemData> itemDatas;
     List<Product> myProducts;
 
+    TextView username;
+    TextView userid;
     public MypageFragment() {
     }
     @Nullable
@@ -51,13 +55,19 @@ public class MypageFragment extends Fragment {
         rootViewBasic = inflater.inflate(R.layout.mypage_list_fragment,container,false);
         recyclerView = (RecyclerView)rootViewBasic.findViewById(R.id.recyclerView_mypage);
         mContext = ApplicationController.getInstance().getMainActivityContext();
+        username = (TextView)rootViewBasic.findViewById(R.id.mypage_user_name);
+        userid = (TextView)rootViewBasic.findViewById(R.id.mypage_user_id);
+        if(ApplicationController.getInstance().GetIsFacebook()==true){
+            username.setText(PrefUtils.getCurrentUser(mContext).name);
+            userid.setText(PrefUtils.getCurrentUser(mContext).email);
+        }
+
         initNetworkService();
         mLayoutManager = new LinearLayoutManager(mContext);//Mainactivity 의 this
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
-
          //TODO : 서버에 유저 아이디 보내서 유저가 입찰하고 있는 리스트 받아야 함
         String user = ApplicationController.getInstance().getUserId();
 

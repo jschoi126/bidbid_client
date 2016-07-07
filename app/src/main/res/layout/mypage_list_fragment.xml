@@ -23,7 +23,7 @@
             android:layout_marginLeft="8dp"
             >
             <TextView
-                android:id="@+id/mypage_phone_number"
+                android:id="@+id/mypage_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="김가영(010-0000-0000)"

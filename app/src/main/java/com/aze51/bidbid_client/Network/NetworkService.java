@@ -3,6 +3,7 @@ package com.aze51.bidbid_client.Network;
 
 
 import com.aze51.bidbid_client.Fragment.PushListViewItem;
+import com.aze51.bidbid_client.service.FaceBookUser;
 
 import java.util.List;
 
@@ -50,7 +51,9 @@ public interface NetworkService {
     Call<User> getSession();
     // 로그아웃
     @GET("/sign/out")
-    Call<User> logout();
+        Call<User> logout();
+    @GET("/sign/out")
+        Call<FaceBookUser> f_logout();
 
     //즐겨찾기 조회
     @GET("favorite/{user_id}")
