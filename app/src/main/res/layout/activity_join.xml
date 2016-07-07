@@ -48,11 +48,11 @@
                 android:orientation="horizontal"
                 android:drawableLeft="@mipmap/person"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="36dp">
 
                 <EditText
                     android:layout_width="158dp"
-                    android:layout_height="35dp"
+                    android:layout_height="36dp"
                     android:drawableLeft="@mipmap/person"
                     android:background="@drawable/whitecircleshape"
                     android:paddingLeft="12dp"
@@ -99,7 +99,7 @@
 
             <EditText
                 android:layout_width="158dp"
-                android:layout_height="35dp"
+                android:layout_height="36dp"
                 android:id="@+id/user_id"
                 android:paddingLeft="12dp"
                 android:background="@drawable/whitecircleshape"
@@ -131,7 +131,7 @@
 
             <EditText
                 android:layout_width="272dp"
-                android:layout_height="35dp"
+                android:layout_height="36dp"
                 android:id="@+id/user_password"
                 android:paddingLeft="12dp"
                 android:background="@drawable/whitecircleshape"
@@ -150,7 +150,7 @@
 
             <EditText
                 android:layout_width="272dp"
-                android:layout_height="35dp"
+                android:layout_height="36dp"
                 android:paddingLeft="12dp"
                 android:background="@drawable/whitecircleshape"
                 android:drawableLeft="@mipmap/password"
@@ -204,7 +204,7 @@
 
                 <EditText
                     android:layout_width="158dp"
-                    android:layout_height="35dp"
+                    android:layout_height="36dp"
                     android:paddingLeft="12dp"
                     android:id="@+id/phone_number"
                     android:background="@drawable/whitecircleshape"
@@ -239,7 +239,7 @@
 
             <EditText
                 android:layout_width="272dp"
-                android:layout_height="35dp"
+                android:layout_height="36dp"
                 android:paddingLeft="12dp"
                 android:background="@drawable/whitecircleshape"
                 android:id="@+id/phone_auth"

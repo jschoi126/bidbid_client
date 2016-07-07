@@ -40,15 +40,12 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         sharedPreferences = getSharedPreferences("Cookie-Session", MODE_PRIVATE);
         editor = sharedPreferences.edit();
-
         //CookieManager cookiemanager = CookieManager.getInstance();
-
         connecting();
         initNetworkService();
         ApplicationController.getInstance().getDataFromServer();
         connectServer();
     }
-
     public void connectServer() {
         NetworkService networkService = ApplicationController.getInstance().getNetworkService();
         Call<User> loginTest = networkService.getSession();

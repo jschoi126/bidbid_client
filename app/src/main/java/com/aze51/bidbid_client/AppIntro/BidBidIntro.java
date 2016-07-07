@@ -74,22 +74,24 @@ public class BidBidIntro extends AppIntro{
     public void onSkipPressed(Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
         // Do something when users tap on Skip button.
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        startActivity(intent);
+        finish();
     }
-
     @Override
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
         // Do something when users tap on Done button.
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
     }
-
     @Override
     public void onSlideChanged(@Nullable Fragment oldFragment, @Nullable Fragment newFragment) {
         super.onSlideChanged(oldFragment, newFragment);
         // Do something when the slide changes.
     }
-
     @Override
     protected int getLayoutId() {
         return super.getLayoutId();
@@ -124,17 +126,14 @@ public class BidBidIntro extends AppIntro{
     public void setColorDoneText(@ColorInt int colorDoneText) {
         super.setColorDoneText(colorDoneText);
     }
-
     @Override
     public void setColorSkipButton(@ColorInt int colorSkipButton) {
         super.setColorSkipButton(colorSkipButton);
     }
-
     @Override
     public void setImageNextButton(@DrawableRes Drawable imageNextButton) {
         super.setImageNextButton(imageNextButton);
     }
-
     @Override
     public void showSkipButton(boolean showButton) {
         super.showSkipButton(showButton);
