@@ -149,7 +149,7 @@ public class JoinActivity extends AppCompatActivity {
         phoneAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                phoneAuth.setText("확인");
+                phoneAuth.setText("인증번호 확인");
                 GetPhoneAuthNum();
             }
         });
@@ -157,40 +157,44 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String tmpString = editPhoneAuth.getText().toString();
-                if((tmpString.equals(tmpCertifiacation)) && (checkPermintId == true)) {
-                    Join join = new Join();
-                    join.user_name = username.getText().toString();
-                    join.user_passwd = userpw.getText().toString();
-                    if (radioGroupGender.getCheckedRadioButtonId() == 0)
-                        join.user_gender = true;
-                    else
-                        join.user_gender = false;
-                    join.user_id = userid.getText().toString();
+                if(checkedPhoneCertficate) {
+                    if (checkPermintId == true) {
+                        Join join = new Join();
+                        join.user_name = username.getText().toString();
+                        join.user_passwd = userpw.getText().toString();
+                        if (radioGroupGender.getCheckedRadioButtonId() == 0)
+                            join.user_gender = true;
+                        else
+                            join.user_gender = false;
+                        join.user_id = userid.getText().toString();
               /*  if(userpw != checkpw){
                     Toast.makeText(getApplicationContext(),"")
                 }*/
-                    Call<Join> joinCall = networkService.newMember(join);
-                    joinCall.enqueue(new Callback<Join>() {
-                        @Override
-                        public void onResponse(Response<Join> response, Retrofit retrofit) {
-                            Toast.makeText(getApplicationContext(),
-                                    "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show();
-                            finish();
-                        }
+                        Call<Join> joinCall = networkService.newMember(join);
+                        joinCall.enqueue(new Callback<Join>() {
+                            @Override
+                            public void onResponse(Response<Join> response, Retrofit retrofit) {
+                                Toast.makeText(getApplicationContext(),
+                                        "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show();
+                                finish();
+                            }
 
-                        @Override
-                        public void onFailure(Throwable t) {
-                            Toast.makeText(getApplicationContext(),
-                                    "회원가입이 실패하였습니다.", Toast.LENGTH_LONG).show();
-                            finish();
-                        }
-                    });
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                /*} else{   ???
-                    Toast.makeText(getApplicationContext(),"인증번호 및 ID의 중복체크 확인하세요",Toast.LENGTH_SHORT).show();
-                */}
+                            @Override
+                            public void onFailure(Throwable t) {
+                                Toast.makeText(getApplicationContext(),
+                                        "회원가입이 실패하였습니다.", Toast.LENGTH_LONG).show();
+                                finish();
+                            }
+                        });
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "ID 중복확인 체크를 진행해주세요", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "문자인증을 진행해주세요", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         showPrivacy = (TextView)findViewById(R.id.show_privacy_view);
@@ -217,7 +221,6 @@ public class JoinActivity extends AppCompatActivity {
         radioButtonFemale = (RadioButton) findViewById(R.id.radiobtn_female);
         phoneAuth = (Button)findViewById(R.id.auth_Phone);
         textViewKeyTimer = (TextView) findViewById(R.id.textview_keytimer);
-
 
     }
     private void initNetworkService(){
@@ -250,6 +253,24 @@ public class JoinActivity extends AppCompatActivity {
                     if (response.isSuccess()) {
                         Toast.makeText(getApplicationContext(), "인증번호가 전송되었습니다", Toast.LENGTH_SHORT).show();
                         tmpCertifiacation = response.body().toString();
+                        phoneAuth.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if(isKeyExpired){
+                                    Toast.makeText(getApplicationContext(), "인증번호가 만료되었습니다", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                                if(TextUtils.equals(phoneAuth.getText(), tmpCertifiacation)){
+                                    checkedPhoneCertficate = true;
+                                    Toast.makeText(getApplicationContext(), "인증번호가 확인되었습니다", Toast.LENGTH_SHORT).show();
+                                    phoneAuth.setClickable(false);
+                                } else {
+                                    checkedPhoneCertficate = false;
+                                    Toast.makeText(getApplicationContext(), "인증번호가 올바르지않습니다", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
                         startRemainingTimeCount();
                     }
                 }
