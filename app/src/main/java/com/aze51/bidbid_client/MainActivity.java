@@ -96,8 +96,13 @@ public class MainActivity extends AppCompatActivity {
         show_current_list();
     }
     public void show_detail_list() {
-        fromState = pageState;
-        pageState = 1;
+        if(fromState != 1) {
+            fromState = pageState;
+            pageState = 1;
+        }
+        else {
+            pageState = 1;
+        }
         if(detailFlag == 0){
             fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();

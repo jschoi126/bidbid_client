@@ -98,13 +98,14 @@ public class DetailItemFragment extends Fragment {
             position = ApplicationController.getInstance().getPosition();
             rootViewBasic = inflater.inflate(R.layout.detail_item_cardview, container, false);
             ctx = ApplicationController.getInstance().getMainActivityContext();
-            if (((MainActivity) ctx).getFromState() == 6) { //from search on clicked  detail
+            int pageState =((MainActivity) ctx).getFromState();
+            if (pageState== 6) { //from search on clicked  detail
                 products = ApplicationController.getInstance().getProducts(5);
                 ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
-            } else if (((MainActivity) ctx).getFromState() == 2) { //from favorite detail
+            } else if (pageState== 2) { //from favorite detail
                 products = ApplicationController.getInstance().getProducts(3);
                 ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
-            } else if (((MainActivity) ctx).getFromState() == 3) { //from mypage detail
+            } else if (pageState == 3) { //from mypage detail
                 products = ApplicationController.getInstance().getProducts(4);
                 ApplicationController.getInstance().setRegisterId(products.get(pos).register_id);
             } else {//from view pager.
