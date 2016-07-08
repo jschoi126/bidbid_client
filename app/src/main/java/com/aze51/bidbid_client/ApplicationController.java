@@ -154,7 +154,6 @@ public class ApplicationController extends Application {
                     //Toast.makeText(reference.getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Throwable t) {
                 //viewPagerCustomAdapter.pbInvisible();

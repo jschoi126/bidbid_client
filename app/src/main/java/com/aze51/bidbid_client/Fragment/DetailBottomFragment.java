@@ -51,6 +51,8 @@ public class DetailBottomFragment extends Fragment {
     public DetailBottomFragment() {
         upDownState = false;//false = down, ture = up
     }
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -1,6 +1,8 @@
 package com.aze51.bidbid_client.Fragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -11,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,9 +24,15 @@ import com.aze51.bidbid_client.Network.Favorite;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
+import com.aze51.bidbid_client.SharingActivity;
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
+import com.facebook.share.ShareApi;
+import com.facebook.share.model.ShareOpenGraphAction;
+import com.facebook.share.model.ShareOpenGraphContent;
+import com.facebook.share.model.ShareOpenGraphObject;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 
 import java.util.List;
 import java.util.StringTokenizer;
@@ -148,14 +155,18 @@ public class DetailItemFragment extends Fragment {
                 ShareOpenGraphContent content2 = new ShareOpenGraphContent.Builder()
                         .setPreviewPropertyName("fitness:course")
                         .setAction(action)
-                        .build();*/
-                //String temp;
-                /*
-                if(tmpProduct!=null){
+                        .build();
+                        ShareApi.share(content,null);
+
+                ShareApi.share(content,null);*/
+
+
+                String temp;
+                if(tmpProduct!=null&&tmpProduct.product_img!=null&&tmpProduct.product_img.length()!=0){
                     temp = tmpProduct.product_img;
                 }
                 else{
-                    temp = "www.naver.com";
+                    temp = "https://s3.ap-northeast-2.amazonaws.com/bidbid/FoodPic_2.jpg";
                 }
                 ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
                         .putString("og:type", "books.book")
@@ -169,20 +180,31 @@ public class DetailItemFragment extends Fragment {
                         .setActionType("books.reads")
                         .putObject("book", object)
                         .build();
+
                 // Create the content
                 ShareOpenGraphContent content = new ShareOpenGraphContent.Builder()
-                        .setPreviewPropertyName("book")
+                       // .setPreviewPropertyName("book")
                         .setAction(action)
                         .build();
 
                 //ShareApi.share(content, null);
                 //Context ctx = ApplicationController.getInstance().getMainActivityContext()
-                ShareDialog.show(getActivity(), content);*/
-                //Context ctx = ApplicationController.getInstance().getMainActivityContext();
-               // Intent intent = new Intent(ctx, SharingActivity.class);
-                //startActivity(intent);
+
+                ShareDialog.show(getActivity(),content);
+
+                //ShareApi.share(content,null);
+                /*
+                if(ApplicationController.getInstance().GetIsFacebook()==true) {
+                    Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                    Intent intent = new Intent(ctx, SharingActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getContext(), "공유하려면 페이스북 로그인 해 주세요.", Toast.LENGTH_SHORT).show();
+                }*/
             }
         });
+
         favoriteImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -247,7 +269,7 @@ public class DetailItemFragment extends Fragment {
                     detail_price.setText(Integer.toString(tmpProduct.register_minprice));
                     tmp_time = tmpProduct.rtime;
                     dealPrice = tmpProduct.deal_price;
-                    dealCount = tmpProduct.dealCount;
+                    dealCount = tmpProduct.deal_count;
                     product_minprice = tmpProduct.register_minprice;
                     product_maxprice = tmpProduct.register_maxprice;
 
@@ -261,8 +283,8 @@ public class DetailItemFragment extends Fragment {
 
                     detailCount.setText(Integer.toString(dealCount));
 
-                    //TextView dealCount = (TextView)rootViewBasic.findViewById(R.id.detail_current_count);
-                    //dealCount.setText(Integer.toString(tmpProduct.dealCount));
+                    //TextView deal_count = (TextView)rootViewBasic.findViewById(R.id.detail_current_count);
+                    //deal_count.setText(Integer.toString(tmpProduct.deal_count));
                     stimes = changeString(tmpProduct.register_stime);
                     ftimes = changeString(tmpProduct.register_ftime);
 
@@ -376,11 +398,7 @@ public class DetailItemFragment extends Fragment {
         String dates = tokenizer.nextToken("T");
         String tmp = tokenizer.nextToken(".");
         String times = tmp.substring(1, 6);
-
         String sumdates = dates +" "+ times;
-
-
         return sumdates;
     }
-
 }

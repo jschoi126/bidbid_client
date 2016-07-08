@@ -78,11 +78,11 @@ public class FavoriteFragment extends Fragment {
                         //TODO :여기서 프로덕트의 리스트를 사용하면 안되고 새로히 받은 페이버릿의 리스트를 사용해야 됨
 
                         ApplicationController.getInstance().setPos(position);
+                        //String pos = String.valueOf(position);
                         ((MainActivity) mContext).show_detail_list();
-                        if (ApplicationController.getInstance().gets() == 1) {
+                        /*if (ApplicationController.getInstance().gets() == 1) {
                             ((MainActivity) mContext).show_detail_list();
-                        }
-                        String pos = String.valueOf(position);
+                        }*/
 //                        Toast toast = Toast.makeText(mContext,
 //                                "포지션 : " + pos, Toast.LENGTH_LONG);
 //                        toast.setGravity(Gravity.CENTER, 0, 0);

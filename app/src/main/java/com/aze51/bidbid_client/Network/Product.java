@@ -16,7 +16,7 @@ public class Product {
     public int deal_price;
     public int rtime;
 
-    public int dealCount;
+    public int deal_count;
 
     public int favorite;
    // public String register_stime;
