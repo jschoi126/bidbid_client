@@ -44,7 +44,7 @@ public class ListItemData {
         this.stime = changeString(product.register_stime);
         this.ftime = changeString(product.register_ftime);
         this.people = product.register_numpeople;
-        this.dealCount = product.dealCount;
+        this.dealCount = product.deal_count;
     }
     //public int getImage(){return image;}
     public String getImg(){return img;}

@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,13 +97,14 @@ public class MainActivity extends AppCompatActivity {
         show_current_list();
     }
     public void show_detail_list() {
-        if(fromState != 1) {
+        Log.i("state",String.valueOf(pageState) + String.valueOf(fromState)+ "detail");
+        //if(fromState != 1) {
             fromState = pageState;
             pageState = 1;
-        }
-        else {
-            pageState = 1;
-        }
+        //}
+        //else {
+         //   pageState = 1;
+        //}
         if(detailFlag == 0){
             fragmentManager.beginTransaction().replace(R.id.TitleLayout,detailTitleFragment).commit();
             fragmentManager.beginTransaction().replace(R.id.ListLayout,detailItemFragment).commit();
@@ -119,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        Log.i("state",String.valueOf(pageState) + String.valueOf(fromState)+ "backpressed");
         if(pageState == 1 && fromState == 3) {//mypage and detail
             show_mypage_list();
         }
@@ -161,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //Made By Tae Joon 2016 06 27 : 현재 판매중인 목록 프래그먼트로 보여주기.
     public void show_current_list() {
+        Log.i("state",String.valueOf(pageState) + String.valueOf(fromState)+ "current");
         fromState = pageState;
         if(pageState == 1){//from detail page
             fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
@@ -206,9 +210,9 @@ public class MainActivity extends AppCompatActivity {
 
         detail_price = (TextView)findViewById(R.id.detail_price);
 
-
     }
     public void show_favorite_list() {
+        Log.i("state",String.valueOf(pageState) + String.valueOf(fromState)+ "favorite");
         if(pageState == 1){//from detail page
             fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
         }
@@ -227,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void show_mypage_list() {
+        Log.i("state",String.valueOf(pageState) + String.valueOf(fromState)+ "mypage");
         if(pageState == 1){//from detail page
             fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
         }
@@ -245,6 +250,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void show_search_list() {
+        Log.i("state",String.valueOf(pageState) + String.valueOf(fromState)+ "search");
         fromState = pageState;
         pageState = 4;
         if(searchFlag ==0) {
@@ -260,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void show_push_list() {
+        Log.i("state",String.valueOf(pageState) + String.valueOf(fromState)+ "push");
         if(pageState == 1){//from detail page
             fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
         }
@@ -278,6 +285,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void show_search_list_onclicked(){
+        Log.i("state",String.valueOf(pageState) + String.valueOf(fromState)+ "search on clicked");
         if(pageState == 1){//from detail page
             fragmentManager.beginTransaction().replace(R.id.detail_bottom_layout, emptyFragmentDetail).commit();
         }

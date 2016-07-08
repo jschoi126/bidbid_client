@@ -146,15 +146,29 @@ public class DetailItemFragment extends Fragment {
                 ShareOpenGraphContent content2 = new ShareOpenGraphContent.Builder()
                         .setPreviewPropertyName("fitness:course")
                         .setAction(action)
-                        .build();*/
-                //String temp;
-                /*
-                if(tmpProduct!=null){
+                        .build();
+                        ShareApi.share(content,null);
+
+                ShareApi.share(content,null);*/
+
+
+                String temp;
+                if(tmpProduct!=null&&tmpProduct.product_img!=null&&tmpProduct.product_img.length()!=0){
                     temp = tmpProduct.product_img;
                 }
                 else{
-                    temp = "www.naver.com";
+                    temp = "https://s3.ap-northeast-2.amazonaws.com/bidbid/FoodPic_2.jpg";
                 }
+
+                /*ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                        .setContentTitle("Shared from nearbyme application")
+                        .setContentDescription("This is a wonderful place")
+                        .setContentUrl(Uri.parse("http://www.villathena.com/images/nearby/thumbs/le-bus-bleu-private-tours.jpg"))
+                        .setImageUrl(Uri.parse("http://www.villathena.com/images/nearby/thumbs/le-bus-bleu-private-tours.jpg"))
+                        .build();
+                shareDialog.show(content);*/
+
+                /*
                 ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
                         .putString("og:type", "books.book")
                         .putString("og:title", "Bid Bid")
@@ -167,20 +181,28 @@ public class DetailItemFragment extends Fragment {
                         .setActionType("books.reads")
                         .putObject("book", object)
                         .build();
+
                 // Create the content
                 ShareOpenGraphContent content = new ShareOpenGraphContent.Builder()
                         .setPreviewPropertyName("book")
                         .setAction(action)
                         .build();
 
-                //ShareApi.share(content, null);
-                //Context ctx = ApplicationController.getInstance().getMainActivityContext()
-                ShareDialog.show(getActivity(), content);*/
-                //Context ctx = ApplicationController.getInstance().getMainActivityContext();
-               // Intent intent = new Intent(ctx, SharingActivity.class);
-                //startActivity(intent);
+                ShareDialog.show(getActivity(),content);
+*/
+                //ShareApi.share(content,null);
+
+                if(ApplicationController.getInstance().GetIsFacebook()==true) {
+                  //  Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                   // Intent intent = new Intent(ctx, SharingActivity.class);
+                   // startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getContext(), "공유하려면 페이스북 로그인 해 주세요.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
         favoriteImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -258,7 +280,7 @@ public class DetailItemFragment extends Fragment {
                     detail_price.setText(Integer.toString(tmpProduct.register_minprice));
                     tmp_time = tmpProduct.rtime;
                     dealPrice = tmpProduct.deal_price;
-                    dealCount = tmpProduct.dealCount;
+                    dealCount = tmpProduct.deal_count;
                     product_minprice = tmpProduct.register_minprice;
                     product_maxprice = tmpProduct.register_maxprice;
 
@@ -270,8 +292,8 @@ public class DetailItemFragment extends Fragment {
                     detail_deal.setText(Integer.toString(dealPrice));
                     detailCount.setText(Integer.toString(dealCount));
 
-                    //TextView dealCount = (TextView)rootViewBasic.findViewById(R.id.detail_current_count);
-                    //dealCount.setText(Integer.toString(tmpProduct.dealCount));
+                    //TextView deal_count = (TextView)rootViewBasic.findViewById(R.id.detail_current_count);
+                    //deal_count.setText(Integer.toString(tmpProduct.deal_count));
                     stimes = changeString(tmpProduct.register_stime);
                     ftimes = changeString(tmpProduct.register_ftime);
 
@@ -296,7 +318,6 @@ public class DetailItemFragment extends Fragment {
                     detail_menu.setText(tmpProduct.store_menu);
                     detail_address.setText(tmpProduct.store_address);
                     detail_park.setText(tmpProduct.store_parking);
-
                     clearTime();
                     getTime();
                     startRemainingTimeCount();
@@ -403,11 +424,7 @@ public class DetailItemFragment extends Fragment {
         String dates = tokenizer.nextToken("T");
         String tmp = tokenizer.nextToken(".");
         String times = tmp.substring(1, 6);
-
         String sumdates = dates +" "+ times;
-
-
         return sumdates;
     }
-
 }

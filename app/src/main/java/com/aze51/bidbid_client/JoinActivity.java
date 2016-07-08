@@ -150,7 +150,7 @@ public class JoinActivity extends AppCompatActivity {
         phoneAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                phoneAuth.setText("인증번호 확인");
+
                 GetPhoneAuthNum();
             }
         });
@@ -253,6 +253,7 @@ public class JoinActivity extends AppCompatActivity {
                 public void onResponse(Response<String> response, Retrofit retrofit) {
                     if (response.isSuccess()) {
                         Toast.makeText(getApplicationContext(), "인증번호가 전송되었습니다", Toast.LENGTH_SHORT).show();
+                        phoneAuth.setText("인증번호 확인");
                         tmpCertifiacation = response.body().toString();
                         phoneAuth.setOnClickListener(new View.OnClickListener() {
                             @Override
