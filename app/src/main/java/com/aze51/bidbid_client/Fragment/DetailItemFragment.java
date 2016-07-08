@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -28,6 +29,7 @@ import com.aze51.bidbid_client.SharingActivity;
 import com.bumptech.glide.Glide;
 
 import com.facebook.share.ShareApi;
+import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.ShareOpenGraphAction;
 import com.facebook.share.model.ShareOpenGraphContent;
 import com.facebook.share.model.ShareOpenGraphObject;
@@ -169,6 +171,16 @@ public class DetailItemFragment extends Fragment {
                 else{
                     temp = "https://s3.ap-northeast-2.amazonaws.com/bidbid/FoodPic_2.jpg";
                 }
+
+                /*ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                        .setContentTitle("Shared from nearbyme application")
+                        .setContentDescription("This is a wonderful place")
+                        .setContentUrl(Uri.parse("http://www.villathena.com/images/nearby/thumbs/le-bus-bleu-private-tours.jpg"))
+                        .setImageUrl(Uri.parse("http://www.villathena.com/images/nearby/thumbs/le-bus-bleu-private-tours.jpg"))
+                        .build();
+                shareDialog.show(content);*/
+
+                /*
                 ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
                         .putString("og:type", "books.book")
                         .putString("og:title", "Bid Bid")
@@ -184,25 +196,22 @@ public class DetailItemFragment extends Fragment {
 
                 // Create the content
                 ShareOpenGraphContent content = new ShareOpenGraphContent.Builder()
-                       // .setPreviewPropertyName("book")
+                        .setPreviewPropertyName("book")
                         .setAction(action)
                         .build();
 
-                //ShareApi.share(content, null);
-                //Context ctx = ApplicationController.getInstance().getMainActivityContext()
-
                 ShareDialog.show(getActivity(),content);
-
+*/
                 //ShareApi.share(content,null);
-                /*
+
                 if(ApplicationController.getInstance().GetIsFacebook()==true) {
-                    Context ctx = ApplicationController.getInstance().getMainActivityContext();
-                    Intent intent = new Intent(ctx, SharingActivity.class);
-                    startActivity(intent);
+                  //  Context ctx = ApplicationController.getInstance().getMainActivityContext();
+                   // Intent intent = new Intent(ctx, SharingActivity.class);
+                   // startActivity(intent);
                 }
                 else{
                     Toast.makeText(getContext(), "공유하려면 페이스북 로그인 해 주세요.", Toast.LENGTH_SHORT).show();
-                }*/
+                }
             }
         });
 
@@ -302,15 +311,17 @@ public class DetailItemFragment extends Fragment {
                     else{
                         favoriteImage.setImageResource(R.mipmap.favorite);
                     }
-                    if(bidCheck == 1){
-                        //bidSucceed.setImageResource(R.mipmap.bidsucess);
-                        bidSucceed.setVisibility(View.VISIBLE);
-                        background.setVisibility(View.VISIBLE);
-                    }
-                    else{
-                        bidSucceed.setVisibility(View.INVISIBLE);
-                        background.setVisibility(View.INVISIBLE);
-                    }
+
+
+//                    if(bidCheck == 1){
+//                        //bidSucceed.setImageResource(R.mipmap.bidsucess);
+//                        bidSucceed.setVisibility(View.VISIBLE);
+//                        background.setVisibility(View.VISIBLE);
+//                    }
+//                    else{
+//                        bidSucceed.setVisibility(View.INVISIBLE);
+//                        background.setVisibility(View.INVISIBLE);
+//                    }
                     clearTime();
                     getTime();
                     startRemainingTimeCount();

@@ -61,6 +61,9 @@ public class FavoriteViewAdapter extends RecyclerView.Adapter<FavoriteViewHolder
         holder.text2.setText(itemDatas.get(position).getPrice());
         holder.text3.setText(itemDatas.get(position).getRemain_time_hour());
         holder.text4.setText(itemDatas.get(position).getRemain_time_min());
+        holder.bidUser.setText(itemDatas.get(position).getNumPeople());
+        holder.startTime.setText(itemDatas.get(position).getStime());
+        holder.endTime.setText(itemDatas.get(position).getFtime());
 
        // holder.text5.setText(FORMAT.format(itemDatas.get(position).getStime()));
        // holder.text6.setText(FORMAT.format(itemDatas.get(position).getFtime()));
