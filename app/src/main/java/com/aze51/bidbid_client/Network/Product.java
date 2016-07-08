@@ -17,12 +17,12 @@ public class Product {
     public int rtime;
     public int dealCount;
     public int favorite;
+   // public String register_stime;
+   // public String register_ftime;
+    public String user_phonenum;
     public String register_stime;
     public String register_ftime;
-    public String user_phonenum;
-    //public Date register_stime = new Date();
-    //public Date register_ftime;
-
+    public int register_numpeople;
 
     //public long product_time_start;
     //public long product_time_finish;

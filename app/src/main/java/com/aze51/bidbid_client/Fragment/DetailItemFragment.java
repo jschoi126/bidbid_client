@@ -25,6 +25,7 @@ import com.aze51.bidbid_client.R;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -40,7 +41,8 @@ public class DetailItemFragment extends Fragment {
     TextView detail_price;
     TextView detail_time;
     TextView detail_title;
-    TextView detail_time_hour, detail_time_min, detail_time_sec, detailCount, detailFavorite, detail_deal;
+    TextView detail_time_hour, detail_time_min, detail_time_sec, detailCount, detailFavorite, detail_deal, detail_people;
+    TextView detail_stime, detail_ftime;
     Button detail_bid;
     TextView detail_bidPrice;
     String get_img;
@@ -49,6 +51,7 @@ public class DetailItemFragment extends Fragment {
     int registerID;
     int dealPrice;
     int dealCount;
+    String stimes, ftimes;
     CountDownTimer timer;
 
     @Override
@@ -207,6 +210,9 @@ public class DetailItemFragment extends Fragment {
         detail_deal = (TextView)rootViewBasic.findViewById(R.id.detail_bid);
         shareImage = (ImageView)rootViewBasic.findViewById(R.id.detail_share_image);
         favoriteImage = (ImageView)rootViewBasic.findViewById(R.id.detail_favorite_image);
+        detail_ftime = (TextView)rootViewBasic.findViewById(R.id.detail_ftime);
+        detail_stime = (TextView)rootViewBasic.findViewById(R.id.detail_stime);
+        detail_people = (TextView)rootViewBasic.findViewById(R.id.detail_people_su);
 
     }
     private void initNetworkService() {
@@ -235,6 +241,12 @@ public class DetailItemFragment extends Fragment {
                     dealCount = tmpProduct.dealCount;
                     detail_deal.setText(Integer.toString(dealPrice));
                     detailCount.setText(Integer.toString(dealCount));
+                    stimes = changeString(tmpProduct.register_stime);
+                    ftimes = changeString(tmpProduct.register_ftime);
+                    detail_stime.setText(stimes);
+                    detail_ftime.setText(ftimes);
+                    detail_people.setText(Integer.toString(tmpProduct.register_numpeople));
+                   // detail_stime.setText(t);
                     favoriteCheck = tmpProduct.favorite;
                     if(favoriteCheck == 1){
                         favoriteImage.setImageResource(R.mipmap.favorite_click);
@@ -333,6 +345,19 @@ public class DetailItemFragment extends Fragment {
         rHour = 0;
         rMin = 0;
         rSec = 0;
+    }
+
+    private String changeString(String str1){
+
+        StringTokenizer tokenizer = new StringTokenizer(str1);
+        String dates = tokenizer.nextToken("T");
+        String tmp = tokenizer.nextToken(".");
+        String times = tmp.substring(1, 6);
+
+        String sumdates = dates +" "+ times;
+
+
+        return sumdates;
     }
 
 }
