@@ -35,9 +35,11 @@ public class MyPageRecyclerViewAdapter extends RecyclerView.Adapter<MyPageViewHo
     @Override
     public void onBindViewHolder(MyPageViewHolder holder, int position) {
         //holder.imageView.setImageResource(itemDatas.get(position).getImage());
-        Glide.with(mContext).load(itemDatas.get(position).getImg()).error(R.drawable.star).into(holder.imageView);
+        //Glide.with(mContext).load(itemDatas.get(position).getImg()).error(R.drawable.star).into(holder.imageView);
+        Glide.with(mContext).load(itemDatas.get(position).getImg()).fitCenter().into(holder.imageView);
         holder.text1.setText(itemDatas.get(position).getProduct_name());
         holder.text2.setText(itemDatas.get(position).getDealPrice());
+        holder.bidtime.setText(String.valueOf(itemDatas.get(position).getDealCount()));
         //holder.text3.setText(itemDatas.get(position).getRemain_time());
     }
     @Override

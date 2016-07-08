@@ -77,10 +77,7 @@ public class MypageFragment extends Fragment {
         mContext = ApplicationController.getInstance().getMainActivityContext();
         username = (TextView)rootViewBasic.findViewById(R.id.mypage_user_name);
         userid = (TextView)rootViewBasic.findViewById(R.id.mypage_user_id);
-        if(ApplicationController.getInstance().GetIsFacebook()==true){
-            username.setText(PrefUtils.getCurrentUser(mContext).name);
-            userid.setText(PrefUtils.getCurrentUser(mContext).email);
-        }
+
         initNetworkService();
         mLayoutManager = new LinearLayoutManager(mContext);//Mainactivity 의 this
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -94,21 +91,48 @@ public class MypageFragment extends Fragment {
             @Override
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
                 if(response.isSuccess()) {
-                    if(response.body().get(0)==null) {
+                    if(ApplicationController.getInstance().GetIsFacebook()==true){
+                        username.setText(PrefUtils.getCurrentUser(mContext).name);
+                        userid.setText(PrefUtils.getCurrentUser(mContext).email);
+                    }
+                    else{
+                        username.setText(ApplicationController.getUserId());
+                        //myProducts.
+                        if(response.body()!=null && response.body().isEmpty()==false){
+                            if(response.body().get(0).user_phonenum==null) {
+                                userid.setText("");
+                            }
+                            else {
+                                userid.setText(response.body().get(0).user_phonenum.toString());
+                            }
+                        }
+                        else{
+                            userid.setText("");
+                        }
+                    }
+
+                    if(response.body()==null || response.body().isEmpty() || (response.body().size()==0)) {
                         Toast.makeText(getContext(), "입찰하신 상품이 없습니다.", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         myProducts = response.body();
-                        Log.i("TAG", "get response");
-                        ApplicationController.getInstance().SetProducts5(myProducts);
-                        Log.i("TAG", "response not empty");
-                        //ApplicationController.getInstance().SetProducts5(myProducts);
-                        for (Product product : myProducts) {
-                            itemDatas.add(new ListItemData(product));
+                        //입찰한 상품이 없을경우
+                        if(myProducts.get(0).product_img==null||myProducts.get(0).product_img.length()==0){
+                            Toast.makeText(getContext(), "입찰하신 상품이 없습니다.", Toast.LENGTH_SHORT).show();
+                            ((MainActivity) mContext).show_mypage_list();
                         }
-                        mAdapter = new MyPageRecyclerViewAdapter(mContext, itemDatas);
-                        recyclerView.setAdapter(mAdapter);
-                        ((MainActivity) mContext).show_mypage_list();
+                        else {
+                            Log.i("TAG", "get response");
+                            ApplicationController.getInstance().SetProducts5(myProducts);
+                            Log.i("TAG", "response not empty");
+                            //ApplicationController.getInstance().SetProducts5(myProducts);
+                            for (Product product : myProducts) {
+                                itemDatas.add(new ListItemData(product));
+                            }
+                            mAdapter = new MyPageRecyclerViewAdapter(mContext, itemDatas);
+                            recyclerView.setAdapter(mAdapter);
+                            ((MainActivity) mContext).show_mypage_list();
+                        }
                     }
                  }
             }
@@ -130,10 +154,10 @@ public class MypageFragment extends Fragment {
                         ApplicationController.getInstance().setPos(position);
                         ((MainActivity) mContext).show_detail_list();
                         String pos = String.valueOf(position);
-                        Toast toast = Toast.makeText(mContext,
-                                "포지션 : " + pos, Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
+                        //Toast toast = Toast.makeText(mContext,
+//                                "포지션 : " + pos, Toast.LENGTH_LONG);
+//                        toast.setGravity(Gravity.CENTER, 0, 0);
+//                        toast.show();
                     }
                 }));
         return rootViewBasic;

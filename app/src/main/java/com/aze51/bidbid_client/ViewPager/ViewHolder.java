@@ -19,6 +19,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     TextView text5;
     TextView text6;
     TextView text7;
+    TextView dealCount;
     //TextView text5;
     public ViewHolder(View itemView) {
         super(itemView);
@@ -30,6 +31,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         text5 = (TextView)itemView.findViewById(R.id.start_bid_date);
         text6 = (TextView)itemView.findViewById(R.id.finish_bid_date);
         text7 = (TextView)itemView.findViewById(R.id.people_su);
+        
         //text5 = (TextView)itemView.findViewById(R.id.remain_time_sec);
     }
 }

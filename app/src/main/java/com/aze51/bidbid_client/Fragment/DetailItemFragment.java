@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,8 @@ import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.bumptech.glide.Glide;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.StringTokenizer;
@@ -208,7 +211,7 @@ public class DetailItemFragment extends Fragment {
         detail_time_min = (TextView)rootViewBasic.findViewById(R.id.detail_time_min);
         detail_time_sec = (TextView)rootViewBasic.findViewById(R.id.detail_time_sec);
         //detail = (TextView)rootViewBasic.findViewById(R.id.detail_bid);
-        detailCount = (TextView)rootViewBasic.findViewById(R.id.detail_people_su);
+        detailCount = (TextView)rootViewBasic.findViewById(R.id.detail_current_count);
         detail_deal = (TextView)rootViewBasic.findViewById(R.id.detail_bid);
         shareImage = (ImageView)rootViewBasic.findViewById(R.id.detail_share_image);
         favoriteImage = (ImageView)rootViewBasic.findViewById(R.id.detail_favorite_image);
@@ -244,7 +247,6 @@ public class DetailItemFragment extends Fragment {
                     tmp_time = tmpProduct.rtime;
                     dealPrice = tmpProduct.deal_price;
                     dealCount = tmpProduct.dealCount;
-
                     product_minprice = tmpProduct.register_minprice;
                     product_maxprice = tmpProduct.register_maxprice;
 
@@ -255,8 +257,11 @@ public class DetailItemFragment extends Fragment {
 
 
                     detail_deal.setText(Integer.toString(dealPrice));
+
                     detailCount.setText(Integer.toString(dealCount));
 
+                    //TextView dealCount = (TextView)rootViewBasic.findViewById(R.id.detail_current_count);
+                    //dealCount.setText(Integer.toString(tmpProduct.dealCount));
                     stimes = changeString(tmpProduct.register_stime);
                     ftimes = changeString(tmpProduct.register_ftime);
 

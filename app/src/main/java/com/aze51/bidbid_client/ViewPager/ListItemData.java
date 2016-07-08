@@ -15,6 +15,7 @@ public class ListItemData {
     String product_name;
     String price;
     int registerid;
+    int dealCount;
     //Date sDate;
     int remain_time, rHour, rMin, rSec, dealPrice, people;
     String stime, ftime;
@@ -28,7 +29,6 @@ public class ListItemData {
     }
     public ListItemData(Product product)
     {
-
         this.img = product.product_img;
         this.product_name = product.product_name;
         this.prices = product.register_minprice;
@@ -37,17 +37,18 @@ public class ListItemData {
         double tmp2 = ((remain_time/3600.0)-rHour)*60.0;
         this.rMin = ((int)tmp2);
         double tmp3 = (tmp2-rMin)*60;
-        this.rSec = ((int)tmp3);
+        this.rSec   = ((int)tmp3);
         this.dealPrice = product.deal_price;
         this.registerid = product.register_id;
         //this.stime = product.register_stime;
         this.stime = changeString(product.register_stime);
         this.ftime = changeString(product.register_ftime);
         this.people = product.register_numpeople;
-
+        this.dealCount = product.dealCount;
     }
     //public int getImage(){return image;}
     public String getImg(){return img;}
+    public int getDealCount(){return dealCount;}
     public String getProduct_name(){return product_name;}
     public String getRemain_time_hour(){return Integer.toString(rHour);}
     public String getRemain_time_min(){return Integer.toString(rMin);}
@@ -67,14 +68,15 @@ public class ListItemData {
 
     }*/
     private String changeString(String str1){
-
+        if(str1==null || str1.length()==0){
+            return "";
+        }
         StringTokenizer tokenizer = new StringTokenizer(str1);
         String dates = tokenizer.nextToken("T");
         String tmp = tokenizer.nextToken(".");
         String times = tmp.substring(1, 6);
 
         String sumdates = dates +" "+ times;
-
 
         return sumdates;
     }

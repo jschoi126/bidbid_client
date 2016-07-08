@@ -15,6 +15,7 @@ public class FavoriteViewHolder extends RecyclerView.ViewHolder {
     TextView text1;
     TextView text2;
     TextView text3, text4, text5, text6;
+
     public FavoriteViewHolder(View itemView) {
         super(itemView);
         imageView = (ImageView)itemView.findViewById(R.id.favorite_ImageView);

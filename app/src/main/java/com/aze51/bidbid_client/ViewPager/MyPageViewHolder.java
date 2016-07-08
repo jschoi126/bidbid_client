@@ -14,12 +14,14 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView text1;
     TextView text2;
+    TextView bidtime;
     //TextView text3;
     public MyPageViewHolder(View itemView) {
         super(itemView);
         imageView = (ImageView)itemView.findViewById(R.id.mypage_ImageView);
         text1 = (TextView)itemView.findViewById(R.id.mypage_item_name);
         text2 = (TextView)itemView.findViewById(R.id.mypage_price);
+        bidtime = (TextView)itemView.findViewById(R.id.mypage_count);
         //text3 = (TextView)itemView.findViewById(R.id.mypage_remain_time);
     }
 }

@@ -76,9 +76,10 @@ public class PushListFragment extends Fragment {
                             }
                         });
 
-                listView.setOnItemClickListener(listener);
+        //listView.setOnItemClickListener(listener);
         return rootViewBasic;
     }
+    /*
     AdapterView.OnItemClickListener listener= new AdapterView.OnItemClickListener() {
 
         //ListView의 아이템 중 하나가 클릭될 때 호출되는 메소드
@@ -91,7 +92,7 @@ public class PushListFragment extends Fragment {
             ctx = ApplicationController.getInstance().getMainActivityContext();
             ((MainActivity)ctx).show_detail_list();
         }
-    };
+    };*/
 
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
