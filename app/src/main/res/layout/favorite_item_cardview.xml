@@ -52,6 +52,7 @@
             <ImageView
                 android:layout_width="128dp"
                 android:layout_height="118dp"
+                android:scaleType="fitXY"
                 android:id="@+id/favorite_ImageView"
                 android:layout_below="@+id/favorite_cardview1"
                 />
