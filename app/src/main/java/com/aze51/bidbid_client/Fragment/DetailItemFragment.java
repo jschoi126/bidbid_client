@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,8 +23,6 @@ import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.StringTokenizer;
@@ -43,7 +40,7 @@ public class DetailItemFragment extends Fragment {
     //ImageView backimage;
     TextView detail_price;
     TextView detail_time;
-    TextView detail_title;
+    TextView detail_title, detail1, detail2, detail3, detail4;
     TextView detail_time_hour, detail_time_min, detail_time_sec, detailCount, detailFavorite, detail_deal, detail_people;
     TextView detail_stime, detail_ftime;
     Button detail_bid;
@@ -68,12 +65,12 @@ public class DetailItemFragment extends Fragment {
         }
     }
 
-    int favoriteCheck;
+    int favoriteCheck, bidCheck;
     long rHour, rMin, rSec;
     int tmpRegisterId, tmpPage, tmpPage2;
     Favorite f;
     //facebookshare
-    ImageView shareImage, favoriteImage;
+    ImageView shareImage, favoriteImage, bidSucceed, background;
     Bitmap image;
     boolean favoriteFlag = false;
     int position, pos;
@@ -218,7 +215,10 @@ public class DetailItemFragment extends Fragment {
         detail_ftime = (TextView)rootViewBasic.findViewById(R.id.detail_ftime);
         detail_stime = (TextView)rootViewBasic.findViewById(R.id.detail_stime);
         detail_people = (TextView)rootViewBasic.findViewById(R.id.detail_people_su);
-
+        detail1 = (TextView)rootViewBasic.findViewById(R.id.detail_connect);
+        detail2 = (TextView)rootViewBasic.findViewById(R.id.detail_checking);
+        detail3 = (TextView)rootViewBasic.findViewById(R.id.detail_people_su_connect);
+        detail4 = (TextView)rootViewBasic.findViewById(R.id.detail_text);
     }
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
@@ -255,9 +255,7 @@ public class DetailItemFragment extends Fragment {
                     maxprice.setText(String.valueOf(product_maxprice) + "원");
                     minprice.setText(String.valueOf(product_minprice) + "원");
 
-
                     detail_deal.setText(Integer.toString(dealPrice));
-
                     detailCount.setText(Integer.toString(dealCount));
 
                     //TextView dealCount = (TextView)rootViewBasic.findViewById(R.id.detail_current_count);
@@ -270,11 +268,21 @@ public class DetailItemFragment extends Fragment {
                     detail_people.setText(Integer.toString(tmpProduct.register_numpeople));
                    // detail_stime.setText(t);
                     favoriteCheck = tmpProduct.favorite;
+
                     if(favoriteCheck == 1){
                         favoriteImage.setImageResource(R.mipmap.favorite_click);
                     }
                     else{
                         favoriteImage.setImageResource(R.mipmap.favorite);
+                    }
+                    if(bidCheck == 1){
+                        bidSucceed.setImageResource(R.mipmap.bidsucess);
+                        bidSucceed.setVisibility(View.VISIBLE);
+                        background.setVisibility(View.VISIBLE);
+                    }
+                    else{
+                        bidSucceed.setVisibility(View.INVISIBLE);
+                        background.setVisibility(View.INVISIBLE);
                     }
                     clearTime();
                     getTime();
@@ -345,8 +353,15 @@ public class DetailItemFragment extends Fragment {
             }
             @Override
             public void onFinish() {
-                if(rHour == 0)
-                    Toast.makeText(getContext(),"경매 마감", Toast.LENGTH_SHORT).show();
+                if(rHour == 0) {
+                    Toast.makeText(getContext(), "경매 마감", Toast.LENGTH_SHORT).show();
+                    detail_people.setText("마감된 경매");
+                    detail_stime.setText("마감된 경매");
+                    detail_ftime.setText("");
+                    detail_price.setText("마감된 경매");
+                    detail_deal.setText("마감된 경매");
+                    detail1.setText("");  detail2.setText("");  detail3.setText("");  detail4.setText("");
+                }
                 clearTime();
             }
         };

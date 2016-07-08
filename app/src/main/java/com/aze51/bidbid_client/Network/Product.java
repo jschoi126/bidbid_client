@@ -30,7 +30,7 @@ public class Product {
     public int register_maxprice;
     //public Date register_stime = new Date();
     //public Date register_ftime;
-
+    public int success_status;
     public int register_numpeople;
 
     //public long product_time_start;
