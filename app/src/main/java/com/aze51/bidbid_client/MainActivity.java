@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     EmptyFragment emptyFragment;
     EmptyFragment emptyFragmentDetail;
     SearchListOnClickedFragment searchListOnClickedFragment;
-    View rootViewBasic;//for listfragment
+    //for listfragment
 
     //태준 작업중
     PushListFragment pushListFragment;
@@ -63,16 +63,16 @@ public class MainActivity extends AppCompatActivity {
     public int getFromState(){return fromState;}
 
     //ViewPager
-    ViewPager viewpager;
+
     LinearLayout currentLinear;
     LinearLayout scheduledLinear;
     LinearLayout approachingLinear;
-    TabPageIndicator mIndicator;
+
 
 
     TextView detail_price;
     TextView detail_time;
-    private CustomChangeColorTab changeColorTab;
+
 
     int currentFlag = 0;
     int detailFlag = 0;
@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
     int searchClickedFlag = 0;
     int pushListFlag = 0;
 
-    ViewPagerCustomAdapter viewPagerCustomAdapter = new ViewPagerCustomAdapter(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -292,8 +291,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //protected static final String[] CONTENT = new String[] { "마감임박","진행","예정" };
-    public class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
+    public static class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
        // public Context ctx;
+       View rootViewBasic;
+        ViewPager viewpager;
+        private CustomChangeColorTab changeColorTab;
+        TabPageIndicator mIndicator;
+        ViewPagerCustomAdapter viewPagerCustomAdapter = new ViewPagerCustomAdapter(ApplicationController.getInstance().getMainActivityContext());
         public ListFragment(){
             //생성자
         }
@@ -375,12 +379,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        ApplicationController.getInstance().setPosition(viewpager.getCurrentItem());
+        ///ApplicationController.getInstance().setPosition(viewpager.getCurrentItem());
         //show_current_list();
     }
     @Override
     protected void onPause(){
         super.onPause();
-        ApplicationController.getInstance().setPosition(viewpager.getCurrentItem());
+       // ApplicationController.getInstance().setPosition(viewpager.getCurrentItem());
     }
 }
