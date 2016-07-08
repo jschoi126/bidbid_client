@@ -39,7 +39,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="50dp"
+                        android:layout_marginRight="40dp"
                         android:layout_marginTop="8dp">
                         <ImageView
                             android:id="@+id/detail_minmax_image"
@@ -215,7 +215,7 @@
                                 android:id="@+id/detail_stime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="14sp"
+                                android:textSize="12sp"
                                 android:textColor="#cacaca"
                                 android:text="남은기간"
                                 />
@@ -233,7 +233,7 @@
                                 android:id="@+id/detail_ftime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="14sp"
+                                android:textSize="12sp"
                                 android:textColor="#cacaca"
                                 android:text="남은기간"
                                 />
