@@ -25,13 +25,22 @@ public class Product {
     public String register_ftime;
     public String user_phonenum;
 
+    public String store_img;
+    public String store_menu;
+    public String store_price;
+    public String store_time;
+    public String store_year;
+    public String store_address;
+    public String store_parking;
+    public String store_number;
+
     public int product_minprice;
     public int product_maxprice;
     public int register_maxprice;
     //public Date register_stime = new Date();
     //public Date register_ftime;
-    public int success_status;
     public int register_numpeople;
+
 
     //public long product_time_start;
     //public long product_time_finish;

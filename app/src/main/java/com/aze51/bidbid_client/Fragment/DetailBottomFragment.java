@@ -133,8 +133,9 @@ public class DetailBottomFragment extends Fragment {
 
                     auction.deal_price = Integer.parseInt(bidText.getText().toString());
                     Product p = ApplicationController.getInstance().GetProduct();
+
                     int bidprice = Integer.parseInt(bidText.getText().toString());
-                    if(p.register_minprice>bidprice){
+                    if (p.register_minprice > bidprice) {
                         Toast.makeText(ctx, "입찰 가능 가격보다 낮게 입력하셨습니다.", Toast.LENGTH_SHORT).show();
                     }
                     else if(p.register_maxprice<bidprice){
