@@ -38,8 +38,9 @@ import retrofit.Retrofit;
 public class DetailItemFragment extends Fragment {
     View rootViewBasic;
     //ImageView backimage;
+    ImageView detail_view;
     TextView detail_price;
-    TextView detail_time;
+    TextView detail_time, detail_prices, detail_menu, detail_phone, detail_closed, detail_park, detail_address, detail_year;
     TextView detail_title, detail1, detail2, detail3, detail4;
     TextView detail_time_hour, detail_time_min, detail_time_sec, detailCount, detailFavorite, detail_deal, detail_people;
     TextView detail_stime, detail_ftime;
@@ -220,6 +221,16 @@ public class DetailItemFragment extends Fragment {
         detail2 = (TextView)rootViewBasic.findViewById(R.id.detail_checking);
         detail3 = (TextView)rootViewBasic.findViewById(R.id.detail_people_su_connect);
         detail4 = (TextView)rootViewBasic.findViewById(R.id.detail_text);
+        detail_time = (TextView)rootViewBasic.findViewById(R.id.time);
+        detail_prices = (TextView)rootViewBasic.findViewById(R.id.store_price);
+        detail_menu = (TextView)rootViewBasic.findViewById(R.id.memus);
+        detail_phone = (TextView)rootViewBasic.findViewById(R.id.store_phone);
+        detail_closed = (TextView)rootViewBasic.findViewById(R.id.closed_day);
+        detail_park = (TextView)rootViewBasic.findViewById(R.id.park);
+        detail_address = (TextView)rootViewBasic.findViewById(R.id.address);
+        detail_view = (ImageView)rootViewBasic.findViewById(R.id.detail_inform_image);
+
+
     }
     private void initNetworkService() {
         networkService = ApplicationController.getInstance().getNetworkService();
@@ -276,15 +287,16 @@ public class DetailItemFragment extends Fragment {
                     else{
                         favoriteImage.setImageResource(R.mipmap.favorite);
                     }
-                    if(bidCheck == 1){
-                        bidSucceed.setImageResource(R.mipmap.bidsucess);
-                        bidSucceed.setVisibility(View.VISIBLE);
-                        background.setVisibility(View.VISIBLE);
-                    }
-                    else{
-                        bidSucceed.setVisibility(View.INVISIBLE);
-                        background.setVisibility(View.INVISIBLE);
-                    }
+
+                    Glide.with(getContext()).load(tmpProduct.store_img).error(R.drawable.food).into(detail_view);
+                    detail_time.setText(tmpProduct.store_time);
+                    detail_prices.setText(tmpProduct.store_price);
+                    detail_phone.setText(tmpProduct.store_price);
+                    detail_closed.setText(tmpProduct.store_year);
+                    detail_menu.setText(tmpProduct.store_menu);
+                    detail_address.setText(tmpProduct.store_address);
+                    detail_park.setText(tmpProduct.store_parking);
+
                     clearTime();
                     getTime();
                     startRemainingTimeCount();
