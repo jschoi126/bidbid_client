@@ -11,7 +11,7 @@ import com.aze51.bidbid_client.R;
  * Created by jeon3029 on 16. 7. 5..
  */
 public class MyPageViewHolder extends RecyclerView.ViewHolder {
-    ImageView imageView;
+    ImageView imageView, bidSucceed, background;
     TextView text1;
     TextView text2;
     TextView bidtime;
