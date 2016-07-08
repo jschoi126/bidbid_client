@@ -5,4 +5,6 @@ package com.aze51.bidbid_client.Fragment;
  */
 public class PushListViewItem {
     String ps_detail;
+    String ps_title;
+    String ps_time;
 }

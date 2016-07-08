@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.aze51.bidbid_client.R;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  * Created by jeon3029 on 16. 7. 3..
@@ -54,15 +55,29 @@ public class PushListCustomAdapter extends BaseAdapter{
         }
 
         ImageView productImageView = (ImageView) convertView.findViewById(R.id.push_image) ;
-        //TextView title = (TextView) convertView.findViewById(R.id.push_text) ;
+        TextView title = (TextView) convertView.findViewById(R.id.push_title) ;
         TextView remainTime = (TextView)convertView.findViewById(R.id.push_remain_time);
         TextView testView = (TextView)convertView.findViewById(R.id.test);
         PushListViewItem itemData_temp = itemDatas.get(position);
         //productImageView.setImageResource(itemData_temp.img);
-        //title.setText(itemData_temp.title);
+        title.setText(itemData_temp.ps_title);
         //price.setText(String.valueOf(itemData_temp.bidPrice));
-        //remainTime.setText(String.valueOf(itemData_temp.remainTime));
+        remainTime.setText(changeString(itemData_temp.ps_time));
         testView.setText(itemData_temp.ps_detail);
         return convertView;
+    }
+
+    private String changeString(String str1){
+        if(str1==null || str1.length()==0){
+            return "";
+        }
+        StringTokenizer tokenizer = new StringTokenizer(str1);
+        String dates = tokenizer.nextToken("T");
+        String tmp = tokenizer.nextToken(".");
+        String times = tmp.substring(1, 6);
+
+        String sumdates = dates +" "+ times;
+
+        return sumdates;
     }
 }

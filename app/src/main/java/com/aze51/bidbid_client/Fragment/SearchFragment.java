@@ -31,8 +31,6 @@ public class SearchFragment extends Fragment {
     Button button;
     Typeface font;
 
-
-
     View rootViewBasic;
     Button searchButton;
     EditText searchText;
