@@ -292,7 +292,10 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 counter--;
-                textViewKeyTimer.setText( Long.toString(millisUntilFinished / 1000) + " 초 남음");
+                int sec = (int)millisUntilFinished/1000;
+                int min = (int)sec / 60;
+                int modsec = sec % 60;
+                textViewKeyTimer.setText( min + " 분" + modsec +" 초 남음");
             }
 
             @Override

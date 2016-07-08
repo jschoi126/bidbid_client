@@ -87,7 +87,9 @@ public class SettingActivity extends AppCompatActivity {
                                 else{
                                     Toast.makeText(SettingActivity.this, "로그아웃 하셨습니다. ", Toast.LENGTH_LONG).show();
                                 }
-                                LoginManager.getInstance().logOut();
+                                if(LoginManager.getInstance()!=null){
+                                    LoginManager.getInstance().logOut();
+                                }
                                 PrefUtils.clearCurrentUser(getApplicationContext());
                                 startActivity(intent);
                                 finish();

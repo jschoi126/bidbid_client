@@ -28,6 +28,17 @@ import retrofit.Retrofit;
  * Created by Leekh on 2016-06-18.
  */
 public class ApplicationController extends Application {
+    private static Product detailProduct;
+    public void SetDetailProduct(Product p){
+        detailProduct = p;
+    }
+    public Product GetProduct(){
+        if(detailProduct!=null)
+        return detailProduct;
+        else{
+            return null;
+        }
+    }
     private static int state;
     public void SetStatic(int n){state = n;}
     public int GetStatic(){return state;}
@@ -106,7 +117,9 @@ public class ApplicationController extends Application {
 
     private Call<List<Product>> listCall;
 
+    //private static String baseUrl = "http://52.78.69.183:3000";
     private static String baseUrl = "http://52.78.66.175:3000";
+
     private Call<List<List<Product>>> getlistCall;
     public void getDataFromServer(){
         getlistCall = networkService.getProducts();
@@ -178,9 +191,17 @@ public class ApplicationController extends Application {
 
     public static int getPos(){return productPos;}
     public static void setPos(int pos){productPos = pos;}
-    public static String getUserId(){return user;}
+    public static String getUserId(){
+        if(user!=null)
+            return user;
+        else{
+            return "";
+        }
+    }
     public static void setUserId(String id){user = id;}
-    public static int getRegisterId(){return registerId;};
+    public static int getRegisterId(){
+        return registerId;
+    }
     public static void setRegisterId(int registerid) {registerId = registerid;}
     public static int gets(){return detail;};
     public static void sets(int details) {detail = details;}
@@ -188,8 +209,6 @@ public class ApplicationController extends Application {
     public static void setFlag(boolean flags){flag = flags;}
     //public static Auction getAuction(){return auction;}
     //public static void setAuction(Auction a){auction = a;}
-
-
     // Applcation 인스턴스 선언
     private static ApplicationController instance;
     public static ApplicationController getInstance(){

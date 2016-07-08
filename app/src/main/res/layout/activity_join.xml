@@ -165,7 +165,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:paddingLeft="44dp">
+            android:paddingLeft="44dp"
+            android:paddingRight="44dp"
+            >
 
             <CheckBox
                 android:id="@+id/check"
@@ -175,25 +177,21 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:text="이용약관 확인"
+                android:layout_marginTop="5dp"
                 android:textColor="#000000"/>
 
             <TextView
                 android:id="@+id/show_privacy_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
                 android:text="약관보기"
-                android:gravity="center_vertical|center_horizontal|right"
                 android:textSize="14sp"
+                android:gravity="center"
                 android:textColor="#e42828"
-                android:layout_marginRight="45dp"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
+                android:layout_marginTop="5dp"
+                />
         </RelativeLayout>
-
-
-
         <LinearLayout
             android:paddingTop="8dp"
             android:layout_width="match_parent"
@@ -265,7 +263,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="11sp"
-                android:text="3분 00초"
+                android:text="3분 0 초 남음"
                 android:paddingTop="5dp"
                 android:background="#eeeeee"
                 android:textColor="#000000"

@@ -94,24 +94,24 @@ public class MypageFragment extends Fragment {
             @Override
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
                 if(response.isSuccess()) {
-                    if(response.body().get(0).product_img != null){ // 사용자가 입찰하지 않을 경우 서버에서 어떻게 처리해야되나?
-                    myProducts = response.body();
-                    Log.i("TAG","get response");
-                    ApplicationController.getInstance().SetProducts5(myProducts);
-                        Log.i("TAG","response not empty");
+                    if(response.body().get(0)==null) {
+                        Toast.makeText(getContext(), "입찰하신 상품이 없습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        myProducts = response.body();
+                        Log.i("TAG", "get response");
+                        ApplicationController.getInstance().SetProducts5(myProducts);
+                        Log.i("TAG", "response not empty");
                         //ApplicationController.getInstance().SetProducts5(myProducts);
                         for (Product product : myProducts) {
                             itemDatas.add(new ListItemData(product));
                         }
-                        mAdapter = new MyPageRecyclerViewAdapter(mContext,itemDatas);
+                        mAdapter = new MyPageRecyclerViewAdapter(mContext, itemDatas);
                         recyclerView.setAdapter(mAdapter);
-                        ((MainActivity)mContext).show_mypage_list();
-                    }
-                    else{
-                        Toast.makeText(getContext(),"입찰하신 상품이 없습니다.",Toast.LENGTH_SHORT).show();
+                        ((MainActivity) mContext).show_mypage_list();
                     }
                  }
-                }
+            }
             @Override
             public void onFailure(Throwable t) {
 

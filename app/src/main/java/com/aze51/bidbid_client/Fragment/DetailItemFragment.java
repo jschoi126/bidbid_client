@@ -49,6 +49,8 @@ public class DetailItemFragment extends Fragment {
     int registerID;
     int dealPrice;
     int dealCount;
+    int product_minprice;
+    int product_maxprice;
     CountDownTimer timer;
 
     @Override
@@ -219,8 +221,11 @@ public class DetailItemFragment extends Fragment {
             @Override
             public void onResponse(Response<List<Product>> response, Retrofit retrofit) {
                 if(response.isSuccess()) {
-                    tmp_Product = response.body();
-                    tmpProduct = tmp_Product.get(0);
+                    tmp_Product = response.body();//detail list 에 한 개의 아이템 만 있음
+                    tmpProduct = tmp_Product.get(0);//detail의 첫번째가 원하는 아이템
+
+                    ApplicationController.getInstance().SetDetailProduct(tmpProduct);
+
                     registerID = tmpProduct.register_id;
                     detail_title.setText(tmpProduct.product_name);
                     Glide.with(getContext())
@@ -233,8 +238,17 @@ public class DetailItemFragment extends Fragment {
                     tmp_time = tmpProduct.rtime;
                     dealPrice = tmpProduct.deal_price;
                     dealCount = tmpProduct.dealCount;
-                    detail_deal.setText(Integer.toString(dealPrice));
-                    detailCount.setText(Integer.toString(dealCount));
+                    product_minprice = tmpProduct.register_minprice;
+                    product_maxprice = tmpProduct.register_maxprice;
+
+                    TextView maxprice = (TextView)rootViewBasic.findViewById(R.id.detail_max_price);
+                    TextView minprice = (TextView)rootViewBasic.findViewById(R.id.detail_min_price);
+                    maxprice.setText(String.valueOf(product_maxprice) + "원");
+                    minprice.setText(String.valueOf(product_minprice) + "원");
+
+
+                    detail_deal.setText(Integer.toString(dealPrice) );
+                    detailCount.setText(Integer.toString(dealCount) );
                     favoriteCheck = tmpProduct.favorite;
                     if(favoriteCheck == 1){
                         favoriteImage.setImageResource(R.mipmap.favorite_click);
@@ -247,11 +261,9 @@ public class DetailItemFragment extends Fragment {
                     startRemainingTimeCount();
                     ApplicationController.getInstance().sets(1);
                 }
-
             }
             @Override
             public void onFailure(Throwable t) {
-
             }
         });
     } // DetailItemFragment

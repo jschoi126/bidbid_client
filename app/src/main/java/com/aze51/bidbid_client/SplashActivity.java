@@ -68,8 +68,10 @@ public class SplashActivity extends AppCompatActivity {
         loginTest.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Response<User> response, Retrofit retrofit) {
-                if(response.body() != null)
-                    Log.d("MyTag",response.body().user_id);
+                if(response.body() != null) {
+                    Log.d("MyTag", response.body().user_id);
+                    ApplicationController.getInstance().setUserId(response.body().user_id);
+                }
                 connectSuccess(response.code());
             }
             @Override
@@ -92,7 +94,7 @@ public class SplashActivity extends AppCompatActivity {
 
             String str = ApplicationController.getInstance().GetSharedFaceBook();
             if(str!=null){
-                Toast.makeText(SplashActivity.this,str + "님 페이스북으로 로그인 하셨습니다. ",Toast.LENGTH_LONG).show();
+                Toast.makeText(SplashActivity.this,str + " 님 페이스북으로 로그인 하셨습니다. ",Toast.LENGTH_LONG).show();
             }
             else {
                 Toast.makeText(SplashActivity.this, "페이스북으로 로그인 하셨습니다. ", Toast.LENGTH_LONG).show();
@@ -103,8 +105,15 @@ public class SplashActivity extends AppCompatActivity {
         }
         else if(statusCode == 200){
             Log.d("MyTag", "Has session");
+            String str = ApplicationController.getInstance().getUserId();
+            if (str != null && str.length() != 0) {
+                Toast.makeText(SplashActivity.this,str + "님 로그인 하셨습니다. ",Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(SplashActivity.this,"로그인 하셨습니다. ",Toast.LENGTH_LONG).show();
 
-             intent = new Intent(getApplicationContext(), MainActivity.class);
+            }
+            intent = new Intent(getApplicationContext(), MainActivity.class);
         }
         else if(statusCode == 401){
             Log.d("MyTag", "Has no session ");

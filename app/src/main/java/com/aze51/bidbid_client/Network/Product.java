@@ -20,6 +20,10 @@ public class Product {
     public String register_stime;
     public String register_ftime;
     public String user_phonenum;
+
+    public int product_minprice;
+    public int product_maxprice;
+    public int register_maxprice;
     //public Date register_stime = new Date();
     //public Date register_ftime;
 

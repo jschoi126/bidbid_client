@@ -130,8 +130,18 @@ public class DetailBottomFragment extends Fragment {
                     auction.register_id = tmpRegisterId;
 
                     auction.deal_price = Integer.parseInt(bidText.getText().toString());
-                    postBidResult(auction);
-                    Log.i("TAG", "입찰 버튼 투름");
+                    Product p = ApplicationController.getInstance().GetProduct();
+                    int bidprice = Integer.parseInt(bidText.getText().toString());
+                    if(p.register_minprice>bidprice){
+                        Toast.makeText(ctx, "입찰 가능 가격보다 낮게 입력하셨습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(p.register_maxprice<bidprice){
+                        Toast.makeText(ctx, "입찰 가능 가격보다 높게 입력하셨습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        postBidResult(auction);
+                    }
+                    Log.i("TAG", "입찰 버튼 누름");
                     //Toast.makeText(ctx,"입찰하셨습니다",Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(ctx, "가격을 입력해주세요", Toast.LENGTH_SHORT).show();

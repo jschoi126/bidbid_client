@@ -236,6 +236,14 @@ public class LoginActivity extends Activity {
                             else{
                                 intent = new Intent(getApplicationContext(), BidBidIntro.class);
                             }
+                            String str = ApplicationController.getInstance().getUserId();
+                            if (str != null && str.length() != 0) {
+                                Toast.makeText(LoginActivity.this,str + " 님 로그인 하셨습니다. ",Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Toast.makeText(LoginActivity.this,"로그인 하셨습니다. ",Toast.LENGTH_LONG).show();
+
+                            }
                             ApplicationController.getInstance().SetFacebook(false);
                             startActivity(intent);
 //                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
