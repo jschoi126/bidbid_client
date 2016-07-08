@@ -3,7 +3,8 @@ package com.aze51.bidbid_client.ViewPager;
 import com.aze51.bidbid_client.Network.Product;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.StringTokenizer;
+
 
 /**
  * Created by jeon3029 on 16. 6. 28..
@@ -14,8 +15,8 @@ public class ListItemData {
     String product_name;
     String price;
     int registerid;
-    Date sDate;
-    int remain_time, rHour, rMin, rSec, dealPrice;
+    //Date sDate;
+    int remain_time, rHour, rMin, rSec, dealPrice, people;
     String stime, ftime;
     public String img;
     int prices;
@@ -39,8 +40,10 @@ public class ListItemData {
         this.rSec = ((int)tmp3);
         this.dealPrice = product.deal_price;
         this.registerid = product.register_id;
-        this.stime = product.register_stime;
-        this.ftime = product.register_ftime;
+        //this.stime = product.register_stime;
+        this.stime = changeString(product.register_stime);
+        this.ftime = changeString(product.register_ftime);
+        this.people = product.register_numpeople;
 
     }
     //public int getImage(){return image;}
@@ -56,11 +59,23 @@ public class ListItemData {
     public int getRegister(){return registerid;}
     public String getStime() {return stime;}
     public String getFtime() {return ftime;}
+    public String getNumPeople(){return Integer.toString(people);}
 
     /*private void changeData(String str1){
         simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         str1 = format2.format(sDate);
 
     }*/
+    private String changeString(String str1){
 
+        StringTokenizer tokenizer = new StringTokenizer(str1);
+        String dates = tokenizer.nextToken("T");
+        String tmp = tokenizer.nextToken(".");
+        String times = tmp.substring(1, 6);
+
+        String sumdates = dates +" "+ times;
+
+
+        return sumdates;
+    }
 }

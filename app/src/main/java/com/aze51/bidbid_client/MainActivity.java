@@ -294,6 +294,11 @@ public class MainActivity extends AppCompatActivity {
     public static class ListFragment extends Fragment { //view pager 사용해서 리사이클러 뷰 띄움
        // public Context ctx;
        View rootViewBasic;
+        @Override
+        public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+            ApplicationController.getInstance().getDataFromServer();
+            super.onViewStateRestored(savedInstanceState);
+        }
         ViewPager viewpager;
         private CustomChangeColorTab changeColorTab;
         TabPageIndicator mIndicator;

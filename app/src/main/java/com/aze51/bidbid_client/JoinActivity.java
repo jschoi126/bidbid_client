@@ -53,6 +53,7 @@ public class JoinActivity extends AppCompatActivity {
     RadioButton radiobutton;
     Typeface font, font2;
 
+    EditText getPhoneAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -256,21 +257,24 @@ public class JoinActivity extends AppCompatActivity {
                         phoneAuth.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                getPhoneAuth = (EditText) findViewById(R.id.phone_auth);
+                                String str = getPhoneAuth.getText().toString();
                                 if(isKeyExpired){
+                                    checkedPhoneCertficate = false;
                                     Toast.makeText(getApplicationContext(), "인증번호가 만료되었습니다", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
-                                if(TextUtils.equals(phoneAuth.getText(), tmpCertifiacation)){
+                                else if(TextUtils.equals(str, tmpCertifiacation)){
                                     checkedPhoneCertficate = true;
                                     Toast.makeText(getApplicationContext(), "인증번호가 확인되었습니다", Toast.LENGTH_SHORT).show();
                                     phoneAuth.setClickable(false);
-                                } else {
+                                }
+                                else {
                                     checkedPhoneCertficate = false;
                                     Toast.makeText(getApplicationContext(), "인증번호가 올바르지않습니다", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
-
                         startRemainingTimeCount();
                     }
                 }
