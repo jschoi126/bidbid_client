@@ -85,6 +85,7 @@ public class MypageFragment extends Fragment {
         //adapter 설정
         itemDatas = new ArrayList<ListItemData>();
          //TODO : 서버에 유저 아이디 보내서 유저가 입찰하고 있는 리스트 받아야 함
+
         String user = ApplicationController.getInstance().getUserId();
         Call<List<Product>> userCall = networkService.getMyPage(user);
         userCall.enqueue(new Callback<List<Product>>() {

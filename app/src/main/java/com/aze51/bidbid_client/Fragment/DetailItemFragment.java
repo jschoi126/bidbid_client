@@ -1,9 +1,15 @@
 package com.aze51.bidbid_client.Fragment;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -23,7 +29,15 @@ import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.Product;
 import com.aze51.bidbid_client.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
+import com.facebook.share.model.ShareOpenGraphAction;
+import com.facebook.share.model.ShareOpenGraphContent;
+import com.facebook.share.model.ShareOpenGraphObject;
+import com.facebook.share.widget.ShareDialog;
 
+import java.net.URL;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -187,11 +201,10 @@ public class DetailItemFragment extends Fragment {
                         .setPreviewPropertyName("book")
                         .setAction(action)
                         .build();
-
-                ShareDialog.show(getActivity(),content);
-*/
+                */
+                //ShareDialog.show(getActivity(),content);
                 //ShareApi.share(content,null);
-
+                /*
                 if(ApplicationController.getInstance().GetIsFacebook()==true) {
                   //  Context ctx = ApplicationController.getInstance().getMainActivityContext();
                    // Intent intent = new Intent(ctx, SharingActivity.class);
@@ -200,6 +213,61 @@ public class DetailItemFragment extends Fragment {
                 else{
                     Toast.makeText(getContext(), "공유하려면 페이스북 로그인 해 주세요.", Toast.LENGTH_SHORT).show();
                 }
+
+                */
+
+                String urlToShare = "https://www.facebook.com/bidbid7979/?skip_nax_wizard=true";
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                //intent.setType("text/plain");
+// intent.putExtra(Intent.EXTRA_SUBJECT, "Foo bar"); // NB: has no effect!
+                //intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
+             intent.setType("text/plain");
+            intent.putExtra(android.content.Intent.EXTRA_SUBJECT,"bidbid");
+            intent.putExtra(android.content.Intent.EXTRA_TEXT, "bidbid" +
+                    " 짱");
+/*// See if official Facebook app is found
+                boolean facebookAppFound = false;
+                List<ResolveInfo> matches = getPackageManager().queryIntentActivities(intent, 0);
+                for (ResolveInfo info : matches) {
+                    if (info.activityInfo.packageName.toLowerCase().startsWith("com.facebook.katana")) {
+                        intent.setPackage(info.activityInfo.packageName);
+                        facebookAppFound = true;
+                        break;
+                    }
+                }
+// As fallback, launch sharer.php in a browser
+                if (!facebookAppFound) {
+                    String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
+                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
+                }*/
+                //intent.putExtra(Intent.EXTRA_TEXT, "비드비드 사랑해요");
+                //intent.setType("image/png");
+                //try {
+                //    Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), temp);
+                //}
+                /*
+                Glide.with(ctx)
+                        .load(temp)
+                        .asBitmap()
+                        .into(new SimpleTarget<Bitmap>() {
+                            @Override
+                            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                                Uri bmpUri = Uri.parse(resource);
+                                //final Intent emailIntent1 = new Intent(     android.content.Intent.ACTION_SEND);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.putExtra(Intent.EXTRA_STREAM, bmpUri);
+                                intent.setType("image/png");
+
+                                //holder.mImageView.setImageBitmap(resource);
+                            }
+                        });*/
+
+                intent.setType("image/*");
+                //intent.putExtra(Intent.EXTRA_STREAM, String.valueOf(uri));
+                intent.putExtra(Intent.EXTRA_STREAM, temp);
+                String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
+                startActivity(intent);
             }
         });
 
@@ -313,7 +381,7 @@ public class DetailItemFragment extends Fragment {
                     Glide.with(getContext()).load(tmpProduct.store_img).error(R.drawable.food).into(detail_view);
                     detail_time.setText(tmpProduct.store_time);
                     detail_prices.setText(tmpProduct.store_price);
-                    detail_phone.setText(tmpProduct.store_price);
+                    detail_phone.setText(tmpProduct.store_number);
                     detail_closed.setText(tmpProduct.store_year);
                     detail_menu.setText(tmpProduct.store_menu);
                     detail_address.setText(tmpProduct.store_address);
@@ -427,4 +495,6 @@ public class DetailItemFragment extends Fragment {
         String sumdates = dates +" "+ times;
         return sumdates;
     }
+
+
 }

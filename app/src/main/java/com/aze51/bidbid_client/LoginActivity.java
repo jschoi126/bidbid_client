@@ -325,6 +325,7 @@ public class LoginActivity extends Activity {
                             try {
                                 user = new FaceBookUser();
                                 user.facebookID = object.getString("id").toString();
+                                ApplicationController.getInstance().setUserId(user.facebookID);
                                 user.email = object.getString("email").toString();
                                 user.name = object.getString("name").toString();
                                 user.gender = object.getString("gender").toString();

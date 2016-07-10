@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aze51.bidbid_client.AppIntro.BidBidIntro;
 import com.aze51.bidbid_client.Network.FaceBookLogin;
 import com.aze51.bidbid_client.Network.NetworkService;
 import com.aze51.bidbid_client.Network.User;
@@ -27,6 +28,7 @@ import retrofit.Retrofit;
 public class SettingActivity extends AppCompatActivity {
 
     ImageView back_image;
+    TextView help;
     TextView terms_of_use;
     TextView privacy;
     TextView logout;
@@ -37,7 +39,15 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
+        help = (TextView)findViewById(R.id.setting_help);
+        help.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BidBidIntro.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         back_image = (ImageView)findViewById(R.id.setting_back_image);
         back_image.setOnClickListener(new View.OnClickListener(){
             @Override

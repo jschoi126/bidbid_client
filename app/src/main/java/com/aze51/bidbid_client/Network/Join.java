@@ -4,6 +4,7 @@ package com.aze51.bidbid_client.Network;
  * Created by Leekh on 2016-06-29.
  */
 public class Join {
+    //TODO : 폰넘버 추가 user_phonenum
 
     public long id;
     public String user_id;

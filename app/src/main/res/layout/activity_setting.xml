@@ -58,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
+            android:id="@+id/setting_help"
             android:background="#ffffff"
             android:text="  도움말"
             android:textSize="14sp"
